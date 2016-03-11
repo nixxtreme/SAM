@@ -790,6 +790,71 @@ public class Archivos
         
     }
     
+    public static void lecturaUsuariosDemonsa2(String ruta, String bd )            //LEE EL ARCHIVO DE NOMINA INTERNOS
+    {
+        String[] parametros = bd.split("\\|");                                   //SEPARA LOS ELEMENTOS DE LA CADENA HASTA SU REFERENCIA DE CORTE
+        File archivo = null;                                                    //Crea el objeto del archivo vacío
+        FileReader fr = null;                                                   //Crea el objeto del lector de archivos vacío
+        BufferedReader br = null;                                               //Crea el bufer de lectura vacío
+        String usuarios, linea, temp, primera;                                  
+        
+        usuarios="";
+        linea = "";
+        //System.out.println("linea " + linea);
+        
+        
+
+        try
+        {
+            archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+            Monitoreos.Tablas.eliminaTablaUsrAdmin(bd);                              //Elimina la tabla de Usuarios Administradores en caso de existir
+            Monitoreos.Tablas.idCreaUsrAdmin(bd);                                    //Crea una nueva tabla de nómina internos
+            
+            primera = br.readLine();                
+                                     
+
+            while((temp=br.readLine()) != null)                                 //Valida que la siguiente línea del archivo no esté vacía
+            {
+                    
+//                System.out.println("temp = " + temp);
+                //System.out.println("Linea antes " + linea);
+                linea = linea + "\n " + creaLineaUsrAdmin(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
+                //System.out.println("Linea  " + creaLinea(temp));
+
+            }
+            System.out.println("length " + linea.length());
+            linea = linea.substring(0, linea.length()-4);                         //Elimina la última coma de la cadena
+            System.out.println("Salida = " + linea);
+            Monitoreos.Tablas.UsrAdminTabla(linea, bd);                            //Insera los registros en la tabla correspondiente
+        }
+//        catch(SQLException sqle)
+//        {
+//            sqle.printStackTrace();
+//        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally                                                                 //Finaliza la lectura del archivo
+        {
+            try
+            {
+                if(fr != null)
+                {
+                    fr.close();
+                }
+            }
+            catch(Exception e2)
+            {
+                e2.printStackTrace();
+            }
+        }
+        
+    }
+    
+    
     private static String creaLineaUsrAdmin(String linea)                          //CREA LA LÍNEA DE REGISTRO DE USUARIOS ADMINISTRADORES
     {
         String usuario, nombre, apellido, rol, val_auto, retorno;                         //Variables para almacenar los datos de cada registro
@@ -814,6 +879,31 @@ public class Archivos
             val_auto = temp[7];                                                     //Obtiene el valor de autorizacion de la posición 7 del arreglo
             retorno = "('" + usuario + "', '" + nombre + "', '" + apellido + "', '" + rol + "', '" + val_auto + "')"; //Regresa la línea para ser insertada en la BD local
         }
+ 
+        return retorno;
+    }
+    
+    private static String creaLineaDemonsa2(String linea)                          //CREA LA LÍNEA DE REGISTRO DE USUARIOS ADMINISTRADORES
+    {
+        String numemp, nombre, idpuesto, puesto, gerencia, region, retorno;                         //Variables para almacenar los datos de cada registro
+        
+        //System.out.println("Linea " + linea);
+        String[] temp = linea.split("\t");                                      //Crea un arreglo con los datos del registro separados por el pipe
+//        for(int i=0; i<temp.length;i++)
+//        {
+//            System.out.println(i + " " + temp[i]);
+//        }
+        
+        
+        numemp = temp[0];                                                       //Obtiene el Usuario de la posición 1 del arreglo
+        nombre = temp[1];                                                       //Obtiene el nombre de la posición 2 del arreglo
+        idpuesto = temp[2];                                                     //Obtiene la rol de la posición 4 del arreglo
+        puesto = temp[3];                                                       //Obtiene la apellido de la posición 3 del arreglo
+        gerencia = temp[4];                                                     //Obtiene el valor de autorizacion de la posición 7 del arreglo
+        region = temp[5];
+        retorno = "('" + numemp + "', '" + nombre + "', '" + idpuesto + "', "
+                + "'" + puesto + "', '" + gerencia +  "', '" + region + "')";   //Regresa la línea para ser insertada en la BD local
+
  
         return retorno;
     }
