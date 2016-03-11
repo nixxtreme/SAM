@@ -457,8 +457,8 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists  SELECT Usuario, Nombre, Apellido, Rol, Valor_Autorizacion FROM usradmin" + parametros[5]
-                    + " WHERE usuario NOT IN (SELECT usuario FROM usradmin" + parametros[4] + ")";
+        statement = "create table if not exists CruceInt SELECT Usuario, Nombre_Completo,Grupo, Bloq, Valido_de, Validez_a FROM usractivos" + parametros[4]
+                    + " WHERE usuario LIKE '' ";
         return statement;
     }
     
@@ -466,8 +466,8 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists eliminados SELECT Usuario, Nombre, Apellido, Rol, Valor_Autorizacion FROM usradmin" + parametros[5]
-                    + " WHERE usuario NOT IN (SELECT usuario FROM usradmin" + parametros[4] + ")";
+        statement = "create table if not exists CruceExt SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM usractivos" + parametros[4]
+                    + " WHERE usuario LIKE '%EX'";
         return statement;
     }
     
@@ -475,7 +475,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists eliminados SELECT Usuario, Nombre, Apellido, Rol, Valor_Autorizacion FROM usradmin" + parametros[5]
+        statement = "create table if not exists CruceGen SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM usractivos" + parametros[4]
                     + " WHERE usuario NOT IN (SELECT usuario FROM usradmin" + parametros[4] + ")";
         return statement;
     }
