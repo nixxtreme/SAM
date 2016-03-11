@@ -816,7 +816,7 @@ public class Querys
      public static String CreaGenSAP(String cadenaBD)                   //CREA LA TABLA DE TRABAJO DE USUARIOS EXTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statement = "CREATE TABLE IF NOT EXISTS EXTERNOS SELECT * FROM USUARIOS" + parametros[4] + " WHERE NUM_EMP LIKE '%EX%'";*******
+        String statement = "CREATE TABLE IF NOT EXISTS GENERICOS SELECT * FROM USUARIOS" + parametros[4] + " WHERE NUM_EMP LIKE '%EX%'";*******
         return statement;
     }
 }
