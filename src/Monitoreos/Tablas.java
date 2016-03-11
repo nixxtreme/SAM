@@ -358,4 +358,34 @@ public class Tablas
                     + " WHERE usuario NOT IN (SELECT usuario FROM usradmin" + parametros[4] + ")";
         return statement;
     }
+    
+                                    //Tablas de cruces internos, externos y genericos PAQUETE TABLAS
+    public static String TablaInt(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;
+        String[] parametros = cadenaBD.split("\\|");
+        statement = "create table if not exists  SELECT Usuario, Nombre, Apellido, Rol, Valor_Autorizacion FROM usradmin" + parametros[5]
+                    + " WHERE usuario NOT IN (SELECT usuario FROM usradmin" + parametros[4] + ")";
+        return statement;
+    }
+    
+    public static String TablaExt(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;
+        String[] parametros = cadenaBD.split("\\|");
+        statement = "create table if not exists eliminados SELECT Usuario, Nombre, Apellido, Rol, Valor_Autorizacion FROM usradmin" + parametros[5]
+                    + " WHERE usuario NOT IN (SELECT usuario FROM usradmin" + parametros[4] + ")";
+        return statement;
+    }
+    
+    public static String TablaGen(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;
+        String[] parametros = cadenaBD.split("\\|");
+        statement = "create table if not exists eliminados SELECT Usuario, Nombre, Apellido, Rol, Valor_Autorizacion FROM usradmin" + parametros[5]
+                    + " WHERE usuario NOT IN (SELECT usuario FROM usradmin" + parametros[4] + ")";
+        return statement;
+    }
+    
+    
 }

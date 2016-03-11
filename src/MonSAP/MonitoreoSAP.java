@@ -1030,8 +1030,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            PreparaTablas.add(Monitoreos.Querys.BorraExternosTrabajo());
 //            PreparaTablas.add(Monitoreos.Querys.BorraBaajasInt());
 //            PreparaTablas.add(Monitoreos.Querys.BorraBaajasExt());
-//            PreparaTablas.add(Monitoreos.Querys.BorraCruceInternosTrabajo(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraCruceExternosTrabajo(cadenaBD));
+            
 //            PreparaTablas.add(Monitoreos.Querys.BorraBajasLInt(cadenaBD));
 //            PreparaTablas.add(Monitoreos.Querys.BorraBajasLExt(cadenaBD));
 //            PreparaTablas.add(Monitoreos.Querys.BorraDupXNombreInt(cadenaBD));
@@ -1053,9 +1052,13 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            PreparaTablas.add(Monitoreos.Querys.BorraPerfilNoAutorizadosExt());
               PreparaTablas.add(Monitoreos.Querys.BorraUsrAdminAgregados());
               PreparaTablas.add(Monitoreos.Querys.BorraUsrAdminEliminados());
+              PreparaTablas.add(Monitoreos.Querys.BorraCruceSAPInt());
+              PreparaTablas.add(Monitoreos.Querys.BorraCruceSAPExt());
+              PreparaTablas.add(Monitoreos.Querys.BorraCruceSAPGen());
 ////
-//            PreparaTablas.add(Monitoreos.Querys.CreaInternosTrabajo(cadenaBD));     //Crea la tabla de usuarios internos
-//            PreparaTablas.add(Monitoreos.Querys.CreaExternosTrabajo(cadenaBD));     //Crea la tabla de usuarios externos
+            PreparaTablas.add(Monitoreos.Querys.CreaInternosSAP(cadenaBD));     //Crea la tabla de usuarios internos
+            PreparaTablas.add(Monitoreos.Querys.CreaExternosSAP(cadenaBD));     //Crea la tabla de usuarios externos
+            PreparaTablas.add(Monitoreos.Querys.CreaGenSAP(cadenaBD));          //Crea la tabla de usuarios genericos
 //            PreparaTablas.add(Monitoreos.Querys.CruceInternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios internos
 //            PreparaTablas.add(Monitoreos.Querys.CruceExternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios externos
 //            PreparaTablas.add(Monitoreos.Querys.NoNominaCreaInt(cadenaBD));         //Crea una tabla con los usuarios internos que no fueron encontrados en nómina
@@ -1103,6 +1106,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosExt());  
             PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));
+            
+            PreparaTablas.add(Monitoreos.Tablas.TablaInt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.TablaExt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.TablaGen(cadenaBD));
 
 
 
@@ -1156,16 +1163,14 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             String noAutoext = conteo.conteo(ConLocal.conexion, "USUARIOSNOAUTORIZADOSEXT");//Cuenta el total de usuarios externos con perfil no autorizado
             jTextField18.setText(noAutoext);
             
-            String altaUsrAdmin = conteo.conteo(ConLocal.conexion, "ALTAUSUARIOSADMINISTRADORES");//Cuenta el total de usuarios administradores dados de alta
+            String altaUsrAdmin = conteo.conteo(ConLocal.conexion, "AGREGADOS");//Cuenta el total de usuarios administradores dados de alta
             jTextField19.setText(altaUsrAdmin);
             
-            String bajaUsrAdmin = conteo.conteo(ConLocal.conexion, "BAJAUSUARIOSADMINISTRADORES");//Cuenta el total de usuarios administradores dados de baja
+            String bajaUsrAdmin = conteo.conteo(ConLocal.conexion, "ELIMINADOS");//Cuenta el total de usuarios administradores dados de baja
             jTextField20.setText(bajaUsrAdmin);
 
             System.out.println(cadenaBD);
     
-
-
             ConLocal.Cerrar();                                                  //Cierra a conexión de MySQL
 
             Resultados PantallaDeResultados = new Resultados(cadenaBD);         //LLama la pantalla de resultados
@@ -1180,7 +1185,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    
+    
 
+    
     
     public String obtieneTabla(){                                               //Obtiene mes y año del monitoreo, realizada para almacenar los registros del monitoreo a futuro
     

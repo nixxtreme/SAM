@@ -780,4 +780,43 @@ public class Querys
         String statement = "select USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION from eliminados";
         return statement;
     }
+    
+    public static String BorraCruceSAPInt()                             //OBTIENE EL RESULTADO DE LOS USUARIOS AGREGADOS 
+    {
+        String statement = "select USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION from eliminados";***
+        return statement;
+    }
+    
+     public static String BorraCruceSAPExt()                             //OBTIENE EL RESULTADO DE LOS USUARIOS AGREGADOS 
+    {
+        String statement = "select USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION from eliminados";***
+        return statement;
+    }
+     
+     public static String BorraCruceSAPGen()                             //OBTIENE EL RESULTADO DE LOS USUARIOS AGREGADOS 
+    {
+        String statement = "select USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION from eliminados";***
+        return statement;
+    }
+    
+     public static String CreaInternosSAP(String cadenaBD)                   //CREA LA TABLA DE TRABAJO DE USUARIOS EXTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "CREATE TABLE IF NOT EXISTS EXTERNOS SELECT * FROM USUARIOS" + parametros[4] + " WHERE NUM_EMP LIKE '%EX%'";******
+        return statement;
+    }
+     
+     public static String CreaExternosSAP(String cadenaBD)                   //CREA LA TABLA DE TRABAJO DE USUARIOS EXTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "CREATE TABLE IF NOT EXISTS EXTERNOS SELECT * FROM USUARIOS" + parametros[4] + " WHERE NUM_EMP LIKE '%EX%'";*******
+        return statement;
+    }
+     
+     public static String CreaGenSAP(String cadenaBD)                   //CREA LA TABLA DE TRABAJO DE USUARIOS EXTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "CREATE TABLE IF NOT EXISTS EXTERNOS SELECT * FROM USUARIOS" + parametros[4] + " WHERE NUM_EMP LIKE '%EX%'";*******
+        return statement;
+    }
 }
