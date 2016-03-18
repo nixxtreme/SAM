@@ -358,12 +358,12 @@ public class Tablas
         }
     }
     
-    public static void UsrAdminTabla(String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
+    public static void Demonsa2Tabla(String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
         String mes = parametros[3];
         
-        String valores = "INSERT IGNORE INTO usradmin" + parametros[4] + " (USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION) "
+        String valores = "INSERT IGNORE INTO usradmin" + parametros[4] + " (NUMEMP, NOMBRE, IDPUESTO, PUESTO, GERENCIA, REGION) "
                 + "values " + usuarios ;
         
         
