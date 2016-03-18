@@ -1,0 +1,14 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `agregaNUMEMP`(IN region varchar(5))
+BEGIN
+	IF NOT EXISTS (
+		SELECT * FROM information_schema.COLUMNS
+		WHERE column_name='numemp'
+		and table_name=region
+		AND table_schema = 'adaplication'
+		)
+	THEN
+		set @atsql = concat("ALTER TABLE ",region, " ADD COLUMN numemp int" );
+		PREPARE insertar FROM @atsql;
+		EXECUTE insertar;
+	END IF;
+END
