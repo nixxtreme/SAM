@@ -2,6 +2,7 @@
  * Clase principal para ejecutar el monitoreo de PAC
  */
 package MonPac;
+import Monitoreos.Conteos;
 import Monitoreos.Conexion;
 import MonAD.ExecQuery;
 import com.toedter.calendar.IDateEditor;
