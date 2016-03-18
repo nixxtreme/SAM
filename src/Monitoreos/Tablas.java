@@ -274,6 +274,32 @@ public class Tablas
         }
     }
    
+   public static void eliminaTablaDemonsa2(String cadenaBD)                         //ELIMINA LA TABLA DE NÓMINA INTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        
+
+        
+        try
+        {
+            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
+            
+            // Se obtiene una conexión con la base de datos. 
+            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
+            
+            Statement cstmt2 = conexion.createStatement();  
+
+            int rs2 = cstmt2.executeUpdate("DROP TABLE IF EXISTS `Demonsa2"+ parametros[4] + "`");
+            
+            // Se cierra la conexión con la base de datos.
+            conexion.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+   
    public static void idCreaUsrAdmin(String cadenaBD)                          //CREA LA TABLA DE NÓMINA EXTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
