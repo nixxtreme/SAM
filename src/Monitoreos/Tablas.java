@@ -328,6 +328,35 @@ public class Tablas
             e.printStackTrace();
         }
     }
+   
+   public static void idCreaDemonsa2(String cadenaBD)                          //CREA LA TABLA DE NÓMINA EXTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String tabla = "CREATE TABLE IF NOT EXISTS demonsa2"+ parametros[4] + " (NUMEMP VARCHAR(25) NOT NULL, NOMBRE VARCHAR(45), IDPUESTO VARCHAR(25), "
+        + "PUESTO VARCHAR(45) , GERENCIA VARCHAR(45), REGION VARCHAR(25) PRIMARY KEY (NUMEMP))";
+        
+        //System.out.println("Tabla \n" + tabla);
+        
+        try
+        {
+            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
+            
+            
+            
+            // Se obtiene una conexión con la base de datos. 
+            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
+            
+            Statement cstmt2 = conexion.createStatement();
+            int rs2 = cstmt2.executeUpdate(tabla);
+            
+            // Se cierra la conexión con la base de datos.
+            conexion.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
     
     public static void UsrAdminTabla(String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
     {

@@ -809,8 +809,8 @@ public class Archivos
             archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
-            Monitoreos.Tablas.eliminaTablaUsrAdmin(bd);                              //Elimina la tabla de Usuarios Administradores en caso de existir
-            Monitoreos.Tablas.idCreaUsrAdmin(bd);                                    //Crea una nueva tabla de nómina internos
+            Monitoreos.Tablas.eliminaTablaDemonsa2(bd);                              //Elimina la tabla de Usuarios Administradores en caso de existir
+            Monitoreos.Tablas.idCreaDemonsa2(bd);                                    //Crea una nueva tabla de nómina internos
             
             primera = br.readLine();                
                                      
