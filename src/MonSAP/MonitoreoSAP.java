@@ -202,6 +202,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         jTextFieldDemonsa = new javax.swing.JTextField();
         jCheckDemonsa = new javax.swing.JCheckBox();
         jButtonDemonsa = new javax.swing.JButton();
+        jPanelDemonsa1 = new javax.swing.JPanel();
+        jLabelDemonsa2 = new javax.swing.JLabel();
+        jTextFieldDemonsa2 = new javax.swing.JTextField();
+        jCheckDemonsa2 = new javax.swing.JCheckBox();
+        jButtonDemonsa2 = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
 
@@ -327,9 +332,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                                     .addComponent(jLabel19)
                                     .addComponent(jLabel16)
                                     .addComponent(jLabel20)))
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(22, 22, 22))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
@@ -337,26 +341,23 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField20, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField18, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                                .addComponent(jTextField17, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField4)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField13, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField15, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField16, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jTextField19, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextField18, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                        .addComponent(jTextField17, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField4)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField13, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField15, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField16, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jTextField19, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
                 .addGap(23, 23, 23))
         );
         jPanel4Layout.setVerticalGroup(
@@ -883,6 +884,45 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jLabelDemonsa2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelDemonsa2.setText("Nómina Demonsa 2");
+
+        jCheckDemonsa2.setEnabled(false);
+
+        jButtonDemonsa2.setText("Examinar");
+        jButtonDemonsa2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDemonsa2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelDemonsa1Layout = new javax.swing.GroupLayout(jPanelDemonsa1);
+        jPanelDemonsa1.setLayout(jPanelDemonsa1Layout);
+        jPanelDemonsa1Layout.setHorizontalGroup(
+            jPanelDemonsa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDemonsa1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCheckDemonsa2)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelDemonsa2, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(jTextFieldDemonsa2, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonDemonsa2)
+                .addContainerGap())
+        );
+        jPanelDemonsa1Layout.setVerticalGroup(
+            jPanelDemonsa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDemonsa1Layout.createSequentialGroup()
+                .addGroup(jPanelDemonsa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDemonsa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelDemonsa2)
+                        .addComponent(jTextFieldDemonsa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonDemonsa2))
+                    .addComponent(jCheckDemonsa2))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -892,7 +932,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jPanelInternos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(20, Short.MAX_VALUE))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -903,7 +943,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                             .addComponent(jPanelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanelAdminUsr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanelTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelDemonsa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanelDemonsa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanelDemonsa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel12Layout.setVerticalGroup(
@@ -921,7 +962,9 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addComponent(jPanelTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelDemonsa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelDemonsa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -956,7 +999,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1305,6 +1348,12 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 System.out.println("Registrando archivo de Usuarios Administradores");
                 Monitoreos.Archivos.lecturaUsuariosAdmin(UsrAdmin, cadenaBD);     //Lee el archivo de la nómina de internos e inserta los usuarios en la BD local
             }
+            
+            if(jCheckDemonsa2.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
+            {
+                System.out.println("Registrando archivo Demonsa 2");
+                Monitoreos.Archivos.lecturaUsuariosDemonsa2(UsrAdmin, cadenaBD);     //Lee el archivo de la nómina de internos e inserta los usuarios en la BD local
+            }
 //            if(ExcepDup.isSelected())                                           //Valida que este habilitada la casilla de excepciones
 //            {
 //                System.out.println("Registrando omisiones en duplicidad ");
@@ -1431,6 +1480,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField32ActionPerformed
 
+    private void jButtonDemonsa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDemonsa2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDemonsa2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1474,6 +1527,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonDemonsa;
+    private javax.swing.JButton jButtonDemonsa2;
     private javax.swing.JButton jButtonExternos;
     private javax.swing.JButton jButtonInternos;
     private javax.swing.JButton jButtonTransfer;
@@ -1481,6 +1535,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JButton jButtonUsuarios;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JCheckBox jCheckDemonsa;
+    private javax.swing.JCheckBox jCheckDemonsa2;
     private javax.swing.JCheckBox jCheckTransfer;
     private javax.swing.JCheckBox jCheckUsrAdmin;
     private javax.swing.JCheckBox jCheckUsrExt;
@@ -1514,6 +1569,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelAdminUsr;
     private javax.swing.JLabel jLabelDemonsa;
+    private javax.swing.JLabel jLabelDemonsa2;
     private javax.swing.JLabel jLabelInternos;
     private javax.swing.JLabel jLabelInternos8;
     private javax.swing.JLabel jLabelTransfer;
@@ -1530,6 +1586,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanelAdminUsr;
     private javax.swing.JPanel jPanelDemonsa;
+    private javax.swing.JPanel jPanelDemonsa1;
     private javax.swing.JPanel jPanelInternos;
     private javax.swing.JPanel jPanelInternos8;
     private javax.swing.JPanel jPanelTransfer;
@@ -1559,6 +1616,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextFieldDemonsa;
+    private javax.swing.JTextField jTextFieldDemonsa2;
     private javax.swing.JTextField jTextFieldExternos;
     private javax.swing.JTextField jTextFieldInternos;
     private javax.swing.JTextField jTextFieldTransfer;
