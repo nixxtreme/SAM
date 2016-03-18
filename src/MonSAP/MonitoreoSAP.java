@@ -2,6 +2,7 @@
  * Clase principal para ejecutar el monitoreo de PAC
  */
 package MonSAP;
+import Monitoreos.Conteos;
 import MonPac.*;
 import Monitoreos.Conexion;
 import MonAD.ExecQuery;
@@ -143,6 +144,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         jTextField18 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jTextField19 = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        jTextField20 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jLabel6 = new javax.swing.JLabel();
@@ -286,50 +291,73 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
         jLabel21.setText("Usuarios externos perfil no autorizado");
 
+        jLabel25.setText("Usuarios Administradores dados de alta");
+
+        jTextField19.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField19.setText("0");
+
+        jLabel26.setText("Usuarios Administradores dados de Baja");
+
+        jTextField20.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField20.setText("0");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel20)))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField20, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel20)))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                    .addComponent(jTextField17, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(23, Short.MAX_VALUE))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextField18, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                                .addComponent(jTextField17, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField4)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField13, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField15, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField16, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jTextField19, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(23, 23, 23))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +390,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -394,7 +422,15 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jCalendar1.setToolTipText("Seleccione aquí la fecha en que se descargó el registro de usuarios.\n");
@@ -457,7 +493,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/telcel.jpg"))); // NOI18N
@@ -477,13 +513,13 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(149, 149, 149))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Monitoreo", jPanel2);
@@ -1065,7 +1101,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            PreparaTablas.add(Monitoreos.Querys.CreaUsrNoAutorizadosExt());
 //            PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosInt());
 //            PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosExt());  
-            PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));
 
 
@@ -1073,54 +1109,58 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             System.out.println("Creando nuevas tablas de trabajo");
             EjecutaLo.Exect(ConLocal.conexion, PreparaTablas);                  //Ejecuta todas las instrucciones almacenadas en el arreglo
 
-//            Conteos conteo = new Conteos();
-//
-//            String total = conteo.conteo(ConLocal.conexion, "USUARIOS" + parametros[4]);//Cuenta el total de usuarios
-//            jTextField1.setText(total);
-//            
-//            String internos = conteo.conteo(ConLocal.conexion, "INTERNOS");     //Cuenta el total de usuarios internos
-//            jTextField3.setText(internos);
-//            String externos = conteo.conteo(ConLocal.conexion, "EXTERNOS");     //Cuenta el total de usuarios externos
-//            jTextField4.setText(externos);
-//    
-//    //        
-//            String bint = conteo.conteo(ConLocal.conexion, "BAAJASINT", "NONOMINAINT");//Cuenta el total de usuarios internos dados de baja y que no están registrados en nómina
-//            jTextField5.setText(bint);
-//            String bext = conteo.conteo(ConLocal.conexion, "BAAJASEXT", "NONOMINAEXT");//Cuenta el total de usuarios externos dados de baja y que no están registrados en nómina
-//            jTextField6.setText(bext);
-//            
-//            
-//            String inint = conteo.conteo(ConLocal.conexion, "INACTIVIDADINT");  //Cuenta el total de usuaios internos reportados con intactividad
-//            jTextField7.setText(inint);
-//            String inext = conteo.conteo(ConLocal.conexion, "INACTIVIDADEXT");  //Cuenta el total de usuaios externos reportados con intactividad
-//            jTextField8.setText(inext);
-//            
-//         
-//            String usrincint = conteo.conteo(ConLocal.conexion, "USRINCINT" );  //Cuenta el total de usuarios internos reportados con UserID incorrecto
-//            jTextField11.setText(usrincint);
-//            String usrincext = conteo.conteo(ConLocal.conexion, "USRINCEXT");   //Cuenta el total de usuarios externos reportados con UserID incorrecto
-//            jTextField12.setText(usrincext);
-//            
-//            String dupxnomint = conteo.conteo(ConLocal.conexion, "DUPXNOMBREINT");//Cuenta el total de usuarios internos reportados por duplicidad
-//            dupxnomint = Integer.toString(Integer.parseInt(dupxnomint)/2);
-//            jTextField13.setText(dupxnomint);
-//            String dupxnomext = conteo.conteo(ConLocal.conexion, "DUPXNOMBREEXT");//Cuenta el total de usuarios externos reportados por duplicidad
-//            dupxnomext = Integer.toString(Integer.parseInt(dupxnomext)/2);
-//            jTextField14.setText(dupxnomext);
-//            
-//            String perfilint = conteo.conteo(ConLocal.conexion, "PERFILESINT"); //Cuenta el total de usuarios internos con perfil incorrecto
-//            jTextField15.setText(perfilint);
-//            
-//            String perfilext = conteo.conteo(ConLocal.conexion, "PERFILESEXT"); //Cuenta el total de usuarios externos con perfil incorrecto
-//            jTextField16.setText(perfilext);
-//            
-//            String noAutoint = conteo.conteo(ConLocal.conexion, "USUARIOSNOAUTORIZADOSINT");//Cuenta el total de usuarios internos con perfil no autorizado
-//            jTextField17.setText(noAutoint);
-//            
-//            String noAutoext = conteo.conteo(ConLocal.conexion, "USUARIOSNOAUTORIZADOSEXT");//Cuenta el total de usuarios externos con perfil no autorizado
-//            jTextField18.setText(noAutoext);
+            Conteos conteo = new Conteos();
+
+            String total = conteo.conteo(ConLocal.conexion, "USUARIOS" + parametros[4]);//Cuenta el total de usuarios
+            jTextField1.setText(total);
+            
+            String internos = conteo.conteo(ConLocal.conexion, "INTERNOS");     //Cuenta el total de usuarios internos
+            jTextField3.setText(internos);
+            String externos = conteo.conteo(ConLocal.conexion, "EXTERNOS");     //Cuenta el total de usuarios externos
+            jTextField4.setText(externos);
+    
+    //        
+            String bint = conteo.conteo(ConLocal.conexion, "BAAJASINT", "NONOMINAINT");//Cuenta el total de usuarios internos dados de baja y que no están registrados en nómina
+            jTextField5.setText(bint);
+            String bext = conteo.conteo(ConLocal.conexion, "BAAJASEXT", "NONOMINAEXT");//Cuenta el total de usuarios externos dados de baja y que no están registrados en nómina
+            jTextField6.setText(bext);
             
             
+            String inint = conteo.conteo(ConLocal.conexion, "INACTIVIDADINT");  //Cuenta el total de usuaios internos reportados con intactividad
+            jTextField7.setText(inint);
+            String inext = conteo.conteo(ConLocal.conexion, "INACTIVIDADEXT");  //Cuenta el total de usuaios externos reportados con intactividad
+            jTextField8.setText(inext);
+            
+         
+            String usrincint = conteo.conteo(ConLocal.conexion, "USRINCINT" );  //Cuenta el total de usuarios internos reportados con UserID incorrecto
+            jTextField11.setText(usrincint);
+            String usrincext = conteo.conteo(ConLocal.conexion, "USRINCEXT");   //Cuenta el total de usuarios externos reportados con UserID incorrecto
+            jTextField12.setText(usrincext);
+            
+            String dupxnomint = conteo.conteo(ConLocal.conexion, "DUPXNOMBREINT");//Cuenta el total de usuarios internos reportados por duplicidad
+            dupxnomint = Integer.toString(Integer.parseInt(dupxnomint)/2);
+            jTextField13.setText(dupxnomint);
+            String dupxnomext = conteo.conteo(ConLocal.conexion, "DUPXNOMBREEXT");//Cuenta el total de usuarios externos reportados por duplicidad
+            dupxnomext = Integer.toString(Integer.parseInt(dupxnomext)/2);
+            jTextField14.setText(dupxnomext);
+            
+            String perfilint = conteo.conteo(ConLocal.conexion, "PERFILESINT"); //Cuenta el total de usuarios internos con perfil incorrecto
+            jTextField15.setText(perfilint);
+            
+            String perfilext = conteo.conteo(ConLocal.conexion, "PERFILESEXT"); //Cuenta el total de usuarios externos con perfil incorrecto
+            jTextField16.setText(perfilext);
+            
+            String noAutoint = conteo.conteo(ConLocal.conexion, "USUARIOSNOAUTORIZADOSINT");//Cuenta el total de usuarios internos con perfil no autorizado
+            jTextField17.setText(noAutoint);
+            
+            String noAutoext = conteo.conteo(ConLocal.conexion, "USUARIOSNOAUTORIZADOSEXT");//Cuenta el total de usuarios externos con perfil no autorizado
+            jTextField18.setText(noAutoext);
+            
+            String altaUsrAdmin = conteo.conteo(ConLocal.conexion, "ALTAUSUARIOSADMINISTRADORES");//Cuenta el total de usuarios administradores dados de alta
+            jTextField19.setText(altaUsrAdmin);
+            
+            String bajaUsrAdmin = conteo.conteo(ConLocal.conexion, "BAJAUSUARIOSADMINISTRADORES");//Cuenta el total de usuarios administradores dados de baja
+            jTextField20.setText(bajaUsrAdmin);
 
             System.out.println(cadenaBD);
     
@@ -1458,6 +1498,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -1503,6 +1545,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
+    private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField3;
