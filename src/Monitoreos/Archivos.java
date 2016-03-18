@@ -825,9 +825,9 @@ public class Archivos
 
             }
             System.out.println("length " + linea.length());
-            linea = linea.substring(0, linea.length()-4);                         //Elimina la última coma de la cadena
+            linea = linea.substring(0, linea.length()-1);                         //Elimina la última coma de la cadena
             System.out.println("Salida = " + linea);
-            Monitoreos.Tablas.UsrAdminTabla(linea, bd);                            //Insera los registros en la tabla correspondiente
+            Monitoreos.Tablas.Demonsa2Tabla(linea, bd);                            //Insera los registros en la tabla correspondiente
         }
 //        catch(SQLException sqle)
 //        {
