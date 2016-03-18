@@ -1043,7 +1043,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados;
+    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados, Demonsa2;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
 //        limpiaCampos();
@@ -1490,7 +1490,24 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField32ActionPerformed
 
     private void jButtonDemonsa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDemonsa2ActionPerformed
-        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser(lastArchivo);               //Abre una ventana de exploración con la última ubicacion en que se seleccionó un archivo
+        fileChooser.setDialogTitle("Archivo Demonsa 2");                          //Establece el titulo de la ventana de exploración
+        Dimension dim = new Dimension(800, 600);                                //Establece el tamaño de la ventana de exploración
+        fileChooser.setPreferredSize(dim);                                      //Establece el tamaño de la ventana de exploración
+
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");  //Restringe el tipo de archivos que se muestran en el explirador
+        fileChooser.setFileFilter(filter);
+        
+        int seleccion = fileChooser.showOpenDialog(this);                       
+        if(seleccion == JFileChooser.APPROVE_OPTION)                            //Valida si se seleccionó un archivo
+        {
+            Demonsa2 = fileChooser.getSelectedFile().getAbsolutePath();           //Obtiene la ubicación del archivo seleccionado
+            lastArchivo = Demonsa2;                                               //Lo guarda como última ubicación de selección
+            jTextFieldDemonsa2.setText(Demonsa2);                                       //Muestra la ruta en el cuadro de texto asociado
+            jCheckDemonsa2.setSelected(true);                                     //Selecciona la casilla de verificación
+            jCheckDemonsa2.setEnabled(true);                                      //Permite al usuario deshabilitarla posteriormente
+        }
     }//GEN-LAST:event_jButtonDemonsa2ActionPerformed
 
     /**
