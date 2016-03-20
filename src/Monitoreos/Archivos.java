@@ -660,7 +660,7 @@ public class Archivos
     }
     
     
-    public static void lecturaUsuarios(String ruta, int reg, String bd )
+    public static void lecturaUsuarios (String ruta, int reg, String bd )
     {
         String[] parametros = bd.split("\\|");                                  //Separa los elementos de la cadena de BD y los almacena en el arreglo
         
@@ -673,8 +673,6 @@ public class Archivos
         linea = "";
         //System.out.println("linea " + linea);
         
-        
-
         try                                                                     //Se establecen los parámetros para la lectura del archivo
         {
             archivo = new File(ruta);
@@ -734,7 +732,7 @@ public class Archivos
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
             Monitoreos.Tablas.eliminaTablaUsrAdmin(bd);                              //Elimina la tabla de Usuarios Administradores en caso de existir
-            Monitoreos.Tablas.idCreaUsrAdmin(bd);                                    //Crea una nueva tabla de nómina internos
+            Monitoreos.Tablas.idCreaUsrAdmin(bd);                                    //Crea una nueva tabla de usuarios administradores
             
             for (int i=0;i<8;i++)                                               //Retira el encabezado del archivo 8 lineas
             {
@@ -906,6 +904,86 @@ public class Archivos
 
  
         return retorno;
+    }
+    
+    private static String creaLineaUsrSAP(String linea)                          //CREA LA LÍNEA DE REGISTRO DE USUARIOS ADMINISTRADORES
+    {
+        String usuario, nombre, apellido, rol, val_auto, retorno;                         //Variables para almacenar los datos de cada registro
+        
+        //System.out.println("Linea " + linea);
+        String[] temp = linea.split("\\|");                                      //Crea un arreglo con los datos del registro separados por el pipe
+//        for(int i=0; i<temp.length;i++)
+//        {
+//            System.out.println(i + " " + temp[i]);
+//        }
+        
+        if(temp[1].contains("*"))
+        {
+            retorno = "";
+        }
+        else
+        {
+            usuario = temp[1];                                                      //Obtiene el Usuario de la posición 1 del arreglo
+            nombre = temp[2];                                                       //Obtiene el nombre de la posición 2 del arreglo
+            rol = temp[4];                                                         //Obtiene la rol de la posición 4 del arreglo
+            apellido = temp[3];                                                    //Obtiene la apellido de la posición 3 del arreglo
+            val_auto = temp[7];                                                     //Obtiene el valor de autorizacion de la posición 7 del arreglo
+            retorno = "('" + usuario + "', '" + nombre + "', '" + apellido + "', '" + rol + "', '" + val_auto + "')"; //Regresa la línea para ser insertada en la BD local
+        }
+ 
+        return retorno;
+    }
+    
+    public static void lecturaUsuariosSAP (String ruta, String bd )
+    {
+        String[] parametros = bd.split("\\|");                                  //Separa los elementos de la cadena de BD y los almacena en el arreglo
+        
+        File archivo = null;                                                    //Crea el objeto del archivo vacío
+        FileReader fr = null;                                                   //Crea el objeto del lector de archivos vacío
+        BufferedReader br = null;                                               //Crea el bufer de lectura vacío
+        String usuarios, linea, temp, primera;
+        
+       usuarios="";
+        linea = "";
+        //System.out.println("linea " + linea);
+        
+        try                                                                     //Se establecen los parámetros para la lectura del archivo
+        {
+            archivo = new File(ruta);
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+            primera=br.readLine();                                              //Elimina la tabla de nómina internos en caso de existir
+//            System.out.println(primera);
+            while((temp=br.readLine()) != null)                                 //Valida que la siguiente línea del archivo no esté vacía
+            {
+//                System.out.println(temp);
+                linea = linea + "\n " + creaLineaUsrSAP(temp) + ",";                  //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLinea()
+                //System.out.println("Linea  " + creaLinea(temp));
+            }
+            //System.out.println("Salida = " + linea);
+            linea=linea.substring(0, linea.length()-1);                         //Quita la última coma
+            //System.out.println("Linea " + linea);
+            Monitoreos.Tablas.u(linea, bd);                    //Crea la tabla e inserta los usuarios que son enviados mediante la cadena linea
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally                                                                 //Cierra lector de archivo
+        {
+            try
+            {
+                if(fr != null)
+                {
+                    fr.close();
+                }
+            }
+            catch(Exception e2)
+            {
+                e2.printStackTrace();
+            }
+        }
+        
     }
 }
        
