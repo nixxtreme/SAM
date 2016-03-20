@@ -1222,8 +1222,6 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 Conexion ConUsuarios = new Conexion();                          //Se crea y abre la conexión con el servidor de base de datos de la aplicación
                 Conexion ConLocal = new Conexion();                             //Se crea y abre la conexión con el servidor de base de datos local
 
-                ConUsuarios.AbrirUsuarios(cadenaBD);
-                ConLocal.AbrirLocal(cadenaBD);
 
                 ExecQuery EjecutaUs = new ExecQuery();
                 ExecQuery EjecutaLo = new ExecQuery();

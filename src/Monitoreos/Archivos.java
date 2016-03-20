@@ -938,40 +938,61 @@ public class Archivos
     
     public static void lecturaUsuariosSAP (String ruta, String bd )
     {
-        String[] parametros = bd.split("\\|");                                  //Separa los elementos de la cadena de BD y los almacena en el arreglo
-        
+        String[] parametros = bd.split("\\|");                                  //SEPARA LOS ELEMENTOS DE LA CADENA HASTA SU REFERENCIA DE CORTE
         File archivo = null;                                                    //Crea el objeto del archivo vacío
         FileReader fr = null;                                                   //Crea el objeto del lector de archivos vacío
         BufferedReader br = null;                                               //Crea el bufer de lectura vacío
-        String usuarios, linea, temp, primera;
+        String usuarios, linea, temp, primera;                                  
         
-       usuarios="";
+        usuarios="";
         linea = "";
         //System.out.println("linea " + linea);
         
-        try                                                                     //Se establecen los parámetros para la lectura del archivo
+
+        try
         {
-            archivo = new File(ruta);
+            archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
-            primera=br.readLine();                                              //Elimina la tabla de nómina internos en caso de existir
-//            System.out.println(primera);
+            Monitoreos.Tablas.eliminaTablaUsrsSAP(bd);                              //Elimina la tabla de Usuarios Administradores en caso de existir
+            Monitoreos.Tablas.idCreaUsrAdmin(bd);                                    //Crea una nueva tabla de usuarios administradores
+            
+            for (int i=0;i<8;i++)                                               //Retira el encabezado del archivo 8 lineas
+            {
+                primera = br.readLine();                
+            }                                           
+
             while((temp=br.readLine()) != null)                                 //Valida que la siguiente línea del archivo no esté vacía
             {
-//                System.out.println(temp);
-                linea = linea + "\n " + creaLineaUsrSAP(temp) + ",";                  //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLinea()
-                //System.out.println("Linea  " + creaLinea(temp));
+                
+                if(temp.contains("----"))                                       //Valida si contiene guiones en la línea para descartarla
+                {
+
+                }
+                else
+                {
+                    
+//                    System.out.println("temp = " + temp);
+                    //System.out.println("Linea antes " + linea);
+                    linea = linea + "\n " + creaLineaUsrSAP(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
+                    //System.out.println("Linea  " + creaLinea(temp));
+                }            
+                
             }
-            //System.out.println("Salida = " + linea);
-            linea=linea.substring(0, linea.length()-1);                         //Quita la última coma
-            //System.out.println("Linea " + linea);
-            Monitoreos.Tablas.InsertarUsuariosSAP(linea, bd);                    //Crea la tabla e inserta los usuarios que son enviados mediante la cadena linea
+            System.out.println("length " + linea.length());
+            linea = linea.substring(0, linea.length()-1);                         //Elimina la última coma de la cadena
+            System.out.println("Salida = " + linea);
+            Monitoreos.Tablas.InsertarUsuariosSAP(linea, bd);                            //Insera los registros en la tabla correspondiente
         }
+//        catch(SQLException sqle)
+//        {
+//            sqle.printStackTrace();
+//        }
         catch(Exception e)
         {
             e.printStackTrace();
         }
-        finally                                                                 //Cierra lector de archivo
+        finally                                                                 //Finaliza la lectura del archivo
         {
             try
             {
@@ -984,7 +1005,7 @@ public class Archivos
             {
                 e2.printStackTrace();
             }
-        }
+        }       
         
     }
 }
