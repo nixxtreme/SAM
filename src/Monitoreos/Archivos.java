@@ -443,7 +443,7 @@ public class Archivos
     private static String creaLinea(String linea)                               //CREA LINEA DE REGISTRO DE USUARIOS DE ACTIVE DIRECTORY
     {
         String activo, crea, desc, dominio, nombre, log, puesto, user, retorno, creaano, creames, creadia, logano, logmes, logdia;
-        System.out.println(linea);
+//        System.out.println(linea);
         linea = eliminaChar(linea, "\"");                                       //Elimina el caracter /
         linea = escapaChar(linea, "'");                                         //Escapa el caracter '
         String[] temp;
@@ -453,7 +453,7 @@ public class Archivos
 //            System.out.println(i + " " + temp[i]);
 //        }
         
-        System.out.println("\n \n \n \n \n \n \n \n \n ");
+//        System.out.println("\n \n \n \n \n \n \n \n \n ");
         activo = temp[0];                                                       //Obtiene el campo activo de la posición 0 del arreglo
         if(activo.contains("FALSO")){                                           //Valida si el valor es verdadero o falso y crea false o true para insertarlo en mysql
             activo = "False";
@@ -544,7 +544,7 @@ public class Archivos
                     else
                     {
                         //System.out.println("temp length " + temp.length());
-                        //System.out.println("temp = " + temp);
+                        System.out.println("\n temp = " + temp);
                         //System.out.println("Linea antes " + linea);
                         linea = linea + "\n " + creaLineaIdInt(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
                         //System.out.println("Linea  " + creaLinea(temp));
