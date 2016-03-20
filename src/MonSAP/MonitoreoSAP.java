@@ -1484,7 +1484,24 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonUsrAdminActionPerformed
 
     private void jButtonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuariosActionPerformed
-        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser(lastArchivo);               //Abre una ventana de exploración con la última ubicacion en que se seleccionó un archivo
+        fileChooser.setDialogTitle("Usuarios");                          //Establece el titulo de la ventana de exploración
+        Dimension dim = new Dimension(800, 600);                                //Establece el tamaño de la ventana de exploración
+        fileChooser.setPreferredSize(dim);                                      //Establece el tamaño de la ventana de exploración
+
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");  //Restringe el tipo de archivos que se muestran en el explirador
+        fileChooser.setFileFilter(filter);
+        
+        int seleccion = fileChooser.showOpenDialog(this);                       
+        if(seleccion == JFileChooser.APPROVE_OPTION)                            //Valida si se seleccionó un archivo
+        {
+            NomInt = fileChooser.getSelectedFile().getAbsolutePath();           //Obtiene la ubicación del archivo seleccionado
+            lastArchivo = NomInt;                                               //Lo guarda como última ubicación de selección
+            jTextFieldInternos.setText(NomInt);                                       //Muestra la ruta en el cuadro de texto asociado
+            jCheckUsrInt.setSelected(true);                                     //Selecciona la casilla de verificación
+            jCheckUsrInt.setEnabled(true);                                      //Permite al usuario deshabilitarla posteriormente
+        }
     }//GEN-LAST:event_jButtonUsuariosActionPerformed
 
     private void jButtonTransferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferActionPerformed
