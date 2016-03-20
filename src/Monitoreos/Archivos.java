@@ -908,8 +908,8 @@ public class Archivos
     
     private static String creaLineaUsrSAP(String linea)                          //CREA LA LÍNEA DE REGISTRO DE USUARIOS ADMINISTRADORES
     {
-        String usuario, nombre, apellido, rol, val_auto, retorno;                         //Variables para almacenar los datos de cada registro
-        
+        String num_emp,User_name, Nombre, ip, correo, jefe, perfil, nombre_perfil, fecha_acceso;                         //Variables para almacenar los datos de cada registro
+        int region;
         //System.out.println("Linea " + linea);
         String[] temp = linea.split("\\|");                                      //Crea un arreglo con los datos del registro separados por el pipe
 //        for(int i=0; i<temp.length;i++)
@@ -933,6 +933,8 @@ public class Archivos
  
         return retorno;
     }
+    
+    
     
     public static void lecturaUsuariosSAP (String ruta, String bd )
     {
@@ -963,7 +965,7 @@ public class Archivos
             //System.out.println("Salida = " + linea);
             linea=linea.substring(0, linea.length()-1);                         //Quita la última coma
             //System.out.println("Linea " + linea);
-            Monitoreos.Tablas.u(linea, bd);                    //Crea la tabla e inserta los usuarios que son enviados mediante la cadena linea
+            Monitoreos.Querys.(linea, bd);                    //Crea la tabla e inserta los usuarios que son enviados mediante la cadena linea
         }
         catch(Exception e)
         {
