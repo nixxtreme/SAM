@@ -530,15 +530,15 @@ public class Tablas
         
     }
     
-    //USUARIOS 2
-    public static String CreaUsuarios2(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
+    //USUARIOS 2 SAP
+    public static String CreaUsuariosSAP(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statement = "CREATE TABLE IF NOT EXISTS Usuarios" + parametros[4] + " SELECT * FROM usuarios2" + parametros[4];
+        String statement = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT * FROM usuarios2" + parametros[4];
         return statement;        
     }
    
-    public static String CreaUsuarios(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DE SAP SAP
+    public static String CreaUsuarios2(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DE SAP SAP
     {
        String[] parametros = cadenaBD.split("\\|");
         String statement = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (Usuario VARCHAR(20), Nombre VARCHAR (45), Grupo VARCHAR (20), "
@@ -547,6 +547,42 @@ public class Tablas
     }
     
     
-    
+    public static void InsertarUsuariosSAP (String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String mes = parametros[3];
+        
+        String valores = "INSERT IGNORE INTO Usuarios2" + parametros[4] + " (USUARIO, NOMBRE_COMPLETO, GRUPO, BLOQ, VALIDO_DE, VALIDEZ_A) "
+                + "values " + usuarios ;
+        
+        
+        
+        try
+        {
+            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
+            
+            
+            
+            // Se obtiene una conexión con la base de datos. 
+            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
+            
+            Statement cstmt2 = conexion.createStatement();
+
+            
+            int rs3 = cstmt2.executeUpdate(valores);
+            
+            // Se cierra la conexión con la base de datos.
+            conexion.close();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            if(e instanceof SQLIntegrityConstraintViolationException)
+            {
+                
+            }
+            
+        }
+    }
     
 }

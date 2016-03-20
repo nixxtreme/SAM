@@ -928,7 +928,7 @@ public class Archivos
             Bloq = temp[5];                                                    //Obtiene bloq de la posición 5 del arreglo
             Valido_de = temp[7];                                                     //Obtiene valido la posición 7 del arreglo
             Validez_a = temp[8];
-            retorno = "('" + Usuario + "', '" + Nombre_Completo + "', '" + Grupo + "', '" + Bloq + "', '" + Valido_de + "', '" + Validez_a "' )"; //Regresa la línea para ser insertada en la BD local
+            retorno = "('" + Usuario + "', '" + Nombre_Completo + "', '" + Grupo + "', '" + Bloq + "', '" + Valido_de + "', '" + Validez_a + "' )"; //Regresa la línea para ser insertada en la BD local
         }
  
         return retorno;
@@ -965,7 +965,7 @@ public class Archivos
             //System.out.println("Salida = " + linea);
             linea=linea.substring(0, linea.length()-1);                         //Quita la última coma
             //System.out.println("Linea " + linea);
-            Monitoreos.Querys.(linea, bd);                    //Crea la tabla e inserta los usuarios que son enviados mediante la cadena linea
+            Monitoreos.Tablas.InsertarUsuariosSAP(linea, bd);                    //Crea la tabla e inserta los usuarios que son enviados mediante la cadena linea
         }
         catch(Exception e)
         {

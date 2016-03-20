@@ -1233,7 +1233,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
 
                 System.out.println("Obteniendo query de inserción");
-                InsUsuarios = Monitoreos.Querys.CreaInsertUsuarios(cadenaBD, usuarios);     //Crea la instrucción para insertar los usuarios a la BD local
+                InsUsuarios = Monitoreos.Tablas.InsertarUsuariosSAP(cadenaBD, usuarios);     //Crea la instrucción para insertar los usuarios a la BD local
 
                 System.out.println("Obteniendo query para eliminar tabla de usuarios del día");
                 BorraUsuarios = Monitoreos.Querys.BorraUsuarios(cadenaBD);          //Instrucción para borrar la tabla de usuarios anterior
@@ -1242,11 +1242,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 EjecutaLo.Exect(ConLocal.conexion, BorraUsuarios);              //Borra la tala de usuarios anterior
                 ConUsuarios.Cerrar();
 
-                System.out.println("Creando tabla de usuarios");
-                Creacion = Monitoreos.Tablas.CreaUsuarios(cadenaBD);                //Instrucción para crear la tabla de usuarios de la aplicación en la BD local
+                System.out.println("Creando tabla de usuariosSAP");
+                Creacion = Monitoreos.Tablas.CreaUsuarios2(cadenaBD);                //Instrucción para crear la tabla de usuarios de la aplicación en la BD local
                 
                 System.out.println("Creando tabla de usuarios2");
-                cambio_tabla = Monitoreos.Tablas.CreaUsuarios2(cadenaBD);
+                cambio_tabla = Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD);     //crea respaldo del archivo usuarios
                 
                 EjecutaLo.Exect(ConLocal.conexion, Creacion);                   //Crea tabla para usuarios
 
