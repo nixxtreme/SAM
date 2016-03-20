@@ -1243,10 +1243,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 ConUsuarios.Cerrar();
 
                 System.out.println("Creando tabla de usuarios");
-                Creacion = Monitoreos.Querys.CreaUsuarios(cadenaBD);                //Instrucción para crear la tabla de usuarios de la aplicación en la BD local
+                Creacion = Monitoreos.Tablas.CreaUsuarios(cadenaBD);                //Instrucción para crear la tabla de usuarios de la aplicación en la BD local
                 
                 System.out.println("Creando tabla de usuarios2");
-                cambio_tabla = Monitoreos.Querys.CreaUsuarios2(cadenaBD);
+                cambio_tabla = Monitoreos.Tablas.CreaUsuarios2(cadenaBD);
                 
                 EjecutaLo.Exect(ConLocal.conexion, Creacion);                   //Crea tabla para usuarios
 
@@ -1408,11 +1408,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         int seleccion = fileChooser.showOpenDialog(this);                       
         if(seleccion == JFileChooser.APPROVE_OPTION)                            //Valida si se seleccionó un archivo
         {
-            NomInt = fileChooser.getSelectedFile().getAbsolutePath();           //Obtiene la ubicación del archivo seleccionado
-            lastArchivo = NomInt;                                               //Lo guarda como última ubicación de selección
-            jTextFieldInternos.setText(NomInt);                                       //Muestra la ruta en el cuadro de texto asociado
-            jCheckUsrInt.setSelected(true);                                     //Selecciona la casilla de verificación
-            jCheckUsrInt.setEnabled(true);                                      //Permite al usuario deshabilitarla posteriormente
+            Usuarios = fileChooser.getSelectedFile().getAbsolutePath();           //Obtiene la ubicación del archivo seleccionado
+            lastArchivo = Usuarios;                                               //Lo guarda como última ubicación de selección
+            jTextFieldUsuarios.setText(Usuarios);                                       //Muestra la ruta en el cuadro de texto asociado
+            jCheckUsrs.setSelected(true);                                     //Selecciona la casilla de verificación
+            jCheckUsrs.setEnabled(true);                                      //Permite al usuario deshabilitarla posteriormente
         }
     }//GEN-LAST:event_jButtonUsuariosActionPerformed
 
