@@ -458,7 +458,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM usuariosSAP" 
+        statement = "create table if not exists GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM usuariosSAP" + parametros[4] 
                     + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%' "
                 + "OR usuario LIKE '%C%' "
                 + "OR usuario LIKE '%D%' "
@@ -491,7 +491,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists InternosSAP SELECT Usuario, Nombre_Completo,Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP";
+        statement = "create table if not exists InternosSAP SELECT Usuario, Nombre_Completo,Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4];
         return statement;
     }
     
@@ -519,39 +519,92 @@ public class Tablas
         }
         
     }
-    
-    //USUARIOS 2 SAP
-    public static String CreaUsuariosSAP(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
+     
+     public static void eliminaUsuariosSAP2(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statement = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT * FROM usuarios2" + parametros[4];
-        return statement;        
+                
+        try
+        {
+            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
+            
+            // Se obtiene una conexión con la base de datos. 
+            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
+            
+            Statement cstmt2 = conexion.createStatement();  
+
+            int rs2 = cstmt2.executeUpdate("DROP TABLE IF EXISTS `UsuariosSAP"+ parametros[4] + "`");
+            
+            // Se cierra la conexión con la base de datos.
+            conexion.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    //USUARIOS 2 SAP
+    public static void CreaUsuariosSAP(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT * FROM usuarios2" + parametros[4];
+        try
+        {
+            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
+            // Se obtiene una conexión con la base de datos. 
+            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
+            
+            Statement cstmt2 = conexion.createStatement();
+            int rs2 = cstmt2.executeUpdate(tabla);
+            
+            // Se cierra la conexión con la base de datos.
+            conexion.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
     }
    
-    public static String CreaUsuarios2(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DE SAP SAP
+    public static void CreaUsuarios2(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DE SAP SAP
     {
        String[] parametros = cadenaBD.split("\\|");
-        String statement = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (Usuario VARCHAR(20), Nombre_Completo VARCHAR (45), Grupo VARCHAR (20), "
-                + "Bloq varchar (45), valido_de, Validez_a PRIMARY KEY(usuario))";
-        return statement;        
+        String tabla = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Nombre_Completo VARCHAR(45), Grupo VARCHAR(20), "
+                + "Bloq varchar(45), valido_de DATE, Validez_a DATE, PRIMARY KEY(usuario))";
+        
+        try
+        {
+            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
+            // Se obtiene una conexión con la base de datos. 
+            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
+            
+            Statement cstmt2 = conexion.createStatement();
+            int rs2 = cstmt2.executeUpdate(tabla);
+            
+            // Se cierra la conexión con la base de datos.
+            conexion.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }        
     }
     
     
     public static void InsertarUsuariosSAP (String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String mes = parametros[3];
-        
+       
         String valores = "INSERT IGNORE INTO Usuarios2" + parametros[4] + " (USUARIO, NOMBRE_COMPLETO, GRUPO, BLOQ, VALIDO_DE, VALIDEZ_A) "
                 + "values " + usuarios ;
-        
-        
-        
+         
         try
         {
             DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
-            
-            
+                        
             
             // Se obtiene una conexión con la base de datos. 
             Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
