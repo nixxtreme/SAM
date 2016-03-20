@@ -508,7 +508,7 @@ public class Tablas
             
             Statement cstmt2 = conexion.createStatement();  
 
-            int rs2 = cstmt2.executeUpdate("DROP TABLE IF EXISTS `Usuarios"+ parametros[4] + "`");
+            int rs2 = cstmt2.executeUpdate("DROP TABLE IF EXISTS `Usuarios2"+ parametros[4] + "`");
             
             // Se cierra la conexión con la base de datos.
             conexion.close();

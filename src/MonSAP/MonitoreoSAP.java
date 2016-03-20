@@ -760,6 +760,12 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         jLabelUsuarios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelUsuarios.setText("Usuarios");
 
+        jTextFieldUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldUsuariosActionPerformed(evt);
+            }
+        });
+
         jCheckUsrs.setEnabled(false);
 
         jButtonUsuarios.setText("Examinar");
@@ -949,7 +955,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados, Demonsa2, Usuarios;
+    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados, Demonsa2, UsuariosSAP;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
 //        limpiaCampos();
@@ -1214,44 +1220,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         }
         else
         {
-            if(jCheckUsrs.isSelected())                                         //Valida que esté seleccionada la casilla de los usuarios de la aplicación
-            {
-                String Creacion, Insertar_Usuarios, eliminaTabla,cambio_tabla;
-
-
-                Conexion ConUsuarios = new Conexion();                          //Se crea y abre la conexión con el servidor de base de datos de la aplicación
-                Conexion ConLocal = new Conexion();                             //Se crea y abre la conexión con el servidor de base de datos local
-
-
-                ExecQuery EjecutaUs = new ExecQuery();
-                ExecQuery EjecutaLo = new ExecQuery();
-
-                System.out.println("Obteniendo query de inserción");
-                Monitoreos.Tablas.InsertarUsuariosSAP(cadenaBD, Usuarios);     //Crea la instrucción para insertar los usuarios a la BD local
-
-                System.out.println("Obteniendo query para eliminar tabla de usuarios del día");
-                eliminaTabla = Monitoreos.Tablas.eliminaTablaUsrsSAP(cadenaBD);          //Instrucción para borrar la tabla de usuarios anterior
-
-                System.out.println("Eliminando tabla previa del día");
-                EjecutaLo.Exect(ConLocal.conexion, BorraUsuarios);              //Borra la tala de usuarios anterior
-                ConUsuarios.Cerrar();
-
-                System.out.println("Creando tabla de usuariosSAP");
-                Creacion = Monitoreos.Tablas.CreaUsuarios2(cadenaBD);                //Instrucción para crear la tabla de usuarios de la aplicación en la BD local
-                
-                System.out.println("Insertando usuarios");
-                EjecutaLo.Exect( ConLocal.conexion, Insertar_Usuarios); 
-                
-                
-       
-                System.out.println("Creando tabla de usuarios2");
-                cambio_tabla = Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD);     //crea respaldo del archivo usuarios
-                
-                EjecutaLo.Exect(ConLocal.conexion, Creacion);                   //Crea tabla para usuarios
-
-                
-                ConLocal.Cerrar();
-            }
+            
             if(jCheckUsrInt.isSelected())                                       //Valida que este habilitada la casilla de nómina internos                                      
             {
                 System.out.println("Registrando archivo de usuarios internos de identidad ");
@@ -1276,8 +1245,9 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             
             if(jCheckUsrs.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
             {
-                System.out.println("Registrando archivo Usuarios");
-                Monitoreos.Archivos.lecturaUsuariosSAP(Usuarios, cadenaBD);     //Lee el archivo de  usuarios e inserta usuarios en la BD local
+                System.out.println("Registrando archivo UsuariosSAP");
+                Monitoreos.Archivos.lecturaUsuariosSAP(UsuariosSAP, cadenaBD);     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local
+                Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD);
             }
 //            if(ExcepDup.isSelected())                                           //Valida que este habilitada la casilla de excepciones
 //            {
@@ -1402,9 +1372,9 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         int seleccion = fileChooser.showOpenDialog(this);                       
         if(seleccion == JFileChooser.APPROVE_OPTION)                            //Valida si se seleccionó un archivo
         {
-            Usuarios = fileChooser.getSelectedFile().getAbsolutePath();           //Obtiene la ubicación del archivo seleccionado
-            lastArchivo = Usuarios;                                               //Lo guarda como última ubicación de selección
-            jTextFieldUsuarios.setText(Usuarios);                                       //Muestra la ruta en el cuadro de texto asociado
+            UsuariosSAP = fileChooser.getSelectedFile().getAbsolutePath();           //Obtiene la ubicación del archivo seleccionado
+            lastArchivo = UsuariosSAP;                                               //Lo guarda como última ubicación de selección
+            jTextFieldUsuarios.setText(UsuariosSAP);                                       //Muestra la ruta en el cuadro de texto asociado
             jCheckUsrs.setSelected(true);                                     //Selecciona la casilla de verificación
             jCheckUsrs.setEnabled(true);                                      //Permite al usuario deshabilitarla posteriormente
         }
@@ -1434,6 +1404,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             jCheckDemonsa2.setEnabled(true);                                      //Permite al usuario deshabilitarla posteriormente
         }
     }//GEN-LAST:event_jButtonDemonsa2ActionPerformed
+
+    private void jTextFieldUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldUsuariosActionPerformed
 
     /**
      * @param args the command line arguments

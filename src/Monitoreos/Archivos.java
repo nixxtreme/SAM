@@ -954,8 +954,8 @@ public class Archivos
             archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
-            Monitoreos.Tablas.eliminaTablaUsrsSAP(bd);                              //Elimina la tabla de Usuarios Administradores en caso de existir
-            Monitoreos.Tablas.idCreaUsrAdmin(bd);                                    //Crea una nueva tabla de usuarios administradores
+            Monitoreos.Tablas.eliminaTablaUsrsSAP(bd);                              //Elimina la tabla de Usuarios SAP en caso de existir
+            Monitoreos.Tablas.CreaUsuarios2(bd);                                    //Crea una nueva tabla de usuariosSAP
             
             for (int i=0;i<8;i++)                                               //Retira el encabezado del archivo 8 lineas
             {
