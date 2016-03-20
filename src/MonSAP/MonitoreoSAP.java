@@ -949,7 +949,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados, Demonsa2;
+    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados, Demonsa2, Usuarios;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
 //        limpiaCampos();
@@ -1278,6 +1278,12 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             {
                 System.out.println("Registrando archivo Demonsa 2");
                 Monitoreos.Archivos.lecturaUsuariosDemonsa2(UsrAdmin, cadenaBD);     //Lee el archivo de la nómina de internos e inserta los usuarios en la BD local
+            }
+            
+            if(jCheckUsrs.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
+            {
+                System.out.println("Registrando archivo Usuarios");
+                Monitoreos.Archivos.lecturaUsuariosSAP(Usuarios, cadenaBD);     //Lee el archivo de  usuarios e inserta usuarios en la BD local
             }
 //            if(ExcepDup.isSelected())                                           //Valida que este habilitada la casilla de excepciones
 //            {
