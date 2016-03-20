@@ -248,7 +248,7 @@ public class Tablas
         }
     }
    
-   public static void eliminaTablaUsrAdmin(String cadenaBD)                         //ELIMINA LA TABLA DE NÓMINA INTERNOS
+   public static void eliminaTablaUsrAdmin(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
         
@@ -503,6 +503,31 @@ public class Tablas
         String[] parametros = cadenaBD.split("\\|");
         statement = "create table if not exists InternosSAP SELECT Usuario, Nombre_Completo,Grupo, Bloq, Valido_de, Validez_a FROM Usuarios";
         return statement;
+    }
+    
+     public static void eliminaTablaUsrsSAP(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
+    {
+        String[] parametros = cadenaBD.split("\\|");
+                
+        try
+        {
+            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
+            
+            // Se obtiene una conexión con la base de datos. 
+            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
+            
+            Statement cstmt2 = conexion.createStatement();  
+
+            int rs2 = cstmt2.executeUpdate("DROP TABLE IF EXISTS `Usuarios"+ parametros[4] + "`");
+            
+            // Se cierra la conexión con la base de datos.
+            conexion.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
     }
     
     
