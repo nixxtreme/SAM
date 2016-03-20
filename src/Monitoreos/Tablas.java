@@ -453,32 +453,61 @@ public class Tablas
     }
     
                                     //Tablas de cruces internos, externos y genericos PAQUETE TABLAS
-    public static String TablaInt(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+   
+    public static String TablaExtSAP(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists CruceInt SELECT Usuario, Nombre_Completo,Grupo, Bloq, Valido_de, Validez_a FROM usractivos" + parametros[4]
-                    + " WHERE usuario LIKE '' ";
+        statement = "create table if not exists ExternosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM Usuarios" + parametros[4]
+                    + " WHERE usuario LIKE 'EX%'";
         return statement;
     }
     
-    public static String TablaExt(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    
+   public static String TablaGenSAP(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists CruceExt SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM usractivos" + parametros[4]
-                    + " WHERE usuario LIKE '%EX'";
+        statement = "create table if not exists GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM usuarios" 
+                    + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%' "
+                + "OR usuario LIKE '%C%' "
+                + "OR usuario LIKE '%D%' "
+                + "OR usuario LIKE '%E%' "
+                + "OR usuario LIKE '%F%' "
+                + "OR usuario LIKE '%G%' "
+                + "OR usuario LIKE '%H%' "  
+                + "OR usuario LIKE '%I%' "
+                + "OR usuario LIKE '%J%' "
+                + "OR usuario LIKE '%K%' "
+                + "OR usuario LIKE '%L%' " 
+                + "OR usuario LIKE '%M%' "  
+                + "OR usuario LIKE '%N%' "
+                + "OR usuario LIKE '%Ñ%' "
+                + "OR usuario LIKE '%O%' "
+                + "OR usuario LIKE '%P%' "
+                + "OR usuario LIKE '%Q%' "
+                + "OR usuario LIKE '%R%' "
+                + "OR usuario LIKE '%S%' "
+                + "OR usuario LIKE '%T%' "
+                + "OR usuario LIKE '%U%' "
+                + "OR usuario LIKE '%V%' "
+                + "OR usuario LIKE '%W%' " 
+                + "OR usuario LIKE '%X%' "
+                + "OR usuario LIKE '%Y%' "
+                + "OR usuario LIKE '%Z%' ";
+        return statement;
+    }
+    public static String TablaIntSAP(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;
+        String[] parametros = cadenaBD.split("\\|");
+        statement = "create table if not exists InternosSAP SELECT Usuario, Nombre_Completo,Grupo, Bloq, Valido_de, Validez_a FROM Usuarios";
         return statement;
     }
     
-    public static String TablaGen(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
-    {
-        String statement = null;
-        String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists CruceGen SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM usractivos" + parametros[4]
-                    + " WHERE usuario NOT IN (SELECT usuario FROM usradmin" + parametros[4] + ")";
-        return statement;
-    }
+    
+    
+    
     
     
 }
