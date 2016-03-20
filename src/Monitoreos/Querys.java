@@ -113,15 +113,27 @@ public class Querys
         String consulta = "DELETE FROM cruceint" + parametros[4] + " WHERE DATEDIFF('" + parametros[8] + "', FECHA_ACCESO) >= 61";
         return consulta;
     }
+           
     
-    public static String CreaUsuarios(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DEL APLICATIVO
+    
+                        //USUARIOS 2
+    public static String CreaUsuarios2(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statement = "CREATE TABLE IF NOT EXISTS Usuarios" + parametros[4] + " (ID int NOT NULL AUTO_INCREMENT, NUM_EMP VARCHAR(45), USER_NAME VARCHAR(45), "
+        String statement = "CREATE TABLE IF NOT EXISTS Usuarios" + parametros[4] + " SELECT * FROM usuarios2" + parametros[4];
+        return statement;        
+    }
+   
+    public static String CreaUsuarios(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DEL APLICATIVO
+    {
+       String[] parametros = cadenaBD.split("\\|");
+        String statement = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (ID int NOT NULL AUTO_INCREMENT, NUM_EMP VARCHAR(45), USER_NAME VARCHAR(45), "
                 + "NOMBRE VARCHAR(255), REGION INT,"
                 + "IP VARCHAR(45), CORREO VARCHAR(255), JEFE VARCHAR(45), PERFIL VARCHAR(45), NOMBRE_PERFIL VARCHAR(255), FECHA_ACCESO DATETIME NULL, PRIMARY KEY(ID))";
-        return statement;
+        return statement;        
     }
+    
+    
     
     public static String CreaPerfilesInt(String cadenaBD)                       //AGREGA UNA TABLA DE USUARIOS INTERNOS CON TODOS LOS PERFILES POSIBLES SEGÚN SU PUESTO
     {
@@ -395,11 +407,14 @@ public class Querys
         return statement;
     }
     
+    
+    
     public static String BorraExternosTrabajo()                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
     {
         String statement = "DROP TABLE IF EXISTS EXTERNOS";
         return statement;
     }
+    
     
     public static String BorraBaajasInt()                                       //BORRA LA TABLA DE TRABAJO DE INCIDENCIAS DE BAJAS INTERNOS
     {
@@ -780,43 +795,74 @@ public class Querys
         String statement = "select USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION from eliminados";
         return statement;
     }
+            
     
-    public static String BorraCruceSAPInt()                             //OBTIENE EL RESULTADO DE LOS USUARIOS AGREGADOS 
-    {
-        String statement = "select USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION from eliminados";***
-        return statement;
-    }
+                //externos
     
-     public static String BorraCruceSAPExt()                             //OBTIENE EL RESULTADO DE LOS USUARIOS AGREGADOS 
-    {
-        String statement = "select USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION from eliminados";***
-        return statement;
-    }
      
-     public static String BorraCruceSAPGen()                             //OBTIENE EL RESULTADO DE LOS USUARIOS AGREGADOS 
+    public static String BorraExternosTrabajoSAP()                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
     {
-        String statement = "select USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION from eliminados";***
+        String statement = "DROP TABLE IF EXISTS ExternosSAP";
         return statement;
     }
     
-     public static String CreaInternosSAP(String cadenaBD)                   //CREA LA TABLA DE TRABAJO DE USUARIOS EXTERNOS
+    public static String BorrarExternosTablaSAP(String cadenaBD)                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statement = "CREATE TABLE IF NOT EXISTS EXTERNOS SELECT * FROM USUARIOS" + parametros[4] + " WHERE NUM_EMP LIKE '%EX%'";******
+        String statement = "DELETE FROM USUARIOS" + parametros[4] + "WHERE NUM_EMP LIKE 'EX%'";
         return statement;
     }
+    
+            //genericos
+    
      
-     public static String CreaExternosSAP(String cadenaBD)                   //CREA LA TABLA DE TRABAJO DE USUARIOS EXTERNOS
+    public static String BorraGenericosTrabajoSAP()                                 //BORRA LA TABLA DE TRABAJO INTERNOS
     {
-        String[] parametros = cadenaBD.split("\\|");
-        String statement = "CREATE TABLE IF NOT EXISTS EXTERNOS SELECT * FROM USUARIOS" + parametros[4] + " WHERE NUM_EMP LIKE '%EX%'";*******
+        String statement = "DROP TABLE IF EXISTS GenericosSAP";
         return statement;
     }
+    
+    public static String BorrarGenericosTablaSAP(String cadenaBD)                                 //BORRA LA TABLA DE TRABAJO INTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "DELETE FROM USUARIOS" + parametros[4] + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%'"
+                + "OR usuario LIKE '%C%'"
+                + "OR usuario LIKE '%D%'"
+                + "OR usuario LIKE '%E%'"
+                + "OR usuario LIKE '%F%'"
+                + "OR usuario LIKE '%G%'"
+                + "OR usuario LIKE '%H%'"
+                + "OR usuario LIKE '%I%'"
+                + "OR usuario LIKE '%J%'"
+                + "OR usuario LIKE '%K%'"
+                + "OR usuario LIKE '%L%'"
+                + "OR usuario LIKE '%M%'"
+                + "OR usuario LIKE '%N%'"
+                + "OR usuario LIKE '%Ñ%'"
+                + "OR usuario LIKE '%O%'"
+                + "OR usuario LIKE '%P%'"
+                + "OR usuario LIKE '%Q%'"
+                + "OR usuario LIKE '%R%'"
+                + "OR usuario LIKE '%S%'"
+                + "OR usuario LIKE '%T%'"
+                + "OR usuario LIKE '%U%'"
+                + "OR usuario LIKE '%V%'"
+                + "OR usuario LIKE '%W%'"
+                + "OR usuario LIKE '%X%'"
+                + "OR usuario LIKE '%Y%'"
+                + "OR usuario LIKE '%Z%'";;
+        return statement;
+    }
+    
+               
+            //internos
      
-     public static String CreaGenSAP(String cadenaBD)                   //CREA LA TABLA DE TRABAJO DE USUARIOS EXTERNOS
+    public static String BorraInternosTrabajoSAP()                                 //BORRA LA TABLA DE TRABAJO INTERNOS
     {
-        String[] parametros = cadenaBD.split("\\|");
-        String statement = "CREATE TABLE IF NOT EXISTS GENERICOS SELECT * FROM USUARIOS" + parametros[4] + " WHERE NUM_EMP LIKE '%EX%'";*******
+        
+        String statement = "DROP TABLE IF EXISTS InternosSAP";
         return statement;
-    }
+    }  
 }
+
+    
