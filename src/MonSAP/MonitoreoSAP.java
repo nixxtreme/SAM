@@ -1069,8 +1069,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             ExecQuery EjecutaLo = new ExecQuery();
 
 
-//            PreparaTablas.add(Monitoreos.Querys.BorraInternosTrabajo());            //Esta sección borra todas las tablas temporales que se crearon durante la ejecución anterior del programa
-//            PreparaTablas.add(Monitoreos.Querys.BorraExternosTrabajo());
+            
 //            PreparaTablas.add(Monitoreos.Querys.BorraBaajasInt());
 //            PreparaTablas.add(Monitoreos.Querys.BorraBaajasExt());
             
@@ -1093,15 +1092,19 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesSinUso(cadenaBD));
 //            PreparaTablas.add(Monitoreos.Querys.BorraPerfilNoAutorizadosInt());
 //            PreparaTablas.add(Monitoreos.Querys.BorraPerfilNoAutorizadosExt());
+              
+              PreparaTablas.add(Monitoreos.Querys.BorraExternosTrabajoSAP());
+              PreparaTablas.add(Monitoreos.Querys.BorraGenericosTrabajoSAP());
+              PreparaTablas.add(Monitoreos.Querys.BorraInternosTrabajoSAP());            //Esta sección borra todas las tablas temporales que se crearon durante la ejecución anterior del programa
               PreparaTablas.add(Monitoreos.Querys.BorraUsrAdminAgregados());
               PreparaTablas.add(Monitoreos.Querys.BorraUsrAdminEliminados());
-              PreparaTablas.add(Monitoreos.Querys.BorraCruceSAPInt());
-              PreparaTablas.add(Monitoreos.Querys.BorraCruceSAPExt());
-              PreparaTablas.add(Monitoreos.Querys.BorraCruceSAPGen());
+             
+              
+             
+             
 ////
-            PreparaTablas.add(Monitoreos.Querys.CreaInternosSAP(cadenaBD));     //Crea la tabla de usuarios internos
-            PreparaTablas.add(Monitoreos.Querys.CreaExternosSAP(cadenaBD));     //Crea la tabla de usuarios externos
-            PreparaTablas.add(Monitoreos.Querys.CreaGenSAP(cadenaBD));          //Crea la tabla de usuarios genericos
+              
+              
 //            PreparaTablas.add(Monitoreos.Querys.CruceInternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios internos
 //            PreparaTablas.add(Monitoreos.Querys.CruceExternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios externos
 //            PreparaTablas.add(Monitoreos.Querys.NoNominaCreaInt(cadenaBD));         //Crea una tabla con los usuarios internos que no fueron encontrados en nómina
@@ -1131,13 +1134,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            PreparaTablas.add(Monitoreos.Querys.CreaCoincidenciasInt());            //Obtiene los usuarios internos con coincidencias correctas en la matriz de perfiles
 //            PreparaTablas.add(Monitoreos.Querys.CreaCoincidenciasExt());            //Obtiene los usuarios externos con coincidencias correctas en la matriz de perfiles
 //            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesCorrectoInt());        //Borra los usuarios internos con perfil correcto de las incidencias
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesCorrectoExt());        //Borra los usuarios externos con perfil correcto de las incidencias
-//
+//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesCorrectoExt());        //Borra los usuarios externos con perfil correcto de las incidencias//
 //            PreparaTablas.add(MonPac.Querys.BorraPerfilesCorrectoInt());            //Borra los usuarios internos con perfil correcto de las incidencias
 //            PreparaTablas.add(MonPac.Querys.BorraPerfilesCorrectoExt());            //Borra los usuarios externos con perfil correcto de las incidencias
 //            PreparaTablas.add(MonPac.Querys.BorraPerfilesCorrectoInt());            //Borra los usuarios internos con perfil correcto de las incidencias
 //            PreparaTablas.add(MonPac.Querys.BorraPerfilesCorrectoExt());            //Borra los usuarios externos con perfil correcto de las incidencias
-
 //            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesSinUsoInt(cadenaBD));       //Crea una lista de perfiles no usados por los usuarios internos
 //            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesSinUsoExt(cadenaBD));       //Crea una lista de perfiles no usados por los usuarios externos
 //            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesSinUso(cadenaBD));          //Crea una lista de la interseccion de perfiles no usados
@@ -1147,12 +1148,18 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            PreparaTablas.add(Monitoreos.Querys.CreaUsrNoAutorizadosExt());
 //            PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosInt());
 //            PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosExt());  
+            
+              
             PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));
             
-            PreparaTablas.add(Monitoreos.Tablas.TablaInt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.TablaExt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.TablaGen(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));     //Crea la tabla de usuarios externos                         
+            PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));           
+            PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));     //Crea la tabla de usuarios internos
+            
+            
 
 
 
@@ -1303,7 +1310,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         {
             if(jCheckUsrs.isSelected())                                         //Valida que esté seleccionada la casilla de los usuarios de la aplicación
             {
-                String Creacion, InsUsuarios, BorraUsuarios;
+                String Creacion, InsUsuarios, BorraUsuarios,cambio_tabla;
 
 
                 Conexion ConUsuarios = new Conexion();                          //Se crea y abre la conexión con el servidor de base de datos de la aplicación
@@ -1331,7 +1338,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
                 System.out.println("Creando tabla de usuarios");
                 Creacion = Monitoreos.Querys.CreaUsuarios(cadenaBD);                //Instrucción para crear la tabla de usuarios de la aplicación en la BD local
-
+                
+                System.out.println("Creando tabla de usuarios2");
+                cambio_tabla = Monitoreos.Querys.CreaUsuarios2(cadenaBD);
+                
                 EjecutaLo.Exect(ConLocal.conexion, Creacion);                   //Crea tabla para usuarios
 
                 System.out.println("Insertando usuarios");
