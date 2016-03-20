@@ -541,7 +541,7 @@ public class Tablas
     public static String CreaUsuarios2(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DE SAP SAP
     {
        String[] parametros = cadenaBD.split("\\|");
-        String statement = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (Usuario VARCHAR(20), Nombre VARCHAR (45), Grupo VARCHAR (20), "
+        String statement = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (Usuario VARCHAR(20), Nombre_Completo VARCHAR (45), Grupo VARCHAR (20), "
                 + "Bloq varchar (45), valido_de, Validez_a PRIMARY KEY(usuario))";
         return statement;        
     }
