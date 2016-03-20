@@ -908,8 +908,7 @@ public class Archivos
     
     private static String creaLineaUsrSAP(String linea)                          //CREA LA LÍNEA DE REGISTRO DE USUARIOS ADMINISTRADORES
     {
-        String num_emp,User_name, Nombre, ip, correo, jefe, perfil, nombre_perfil, fecha_acceso;                         //Variables para almacenar los datos de cada registro
-        int region;
+        String Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a, retorno;                         //Variables para almacenar los datos de cada registro
         //System.out.println("Linea " + linea);
         String[] temp = linea.split("\\|");                                      //Crea un arreglo con los datos del registro separados por el pipe
 //        for(int i=0; i<temp.length;i++)
@@ -923,12 +922,13 @@ public class Archivos
         }
         else
         {
-            usuario = temp[1];                                                      //Obtiene el Usuario de la posición 1 del arreglo
-            nombre = temp[2];                                                       //Obtiene el nombre de la posición 2 del arreglo
-            rol = temp[4];                                                         //Obtiene la rol de la posición 4 del arreglo
-            apellido = temp[3];                                                    //Obtiene la apellido de la posición 3 del arreglo
-            val_auto = temp[7];                                                     //Obtiene el valor de autorizacion de la posición 7 del arreglo
-            retorno = "('" + usuario + "', '" + nombre + "', '" + apellido + "', '" + rol + "', '" + val_auto + "')"; //Regresa la línea para ser insertada en la BD local
+            Usuario = temp[1];                                                      //Obtiene el Usuario de la posición 1 del arreglo
+            Nombre_Completo = temp[2];                                                       //Obtiene el nombre de la posición 2 del arreglo
+            Grupo = temp[3];                                                         //Obtiene el grupo de la posición 3 del arreglo
+            Bloq = temp[5];                                                    //Obtiene bloq de la posición 5 del arreglo
+            Valido_de = temp[7];                                                     //Obtiene valido la posición 7 del arreglo
+            Validez_a = temp[8];
+            retorno = "('" + Usuario + "', '" + Nombre_Completo + "', '" + Grupo + "', '" + Bloq + "', '" + Valido_de + "', '" + Validez_a "' )"; //Regresa la línea para ser insertada en la BD local
         }
  
         return retorno;
