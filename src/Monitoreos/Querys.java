@@ -801,7 +801,7 @@ public class Querys
     public static String BorrarExternosTablaSAP(String cadenaBD)                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statement = "DELETE FROM USUARIOS" + parametros[4] + "WHERE NUM_EMP LIKE 'EX%'";
+        String statement = "DELETE FROM USUARIOSSAP" + parametros[4] + "WHERE NUM_EMP LIKE 'EX%'";
         return statement;
     }
     
@@ -817,7 +817,7 @@ public class Querys
     public static String BorrarGenericosTablaSAP(String cadenaBD)                                 //BORRA LA TABLA DE TRABAJO INTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statement = "DELETE FROM USUARIOS" + parametros[4] + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%'"
+        String statement = "DELETE FROM USUARIOSSAP" + parametros[4] + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%'"
                 + "OR usuario LIKE '%C%'"
                 + "OR usuario LIKE '%D%'"
                 + "OR usuario LIKE '%E%'"

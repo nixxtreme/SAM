@@ -448,7 +448,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists ExternosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM Usuarios" + parametros[4]
+        statement = "create table if not exists ExternosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4]
                     + " WHERE usuario LIKE 'EX%'";
         return statement;
     }
@@ -458,7 +458,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM usuarios" 
+        statement = "create table if not exists GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM usuariosSAP" 
                     + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%' "
                 + "OR usuario LIKE '%C%' "
                 + "OR usuario LIKE '%D%' "
@@ -491,7 +491,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists InternosSAP SELECT Usuario, Nombre_Completo,Grupo, Bloq, Valido_de, Validez_a FROM Usuarios";
+        statement = "create table if not exists InternosSAP SELECT Usuario, Nombre_Completo,Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP";
         return statement;
     }
     

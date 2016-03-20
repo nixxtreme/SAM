@@ -1216,7 +1216,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         {
             if(jCheckUsrs.isSelected())                                         //Valida que esté seleccionada la casilla de los usuarios de la aplicación
             {
-                String Creacion, InsUsuarios, BorraUsuarios,cambio_tabla;
+                String Creacion, Insertar_Usuarios, eliminaTabla,cambio_tabla;
 
 
                 Conexion ConUsuarios = new Conexion();                          //Se crea y abre la conexión con el servidor de base de datos de la aplicación
@@ -1227,10 +1227,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 ExecQuery EjecutaLo = new ExecQuery();
 
                 System.out.println("Obteniendo query de inserción");
-                Monitoreos.Archivos.lecturaUsuariosSAP(Usuarios,cadenaBD);     //Crea la instrucción para insertar los usuarios a la BD local
+                Monitoreos.Tablas.InsertarUsuariosSAP(cadenaBD, Usuarios);     //Crea la instrucción para insertar los usuarios a la BD local
 
                 System.out.println("Obteniendo query para eliminar tabla de usuarios del día");
-                BorraUsuarios = Monitoreos.Querys.BorraUsuarios(cadenaBD);          //Instrucción para borrar la tabla de usuarios anterior
+                eliminaTabla = Monitoreos.Tablas.eliminaTablaUsrsSAP(cadenaBD);          //Instrucción para borrar la tabla de usuarios anterior
 
                 System.out.println("Eliminando tabla previa del día");
                 EjecutaLo.Exect(ConLocal.conexion, BorraUsuarios);              //Borra la tala de usuarios anterior
@@ -1239,6 +1239,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 System.out.println("Creando tabla de usuariosSAP");
                 Creacion = Monitoreos.Tablas.CreaUsuarios2(cadenaBD);                //Instrucción para crear la tabla de usuarios de la aplicación en la BD local
                 
+                System.out.println("Insertando usuarios");
+                EjecutaLo.Exect( ConLocal.conexion, Insertar_Usuarios); 
+                
+                
+       
                 System.out.println("Creando tabla de usuarios2");
                 cambio_tabla = Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD);     //crea respaldo del archivo usuarios
                 
@@ -1247,10 +1252,6 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 
                 ConLocal.Cerrar();
             }
-
-
-
-
             if(jCheckUsrInt.isSelected())                                       //Valida que este habilitada la casilla de nómina internos                                      
             {
                 System.out.println("Registrando archivo de usuarios internos de identidad ");
