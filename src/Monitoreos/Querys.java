@@ -115,23 +115,15 @@ public class Querys
     }
            
     
-    
-                        //USUARIOS 2
-    public static String CreaUsuarios2(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
-    {
-        String[] parametros = cadenaBD.split("\\|");
-        String statement = "CREATE TABLE IF NOT EXISTS Usuarios" + parametros[4] + " SELECT * FROM usuarios2" + parametros[4];
-        return statement;        
-    }
    
-    public static String CreaUsuarios(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DEL APLICATIVO +++
+    public static String CreaUsuarios(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DEL APLICATIVO PAC PAC PAC+++
     {
        String[] parametros = cadenaBD.split("\\|");
-        String statement = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (ID int NOT NULL AUTO_INCREMENT, NUM_EMP VARCHAR(45), USER_NAME VARCHAR(45), "    //
-                + "NOMBRE VARCHAR(255), REGION INT,"                                                                                                                        //
-                + "IP VARCHAR(45), CORREO VARCHAR(255), JEFE VARCHAR(45), PERFIL VARCHAR(45), NOMBRE_PERFIL VARCHAR(255), FECHA_ACCESO DATETIME NULL, PRIMARY KEY(ID))";        //
+        String statement = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (ID int NOT NULL AUTO_INCREMENT, NUM_EMP VARCHAR(45), USER_NAME VARCHAR(45), "    
+                + "NOMBRE VARCHAR(255), REGION INT,"                                                                                                                        
+                + "IP VARCHAR(45), CORREO VARCHAR(255), JEFE VARCHAR(45), PERFIL VARCHAR(45), NOMBRE_PERFIL VARCHAR(255), FECHA_ACCESO DATETIME NULL, PRIMARY KEY(ID))";        
         return statement;        
-    }           //aaaaa
+    }           
     
     
     
