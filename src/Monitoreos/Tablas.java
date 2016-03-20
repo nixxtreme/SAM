@@ -530,7 +530,21 @@ public class Tablas
         
     }
     
-    
+    //USUARIOS 2
+    public static String CreaUsuarios2(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "CREATE TABLE IF NOT EXISTS Usuarios" + parametros[4] + " SELECT * FROM usuarios2" + parametros[4];
+        return statement;        
+    }
+   
+    public static String CreaUsuarios(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DEL APLICATIVO
+    {
+       String[] parametros = cadenaBD.split("\\|");
+        String statement = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (Usuario VARCHAR(20), Nombre VARCHAR (45), Grupo VARCHAR (20), "
+                + "Bloq varchar (45), valido_de, Validez_a PRIMARY KEY(usuario))";
+        return statement;        
+    }
     
     
     
