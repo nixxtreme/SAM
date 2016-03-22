@@ -161,7 +161,7 @@ public class Consultas
     public static String ResultadosInacExt(int reg)                             //Devuelve la sentencia para obtener los usuarios internos inactivos
     {
         String statement = "select NUMEMP, USER_NAME, FULL_NAME, LAST_LOGON_TIMESTAMP, IDNOMBRE, IDPUESTO, IDGERENCIA, IDESTATUS from inactividadext" + reg
-                + " union select NUMEMP, USER_NAME, FULL_NAME, LAST_LOGON_TIMESTAMP, IDNOMBRE, IDPUESTO, IDGERENCIA, IDESTATUS from inactividadext" + reg;
+                + " union select NUMEMP, USER_NAME, FULL_NAME, LAST_LOGON_TIMESTAMP, IDNOMBRE, IDPUESTO, IDGERENCIA, IDESTATUS from nologinext" + reg;
         return statement;
     }
     
