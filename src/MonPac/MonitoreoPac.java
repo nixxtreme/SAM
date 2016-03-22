@@ -1182,7 +1182,7 @@ public class MonitoreoPac extends javax.swing.JFrame {
                 ConUsuarios.Cerrar();
 
                 System.out.println("Creando tabla de usuarios");
-                Creacion = Monitoreos.Querys.CreaUsuarios(cadenaBD);                //Instrucción para crear la tabla de usuarios de la aplicación en la BD local
+                Creacion = Monitoreos.Querys.CreaUsuarios(cadenaBD);            //Instrucción para crear la tabla de usuarios de la aplicación en la BD local
 
                 EjecutaLo.Exect(ConLocal.conexion, Creacion);                   //Crea tabla para usuarios
 
