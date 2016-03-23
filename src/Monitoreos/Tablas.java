@@ -362,35 +362,25 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String mes = parametros[3];
-        
         String valores = "INSERT IGNORE INTO usradmin" + parametros[4] + " (USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION) "
                 + "values " + usuarios ;
-        
-        
         
         try
         {
             DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
             
-            
-            
             // Se obtiene una conexión con la base de datos. 
             Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
-            
             Statement cstmt2 = conexion.createStatement();
 
-            
             int rs3 = cstmt2.executeUpdate(valores);
-            
-            // Se cierra la conexión con la base de datos.
-            conexion.close();
+            conexion.close();                                                   // Se cierra la conexión con la base de datos.
         }
         catch (SQLException e)
         {
             e.printStackTrace();
             if(e instanceof SQLIntegrityConstraintViolationException)
-            {
-                
+            {                
             }
             
         }
