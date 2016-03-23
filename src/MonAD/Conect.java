@@ -625,7 +625,7 @@ public class Conect {
                     + " or full_name like '%lg qro%' or full_name like 'salamanca'  or full_name like '%san juan del r%' or full_name like '%san miguel de allende'"
                     + " or full_name like '%zacatecas%'  or full_name like 'comercial%'  or full_name like '%callidus%' "
                     + "or full_name like '%telefonico%' or full_name like '%comunicaciones%' or full_name like '%MulXerox%' or full_name like '%Gestoria%' "
-                    + "or full_name like '%implantación%' ";
+                    + "or full_name like '%implantación%' or full_name like '%usuario%' or full_name like '%revision%' or full_name like '%svvoc%' ";
 
                                                                                 //Se ejecuta consulta para crear tabla de genéricos
             int rs2 = cstmt2.executeUpdate("create table if not exists genericos" + Integer.toString(reg) + " select * from r" + Integer.toString(reg) + palabras);
