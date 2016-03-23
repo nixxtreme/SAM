@@ -1229,7 +1229,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 ExecQuery EjecutaLo = new ExecQuery();
 
                 System.out.println("Obteniendo query de inserción");
-                InsUsuarios = Monitoreos.Archivos.lecturaUsuariosSAP(cadenaBD);     //Crea la instrucción para insertar los usuarios a la BD local
+                Monitoreos.Archivos.lecturaUsuariosSAP(Usuarios,cadenaBD);     //Crea la instrucción para insertar los usuarios a la BD local
 
                 System.out.println("Obteniendo query para eliminar tabla de usuarios del día");
                 BorraUsuarios = Monitoreos.Querys.BorraUsuarios(cadenaBD);          //Instrucción para borrar la tabla de usuarios anterior
