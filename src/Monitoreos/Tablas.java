@@ -477,38 +477,15 @@ public class Tablas
     }
     
     
-    public static void InsertarUsuariosSAP (String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
+    public static String InsertarUsuariosSAP (String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
        
         String valores = "INSERT IGNORE INTO Usuarios2" + parametros[4] + " (USUARIO, NOMBRE_COMPLETO, GRUPO, BLOQ, VALIDO_DE, VALIDEZ_A) "
                 + "values " + usuarios ;
-         
-        try
-        {
-            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
-                        
-            
-            // Se obtiene una conexión con la base de datos. 
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
-            
-            Statement cstmt2 = conexion.createStatement();
-
-            
-            int rs3 = cstmt2.executeUpdate(valores);
-            
-            // Se cierra la conexión con la base de datos.
-            conexion.close();
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-            if(e instanceof SQLIntegrityConstraintViolationException)
-            {
-                
-            }
-            
-        }
+        
+        valores = valores + Archivos.lecturaUsuariosSAP(usuarios, cadenaBD);
+        return valores;
     }
     
     public static String BorraInternosTrabajo()                                 //BORRA LA TABLA DE TRABAJO INTERNOS

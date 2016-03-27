@@ -931,7 +931,7 @@ public class Archivos
     
     
     
-    public static void lecturaUsuariosSAP (String ruta, String bd )
+    public static String lecturaUsuariosSAP (String ruta, String bd )
     {
         String[] parametros = bd.split("\\|");                                  //SEPARA LOS ELEMENTOS DE LA CADENA HASTA SU REFERENCIA DE CORTE
         File archivo = null;                                                    //Crea el objeto del archivo vacío
@@ -941,16 +941,13 @@ public class Archivos
         
         usuarios="";
         linea = "";
-        //System.out.println("linea " + linea);
-        
+        //System.out.println("linea " + linea);        
 
         try
         {
             archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
-                                          
-            
             
             for (int i=0;i<8;i++)                                               //Retira el encabezado del archivo 8 lineas
             {
@@ -974,10 +971,9 @@ public class Archivos
                 }            
                 
             }
-            System.out.println("length " + linea.length());
+//            System.out.println("length " + linea.length());
             linea = linea.substring(0, linea.length()-1);                         //Elimina la última coma de la cadena
-            System.out.println("Salida = " + linea);
-            Monitoreos.Tablas.InsertarUsuariosSAP(linea, bd);                            //Insera los registros en la tabla correspondiente
+//            System.out.println("Salida = " + linea);                                     
         }
 //        catch(SQLException sqle)
 //        {
@@ -1000,6 +996,7 @@ public class Archivos
             {
                 e2.printStackTrace();
             }
+         return linea;
         }       
         
     }
