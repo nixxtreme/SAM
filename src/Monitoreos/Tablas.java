@@ -496,26 +496,11 @@ public class Tablas
     }
     
     //USUARIOS 2 SAP
-    public static void CreaUsuariosSAP(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
+    public static String CreaUsuariosSAP(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
     {
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT * FROM usuarios2" + parametros[4];
-        try
-        {
-            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
-            // Se obtiene una conexión con la base de datos. 
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
-            
-            Statement cstmt2 = conexion.createStatement();
-            int rs2 = cstmt2.executeUpdate(tabla);
-            
-            // Se cierra la conexión con la base de datos.
-            conexion.close();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        return tabla;
         
     }
    
