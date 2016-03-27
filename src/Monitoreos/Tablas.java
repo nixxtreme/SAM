@@ -330,7 +330,7 @@ public class Tablas
         String[] parametros = cadenaBD.split("\\|");
         String mes = parametros[3];
         String valores = "INSERT IGNORE INTO usradmin" + parametros[4] + " (USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION) "
-                + "values " + usuarios ;
+                + "values ";
         valores = valores + Archivos.lecturaUsuariosAdmin (usuarios, cadenaBD);
         
         return valores;
@@ -482,7 +482,7 @@ public class Tablas
         String[] parametros = cadenaBD.split("\\|");
        
         String valores = "INSERT IGNORE INTO Usuarios2" + parametros[4] + " (USUARIO, NOMBRE_COMPLETO, GRUPO, BLOQ, VALIDO_DE, VALIDEZ_A) "
-                + "values " + usuarios ;
+                + "values ";
         
         valores = valores + Archivos.lecturaUsuariosSAP(usuarios, cadenaBD);
         return valores;
