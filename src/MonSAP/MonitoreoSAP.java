@@ -1245,12 +1245,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             {
                 System.out.println("Registrando archivo de Usuarios Administradores");
                 PreparaTablas.add(Monitoreos.Tablas.eliminaTablaUsrAdmin(cadenaBD)); 
-                PreparaTablas.add(Monitoreos.Archivos.lecturaUsuariosAdmin(UsrAdmin, cadenaBD));     //Lee el archivo de Usuarios administradores
-                
-                
-                
-                
-                
+                PreparaTablas.add(Monitoreos.Tablas.idCreaUsrAdmin(cadenaBD));  //Crea la tabla de usuariosAdministradores
+                PreparaTablas.add(Monitoreos.Tablas.UsrAdminTabla(UsrAdmin,cadenaBD)); //lee el archivo e inserta los datos                                                                                                             
             }
             
             if(jCheckDemonsa2.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
@@ -1262,6 +1258,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             if(jCheckUsrs.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
             {
                 System.out.println("Registrando archivo UsuariosSAP");
+                
+                
                 Monitoreos.Archivos.lecturaUsuariosSAP(UsuariosSAP, cadenaBD);     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local
                 Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD);
             }

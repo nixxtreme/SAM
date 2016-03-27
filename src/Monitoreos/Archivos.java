@@ -723,16 +723,13 @@ public class Archivos
         usuarios="";
         linea = "";
         //System.out.println("linea " + linea);
-        
-        
-
         try
         {
             archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
                                        
-            Monitoreos.Tablas.idCreaUsrAdmin(bd);                                    //Crea una nueva tabla de usuarios administradores
+                                                //Crea una nueva tabla de usuarios administradores
             
             for (int i=0;i<8;i++)                                               //Retira el encabezado del archivo 8 lineas
             {
@@ -748,20 +745,16 @@ public class Archivos
                 }
                 else
                 {
-                    
-//                    System.out.println("temp = " + temp);
+                    // System.out.println("temp = " + temp);
                     //System.out.println("Linea antes " + linea);
                     linea = linea + "\n " + creaLineaUsrAdmin(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
                     //System.out.println("Linea  " + creaLinea(temp));
-                }
-                    
-                
-                
+                }                                      
             }
-            System.out.println("length " + linea.length());
+//            System.out.println("length " + linea.length());
             linea = linea.substring(0, linea.length()-4);                         //Elimina la última coma de la cadena
-            System.out.println("Salida = " + linea);
-            Monitoreos.Tablas.UsrAdminTabla(linea, bd);                            //Insera los registros en la tabla correspondiente
+//            System.out.println("Salida = " + linea);   
+            
         }
 //        catch(SQLException sqle)
 //        {
@@ -773,6 +766,7 @@ public class Archivos
         }
         finally                                                                 //Finaliza la lectura del archivo
         {
+            
             try
             {
                 if(fr != null)
@@ -784,6 +778,7 @@ public class Archivos
             {
                 e2.printStackTrace();
             }
+            return linea;
         }
         
     }

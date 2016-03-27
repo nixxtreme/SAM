@@ -285,7 +285,7 @@ public class Tablas
         }
     }
    
-   public static void idCreaUsrAdmin(String cadenaBD)                          //CREA LA TABLA DE NÓMINA EXTERNOS
+   public static String idCreaUsrAdmin(String cadenaBD)                          //CREA LA TABLA DE NÓMINA EXTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS usradmin"+ parametros[4] + " (USUARIO VARCHAR(25) NOT NULL, NOMBRE VARCHAR(45), APELLIDO VARCHAR(43), "
@@ -293,25 +293,7 @@ public class Tablas
         
         //System.out.println("Tabla \n" + tabla);
         
-        try
-        {
-            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
-            
-            
-            
-            // Se obtiene una conexión con la base de datos. 
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
-            
-            Statement cstmt2 = conexion.createStatement();
-            int rs2 = cstmt2.executeUpdate(tabla);
-            
-            // Se cierra la conexión con la base de datos.
-            conexion.close();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        return tabla;
     }
    
    public static void idCreaDemonsa2(String cadenaBD)                          //CREA LA TABLA DE NÓMINA EXTERNOS
@@ -343,32 +325,15 @@ public class Tablas
         }
     }
     
-    public static void UsrAdminTabla(String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
+    public static String UsrAdminTabla(String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
         String mes = parametros[3];
         String valores = "INSERT IGNORE INTO usradmin" + parametros[4] + " (USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION) "
                 + "values " + usuarios ;
+        valores = valores + Archivos.lecturaUsuariosAdmin (usuarios, cadenaBD);
         
-        try
-        {
-            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
-            
-            // Se obtiene una conexión con la base de datos. 
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
-            Statement cstmt2 = conexion.createStatement();
-
-            int rs3 = cstmt2.executeUpdate(valores);
-            conexion.close();                                                   // Se cierra la conexión con la base de datos.
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-            if(e instanceof SQLIntegrityConstraintViolationException)
-            {                
-            }
-            
-        }
+        return valores;
     }
     
     public static void Demonsa2Tabla(String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
