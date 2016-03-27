@@ -1260,8 +1260,13 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 System.out.println("Registrando archivo UsuariosSAP");
                 
                 
-                Monitoreos.Archivos.lecturaUsuariosSAP(UsuariosSAP, cadenaBD);     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local
-               PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));
+               PreparaTablas.add(Monitoreos.Tablas.eliminaTablaUsrsSAP(cadenaBD)); //elimina la tabla Usuarios SAP en caso de existir
+               PreparaTablas.add(Monitoreos.Tablas.eliminaUsuariosSAP2(cadenaBD)); //elimina la tabla Usuarios2
+               Monitoreos.Archivos.lecturaUsuariosSAP(UsuariosSAP, cadenaBD);     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local
+               PreparaTablas.add(Monitoreos.Tablas.CreaUsuarios2(cadenaBD));    //crea la tabla de usuarios
+               PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));  //crea la tabla de usuarios de la tabla Usuarios2 para su manipulacion
+               
+               
             }
 //            if(ExcepDup.isSelected())                                           //Valida que este habilitada la casilla de excepciones
 //            {
