@@ -712,7 +712,7 @@ public class Archivos
         
     }
     
-    public static void lecturaUsuariosAdmin(String ruta, String bd )            //LEE EL ARCHIVO DE NOMINA INTERNOS
+    public static String lecturaUsuariosAdmin(String ruta, String bd )            //LEE EL ARCHIVO DE NOMINA INTERNOS
     {
         String[] parametros = bd.split("\\|");                                  //SEPARA LOS ELEMENTOS DE LA CADENA HASTA SU REFERENCIA DE CORTE
         File archivo = null;                                                    //Crea el objeto del archivo vacío
@@ -731,7 +731,7 @@ public class Archivos
             archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
-            Monitoreos.Tablas.eliminaTablaUsrAdmin(bd);                              //Elimina la tabla de Usuarios Administradores en caso de existir
+                                       
             Monitoreos.Tablas.idCreaUsrAdmin(bd);                                    //Crea una nueva tabla de usuarios administradores
             
             for (int i=0;i<8;i++)                                               //Retira el encabezado del archivo 8 lineas
