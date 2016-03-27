@@ -445,54 +445,19 @@ public class Tablas
         return statement;
     }
     
-     public static void eliminaTablaUsrsSAP(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
+     public static String eliminaTablaUsrsSAP(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
-                
-        try
-        {
-            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
-            
-            // Se obtiene una conexión con la base de datos. 
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
-            
-            Statement cstmt2 = conexion.createStatement();  
-
-            int rs2 = cstmt2.executeUpdate("DROP TABLE IF EXISTS `Usuarios2"+ parametros[4] + "`");
-            
-            // Se cierra la conexión con la base de datos.
-            conexion.close();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        String statment = "DROP TABLE IF EXISTS `Usuarios2"+ parametros[4] + "`";  
+        return statment;
         
     }
      
-     public static void eliminaUsuariosSAP2(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
+     public static String eliminaUsuariosSAP2(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
-                
-        try
-        {
-            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
-            
-            // Se obtiene una conexión con la base de datos. 
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
-            
-            Statement cstmt2 = conexion.createStatement();  
-
-            int rs2 = cstmt2.executeUpdate("DROP TABLE IF EXISTS `UsuariosSAP"+ parametros[4] + "`");
-            
-            // Se cierra la conexión con la base de datos.
-            conexion.close();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        
+        String statment="DROP TABLE IF EXISTS `UsuariosSAP"+ parametros[4] + "`";    
+        return statment;
     }
     
     //USUARIOS 2 SAP
@@ -500,32 +465,15 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT * FROM usuarios2" + parametros[4];
-        return tabla;
-        
+        return tabla; 
     }
    
-    public static void CreaUsuarios2(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DE SAP SAP
+    public static String CreaUsuarios2(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DE SAP SAP
     {
        String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Nombre_Completo VARCHAR(45), Grupo VARCHAR(20), "
                 + "Bloq varchar(45), valido_de DATE, Validez_a DATE, PRIMARY KEY(usuario))";
-        
-        try
-        {
-            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
-            // Se obtiene una conexión con la base de datos. 
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
-            
-            Statement cstmt2 = conexion.createStatement();
-            int rs2 = cstmt2.executeUpdate(tabla);
-            
-            // Se cierra la conexión con la base de datos.
-            conexion.close();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }        
+        return tabla;
     }
     
     
