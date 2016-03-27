@@ -248,30 +248,12 @@ public class Tablas
         }
     }
    
-   public static void eliminaTablaUsrAdmin(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
+   public static String eliminaTablaUsrAdmin(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
-        
-
-        
-        try
-        {
-            DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
+        String Statement = "DROP TABLE IF EXISTS `UsrAdmin"+ parametros[4];
             
-            // Se obtiene una conexión con la base de datos. 
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost/"+parametros[0]+"",parametros[1],parametros[2]);
-            
-            Statement cstmt2 = conexion.createStatement();  
-
-            int rs2 = cstmt2.executeUpdate("DROP TABLE IF EXISTS `UsrAdmin"+ parametros[4] + "`");
-            
-            // Se cierra la conexión con la base de datos.
-            conexion.close();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        return Statement;
     }
    
    public static void eliminaTablaDemonsa2(String cadenaBD)                         //ELIMINA LA TABLA DE NÓMINA INTERNOS

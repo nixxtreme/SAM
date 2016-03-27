@@ -960,6 +960,9 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         
 //        limpiaCampos();
         
+       
+        
+        
         if(jTextField31.getText().equals(""))                                   //VALIDACIÓN DE QUE SE HAYA INGRESADO UNA FECHA EN EL CAMPO DE ARCHIVOS DE IDENTIDAD
         {
             JOptionPane.showMessageDialog(null, "No se ha ingresado el campo Archivos de identidad, Por favor ingrese la fecha de descarga en formato ddmmaaaa", "Error", JOptionPane.WARNING_MESSAGE);
@@ -978,7 +981,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             ConLocal.AbrirLocal(cadenaBD);
 
             System.out.println("Creando objeto de ejecución");
-            ExecQuery EjecutaLo = new ExecQuery();
+            ExecQuery EjecutaSAP = new ExecQuery();
 
 
             
@@ -1076,64 +1079,64 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
 
             System.out.println("Creando nuevas tablas de trabajo");
-            EjecutaLo.Exect(ConLocal.conexion, PreparaTablas);                  //Ejecuta todas las instrucciones almacenadas en el arreglo
-
-            Conteos conteo = new Conteos();
-
-            String total = conteo.conteo(ConLocal.conexion, "USUARIOS" + parametros[4]);//Cuenta el total de usuarios
-            jTextField1.setText(total);
-            
-            String internos = conteo.conteo(ConLocal.conexion, "INTERNOS");     //Cuenta el total de usuarios internos
-            jTextField3.setText(internos);
-            String externos = conteo.conteo(ConLocal.conexion, "EXTERNOS");     //Cuenta el total de usuarios externos
-            jTextField4.setText(externos);
-    
-    //        
-            String bint = conteo.conteo(ConLocal.conexion, "BAAJASINT", "NONOMINAINT");//Cuenta el total de usuarios internos dados de baja y que no están registrados en nómina
-            jTextField5.setText(bint);
-            String bext = conteo.conteo(ConLocal.conexion, "BAAJASEXT", "NONOMINAEXT");//Cuenta el total de usuarios externos dados de baja y que no están registrados en nómina
-            jTextField6.setText(bext);
-            
-            
-            String inint = conteo.conteo(ConLocal.conexion, "INACTIVIDADINT");  //Cuenta el total de usuaios internos reportados con intactividad
-            jTextField7.setText(inint);
-            String inext = conteo.conteo(ConLocal.conexion, "INACTIVIDADEXT");  //Cuenta el total de usuaios externos reportados con intactividad
-            jTextField8.setText(inext);
-            
-         
-            String usrincint = conteo.conteo(ConLocal.conexion, "USRINCINT" );  //Cuenta el total de usuarios internos reportados con UserID incorrecto
-            jTextField11.setText(usrincint);
-            String usrincext = conteo.conteo(ConLocal.conexion, "USRINCEXT");   //Cuenta el total de usuarios externos reportados con UserID incorrecto
-            jTextField12.setText(usrincext);
-            
-            String dupxnomint = conteo.conteo(ConLocal.conexion, "DUPXNOMBREINT");//Cuenta el total de usuarios internos reportados por duplicidad
-            dupxnomint = Integer.toString(Integer.parseInt(dupxnomint)/2);
-            jTextField13.setText(dupxnomint);
-            String dupxnomext = conteo.conteo(ConLocal.conexion, "DUPXNOMBREEXT");//Cuenta el total de usuarios externos reportados por duplicidad
-            dupxnomext = Integer.toString(Integer.parseInt(dupxnomext)/2);
-            jTextField14.setText(dupxnomext);
-            
-            String perfilint = conteo.conteo(ConLocal.conexion, "PERFILESINT"); //Cuenta el total de usuarios internos con perfil incorrecto
-            jTextField15.setText(perfilint);
-            
-            String perfilext = conteo.conteo(ConLocal.conexion, "PERFILESEXT"); //Cuenta el total de usuarios externos con perfil incorrecto
-            jTextField16.setText(perfilext);
-            
-            String noAutoint = conteo.conteo(ConLocal.conexion, "USUARIOSNOAUTORIZADOSINT");//Cuenta el total de usuarios internos con perfil no autorizado
-            jTextField17.setText(noAutoint);
-            
-            String noAutoext = conteo.conteo(ConLocal.conexion, "USUARIOSNOAUTORIZADOSEXT");//Cuenta el total de usuarios externos con perfil no autorizado
-            jTextField18.setText(noAutoext);
-            
-            String altaUsrAdmin = conteo.conteo(ConLocal.conexion, "AGREGADOS");//Cuenta el total de usuarios administradores dados de alta
-            jTextField19.setText(altaUsrAdmin);
-            
-            String bajaUsrAdmin = conteo.conteo(ConLocal.conexion, "ELIMINADOS");//Cuenta el total de usuarios administradores dados de baja
-            jTextField20.setText(bajaUsrAdmin);
-
-            System.out.println(cadenaBD);
-    
-            ConLocal.Cerrar();                                                  //Cierra a conexión de MySQL
+            EjecutaSAP.Exect(ConLocal.conexion, PreparaTablas);                  //Ejecuta todas las instrucciones almacenadas en el arreglo
+//
+//            Conteos conteo = new Conteos();
+//
+//            String total = conteo.conteo(ConLocal.conexion, "USUARIOS" + parametros[4]);//Cuenta el total de usuarios
+//            jTextField1.setText(total);
+//            
+//            String internos = conteo.conteo(ConLocal.conexion, "INTERNOS");     //Cuenta el total de usuarios internos
+//            jTextField3.setText(internos);
+//            String externos = conteo.conteo(ConLocal.conexion, "EXTERNOS");     //Cuenta el total de usuarios externos
+//            jTextField4.setText(externos);
+//    
+//    //        
+//            String bint = conteo.conteo(ConLocal.conexion, "BAAJASINT", "NONOMINAINT");//Cuenta el total de usuarios internos dados de baja y que no están registrados en nómina
+//            jTextField5.setText(bint);
+//            String bext = conteo.conteo(ConLocal.conexion, "BAAJASEXT", "NONOMINAEXT");//Cuenta el total de usuarios externos dados de baja y que no están registrados en nómina
+//            jTextField6.setText(bext);
+//            
+//            
+//            String inint = conteo.conteo(ConLocal.conexion, "INACTIVIDADINT");  //Cuenta el total de usuaios internos reportados con intactividad
+//            jTextField7.setText(inint);
+//            String inext = conteo.conteo(ConLocal.conexion, "INACTIVIDADEXT");  //Cuenta el total de usuaios externos reportados con intactividad
+//            jTextField8.setText(inext);
+//            
+//         
+//            String usrincint = conteo.conteo(ConLocal.conexion, "USRINCINT" );  //Cuenta el total de usuarios internos reportados con UserID incorrecto
+//            jTextField11.setText(usrincint);
+//            String usrincext = conteo.conteo(ConLocal.conexion, "USRINCEXT");   //Cuenta el total de usuarios externos reportados con UserID incorrecto
+//            jTextField12.setText(usrincext);
+//            
+//            String dupxnomint = conteo.conteo(ConLocal.conexion, "DUPXNOMBREINT");//Cuenta el total de usuarios internos reportados por duplicidad
+//            dupxnomint = Integer.toString(Integer.parseInt(dupxnomint)/2);
+//            jTextField13.setText(dupxnomint);
+//            String dupxnomext = conteo.conteo(ConLocal.conexion, "DUPXNOMBREEXT");//Cuenta el total de usuarios externos reportados por duplicidad
+//            dupxnomext = Integer.toString(Integer.parseInt(dupxnomext)/2);
+//            jTextField14.setText(dupxnomext);
+//            
+//            String perfilint = conteo.conteo(ConLocal.conexion, "PERFILESINT"); //Cuenta el total de usuarios internos con perfil incorrecto
+//            jTextField15.setText(perfilint);
+//            
+//            String perfilext = conteo.conteo(ConLocal.conexion, "PERFILESEXT"); //Cuenta el total de usuarios externos con perfil incorrecto
+//            jTextField16.setText(perfilext);
+//            
+//            String noAutoint = conteo.conteo(ConLocal.conexion, "USUARIOSNOAUTORIZADOSINT");//Cuenta el total de usuarios internos con perfil no autorizado
+//            jTextField17.setText(noAutoint);
+//            
+//            String noAutoext = conteo.conteo(ConLocal.conexion, "USUARIOSNOAUTORIZADOSEXT");//Cuenta el total de usuarios externos con perfil no autorizado
+//            jTextField18.setText(noAutoext);
+//            
+//            String altaUsrAdmin = conteo.conteo(ConLocal.conexion, "AGREGADOS");//Cuenta el total de usuarios administradores dados de alta
+//            jTextField19.setText(altaUsrAdmin);
+//            
+//            String bajaUsrAdmin = conteo.conteo(ConLocal.conexion, "ELIMINADOS");//Cuenta el total de usuarios administradores dados de baja
+//            jTextField20.setText(bajaUsrAdmin);
+//
+//            System.out.println(cadenaBD);
+//    
+//            ConLocal.Cerrar();                                                  //Cierra a conexión de MySQL
 
             Resultados PantallaDeResultados = new Resultados(cadenaBD);         //LLama la pantalla de resultados
             PantallaDeResultados.setVisible(true);
@@ -1185,7 +1188,6 @@ public class MonitoreoSAP extends javax.swing.JFrame {
    
     }
     
-    
     public String obtieneContrasena(){                                          //Obtiene la contraseña de la base de datos local
     
         String contrasena;
@@ -1211,19 +1213,27 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     
                                                                                 //Procedimiento para agregar todos los archivos a la base de datos local
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        String cadenaBD = obtieneBase() + "|" + obtieneUsuario() + "|" + obtieneContrasena() + "|" + obtieneTabla() + "|" + obtieneID() + "|" + obtieneIDAnt();
-        String[] parametros = cadenaBD.split("\\|");
-         
+                
         if(jTextField31.getText().equals(""))                                   //Verifica que se haya ingresado el campo de las nóminas de identidad
         {
             JOptionPane.showMessageDialog(null, "No se ha ingresado el campo Archivos de identidad, Por favor ingrese la fecha de descarga en formato ddmmaaaa", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else
         {
+            ArrayList<String> PreparaTablas = new ArrayList();                  //ARRAY LIST PARA ALMACENAR LAS OPERACIONES A BASE DE DATOS Y HACER TODO MEDIANTE UNA SOLA CONEXIÓN
+            String cadenaBD = obtieneBase() + "|" + obtieneUsuario() + "|" + obtieneContrasena() + "|" + obtieneTabla() + "|" + obtieneID() + "|" + obtieneIDAnt();
+            String[] parametros = cadenaBD.split("\\|");
+            System.out.println("Estableciendo conexión con la BD");
+            Conexion ConLocal = new Conexion();
+            ConLocal.AbrirLocal(cadenaBD);
+
+            System.out.println("Creando objeto de ejecución");
+            ExecQuery EjecutaSAP = new ExecQuery();
+            
             
             if(jCheckUsrInt.isSelected())                                       //Valida que este habilitada la casilla de nómina internos                                      
             {
-                System.out.println("Registrando archivo de usuarios internos de identidad ");
+                System.out.println("Registrando archivo de usuarios internos de identidad ");           
                 Monitoreos.Archivos.lecturaUsuariosIdInt(NomInt, cadenaBD);     //Lee el archivo de la nómina de internos e inserta los usuarios en la BD local
             }
             if(jCheckUsrExt.isSelected())                                       //Valida que este habilitada la casilla de nómina externos
@@ -1234,7 +1244,13 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             if(jCheckUsrAdmin.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
             {
                 System.out.println("Registrando archivo de Usuarios Administradores");
-                Monitoreos.Archivos.lecturaUsuariosAdmin(UsrAdmin, cadenaBD);     //Lee el archivo de la nómina de internos e inserta los usuarios en la BD local
+                PreparaTablas.add(Monitoreos.Tablas.eliminaTablaUsrAdmin(cadenaBD)); 
+                PreparaTablas.add(Monitoreos.Archivos.lecturaUsuariosAdmin(UsrAdmin, cadenaBD));     //Lee el archivo de Usuarios administradores
+                
+                
+                
+                
+                
             }
             
             if(jCheckDemonsa2.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
@@ -1271,7 +1287,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //                EjecutaLo.Exect(ConLocal.conexion, MonPac.Querys.CreaMatrizPerfiles(cadenaBD, MatrizPerfiles)); //Lee el archivo de matriz de perfiles y la inserta en la BD local
 //
 //            }
-            
+            System.out.println("Creando nuevas tablas de trabajo");
+            EjecutaSAP.Exect(ConLocal.conexion, PreparaTablas);    
             JOptionPane.showMessageDialog(null, "El proceso de importación de los archivos ha finalizado", "Proceso terminado", JOptionPane.INFORMATION_MESSAGE);
         }
         
