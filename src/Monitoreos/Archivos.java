@@ -189,6 +189,7 @@ public class Archivos
 //        {
 //            System.out.println(i + " " + temp[i]);
 //        }
+        
         numero = temp[0];                                                       //Obtiene el número de empleado de la posición 0 del arreglo
         usuario = temp[1];                                                      //Obtiene el UserID de la posición 1 del arreglo
         nombre = temp[2];                                                       //Obtiene el nombre de la posición 2 del arreglo
@@ -200,7 +201,8 @@ public class Archivos
         jefe = temp[21];                                                        //Obtiene el jefe inmediato de la posición 21 del arreglo
         estatus = temp[29];                                                     //Obtiene el estatus de la posición 29 del arreglo
         fecha = temp[28];                                                       //Obtiene el fecha de la posición 28 del arreglo
-        
+        System.out.println("numemp " + numero + " usuario " + usuario + " nombre " + nombre + " region " + region + " gerencia " + gerencia + " departamento " + departamento 
+        + " idpuesto " + idpuesto + " jefe " + jefe + " estatus " + estatus + " fecha " + fecha);
         if(!fecha.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
         {
             String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /
@@ -544,7 +546,7 @@ public class Archivos
                     else
                     {
                         //System.out.println("temp length " + temp.length());
-                        System.out.println("\n temp = " + temp);
+//                        System.out.println("\n temp = " + temp);
                         //System.out.println("Linea antes " + linea);
                         linea = linea + "\n " + creaLineaIdInt(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
                         //System.out.println("Linea  " + creaLinea(temp));
