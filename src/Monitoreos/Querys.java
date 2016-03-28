@@ -262,28 +262,10 @@ public class Querys
     }
             
     
-                //externos
-    
-     
-    public static String BorraExternosTrabajoSAP()                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
-    {
-        String statement = "DROP TABLE IF EXISTS ExternosSAP";
-        return statement;
-    }
-    
     public static String BorrarExternosTablaSAP(String cadenaBD)                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "DELETE FROM USUARIOSSAP" + parametros[4] + " WHERE Usuario LIKE 'EX%'";
-        return statement;
-    }
-    
-            //genericos
-    
-     
-    public static String BorraGenericosTrabajoSAP()                                 //BORRA LA TABLA DE TRABAJO INTERNOS
-    {
-        String statement = "DROP TABLE IF EXISTS GenericosSAP";
         return statement;
     }
     
@@ -319,15 +301,7 @@ public class Querys
         return statement;
     }
     
-               
-            //internos
-     
-    public static String BorraInternosTrabajoSAP()                                 //BORRA LA TABLA DE TRABAJO INTERNOS
-    {
-        
-        String statement = "DROP TABLE IF EXISTS InternosSAP";
-        return statement;
-    }  
+    
 }
 
     

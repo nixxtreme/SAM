@@ -1144,4 +1144,23 @@ public class Tablas
         return statement;
     }
     
+    public static String BorraExternosTrabajoSAP()                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS ExternosSAP";
+        return statement;
+    }
+    
+    public static String BorraGenericosTrabajoSAP()                                 //BORRA LA TABLA DE TRABAJO INTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS GenericosSAP";
+        return statement;
+    }
+    
+    public static String BorraInternosTrabajoSAP()                                 //BORRA LA TABLA DE TRABAJO INTERNOS
+    {
+        
+        String statement = "DROP TABLE IF EXISTS InternosSAP";
+        return statement;
+    }  
+    
 }
