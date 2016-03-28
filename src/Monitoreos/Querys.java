@@ -261,7 +261,7 @@ public class Querys
         return statement;
     }
             
-    
+            //externos y genericos
     public static String BorrarExternosTablaSAP(String cadenaBD)                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
@@ -301,7 +301,23 @@ public class Querys
         return statement;
     }
     
+    public static String ResultadosUsrExt()                             //OBTIENE EL RESULTADO DE LOS USUARIOS EXTERNOS
+    {
+        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a from FROM ExternosSAP";
+        return statement;
+    }
     
+    public static String ResultadosUsrInt()                             //OBTIENE EL RESULTADO DE LOS USUARIOS INTERNOS 
+    {
+        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a from FROM InternosSAP";
+        return statement;
+    }
+    
+    public static String ResultadosUsrGen()                             //OBTIENE EL RESULTADO DE LOS USUARIOS GENERICOS 
+    {
+        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a from FROM GenericosSAP";
+        return statement;
+    }
 }
 
     
