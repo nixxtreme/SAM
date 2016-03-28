@@ -923,62 +923,62 @@ public class MonitoreoPac extends javax.swing.JFrame {
             ExecQuery EjecutaLo = new ExecQuery();
 
 
-            PreparaTablas.add(Monitoreos.Querys.BorraInternosTrabajo());            //Esta sección borra todas las tablas temporales que se crearon durante la ejecución anterior del programa
-            PreparaTablas.add(Monitoreos.Querys.BorraExternosTrabajo());
-            PreparaTablas.add(Monitoreos.Querys.BorraBaajasInt());
-            PreparaTablas.add(Monitoreos.Querys.BorraBaajasExt());
-            PreparaTablas.add(Monitoreos.Querys.BorraCruceInternosTrabajo(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraCruceExternosTrabajo(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraBajasLInt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraBajasLExt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraDupXNombreInt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraDupXNombreExt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraInacInt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraInacExt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraNoNominaInt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraNoNominaExt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraUsrIncInt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraUsrIncExt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesInt());
-            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesExt());
-            PreparaTablas.add(Monitoreos.Querys.BorraCoincidenciasInt());
-            PreparaTablas.add(Monitoreos.Querys.BorraCoincidenciasExt());
-            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesSinUsoInt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesSinUsoExt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesSinUso(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.BorraPerfilNoAutorizadosInt());
-            PreparaTablas.add(Monitoreos.Querys.BorraPerfilNoAutorizadosExt());
+            PreparaTablas.add(Monitoreos.Tablas.BorraInternosTrabajo());            //Esta sección borra todas las tablas temporales que se crearon durante la ejecución anterior del programa
+            PreparaTablas.add(Monitoreos.Tablas.BorraExternosTrabajo());
+            PreparaTablas.add(Monitoreos.Tablas.BorraBaajasInt());
+            PreparaTablas.add(Monitoreos.Tablas.BorraBaajasExt());
+            PreparaTablas.add(Monitoreos.Tablas.BorraCruceInternosTrabajo(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraCruceExternosTrabajo(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraBajasLInt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraBajasLExt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraDupXNombreInt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraDupXNombreExt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraInacInt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraInacExt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraNoNominaInt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraNoNominaExt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraUsrIncInt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraUsrIncExt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesInt());
+            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesExt());
+            PreparaTablas.add(Monitoreos.Tablas.BorraCoincidenciasInt());
+            PreparaTablas.add(Monitoreos.Tablas.BorraCoincidenciasExt());
+            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesSinUsoInt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesSinUsoExt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesSinUso(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilNoAutorizadosInt());
+            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilNoAutorizadosExt());
 //
-            PreparaTablas.add(Monitoreos.Querys.CreaInternosTrabajo(cadenaBD));     //Crea la tabla de usuarios internos
-            PreparaTablas.add(Monitoreos.Querys.CreaExternosTrabajo(cadenaBD));     //Crea la tabla de usuarios externos
-            PreparaTablas.add(Monitoreos.Querys.CruceInternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios internos
-            PreparaTablas.add(Monitoreos.Querys.CruceExternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios externos
-            PreparaTablas.add(Monitoreos.Querys.NoNominaCreaInt(cadenaBD));         //Crea una tabla con los usuarios internos que no fueron encontrados en nómina
+            PreparaTablas.add(Monitoreos.Tablas.CreaInternosTrabajo(cadenaBD));     //Crea la tabla de usuarios internos
+            PreparaTablas.add(Monitoreos.Tablas.CreaExternosTrabajo(cadenaBD));     //Crea la tabla de usuarios externos
+            PreparaTablas.add(Monitoreos.Tablas.CruceInternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios internos
+            PreparaTablas.add(Monitoreos.Tablas.CruceExternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios externos
+            PreparaTablas.add(Monitoreos.Tablas.NoNominaCreaInt(cadenaBD));         //Crea una tabla con los usuarios internos que no fueron encontrados en nómina
             PreparaTablas.add(Monitoreos.Querys.NoNominaBorraInt(cadenaBD));        //Boora los usuarios internos no encontrados en la nómina del listado de usuarios internos
-            PreparaTablas.add(Monitoreos.Querys.NoNominaCreaExt(cadenaBD));         //Crea una tabla con los usuarios externos que no fueron encontrados en nómina
+            PreparaTablas.add(Monitoreos.Tablas.NoNominaCreaExt(cadenaBD));         //Crea una tabla con los usuarios externos que no fueron encontrados en nómina
             PreparaTablas.add(Monitoreos.Querys.NoNominaBorraExt(cadenaBD));        //Boora los usuarios externos no encontrados en la nómina del listado de usuarios externos
-            PreparaTablas.add(Monitoreos.Querys.CreaBajasInt(cadenaBD));            //Crea una tabla con los usuarios internos que se encuentran dados de baja en la nómina
+            PreparaTablas.add(Monitoreos.Tablas.CreaBajasInt(cadenaBD));            //Crea una tabla con los usuarios internos que se encuentran dados de baja en la nómina
             PreparaTablas.add(Monitoreos.Querys.BorraBajasInt(cadenaBD));           //Borra los usuarios internos que se encuientran dados de baja en la nómina del listado de usuarios internos
-            PreparaTablas.add(Monitoreos.Querys.CreaBajasExt(cadenaBD));            //Crea una tabla con los usuarios externos que se encuentran dados de baja en la nómina
+            PreparaTablas.add(Monitoreos.Tablas.CreaBajasExt(cadenaBD));            //Crea una tabla con los usuarios externos que se encuentran dados de baja en la nómina
             PreparaTablas.add(Monitoreos.Querys.BorraBajasExt(cadenaBD));           //Borra los usuarios externos que se encuientran dados de baja en la nómina del listado de usuarios externos
-            PreparaTablas.add(Monitoreos.Querys.CreaInactividadInt(cadenaBD));      //Crea una tabla con los usuarios internos que no han ingresado a la aplicación en determinado tiempo
+            PreparaTablas.add(Monitoreos.Tablas.CreaInactividadInt(cadenaBD));      //Crea una tabla con los usuarios internos que no han ingresado a la aplicación en determinado tiempo
             PreparaTablas.add(Monitoreos.Querys.BorraInactividadInt(cadenaBD));     //Borra los usuarios internos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios internos
-            PreparaTablas.add(Monitoreos.Querys.CreaInactividadExt(cadenaBD));      //Crea una tabla con los usuarios externos que no han ingresado a la aplicación en determinado tiempo
+            PreparaTablas.add(Monitoreos.Tablas.CreaInactividadExt(cadenaBD));      //Crea una tabla con los usuarios externos que no han ingresado a la aplicación en determinado tiempo
             PreparaTablas.add(Monitoreos.Querys.BorraInactividadExt(cadenaBD));     //Borra los usuarios externos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios externos
-            PreparaTablas.add(Monitoreos.Querys.UsrIDIncInt(cadenaBD));             //Crea una tabla con los usuarios internos que tienen un UserID incorrecto
+            PreparaTablas.add(Monitoreos.Tablas.UsrIDIncInt(cadenaBD));             //Crea una tabla con los usuarios internos que tienen un UserID incorrecto
             PreparaTablas.add(Monitoreos.Querys.BorraUsrIDIncInt(cadenaBD));        //Borra los usuaios internos con UserID incorrecto de la tabla de usuarios internos
-            PreparaTablas.add(Monitoreos.Querys.UsrIDIncExt(cadenaBD));             //Crea una tabla con los usuarios externos que tienen un UserID incorrecto
+            PreparaTablas.add(Monitoreos.Tablas.UsrIDIncExt(cadenaBD));             //Crea una tabla con los usuarios externos que tienen un UserID incorrecto
             PreparaTablas.add(Monitoreos.Querys.BorraUsrIDIncExt(cadenaBD));        //Borra los usuaios externos con UserID incorrecto de la tabla de usuarios externos
-            PreparaTablas.add(Monitoreos.Querys.CreaDuplicadosInt(cadenaBD));       //Crea una tabla con los usuarios internos que tienen duplicidad por nombre en el registro de usuarios del sistema
-            PreparaTablas.add(Monitoreos.Querys.CreaDuplicadosExt(cadenaBD));       //Crea una tabla con los usuarios externos que tienen duplicidad por nombre en el registro de usuarios del sistema
+            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosInt(cadenaBD));       //Crea una tabla con los usuarios internos que tienen duplicidad por nombre en el registro de usuarios del sistema
+            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosExt(cadenaBD));       //Crea una tabla con los usuarios externos que tienen duplicidad por nombre en el registro de usuarios del sistema
             PreparaTablas.add(Monitoreos.Querys.BorraExcepDuplicadosInt(cadenaBD)); //Borra los usuarios internos registrados en las excepciones de la tabla de usuarios duplicados
             PreparaTablas.add(Monitoreos.Querys.BorraExcepDuplicadosExt(cadenaBD)); //Borra los usuarios internos registrados en las excepciones de la tabla de usuarios duplicados
             PreparaTablas.add(Monitoreos.Querys.BorraDuplicadosInt(cadenaBD));      //Borra los usuarios duplicados que no fueron excepciones de la tabla original de usuarios internos
             PreparaTablas.add(Monitoreos.Querys.BorraDuplicadosExt(cadenaBD));      //Borra los usuarios duplicados que no fueron excepciones de la tabla original de usuarios externos
-            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesInt(cadenaBD));         //Crea una tabla que cruza los usuarios internos con los perfiles que deben tener según la matriz de perfiles
-            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesExt(cadenaBD));         //Crea una tabla que cruza los usuarios externos con los perfiles que deben tener según la matriz de perfiles
-            PreparaTablas.add(Monitoreos.Querys.CreaCoincidenciasInt());            //Obtiene los usuarios internos con coincidencias correctas en la matriz de perfiles
-            PreparaTablas.add(Monitoreos.Querys.CreaCoincidenciasExt());            //Obtiene los usuarios externos con coincidencias correctas en la matriz de perfiles
+            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesInt(cadenaBD));         //Crea una tabla que cruza los usuarios internos con los perfiles que deben tener según la matriz de perfiles
+            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesExt(cadenaBD));         //Crea una tabla que cruza los usuarios externos con los perfiles que deben tener según la matriz de perfiles
+            PreparaTablas.add(Monitoreos.Tablas.CreaCoincidenciasInt());            //Obtiene los usuarios internos con coincidencias correctas en la matriz de perfiles
+            PreparaTablas.add(Monitoreos.Tablas.CreaCoincidenciasExt());            //Obtiene los usuarios externos con coincidencias correctas en la matriz de perfiles
             PreparaTablas.add(Monitoreos.Querys.BorraPerfilesCorrectoInt());        //Borra los usuarios internos con perfil correcto de las incidencias
             PreparaTablas.add(Monitoreos.Querys.BorraPerfilesCorrectoExt());        //Borra los usuarios externos con perfil correcto de las incidencias
 //
@@ -987,13 +987,13 @@ public class MonitoreoPac extends javax.swing.JFrame {
 //            PreparaTablas.add(MonPac.Querys.BorraPerfilesCorrectoInt());            //Borra los usuarios internos con perfil correcto de las incidencias
 //            PreparaTablas.add(MonPac.Querys.BorraPerfilesCorrectoExt());            //Borra los usuarios externos con perfil correcto de las incidencias
 
-            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesSinUsoInt(cadenaBD));       //Crea una lista de perfiles no usados por los usuarios internos
-            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesSinUsoExt(cadenaBD));       //Crea una lista de perfiles no usados por los usuarios externos
-            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesSinUso(cadenaBD));          //Crea una lista de la interseccion de perfiles no usados
+            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesSinUsoInt(cadenaBD));       //Crea una lista de perfiles no usados por los usuarios internos
+            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesSinUsoExt(cadenaBD));       //Crea una lista de perfiles no usados por los usuarios externos
+            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesSinUso(cadenaBD));          //Crea una lista de la interseccion de perfiles no usados
             PreparaTablas.add(Monitoreos.Querys.BorraPerfilesSinUsoInt());          //
             PreparaTablas.add(Monitoreos.Querys.BorraPerfilesSinUsoExt());
-            PreparaTablas.add(Monitoreos.Querys.CreaUsrNoAutorizadosInt());
-            PreparaTablas.add(Monitoreos.Querys.CreaUsrNoAutorizadosExt());
+            PreparaTablas.add(Monitoreos.Tablas.CreaUsrNoAutorizadosInt());
+            PreparaTablas.add(Monitoreos.Tablas.CreaUsrNoAutorizadosExt());
             PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosInt());
             PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosExt());  
 
@@ -1172,17 +1172,17 @@ public class MonitoreoPac extends javax.swing.JFrame {
 
 
                 System.out.println("Obteniendo query de inserción");
-                InsUsuarios = Monitoreos.Querys.CreaInsertUsuarios(cadenaBD, usuarios);     //Crea la instrucción para insertar los usuarios a la BD local
+                InsUsuarios = Monitoreos.Tablas.CreaInsertUsuarios(cadenaBD, usuarios);     //Crea la instrucción para insertar los usuarios a la BD local
 
                 System.out.println("Obteniendo query para eliminar tabla de usuarios del día");
-                BorraUsuarios = Monitoreos.Querys.BorraUsuarios(cadenaBD);          //Instrucción para borrar la tabla de usuarios anterior
+                BorraUsuarios = Monitoreos.Tablas.BorraUsuarios(cadenaBD);          //Instrucción para borrar la tabla de usuarios anterior
 
                 System.out.println("Eliminando tabla previa del día");
                 EjecutaLo.Exect(ConLocal.conexion, BorraUsuarios);              //Borra la tala de usuarios anterior
                 ConUsuarios.Cerrar();
 
                 System.out.println("Creando tabla de usuarios");
-                Creacion = Monitoreos.Querys.CreaUsuarios(cadenaBD);            //Instrucción para crear la tabla de usuarios de la aplicación en la BD local
+                Creacion = Monitoreos.Tablas.CreaUsuarios(cadenaBD);            //Instrucción para crear la tabla de usuarios de la aplicación en la BD local
 
                 EjecutaLo.Exect(ConLocal.conexion, Creacion);                   //Crea tabla para usuarios
 
@@ -1211,9 +1211,9 @@ public class MonitoreoPac extends javax.swing.JFrame {
                 Conexion ConLocal = new Conexion();
                 ConLocal.AbrirLocal(cadenaBD);
                 ExecQuery EjecutaLo = new ExecQuery();
-                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Querys.BorraExcepDuplicados(cadenaBD));   //Borra el archivo anterior de excepciones
-                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Querys.CreaExcepDuplicados(cadenaBD));    //Crea la tabla de excepciones
-                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Querys.CreaExcepDuplicados(cadenaBD, ExcepDuplicado));    //Lee el archivo de excepciones y las inserta en la tabla
+                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Tablas.BorraExcepDuplicados(cadenaBD));   //Borra el archivo anterior de excepciones
+                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Tablas.CreaExcepDuplicados(cadenaBD));    //Crea la tabla de excepciones
+                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Tablas.CreaExcepDuplicados(cadenaBD, ExcepDuplicado));    //Lee el archivo de excepciones y las inserta en la tabla
             }
 
             if(Matriz.isSelected())                                             //Valida que esté habilitada la casilla de matriz de perfiles de perfiles
@@ -1222,9 +1222,9 @@ public class MonitoreoPac extends javax.swing.JFrame {
                 Conexion ConLocal = new Conexion();
                 ConLocal.AbrirLocal(cadenaBD);
                 ExecQuery EjecutaLo = new ExecQuery();
-                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Querys.BorraMatrizPerfiles(cadenaBD));    //Borra la matriz de perfiles anterior
-                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Querys.CreaMatrizPerfiles(cadenaBD));     //Crea la tabla para la matriz de perfiles
-                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Querys.CreaMatrizPerfiles(cadenaBD, MatrizPerfiles)); //Lee el archivo de matriz de perfiles y la inserta en la BD local
+                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Tablas.BorraMatrizPerfiles(cadenaBD));    //Borra la matriz de perfiles anterior
+                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Tablas.CreaMatrizPerfiles(cadenaBD));     //Crea la tabla para la matriz de perfiles
+                EjecutaLo.Exect(ConLocal.conexion, Monitoreos.Tablas.CreaMatrizPerfiles(cadenaBD, MatrizPerfiles)); //Lee el archivo de matriz de perfiles y la inserta en la BD local
 
             }
             
