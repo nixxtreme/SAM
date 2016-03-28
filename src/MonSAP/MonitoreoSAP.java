@@ -535,7 +535,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         jPasswordField1.setText("almapodrida");
         jPasswordField1.setToolTipText("Ingrese aquí la contraseña de la base de datos local");
 
-        jTextField30.setText("pacaplication");
+        jTextField30.setText("monitoreos");
         jTextField30.setToolTipText("Nombre de la base de datos operativa.");
         jTextField30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

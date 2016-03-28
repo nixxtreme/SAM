@@ -717,7 +717,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField30">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="pacaplication"/>
+                            <Property name="text" type="java.lang.String" value="monitoreos"/>
                             <Property name="toolTipText" type="java.lang.String" value="Nombre de la base de datos operativa."/>
                           </Properties>
                           <Events>
