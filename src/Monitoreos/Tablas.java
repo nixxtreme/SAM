@@ -254,7 +254,7 @@ public class Tablas
    public static String eliminaTablaUsrAdmin(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
-        String Statement = "DROP TABLE IF EXISTS `UsrAdmin"+ parametros[4];
+        String Statement = "DROP TABLE IF EXISTS UsrAdmin"+ parametros[4];
             
         return Statement;
     }

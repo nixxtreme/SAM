@@ -1068,11 +1068,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));
             
-            PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));     //Crea la tabla de usuarios externos                         
-            PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));           
-            PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));     //Crea la tabla de usuarios internos
+//            PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));     //Crea la tabla de usuarios externos                         
+//            PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));
+//            PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));           
+//            PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));
+//            PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));     //Crea la tabla de usuarios internos
             
             
 
