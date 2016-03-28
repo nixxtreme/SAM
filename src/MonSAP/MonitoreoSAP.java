@@ -1008,11 +1008,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            PreparaTablas.add(Monitoreos.Querys.BorraPerfilNoAutorizadosInt());
 //            PreparaTablas.add(Monitoreos.Querys.BorraPerfilNoAutorizadosExt());
               
-              PreparaTablas.add(Monitoreos.Querys.BorraExternosTrabajoSAP());
-              PreparaTablas.add(Monitoreos.Querys.BorraGenericosTrabajoSAP());
-              PreparaTablas.add(Monitoreos.Querys.BorraInternosTrabajoSAP());            //Esta sección borra todas las tablas temporales que se crearon durante la ejecución anterior del programa
-              PreparaTablas.add(Monitoreos.Querys.BorraUsrAdminAgregados());
-              PreparaTablas.add(Monitoreos.Querys.BorraUsrAdminEliminados());
+              PreparaTablas.add(Monitoreos.Tablas.BorraExternosTrabajoSAP());
+              PreparaTablas.add(Monitoreos.Tablas.BorraGenericosTrabajoSAP());
+              PreparaTablas.add(Monitoreos.Tablas.BorraInternosTrabajoSAP());            //Esta sección borra todas las tablas temporales que se crearon durante la ejecución anterior del programa
+              PreparaTablas.add(Monitoreos.Tablas.BorraUsrAdminAgregados());
+              PreparaTablas.add(Monitoreos.Tablas.BorraUsrAdminEliminados());
              
               
              
