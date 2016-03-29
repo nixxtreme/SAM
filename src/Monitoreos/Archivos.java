@@ -929,6 +929,10 @@ public class Archivos
             Bloq = temp[5];                                                    //Obtiene bloq de la posición 5 del arreglo
             Valido_de = temp[7];                                                     //Obtiene valido la posición 7 del arreglo
             Validez_a = temp[8];
+            Usuario = Usuario.replace(" ", "");
+            Nombre_Completo = Nombre_Completo.replace(" ", "");
+            Grupo = Grupo.replace(" ", "");
+            
             retorno = "('" + Usuario + "', '" + Nombre_Completo + "', '" + Grupo + "', '" + Bloq + "', '" + Valido_de + "', '" + Validez_a + "' )"; //Regresa la línea para ser insertada en la BD local
         }
  
