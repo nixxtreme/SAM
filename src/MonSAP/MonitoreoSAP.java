@@ -1072,11 +1072,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));
             
-//            PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));     //Crea la tabla de usuarios externos                         
-//            PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));           
-//            PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));     //Crea la tabla de usuarios internos
+            PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));     //Crea la tabla de usuarios externos                         
+            PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));           
+            PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));     //Crea la tabla de usuarios internos
             
             
 
@@ -1273,17 +1273,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                
                
             }
-//            if(ExcepDup.isSelected())                                           //Valida que este habilitada la casilla de excepciones
-//            {
-//                System.out.println("Registrando omisiones en duplicidad ");
-//                Conexion ConLocal = new Conexion();
-//                ConLocal.AbrirLocal(cadenaBD);
-//                ExecQuery EjecutaLo = new ExecQuery();
-//                EjecutaLo.Exect(ConLocal.conexion, MonPac.Querys.BorraExcepDuplicados(cadenaBD));   //Borra el archivo anterior de excepciones
-//                EjecutaLo.Exect(ConLocal.conexion, MonPac.Querys.CreaExcepDuplicados(cadenaBD));    //Crea la tabla de excepciones
-//                EjecutaLo.Exect(ConLocal.conexion, MonPac.Querys.CreaExcepDuplicados(cadenaBD, ExcepDuplicado));    //Lee el archivo de excepciones y las inserta en la tabla
-//            }
-//
+
 //            if(Matriz.isSelected())                                             //Valida que esté habilitada la casilla de matriz de perfiles de perfiles
 //            {
 //                System.out.println("Registrando matriz de perfiles estandarizados");
