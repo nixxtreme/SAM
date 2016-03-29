@@ -1406,7 +1406,7 @@ public class Resultados extends javax.swing.JFrame {
             
             if(Uint.next())                                                       //Verifica que el resultado no esté vacío
             {
-                agreg.beforeFirst();                                            //Regresa a la posición inicial del resultado
+                Uint.beforeFirst();                                            //Regresa a la posición inicial del resultado
                 modeloInt.addColumn("Agregar");
                 modeloInt.addColumn("Usuario");                                  //Crea las columnas necesarias para el reporte
                 modeloInt.addColumn("Nombre_Completo");
@@ -1479,7 +1479,7 @@ public class Resultados extends javax.swing.JFrame {
             Conexion conLocal = new Conexion();                                 //Inicia la conexión local
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            agreg = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosUsrExt());   //Ejecuta la consulta y almacena el resultado en la variable
+            Uext = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosUsrExt());   //Ejecuta la consulta y almacena el resultado en la variable
             
             if(Uext.next())                                                 //Verifica que el resultado no esté vacío
             {
@@ -1556,7 +1556,7 @@ public class Resultados extends javax.swing.JFrame {
             Conexion conLocal = new Conexion();                                 //Inicia la conexión local
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            agreg = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosUsrGen());   //Ejecuta la consulta y almacena el resultado en la variable
+            Ugen = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosUsrGen());   //Ejecuta la consulta y almacena el resultado en la variable
             
             if(Ugen.next())                                                 //Verifica que el resultado no esté vacío
             {

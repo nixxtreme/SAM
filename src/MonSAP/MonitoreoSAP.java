@@ -1072,14 +1072,21 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          //crea la tabla de usuarios administradores agregados
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));              //crea la tabla de usuarios administradores eliminados           
             
+            PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));  //crea la tabla de usuariosSAP de la tabla Usuarios2 para su manipulacion
             PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));         //Crea la tabla de usuarios externos                         
             PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));//borra los registros de esternos de la tabla
-            
             PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));           //crear tabla gen sap
+           
+            PreparaTablas.add(Monitoreos.Tablas.GenExt(cadenaBD));              //insertar genericos de TablaEXT a TablaGen
+            PreparaTablas.add(Monitoreos.Querys.BorrarGenExt(cadenaBD));        //eliminar genericos en tabla EXTERNOS
+            
             PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));//borrar los registros genericos sap de la tabla
             PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));          //Crea la tabla de usuarios internos
+            PreparaTablas.add(Monitoreos.Tablas.eliminaUsuariosSAP2(cadenaBD)); //elimina la tabla Usuarios2
           
 
+            
+            
             System.out.println("Creando nuevas tablas de trabajo");
             EjecutaSAP.Exect(ConLocal.conexion, PreparaTablas);                  //Ejecuta todas las instrucciones almacenadas en el arreglo
 //
@@ -1263,10 +1270,9 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 
                 
                PreparaTablas.add(Monitoreos.Tablas.eliminaTablaUsrsSAP(cadenaBD)); //elimina la tabla Usuarios SAP en caso de existir
-               PreparaTablas.add(Monitoreos.Tablas.eliminaUsuariosSAP2(cadenaBD)); //elimina la tabla Usuarios2
                PreparaTablas.add(Monitoreos.Tablas.CreaUsuarios2(cadenaBD));    //crea la tabla de usuarios
                PreparaTablas.add(Monitoreos.Tablas.InsertarUsuariosSAP(UsuariosSAP, cadenaBD));     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local
-               PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));  //crea la tabla de usuarios de la tabla UsuariosSAP para su manipulacion
+               
                
                
             }

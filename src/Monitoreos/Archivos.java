@@ -929,7 +929,7 @@ public class Archivos
             Bloq = temp[5];                                                    //Obtiene bloq de la posición 5 del arreglo
             Valido_de = temp[7];                                                     //Obtiene valido la posición 7 del arreglo
             Validez_a = temp[8];
-            Usuario = Usuario.replace(" ", "");
+            Usuario = Usuario.replace(" ", "");                                 //ELIMINAR LOS ESPACIOS ENTRE CAMPOS
             Nombre_Completo = Nombre_Completo.replace(" ", "");
             Grupo = Grupo.replace(" ", "");
             
