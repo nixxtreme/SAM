@@ -203,6 +203,10 @@ public class Archivos
         fecha = temp[28];                                                       //Obtiene el fecha de la posición 28 del arreglo
         System.out.println("numemp " + numero + " usuario " + usuario + " nombre " + nombre + " region " + region + " gerencia " + gerencia + " departamento " + departamento 
         + " idpuesto " + idpuesto + " jefe " + jefe + " estatus " + estatus + " fecha " + fecha);
+        if(fecha.contains("null") || fecha.contains("Null") || fecha.contains("NULL"))
+        {
+            fecha = "";
+        }
         if(!fecha.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
         {
             String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /
