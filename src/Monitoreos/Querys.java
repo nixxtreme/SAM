@@ -303,19 +303,19 @@ public class Querys
     
     public static String ResultadosUsrExt()                             //OBTIENE EL RESULTADO DE LOS USUARIOS EXTERNOS
     {
-        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a from FROM ExternosSAP";
+        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a  FROM ExternosSAP";
         return statement;
     }
     
     public static String ResultadosUsrInt()                             //OBTIENE EL RESULTADO DE LOS USUARIOS INTERNOS 
     {
-        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a from FROM InternosSAP";
+        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a  FROM InternosSAP";
         return statement;
     }
     
     public static String ResultadosUsrGen()                             //OBTIENE EL RESULTADO DE LOS USUARIOS GENERICOS 
     {
-        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a from FROM GenericosSAP";
+        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM GenericosSAP";
         return statement;
     }
 }
