@@ -445,6 +445,7 @@ public class Tablas
         return statement;
     }
     
+        //eliminacion tablas
      public static String eliminaTablaUsrsSAP(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
