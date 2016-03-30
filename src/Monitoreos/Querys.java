@@ -297,9 +297,40 @@ public class Querys
                 + "OR usuario LIKE '%W%'"
                 + "OR usuario LIKE '%X%'"
                 + "OR usuario LIKE '%Y%'"
-                + "OR usuario LIKE '%Z%'";;
+                + "OR usuario LIKE '%Z%'";
         return statement;
     }
+    
+    public static String BorrarGenExt(String cadenaBD)                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "DELETE FROM ExternosSAP WHERE usuario LIKE '%A%' OR usuario LIKE '%B%'"
+                + "OR usuario LIKE '%C%'"
+                + "OR usuario LIKE '%D%'"             
+                + "OR usuario LIKE '%F%'"
+                + "OR usuario LIKE '%G%'"
+                + "OR usuario LIKE '%H%'"
+                + "OR usuario LIKE '%I%'"
+                + "OR usuario LIKE '%J%'"
+                + "OR usuario LIKE '%K%'"
+                + "OR usuario LIKE '%L%'"
+                + "OR usuario LIKE '%M%'"
+                + "OR usuario LIKE '%N%'"
+                + "OR usuario LIKE '%Ñ%'"
+                + "OR usuario LIKE '%O%'"
+                + "OR usuario LIKE '%P%'"
+                + "OR usuario LIKE '%Q%'"
+                + "OR usuario LIKE '%R%'"
+                + "OR usuario LIKE '%S%'"
+                + "OR usuario LIKE '%T%'"
+                + "OR usuario LIKE '%U%'"
+                + "OR usuario LIKE '%V%'"
+                + "OR usuario LIKE '%W%'"
+                + "OR usuario LIKE '%Y%'"
+                + "OR usuario LIKE '%Z%'";
+        return statement;
+    }
+    
     
     public static String ResultadosUsrExt()                             //OBTIENE EL RESULTADO DE LOS USUARIOS EXTERNOS
     {
@@ -318,6 +349,8 @@ public class Querys
         String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM GenericosSAP";
         return statement;
     }
+    
+   
 }
 
     

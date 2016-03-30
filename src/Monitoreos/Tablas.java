@@ -398,8 +398,8 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists ExternosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4]
-                    + " WHERE usuario LIKE 'EX%'";
+        statement = "CREATE TABLE IF NOT EXISTS ExternosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4]
+                    + " WHERE usuario LIKE 'EX%' ";
         return statement;
     }
     
@@ -408,7 +408,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM usuariosSAP" + parametros[4] 
+        statement = "create table if not exists GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4] 
                     + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%' "
                 + "OR usuario LIKE '%C%' "
                 + "OR usuario LIKE '%D%' "
@@ -441,7 +441,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists InternosSAP SELECT Usuario, Nombre_Completo,Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4];
+        statement = "create table if not exists InternosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4];
         return statement;
     }
     
@@ -461,7 +461,7 @@ public class Tablas
         return statment;
     }
     
-    //USUARIOS 2 SAP
+                //USUARIOS 2 SAP
     public static String CreaUsuariosSAP(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
     {
         String[] parametros = cadenaBD.split("\\|");
@@ -488,6 +488,42 @@ public class Tablas
         valores = valores + Archivos.lecturaUsuariosSAP(usuarios, cadenaBD);
         return valores;
     }
+    
+    public static String GenExt(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String tabla = "INSERT IGNORE INTO GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM ExternosSAP"
+                + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%' "
+                + "OR usuario LIKE '%C%' "
+                + "OR usuario LIKE '%D%' "
+                + "OR usuario LIKE '%F%' "
+                + "OR usuario LIKE '%G%' "
+                + "OR usuario LIKE '%H%' "  
+                + "OR usuario LIKE '%I%' "
+                + "OR usuario LIKE '%J%' "
+                + "OR usuario LIKE '%K%' "
+                + "OR usuario LIKE '%L%' " 
+                + "OR usuario LIKE '%M%' "  
+                + "OR usuario LIKE '%N%' "
+                + "OR usuario LIKE '%Ñ%' "
+                + "OR usuario LIKE '%O%' "
+                + "OR usuario LIKE '%P%' "
+                + "OR usuario LIKE '%Q%' "
+                + "OR usuario LIKE '%R%' "
+                + "OR usuario LIKE '%S%' "
+                + "OR usuario LIKE '%T%' "
+                + "OR usuario LIKE '%U%' "
+                + "OR usuario LIKE '%V%' "
+                + "OR usuario LIKE '%W%' " 
+                + "OR usuario LIKE '%Y%' "
+                + "OR usuario LIKE '%Z%' ";
+        return tabla; 
+    }
+    
+    
+    
+    
+    
     
     public static String BorraInternosTrabajo()                                 //BORRA LA TABLA DE TRABAJO INTERNOS
     {
