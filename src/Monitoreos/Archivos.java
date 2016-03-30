@@ -876,6 +876,11 @@ public class Archivos
             rol = temp[4];                                                         //Obtiene la rol de la posición 4 del arreglo
             apellido = temp[3];                                                    //Obtiene la apellido de la posición 3 del arreglo
             val_auto = temp[7];                                                     //Obtiene el valor de autorizacion de la posición 7 del arreglo
+            usuario = usuario.trim();
+            nombre = nombre.trim();
+            rol = rol.trim();                                                //Obtiene la rol de la posición 4 del arreglo
+            apellido = apellido.trim();                                                    //Obtiene la apellido de la posición 3 del arreglo
+            val_auto = val_auto.trim();    
             retorno = "('" + usuario + "', '" + nombre + "', '" + apellido + "', '" + rol + "', '" + val_auto + "')"; //Regresa la línea para ser insertada en la BD local
         }
  
