@@ -773,6 +773,25 @@ public class Tablas
         return consulta;
     }
     
+    
+                            //***************SAP************
+    public static String NoNominaCreaIntSAP(String cadenaBD)                       //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "create table if not exists nonominaint SELECT * FROM cruceint" + parametros[4] + " where IDNUMEMP is null";
+                
+        return consulta;
+    }
+    
+    public static String NoNominaCreaExtSAP(String cadenaBD)                       //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "create table if not exists nonominaext SELECT * FROM cruceext" + parametros[4] + " where idusuario is null";
+                
+        return consulta;
+    }
+                            //*****************************
+    
     public static String CreaBajasExt(String cadenaBD)                          //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS QUE ESTÁN DADOS DE BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
