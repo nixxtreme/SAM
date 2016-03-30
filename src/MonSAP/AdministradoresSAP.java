@@ -43,7 +43,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         try
         {
             Conexion conLocal = new Conexion();                                 //Inicia la conexión local
-            System.out.println("CadenaBD " + cadenaBD);
+//            System.out.println("CadenaBD " + cadenaBD);
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
             AdmUsrAdm = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.AdministraUsuariosAdmin(cadenaBD));   //Ejecuta la consulta y almacena el resultado en la variable
@@ -61,7 +61,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 {
                     for(int k=1; k<7; k++)                                     
                     {
-                        System.out.println("index " + k);
+//                        System.out.println("index " + k);
                         if(k==1)                                                
                         {
                             registro[k-1]=AdmUsrAdm.getBoolean(k);                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
@@ -79,18 +79,18 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 TablaAdminUsrAdmin.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());  //Se hace uso de editor y renderizador de columnas
                 TablaAdminUsrAdmin.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
 
-                TableColumn CAgregar = TablaAdminUsrAdmin.getColumn("Agregar");      //Se llama a la columna
-                CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn Usuario = TablaAdminUsrAdmin.getColumn("Usuario");    //Se llama a la columna
-                Usuario.setPreferredWidth(140);                                 //Se define su tamaño
-                TableColumn Nombre = TablaAdminUsrAdmin.getColumn("Nombre");       //Se llama a la columna
-                Nombre.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn Apellido = TablaAdminUsrAdmin.getColumn("Apellido");        //Se llama a la columna
-                Apellido.setPreferredWidth(360);                                 //Se define su tamaño
-                TableColumn Rol = TablaAdminUsrAdmin.getColumn("Rol"); //Se llama a la columna
-                Rol.setPreferredWidth(160);                                  //Se define su tamaño
+                TableColumn CAgregar = TablaAdminUsrAdmin.getColumn("Permitir"); //Se llama a la columna
+                CAgregar.setPreferredWidth(50);                                 //Se define su tamaño
+                TableColumn Usuario = TablaAdminUsrAdmin.getColumn("Usuario");  //Se llama a la columna
+                Usuario.setPreferredWidth(120);                                 //Se define su tamaño
+                TableColumn Nombre = TablaAdminUsrAdmin.getColumn("Nombre");    //Se llama a la columna
+                Nombre.setPreferredWidth(270);                                   //Se define su tamaño
+                TableColumn Apellido = TablaAdminUsrAdmin.getColumn("Apellido");//Se llama a la columna
+                Apellido.setPreferredWidth(270);                                 //Se define su tamaño
+                TableColumn Rol = TablaAdminUsrAdmin.getColumn("Rol");          //Se llama a la columna
+                Rol.setPreferredWidth(160);                                     //Se define su tamaño
                 TableColumn Valorauto = TablaAdminUsrAdmin.getColumn("Valor de autorización");        //Se llama a la columna
-                Valorauto.setPreferredWidth(70);                                  //Se define su tamaño
+                Valorauto.setPreferredWidth(90);                                  //Se define su tamaño
                 
             }
             else                                                                //Si el resultado se encontraba vacío
