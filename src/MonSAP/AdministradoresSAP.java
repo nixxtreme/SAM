@@ -43,9 +43,10 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         try
         {
             Conexion conLocal = new Conexion();                                 //Inicia la conexión local
+            System.out.println("CadenaBD " + cadenaBD);
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            AdmUsrAdm = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosBajasInt());   //Ejecuta la consulta y almacena el resultado en la variable
+            AdmUsrAdm = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.AdministraUsuariosAdmin(cadenaBD));   //Ejecuta la consulta y almacena el resultado en la variable
             
             if(AdmUsrAdm.next())                                                 //Verifica que el resultado no esté vacío
             {
@@ -58,8 +59,9 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 AdmUsrAdm.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 while(AdmUsrAdm.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<16; k++)                                     
+                    for(int k=1; k<7; k++)                                     
                     {
+                        System.out.println("index " + k);
                         if(k==1)                                                
                         {
                             registro[k-1]=AdmUsrAdm.getBoolean(k-1);                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
