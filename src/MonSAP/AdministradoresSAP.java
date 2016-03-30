@@ -9,6 +9,7 @@ import Monitoreos.Clase_CellEditor;
 import Monitoreos.Clase_CellRender;
 import Monitoreos.Conexion;
 import Monitoreos.ExecQuery;
+import java.sql.ResultSet;
 import static javax.swing.JTable.AUTO_RESIZE_OFF;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -18,16 +19,20 @@ import javax.swing.table.TableColumn;
  * @author VS3XXBD
  */
 public class AdministradoresSAP extends javax.swing.JFrame {
-
+    String cadenaBD;
+    ResultSet AdmUsrAdm;
     /**
      * Creates new form AdministradoresSAP
      */
     public AdministradoresSAP(String cadenaBD) {
+        this.cadenaBD = cadenaBD;
         initComponents();
-        definirModelosAdminUsrAdmin(cadenaBD);
+        definirModelosAdminUsrAdmin();
     }
     
-    void definirModelosAdminUsrAdmin(cadenaBD)                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
+    
+    
+    void definirModelosAdminUsrAdmin()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
     {
         DefaultTableModel modeloBajasInt = new DefaultTableModel();             //Crea el objeto modelo de tabla
         
@@ -40,9 +45,9 @@ public class AdministradoresSAP extends javax.swing.JFrame {
             Conexion conLocal = new Conexion();                                 //Inicia la conexión local
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            bajasInt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosBajasInt());   //Ejecuta la consulta y almacena el resultado en la variable
+            AdmUsrAdm = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosBajasInt());   //Ejecuta la consulta y almacena el resultado en la variable
             
-            if(bajasInt.next())                                                 //Verifica que el resultado no esté vacío
+            if(AdmUsrAdm.next())                                                 //Verifica que el resultado no esté vacío
             {
                 modeloBajasInt.addColumn("Permitir");                            //Crea las columnas necesarias para el reporte
                 modeloBajasInt.addColumn("Usuario");
@@ -50,8 +55,8 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 modeloBajasInt.addColumn("Apellido");
                 modeloBajasInt.addColumn("Rol");
                 modeloBajasInt.addColumn("Valor de autorización");
-                bajasInt.beforeFirst();                                         //Regresa a la posición inicial del resultado
-                while(bajasInt.next())                                          //Lee cada registro hasta que ya no haya más
+                AdmUsrAdm.beforeFirst();                                         //Regresa a la posición inicial del resultado
+                while(AdmUsrAdm.next())                                          //Lee cada registro hasta que ya no haya más
                 {
                     for(int k=1; k<16; k++)                                     
                     {
@@ -61,52 +66,47 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                         }
                         else
                         {
-                            registro[k-1]=bajasInt.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas
+                            registro[k-1]=AdmUsrAdm.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas
                         }
                     }
                     modeloBajasInt.addRow(registro);                            //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
                 }
 
-                tablaBajasInt.setModel(modeloBajasInt);                         //Una vez construida completamente la tabla se define el modelo a la tabla original
-                tablaBajasInt.setAutoResizeMode(AUTO_RESIZE_OFF);               //Se desabilita el ajuste automatico de ancho de columnas para establecerlo manualmente
-                tablaBajasInt.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());  //Se hace uso de editor y renderizador de columnas
-                tablaBajasInt.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
+                TablaAdminUsrAdmin.setModel(modeloBajasInt);                         //Una vez construida completamente la tabla se define el modelo a la tabla original
+                TablaAdminUsrAdmin.setAutoResizeMode(AUTO_RESIZE_OFF);               //Se desabilita el ajuste automatico de ancho de columnas para establecerlo manualmente
+                TablaAdminUsrAdmin.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());  //Se hace uso de editor y renderizador de columnas
+                TablaAdminUsrAdmin.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
 
-                TableColumn CAgregar = tablaBajasInt.getColumn("Agregar");      //Se llama a la columna
+                TableColumn CAgregar = TablaAdminUsrAdmin.getColumn("Agregar");      //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CNumEmp = tablaBajasInt.getColumn("Número de empleado");    //Se llama a la columna
+                TableColumn CNumEmp = TablaAdminUsrAdmin.getColumn("Número de empleado");    //Se llama a la columna
                 CNumEmp.setPreferredWidth(140);                                 //Se define su tamaño
-                TableColumn CUserID = tablaBajasInt.getColumn("User ID");       //Se llama a la columna
+                TableColumn CUserID = TablaAdminUsrAdmin.getColumn("User ID");       //Se llama a la columna
                 CUserID.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CNombre = tablaBajasInt.getColumn("Nombre");        //Se llama a la columna
+                TableColumn CNombre = TablaAdminUsrAdmin.getColumn("Nombre");        //Se llama a la columna
                 CNombre.setPreferredWidth(360);                                 //Se define su tamaño
-                TableColumn CFecha = tablaBajasInt.getColumn("Fecha de último acceso"); //Se llama a la columna
+                TableColumn CFecha = TablaAdminUsrAdmin.getColumn("Fecha de último acceso"); //Se llama a la columna
                 CFecha.setPreferredWidth(160);                                  //Se define su tamaño
-                TableColumn CRegion = tablaBajasInt.getColumn("Región");        //Se llama a la columna
+                TableColumn CRegion = TablaAdminUsrAdmin.getColumn("Región");        //Se llama a la columna
                 CRegion.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CIP = tablaBajasInt.getColumn("IP");                //Se llama a la columna
+                TableColumn CIP = TablaAdminUsrAdmin.getColumn("IP");                //Se llama a la columna
                 CIP.setPreferredWidth(120);                                     //Se define su tamaño
-                TableColumn CIDPerfil = tablaBajasInt.getColumn("ID perfil");   //Se llama a la columna
+                TableColumn CIDPerfil = TablaAdminUsrAdmin.getColumn("ID perfil");   //Se llama a la columna
                 CIDPerfil.setPreferredWidth(85);                                //Se define su tamaño
-                TableColumn CPerfil = tablaBajasInt.getColumn("Perfil");        //Se llama a la columna
+                TableColumn CPerfil = TablaAdminUsrAdmin.getColumn("Perfil");        //Se llama a la columna
                 CPerfil.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CBBFNumEMP = tablaBajasInt.getColumn("ID Numero de empleado");  //Se llama a la columna
+                TableColumn CBBFNumEMP = TablaAdminUsrAdmin.getColumn("ID Numero de empleado");  //Se llama a la columna
                 CBBFNumEMP.setPreferredWidth(160);                              //Se define su tamaño
-                TableColumn CBBFPuesto = tablaBajasInt.getColumn("Puesto");     //Se llama a la columna
+                TableColumn CBBFPuesto = TablaAdminUsrAdmin.getColumn("Puesto");     //Se llama a la columna
                 CBBFPuesto.setPreferredWidth(400);                              //Se define su tamaño
-                TableColumn CBBFGerencia = tablaBajasInt.getColumn("Gerencia"); //Se llama a la columna
+                TableColumn CBBFGerencia = TablaAdminUsrAdmin.getColumn("Gerencia"); //Se llama a la columna
                 CBBFGerencia.setPreferredWidth(300);                            //Se define su tamaño
-                TableColumn CBBFNombre = tablaBajasInt.getColumn("Nombre ");    //Se llama a la columna
-                CBBFNombre.setPreferredWidth(300);                              //Se define su tamaño
-                TableColumn CBBFFechaBaja = tablaBajasInt.getColumn("Fecha de baja");   //Se llama a la columna
-                CBBFFechaBaja.setPreferredWidth(160);                           //Se define su tamaño
-                TableColumn Estatus = tablaBajasInt.getColumn("Estatus");       //Se llama a la columna
-                Estatus.setPreferredWidth(160);                                 //Se define su tamaño
+                                                 //Se define su tamaño
             }
             else                                                                //Si el resultado se encontraba vacío
             {
                 modeloBajasInt.addColumn("No se encontraron inconsistencias");  //Se crea una columna con la leyecnda
-                tablaBajasInt.setModel(modeloBajasInt);                         //Se define el modelo 
+                TablaAdminUsrAdmin.setModel(modeloBajasInt);                         //Se define el modelo 
             }
             
             conLocal.Cerrar();
@@ -133,7 +133,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableAdminUsrAdmin = new javax.swing.JTable();
+        TablaAdminUsrAdmin = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -157,7 +157,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTableAdminUsrAdmin.setModel(new javax.swing.table.DefaultTableModel(
+        TablaAdminUsrAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -168,7 +168,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTableAdminUsrAdmin);
+        jScrollPane1.setViewportView(TablaAdminUsrAdmin);
 
         jButton1.setText("jButton1");
 
@@ -240,17 +240,17 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdministradoresSAP().setVisible(true);
+                new AdministradoresSAP(args[1]).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaAdminUsrAdmin;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableAdminUsrAdmin;
     // End of variables declaration//GEN-END:variables
 }
