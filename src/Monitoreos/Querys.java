@@ -181,11 +181,10 @@ public class Querys
         return statement;
     }
     
-    public static String ResultadosBajasInt()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS DADOS DE BAJA
+    public static String AdministraUsuariosAdmin(String cadenaBD)                                   //OBTIENE EL RESULTADO DE LOS USUARIOS ADMINISTRADORES QUE FUERON PERMITIDOS A PESAR DE NO ESTAR PRESENTES EN NÓMINA DE USUARIOS INTERNOS O EXTERNOS
     {
-        String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, IDNOMBRE, IDFECHA, "
-                + "IDESTATUS  from baajasint union select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
-                + "IDNOMBRE, IDFECHA, IDESTATUS  from nonominaint";
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "select PERMITIDO, USER_NAME, USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION  from USRADMIN" + parametros[4];
         return statement;
     }
     
