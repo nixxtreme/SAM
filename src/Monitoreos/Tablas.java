@@ -289,7 +289,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS usradmin"+ parametros[4] + " (USUARIO VARCHAR(25) NOT NULL, NOMBRE VARCHAR(45), APELLIDO VARCHAR(43), "
-        + "ROL VARCHAR(25) , VALOR_AUTORIZACION VARCHAR(8), PRIMARY KEY (USUARIO))";
+        + "ROL VARCHAR(25) , VALOR_AUTORIZACION VARCHAR(8), PERMITIDO BOOLEAN NOT NULL DEFAULT FALSE, PRIMARY KEY (USUARIO))";
         
         //System.out.println("Tabla \n" + tabla);
         
