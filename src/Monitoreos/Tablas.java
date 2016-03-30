@@ -552,6 +552,38 @@ public class Tablas
         return statement;
     }
     
+                            //****SAP*******
+    public static String BorraBajasIntSAP()                                       //BORRA LA TABLA DE TRABAJO DE INCIDENCIAS DE BAJAS INTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS BAJASINTSAP";
+        return statement;
+    }
+    
+    public static String BorraBajasExtSAP()                                       //BORRA LA TABLA DE TRABAJO DE INCIDENCIAS DE BAJAS EXTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS BAJASEXTSAP";
+        return statement;
+    }
+    
+    public static String BorraCruceInternosSAP(String cadenaBD)             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS INTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "DROP TABLE IF EXISTS CRUCEINTSAP" + parametros[4];
+        return statement;
+    }
+    
+    public static String BorraCruceExternosSAP(String cadenaBD)             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "DROP TABLE IF EXISTS CRUCEEXTSAP" + parametros[4];
+        return statement;
+    }
+    
+    
+    
+    
+    
+    
     public static String BorraCruceInternosTrabajo(String cadenaBD)             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS INTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
@@ -756,6 +788,27 @@ public class Tablas
                 
         return consulta;
     }
+    
+                    //******SAP******
+    
+    public static String CreaBajasExtSAP(String cadenaBD)                          //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS QUE ESTÁN DADOS DE BAJA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "create table if not exists bajasextSAP SELECT * FROM cruceextSAP" + parametros[4] + " WHERE IDESTATUS = 'ELIMINADO'";
+                
+        return consulta;
+    }
+    
+    public static String CreaBajasIntSAP(String cadenaBD)                          //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS QUE ESTÁN DADOS DE BAJA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "create table if not exists bajasintSAP SELECT * FROM cruceintSAP" + parametros[4] + " WHERE IDESTATUS = 'ELIMINADO'";
+                
+        return consulta;
+    }
+    
+    
+    
     
     public static String CreaInactividadExt(String cadenaBD)                    //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS CON INACTIVIDAD
     {

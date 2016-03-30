@@ -1007,8 +1007,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
 
             
-//            PreparaTablas.add(Monitoreos.Querys.BorraBaajasInt());
-//            PreparaTablas.add(Monitoreos.Querys.BorraBaajasExt());
+            PreparaTablas.add(Monitoreos.Tablas.BorraBajasIntSAP());
+            PreparaTablas.add(Monitoreos.Tablas.BorraBajasExtSAP());
             
 //            PreparaTablas.add(Monitoreos.Querys.BorraBajasLInt(cadenaBD));
 //            PreparaTablas.add(Monitoreos.Querys.BorraBajasLExt(cadenaBD));
@@ -1041,9 +1041,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
              
 ////
               
-              
-//            PreparaTablas.add(Monitoreos.Querys.CruceInternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios internos
-//            PreparaTablas.add(Monitoreos.Querys.CruceExternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios externos
+            PreparaTablas.add(Monitoreos.Tablas.CruceInternosSAP(cadenaBD)); 
+            PreparaTablas.add(Monitoreos.Tablas.CruceExternosSAP(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios internos//            PreparaTablas.add(Monitoreos.Querys.CruceExternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios externos
 //            PreparaTablas.add(Monitoreos.Querys.NoNominaCreaInt(cadenaBD));         //Crea una tabla con los usuarios internos que no fueron encontrados en nómina
 //            PreparaTablas.add(Monitoreos.Querys.NoNominaBorraInt(cadenaBD));        //Boora los usuarios internos no encontrados en la nómina del listado de usuarios internos
 //            PreparaTablas.add(Monitoreos.Querys.NoNominaCreaExt(cadenaBD));         //Crea una tabla con los usuarios externos que no fueron encontrados en nómina
