@@ -63,7 +63,7 @@ public class Resultados extends javax.swing.JFrame {
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
             bajasIntSAP = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosBajasIntSAP());   //Ejecuta la consulta y almacena el resultado en la variable
             
-            if(bajasInt.next())                                                 //Verifica que el resultado no esté vacío
+            if(bajasIntSAP.next())                                                 //Verifica que el resultado no esté vacío
             {
                 modeloBajasInt.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
                 modeloBajasInt.addColumn("Número de empleado");
@@ -80,8 +80,8 @@ public class Resultados extends javax.swing.JFrame {
                 modeloBajasInt.addColumn("Nombre ");
                 modeloBajasInt.addColumn("Fecha de baja");
                 modeloBajasInt.addColumn("Estatus");
-                bajasInt.beforeFirst();                                         //Regresa a la posición inicial del resultado
-                while(bajasInt.next())                                          //Lee cada registro hasta que ya no haya más
+                bajasIntSAP.beforeFirst();                                         //Regresa a la posición inicial del resultado
+                while(bajasIntSAP.next())                                          //Lee cada registro hasta que ya no haya más
                 {
                     for(int k=1; k<16; k++)                                     
                     {
@@ -91,7 +91,7 @@ public class Resultados extends javax.swing.JFrame {
                         }
                         else
                         {
-                            registro[k-1]=bajasInt.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas
+                            registro[k-1]=bajasIntSAP.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas
                         }
                     }
                     modeloBajasInt.addRow(registro);                            //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
@@ -163,9 +163,9 @@ public class Resultados extends javax.swing.JFrame {
             Conexion conLocal = new Conexion();                                 //Crea conexión para la consulta
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto de ejecución
-            bajasExt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosBajasExt());   //Ejecuta la consulta y almacena el resultado en bajasExt
+            bajasExtSAP = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosBajasExt());   //Ejecuta la consulta y almacena el resultado en bajasExt
             
-            if(bajasExt.next())                                                 //Valida que no se encuentre vacío el resutado de la consulta
+            if(bajasExtSAP.next())                                                 //Valida que no se encuentre vacío el resutado de la consulta
             {
                 modeloBajasExt.addColumn("Agregar");                            //agrega las columnas a la tabla
                 modeloBajasExt.addColumn("Número de empleado");
@@ -182,8 +182,8 @@ public class Resultados extends javax.swing.JFrame {
                 modeloBajasExt.addColumn("Nombre ");
                 modeloBajasExt.addColumn("Fecha de baja");
                 modeloBajasExt.addColumn("Estatus");
-                bajasExt.beforeFirst();                                         //Establece el puntero en la posición inicial
-                while(bajasExt.next())                                          //Lee cada registro hasta que ya no haya más                            
+                bajasExtSAP.beforeFirst();                                         //Establece el puntero en la posición inicial
+                while(bajasExtSAP.next())                                          //Lee cada registro hasta que ya no haya más                            
                 {
                     for(int k=1; k<16; k++)                                     //Recorre los elementos del registro para obtener cada dato de las columnas
                     {
@@ -193,7 +193,7 @@ public class Resultados extends javax.swing.JFrame {
                         }
                         else
                         {
-                            registro[k-1]=bajasExt.getString(k-1);
+                            registro[k-1]=bajasExtSAP.getString(k-1);
                         }
                     }
                     modeloBajasExt.addRow(registro);                            //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
