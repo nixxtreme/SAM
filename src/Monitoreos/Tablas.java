@@ -1045,6 +1045,48 @@ public class Tablas
         return statement;
     }
     
+    
+                    //SAP
+    
+    public static String CruceInternosSAP(String cadenaBD)                         //REALIZA EL CRUCE DE LOS USUARIOS INTERNOS
+    {
+        String statement = null;
+        String[] parametros = cadenaBD.split("\\|");
+        statement = "create table if not exists cruceintSAP" + parametros[4] + " SELECT INTERNOSSAP.Usuario, INTERNOSSAP.Nombre_Completo, INTERNOSSAP.Grupo "
+                + "INTERNOSSAP.Valido_de, INTERNOSSAP.Validez_a "
+                + "idint" + parametros[4] + ".NUMEROEMPLEADO AS IDNUMEMP, "
+                + "idint" + parametros[4] + ".USUARIO AS IDUSUARIO, idint" + parametros[4] + ".NOMBRECOMPLETO AS IDNOMBRE, "
+                + "idint" + parametros[4] + ".REGION AS IDREGION, idint" + parametros[4] + ".GERENCIA AS IDGERENCIA, "
+                + "idint" + parametros[4] + ".DEPARTAMENTO AS IDDEPARTAMENTO, "
+                + "idint" + parametros[4] + ".PUESTO AS IDPUESTO, idint" + parametros[4] + ".IDPUESTO AS IDIDPUESTO, "       
+                + "idint" + parametros[4] + ".ESTATUS AS IDESTATUS, idint" + parametros[4] + ".FECHA AS IDFECHA "
+                + ""
+                + "FROM INTERNOSSAP left join idint" + parametros[4] 
+                + " on INTERNOSSAP.Usuario=idint" + parametros[4] + ".NUMEROEMPLEADO";
+        
+        return statement;
+    }
+    
+    
+    public static String CruceExternosSAP(String cadenaBD)                         //REALIZA EL CRUCE DE LOS USUARIOS EXTERNOS
+    {
+        String statement = null;
+        String[] parametros = cadenaBD.split("\\|");
+        statement = "create table if not exists cruceextSAP" + parametros[4] + " SELECT EXTERNOSSAP.Usuario, EXTERNOSSAP.Nombre_Completo, EXTERNOSSAP.Grupo "
+                + "EXTERNOSSAP.Valido_de, EXTERNOSSAP.Validez_a "
+                    + "idext" + parametros[4] + ".NUMEROEMPLEADO AS IDNUMEMP, " 
+                    + "idext" + parametros[4] + ".USUARIO AS IDUSUARIO, idext" + parametros[4] + ".NOMBRECOMPLETO AS IDNOMBRE, "
+                    + "idext" + parametros[4] + ".REGION AS IDREGION, idext" + parametros[4] + ".GERENCIA AS IDGERENCIA, "
+                    + "idext" + parametros[4] + ".DEPARTAMENTO AS IDDEPARTAMENTO, "
+                    + "idext" + parametros[4] + ".PUESTO AS IDPUESTO, idext" + parametros[4] + ".IDPUESTO AS IDIDPUESTO, "                    
+                    + "idext" + parametros[4] + ".ESTATUS AS IDESTATUS, idext" + parametros[4] + ".FECHA AS IDFECHA  "
+                    + "FROM EXTERNOSSAP left join idext" + parametros[4]
+                    + " on EXTERNOSSAP.Usuario=idext" + parametros[4] + ".NUMEROEMPLEADO ";
+            
+        return statement;
+    }
+    
+    
     public static String BorraUsrAdminAgregados()                          //BORRA LA TABLA DE TRABAJO DE USUARIOS ADMINISTRADORES AGREGADOS
     {
         String statement = "DROP TABLE IF EXISTS agregados";

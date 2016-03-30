@@ -23,14 +23,14 @@ import javax.swing.text.TableView.TableRow;
  */
 public class Resultados extends javax.swing.JFrame {
     String cadenaBD;
-    ResultSet bajasInt, bajasExt, usrInt, usrExt, inactInt, inactExt, dupInt, dupExt, perfilInt, perfilExt, noAutoInt, noAutoExt, agreg, elim, Uint, Uext, Ugen;       //Almacenan los resultados de cada consulta
+    ResultSet bajasIntSAP, bajasExtSAP, usrInt, usrExt, inactInt, inactExt, dupInt, dupExt, perfilInt, perfilExt, noAutoInt, noAutoExt, agreg, elim, Uint, Uext, Ugen;       //Almacenan los resultados de cada consulta
   
     
     public Resultados(String cadena) {                                          //Inicializa la ventana y ejecuta los métodos para que se visualicen las tablas de resultados
         cadenaBD = cadena;                                                      //Almacena la cadena con los datos de conexión a la base de datos local
         initComponents();                                                       //Inicializa los componentes proncipales de la ventana
-//        definirModelosBajasInt();                                               //Define el modelo de la tabla de inconsistencias de bajas internos
-//        definirModelosBajasExt();                                               //Define el modelo de la tabla de inconsistencias de bajas externos
+        definirModelosBajasIntSAP();                                               //Define el modelo de la tabla de inconsistencias de bajas internos
+        definirModelosBajasExtSAP();                                               //Define el modelo de la tabla de inconsistencias de bajas externos
 //        definirModelosInactividadInt();                                         //Define el modelo de la tabla de inconsistencias de inactividad internos
 //        definirModelosInactividadExt();                                         //Define el modelo de la tabla de inconsistencias de inactividad externos
 //        definirModelosUserIncInt();                                             //Define el modelo de la tabla de inconsistencias de UserID incorrecto internos
@@ -48,7 +48,7 @@ public class Resultados extends javax.swing.JFrame {
         definirModelosUsuariosGen();
     }
     
-    void definirModelosBajasInt()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
+    void definirModelosBajasIntSAP()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
     {
         DefaultTableModel modeloBajasInt = new DefaultTableModel();             //Crea el objeto modelo de tabla
         
@@ -61,7 +61,7 @@ public class Resultados extends javax.swing.JFrame {
             Conexion conLocal = new Conexion();                                 //Inicia la conexión local
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            bajasInt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosBajasInt());   //Ejecuta la consulta y almacena el resultado en la variable
+            bajasIntSAP = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosBajasIntSAP());   //Ejecuta la consulta y almacena el resultado en la variable
             
             if(bajasInt.next())                                                 //Verifica que el resultado no esté vacío
             {
@@ -150,7 +150,7 @@ public class Resultados extends javax.swing.JFrame {
         
     }
     
-    void definirModelosBajasExt()                                               //Define el modelo de la tabla de inconsistencias de usuarios externos reportados como baja
+    void definirModelosBajasExtSAP()                                               //Define el modelo de la tabla de inconsistencias de usuarios externos reportados como baja
     {
         DefaultTableModel modeloBajasExt = new DefaultTableModel();             //Define el objeto modelo de tabla
         
