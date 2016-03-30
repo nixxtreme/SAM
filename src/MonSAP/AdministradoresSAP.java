@@ -64,11 +64,11 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                         System.out.println("index " + k);
                         if(k==1)                                                
                         {
-                            registro[k-1]=AdmUsrAdm.getBoolean(k-1);                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
+                            registro[k-1]=AdmUsrAdm.getBoolean(k);                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
                         }
                         else
                         {
-                            registro[k-1]=AdmUsrAdm.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas
+                            registro[k-1]=AdmUsrAdm.getString(k);              //Recorre los elementos del registro para obtener cada dato de las columnas
                         }
                     }
                     modeloBajasInt.addRow(registro);                            //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
@@ -81,29 +81,17 @@ public class AdministradoresSAP extends javax.swing.JFrame {
 
                 TableColumn CAgregar = TablaAdminUsrAdmin.getColumn("Agregar");      //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CNumEmp = TablaAdminUsrAdmin.getColumn("Número de empleado");    //Se llama a la columna
-                CNumEmp.setPreferredWidth(140);                                 //Se define su tamaño
-                TableColumn CUserID = TablaAdminUsrAdmin.getColumn("User ID");       //Se llama a la columna
-                CUserID.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CNombre = TablaAdminUsrAdmin.getColumn("Nombre");        //Se llama a la columna
-                CNombre.setPreferredWidth(360);                                 //Se define su tamaño
-                TableColumn CFecha = TablaAdminUsrAdmin.getColumn("Fecha de último acceso"); //Se llama a la columna
-                CFecha.setPreferredWidth(160);                                  //Se define su tamaño
-                TableColumn CRegion = TablaAdminUsrAdmin.getColumn("Región");        //Se llama a la columna
-                CRegion.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CIP = TablaAdminUsrAdmin.getColumn("IP");                //Se llama a la columna
-                CIP.setPreferredWidth(120);                                     //Se define su tamaño
-                TableColumn CIDPerfil = TablaAdminUsrAdmin.getColumn("ID perfil");   //Se llama a la columna
-                CIDPerfil.setPreferredWidth(85);                                //Se define su tamaño
-                TableColumn CPerfil = TablaAdminUsrAdmin.getColumn("Perfil");        //Se llama a la columna
-                CPerfil.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CBBFNumEMP = TablaAdminUsrAdmin.getColumn("ID Numero de empleado");  //Se llama a la columna
-                CBBFNumEMP.setPreferredWidth(160);                              //Se define su tamaño
-                TableColumn CBBFPuesto = TablaAdminUsrAdmin.getColumn("Puesto");     //Se llama a la columna
-                CBBFPuesto.setPreferredWidth(400);                              //Se define su tamaño
-                TableColumn CBBFGerencia = TablaAdminUsrAdmin.getColumn("Gerencia"); //Se llama a la columna
-                CBBFGerencia.setPreferredWidth(300);                            //Se define su tamaño
-                                                 //Se define su tamaño
+                TableColumn Usuario = TablaAdminUsrAdmin.getColumn("Usuario");    //Se llama a la columna
+                Usuario.setPreferredWidth(140);                                 //Se define su tamaño
+                TableColumn Nombre = TablaAdminUsrAdmin.getColumn("Nombre");       //Se llama a la columna
+                Nombre.setPreferredWidth(70);                                  //Se define su tamaño
+                TableColumn Apellido = TablaAdminUsrAdmin.getColumn("Apellido");        //Se llama a la columna
+                Apellido.setPreferredWidth(360);                                 //Se define su tamaño
+                TableColumn Rol = TablaAdminUsrAdmin.getColumn("Rol"); //Se llama a la columna
+                Rol.setPreferredWidth(160);                                  //Se define su tamaño
+                TableColumn Valorauto = TablaAdminUsrAdmin.getColumn("Valor de autorización");        //Se llama a la columna
+                Valorauto.setPreferredWidth(70);                                  //Se define su tamaño
+                
             }
             else                                                                //Si el resultado se encontraba vacío
             {
