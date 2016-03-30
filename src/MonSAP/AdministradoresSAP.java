@@ -62,7 +62,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                     {
                         if(k==1)                                                
                         {
-                            registro[k-1]=Boolean.TRUE;                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
+                            registro[k-1]=AdmUsrAdm.getBoolean(k-1);                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
                         }
                         else
                         {
