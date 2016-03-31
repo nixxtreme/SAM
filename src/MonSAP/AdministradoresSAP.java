@@ -80,17 +80,17 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 TablaAdminUsrAdmin.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
 
                 TableColumn CAgregar = TablaAdminUsrAdmin.getColumn("Permitir"); //Se llama a la columna
-                CAgregar.setPreferredWidth(50);                                 //Se define su tamaño
+                CAgregar.setPreferredWidth(60);                                 //Se define su tamaño
                 TableColumn Usuario = TablaAdminUsrAdmin.getColumn("Usuario");  //Se llama a la columna
                 Usuario.setPreferredWidth(120);                                 //Se define su tamaño
                 TableColumn Nombre = TablaAdminUsrAdmin.getColumn("Nombre");    //Se llama a la columna
-                Nombre.setPreferredWidth(270);                                   //Se define su tamaño
+                Nombre.setPreferredWidth(250);                                   //Se define su tamaño
                 TableColumn Apellido = TablaAdminUsrAdmin.getColumn("Apellido");//Se llama a la columna
-                Apellido.setPreferredWidth(270);                                 //Se define su tamaño
+                Apellido.setPreferredWidth(250);                                 //Se define su tamaño
                 TableColumn Rol = TablaAdminUsrAdmin.getColumn("Rol");          //Se llama a la columna
                 Rol.setPreferredWidth(160);                                     //Se define su tamaño
                 TableColumn Valorauto = TablaAdminUsrAdmin.getColumn("Valor de autorización");        //Se llama a la columna
-                Valorauto.setPreferredWidth(90);                                  //Se define su tamaño
+                Valorauto.setPreferredWidth(110);                                  //Se define su tamaño
                 
             }
             else                                                                //Si el resultado se encontraba vacío

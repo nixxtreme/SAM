@@ -181,10 +181,9 @@ public class Querys
         return statement;
     }
     
-    public static String AdministraUsuariosAdmin(String cadenaBD)               //OBTIENE EL RESULTADO DE LOS USUARIOS ADMINISTRADORES QUE FUERON PERMITIDOS A PESAR DE NO ESTAR PRESENTES EN NÓMINA DE USUARIOS INTERNOS O EXTERNOS
+    public static String AdministraUsuariosAdmin()               //OBTIENE EL RESULTADO DE LOS USUARIOS ADMINISTRADORES QUE FUERON PERMITIDOS A PESAR DE NO ESTAR PRESENTES EN NÓMINA DE USUARIOS INTERNOS O EXTERNOS
     {
-        String[] parametros = cadenaBD.split("\\|");
-        String statement = "select PERMITIDO, USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION  from USRADMIN" + parametros[4];
+        String statement = "select PERMITIDO, USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION  from AdminUsrAdminSAP";
         return statement;
     }
     
