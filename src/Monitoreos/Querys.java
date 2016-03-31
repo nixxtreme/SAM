@@ -48,8 +48,7 @@ public class Querys
         String consulta = "DELETE FROM cruceintSAP" + parametros[4] + " where IDNUMEMP is null";
                 
         return consulta;
-    }
-    
+    }    
     
     public static String NoNominaBorraExtSAP(String cadenaBD)                      //ELIMINA LOS USUARIOS EXTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
     {

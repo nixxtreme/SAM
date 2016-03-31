@@ -1091,17 +1091,17 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));              //crea la tabla de usuarios administradores eliminados           
             PreparaTablas.add(Monitoreos.Tablas.TablaAdminUsrAdmin(cadenaBD));              
             
-//            PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));  //crea la tabla de usuariosSAP de la tabla Usuarios2 para su manipulacion
-//            PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));         //Crea la tabla de usuarios externos                         
-//            PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));//borra los registros de esternos de la tabla
-//            PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));           //crear tabla gen sap
-//           
-//            PreparaTablas.add(Monitoreos.Tablas.GenExt(cadenaBD));              //insertar genericos de TablaEXT a TablaGen
-//            PreparaTablas.add(Monitoreos.Querys.BorrarGenExt(cadenaBD));        //eliminar genericos en tabla EXTERNOS
-//            
-//            PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));//borrar los registros genericos sap de la tabla
-//            PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));          //Crea la tabla de usuarios internos
-//            PreparaTablas.add(Monitoreos.Tablas.eliminaUsuariosSAP2(cadenaBD)); //elimina la tabla Usuarios2
+            PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));  //crea la tabla de usuariosSAP de la tabla Usuarios2 para su manipulacion
+            PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));         //Crea la tabla de usuarios externos                         
+            PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));//borra los registros de esternos de la tabla
+            PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));           //crear tabla gen sap
+           
+            PreparaTablas.add(Monitoreos.Tablas.GenExt(cadenaBD));              //insertar genericos de TablaEXT a TablaGen
+            PreparaTablas.add(Monitoreos.Querys.BorrarGenExt(cadenaBD));        //eliminar genericos en tabla EXTERNOS
+            
+            PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));//borrar los registros genericos sap de la tabla
+            PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));          //Crea la tabla de usuarios internos
+            PreparaTablas.add(Monitoreos.Tablas.eliminaUsuariosSAP2(cadenaBD)); //elimina la tabla Usuarios2
           
 
             
