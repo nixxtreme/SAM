@@ -586,10 +586,8 @@ public class Tablas
         String[] parametros = cadenaBD.split("\\|");
         String statement = "DROP TABLE IF EXISTS CRUCEEXTSAP" + parametros[4];
         return statement;
-    }
-    
-    
-    
+    }    
+                        //********************
     
     
     
@@ -787,7 +785,7 @@ public class Tablas
     public static String NoNominaCreaIntSAP(String cadenaBD)                       //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists nonominaint SELECT * FROM cruceint" + parametros[4] + " where IDNUMEMP is null";
+        String consulta = "create table if not exists nonominaintSAP SELECT * FROM cruceintSAP" + parametros[4] + " where IDNUMEMP is null";
                 
         return consulta;
     }
@@ -795,7 +793,7 @@ public class Tablas
     public static String NoNominaCreaExtSAP(String cadenaBD)                       //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists nonominaext SELECT * FROM cruceext" + parametros[4] + " where idusuario is null";
+        String consulta = "create table if not exists nonominaextSAP SELECT * FROM cruceextSAP" + parametros[4] + " where idusuario is null";
                 
         return consulta;
     }
@@ -1133,7 +1131,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists cruceintSAP" + parametros[4] + " SELECT INTERNOSSAP.Usuario, INTERNOSSAP.Nombre_Completo, INTERNOSSAP.Grupo "
+        statement = "create table if not exists cruceintSAP" + parametros[4] + " SELECT INTERNOSSAP.Usuario, INTERNOSSAP.Nombre_Completo, INTERNOSSAP.Grupo, INTERNOSSAP.Bloq "
                 + "INTERNOSSAP.Valido_de, INTERNOSSAP.Validez_a "
                 + "idint" + parametros[4] + ".NUMEROEMPLEADO AS IDNUMEMP, "
                 + "idint" + parametros[4] + ".USUARIO AS IDUSUARIO, idint" + parametros[4] + ".NOMBRECOMPLETO AS IDNOMBRE, "
@@ -1153,7 +1151,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists cruceextSAP" + parametros[4] + " SELECT EXTERNOSSAP.Usuario, EXTERNOSSAP.Nombre_Completo, EXTERNOSSAP.Grupo "
+        statement = "create table if not exists cruceextSAP" + parametros[4] + " SELECT EXTERNOSSAP.Usuario, EXTERNOSSAP.Nombre_Completo, EXTERNOSSAP.Grupo, INTERNOSSAP.Bloq "
                 + "EXTERNOSSAP.Valido_de, EXTERNOSSAP.Validez_a "
                     + "idext" + parametros[4] + ".NUMEROEMPLEADO AS IDNUMEMP, " 
                     + "idext" + parametros[4] + ".USUARIO AS IDUSUARIO, idext" + parametros[4] + ".NOMBRECOMPLETO AS IDNOMBRE, "
