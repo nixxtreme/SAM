@@ -10,6 +10,7 @@ import Monitoreos.Clase_CellRender;
 import Monitoreos.Conexion;
 import Monitoreos.ExecQuery;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import static javax.swing.JTable.AUTO_RESIZE_OFF;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -135,7 +136,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap(583, Short.MAX_VALUE)
+                .addContainerGap(615, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -161,6 +162,11 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TablaAdminUsrAdmin);
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -194,11 +200,26 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int j;
+//        System.out.println("Entra");
+        ArrayList<String> AdminUsrAdminModificados = new ArrayList();   
+        for(j=0;j<TablaAdminUsrAdmin.getRowCount();j++)
+        {
+            System.out.print("\nvalor " + TablaAdminUsrAdmin.getValueAt(j, 0) + "   ");
+            if(TablaAdminUsrAdmin.getValueAt(j, 0).equals(true))
+            {
+                System.out.print(TablaAdminUsrAdmin.getValueAt(j, 0) + "|" +  TablaAdminUsrAdmin.getValueAt(j, 1));
+            }
+        }
+        System.out.println("\n\n\n");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
