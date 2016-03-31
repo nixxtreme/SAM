@@ -41,6 +41,43 @@ public class Querys
     
     
     
+                        //******************SAP****************
+    public static String NoNominaBorraIntSAP(String cadenaBD)                      //ELIMINA LOS USUARIOS INTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceintSAP" + parametros[4] + " where IDNUMEMP is null";
+                
+        return consulta;
+    }
+    
+    
+    public static String NoNominaBorraExtSAP(String cadenaBD)                      //ELIMINA LOS USUARIOS EXTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceextSAP" + parametros[4] + " where idusuario is null";
+                
+        return consulta;
+    }
+    
+    public static String BorraBajasExtSAP(String cadenaBD)                         //ELIMINA LOS USUARIOS EXTERNOS QUE ESTÁN REGSTRADOS COMO BAJA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceextSAP" + parametros[4] + " WHERE IDESTATUS = 'ELIMINADO'";
+                
+        return consulta;
+    }
+    
+    public static String BorraBajasIntSAP(String cadenaBD)                         //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO BAJA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceintSAP" + parametros[4] + " WHERE IDESTATUS = 'ELIMINADO'";
+                
+        return consulta;
+    }
+    
+                //*******************************
+    
+    
     public static String BorraBajasExt(String cadenaBD)                         //ELIMINA LOS USUARIOS EXTERNOS QUE ESTÁN REGSTRADOS COMO BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
