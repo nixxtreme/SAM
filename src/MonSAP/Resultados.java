@@ -107,14 +107,20 @@ public class Resultados extends javax.swing.JFrame {
 
                 TableColumn CAgregar = tablaBajasInt.getColumn("Agregar");      //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CNumEmp = tablaBajasInt.getColumn("Usario");    //Se llama a la columna
-                CNumEmp.setPreferredWidth(140);                                 //Se define su tamaño
-                TableColumn CUserID = tablaBajasInt.getColumn("User ID");       //Se llama a la columna
-                CUserID.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CNombre = tablaBajasInt.getColumn("Nombre");        //Se llama a la columna
-                CNombre.setPreferredWidth(360);                                 //Se define su tamaño
-                TableColumn CFecha = tablaBajasInt.getColumn("Fecha de último acceso"); //Se llama a la columna
-                CFecha.setPreferredWidth(160);                                  //Se define su tamaño
+                TableColumn CUsuario = tablaBajasInt.getColumn("Usuario");    //Se llama a la columna
+                CUsuario.setPreferredWidth(140);                                 //Se define su tamaño
+                TableColumn CNombre = tablaBajasInt.getColumn("Nombre_Completo");       //Se llama a la columna
+                CNombre.setPreferredWidth(70);                                  //Se define su tamaño
+                TableColumn CGpo = tablaBajasInt.getColumn("Grupo");        //Se llama a la columna
+                CGpo.setPreferredWidth(360);                                 //Se define su tamaño
+                TableColumn CBloq = tablaBajasInt.getColumn("Bloq");        //Se llama a la columna
+                CBloq.setPreferredWidth(360);                                 //Se define su tamaño
+                TableColumn CValido = tablaBajasInt.getColumn("Valido_de");        //Se llama a la columna
+                CValido.setPreferredWidth(360);                                 //Se define su tamaño
+                TableColumn CValidez = tablaBajasInt.getColumn("Validez_a");        //Se llama a la columna
+                CValidez.setPreferredWidth(360);                                 //Se define su tamaño
+                TableColumn CIDUsuario = tablaBajasInt.getColumn("ID_Usuario"); //Se llama a la columna
+                CIDUsuario.setPreferredWidth(160);                                  //Se define su tamaño
                 TableColumn CRegion = tablaBajasInt.getColumn("Región");        //Se llama a la columna
                 CRegion.setPreferredWidth(70);                                  //Se define su tamaño
                 TableColumn CIP = tablaBajasInt.getColumn("IP");                //Se llama a la columna
