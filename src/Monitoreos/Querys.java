@@ -237,9 +237,9 @@ public class Querys
     
     public static String ResultadosBajasExtSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS DADOS DE BAJA
     {
-        String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
-                + "IDNOMBRE, IDFECHA, IDESTATUS  from bajasextSAP union select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, "
-                + "NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, IDNOMBRE, IDFECHA, IDESTATUS  from nonominaextSAP";
+        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a "
+                + " from bajasextSAP union select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
+                + "IDNOMBRE, IDFECHA, IDESTATUS  from nonominaextSAP";
         return statement;
     }
     
