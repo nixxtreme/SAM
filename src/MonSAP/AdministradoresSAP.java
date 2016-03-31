@@ -46,7 +46,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
 //            System.out.println("CadenaBD " + cadenaBD);
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            AdmUsrAdm = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.AdministraUsuariosAdmin(cadenaBD));   //Ejecuta la consulta y almacena el resultado en la variable
+            AdmUsrAdm = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.AdministraUsuariosAdmin());   //Ejecuta la consulta y almacena el resultado en la variable
             
             if(AdmUsrAdm.next())                                                 //Verifica que el resultado no esté vacío
             {
