@@ -1048,9 +1048,9 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Querys.NoNominaBorraExtSAP(cadenaBD));        //Boora los usuarios externos no encontrados en la nómina del listado de usuarios externos
            
             PreparaTablas.add(Monitoreos.Tablas.CreaBajasIntSAP(cadenaBD));            //Crea una tabla con los usuarios internos que se encuentran dados de baja en la nómina
-            PreparaTablas.add(Monitoreos.Querys.BorraBajasInt(cadenaBD));           //Borra los usuarios internos que se encuientran dados de baja en la nómina del listado de usuarios internos
+            PreparaTablas.add(Monitoreos.Querys.BorraBajasIntSAP(cadenaBD));           //Borra los usuarios internos que se encuientran dados de baja en la nómina del listado de usuarios internos
             PreparaTablas.add(Monitoreos.Tablas.CreaBajasExtSAP(cadenaBD));            //Crea una tabla con los usuarios externos que se encuentran dados de baja en la nómina
-            PreparaTablas.add(Monitoreos.Querys.BorraBajasExt(cadenaBD));           //Borra los usuarios externos que se encuientran dados de baja en la nómina del listado de usuarios externos
+            PreparaTablas.add(Monitoreos.Querys.BorraBajasExtSAP(cadenaBD));           //Borra los usuarios externos que se encuientran dados de baja en la nómina del listado de usuarios externos
 
 //            PreparaTablas.add(Monitoreos.Querys.CreaInactividadInt(cadenaBD));      //Crea una tabla con los usuarios internos que no han ingresado a la aplicación en determinado tiempo
 //            PreparaTablas.add(Monitoreos.Querys.BorraInactividadInt(cadenaBD));     //Borra los usuarios internos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios internos

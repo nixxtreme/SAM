@@ -1125,7 +1125,7 @@ public class Tablas
     }
     
     
-                    //SAP
+                    //************************SAP**********************
     
     public static String CruceInternosSAP(String cadenaBD)                         //REALIZA EL CRUCE DE LOS USUARIOS INTERNOS
     {
@@ -1165,6 +1165,7 @@ public class Tablas
         return statement;
     }
     
+                    //*******************************
     
     public static String BorraUsrAdminAgregados()                          //BORRA LA TABLA DE TRABAJO DE USUARIOS ADMINISTRADORES AGREGADOS
     {
