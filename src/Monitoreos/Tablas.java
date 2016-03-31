@@ -1133,7 +1133,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists cruceintSAP" + parametros[4] + "SELECT INTERNOSSAP.Usuario, INTERNOSSAP.Nombre_Completo, INTERNOSSAP.Grupo, INTERNOSSAP.Bloq,"
+        statement = "create table if not exists cruceintSAP" + parametros[4] + " SELECT INTERNOSSAP.Usuario, INTERNOSSAP.Nombre_Completo, INTERNOSSAP.Grupo, INTERNOSSAP.Bloq,"
                 + " INTERNOSSAP.Valido_de, INTERNOSSAP.Validez_a, "
                 + "idint" + parametros[4] + ".NUMEROEMPLEADO AS IDNUMEMP, "
                 + "idint" + parametros[4] + ".USUARIO AS IDUSUARIO, idint" + parametros[4] + ".NOMBRECOMPLETO AS IDNOMBRE, "
@@ -1153,7 +1153,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists cruceextSAP" + parametros[4] + " SELECT EXTERNOSSAP.Usuario, EXTERNOSSAP.Nombre_Completo, EXTERNOSSAP.Grupo, INTERNOSSAP.Bloq, "
+        statement = "create table if not exists cruceextSAP" + parametros[4] + " SELECT EXTERNOSSAP.Usuario, EXTERNOSSAP.Nombre_Completo, EXTERNOSSAP.Grupo, EXTERNOSSAP.Bloq, "
                 + "EXTERNOSSAP.Valido_de, EXTERNOSSAP.Validez_a, "
                     + "idext" + parametros[4] + ".NUMEROEMPLEADO AS IDNUMEMP, " 
                     + "idext" + parametros[4] + ".USUARIO AS IDUSUARIO, idext" + parametros[4] + ".NOMBRECOMPLETO AS IDNOMBRE, "

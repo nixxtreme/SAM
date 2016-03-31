@@ -66,10 +66,13 @@ public class Resultados extends javax.swing.JFrame {
             if(bajasIntSAP.next())                                                 //Verifica que el resultado no esté vacío
             {
                 modeloBajasInt.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
-                modeloBajasInt.addColumn("Número de empleado");
-                modeloBajasInt.addColumn("User ID");
-                modeloBajasInt.addColumn("Nombre");
-                modeloBajasInt.addColumn("Fecha de último acceso");
+                modeloBajasInt.addColumn("Usuario");
+                modeloBajasInt.addColumn("Nombre_Completo");
+                modeloBajasInt.addColumn("Grupo");
+                modeloBajasInt.addColumn("Bloq");
+                modeloBajasInt.addColumn("Valido_de");
+                modeloBajasInt.addColumn("Validez_a");
+                modeloBajasInt.addColumn("ID_Usuario");
                 modeloBajasInt.addColumn("Región");
                 modeloBajasInt.addColumn("IP");
                 modeloBajasInt.addColumn("ID perfil");
@@ -83,7 +86,7 @@ public class Resultados extends javax.swing.JFrame {
                 bajasIntSAP.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 while(bajasIntSAP.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<16; k++)                                     
+                    for(int k=1; k<19; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -104,7 +107,7 @@ public class Resultados extends javax.swing.JFrame {
 
                 TableColumn CAgregar = tablaBajasInt.getColumn("Agregar");      //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CNumEmp = tablaBajasInt.getColumn("Número de empleado");    //Se llama a la columna
+                TableColumn CNumEmp = tablaBajasInt.getColumn("Usario");    //Se llama a la columna
                 CNumEmp.setPreferredWidth(140);                                 //Se define su tamaño
                 TableColumn CUserID = tablaBajasInt.getColumn("User ID");       //Se llama a la columna
                 CUserID.setPreferredWidth(70);                                  //Se define su tamaño
