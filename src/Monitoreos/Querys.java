@@ -41,6 +41,42 @@ public class Querys
     
     
     
+                        //******************SAP****************
+    public static String NoNominaBorraIntSAP(String cadenaBD)                      //ELIMINA LOS USUARIOS INTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceintSAP" + parametros[4] + " where IDNUMEMP is null";
+                
+        return consulta;
+    }    
+    
+    public static String NoNominaBorraExtSAP(String cadenaBD)                      //ELIMINA LOS USUARIOS EXTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceextSAP" + parametros[4] + " where idusuario is null";
+                
+        return consulta;
+    }
+    
+    public static String BorraBajasExtSAP(String cadenaBD)                         //ELIMINA LOS USUARIOS EXTERNOS QUE ESTÁN REGSTRADOS COMO BAJA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceextSAP" + parametros[4] + " WHERE IDESTATUS = 'ELIMINADO'";
+                
+        return consulta;
+    }
+    
+    public static String BorraBajasIntSAP(String cadenaBD)                         //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO BAJA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceintSAP" + parametros[4] + " WHERE IDESTATUS = 'ELIMINADO'";
+                
+        return consulta;
+    }
+    
+                //*******************************
+    
+    
     public static String BorraBajasExt(String cadenaBD)                         //ELIMINA LOS USUARIOS EXTERNOS QUE ESTÁN REGSTRADOS COMO BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
@@ -193,17 +229,17 @@ public class Querys
     
     public static String ResultadosBajasIntSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS DADOS DE BAJA
     {
-        String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, IDNOMBRE, IDFECHA, "
-                + "IDESTATUS  from baajasint union select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
+        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a "
+                + " from bajasintSAP union select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
                 + "IDNOMBRE, IDFECHA, IDESTATUS  from nonominaintSAP";
         return statement;
     }
     
     public static String ResultadosBajasExtSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS DADOS DE BAJA
     {
-        String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
-                + "IDNOMBRE, IDFECHA, IDESTATUS  from baajasext union select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, "
-                + "NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, IDNOMBRE, IDFECHA, IDESTATUS  from nonominaextSAP";
+        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a "
+                + " from bajasextSAP union select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
+                + "IDNOMBRE, IDFECHA, IDESTATUS  from nonominaextSAP";
         return statement;
     }
     
