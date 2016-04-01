@@ -10,6 +10,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
+
 /**
  *
  * @author VS3XXBD
@@ -39,16 +40,13 @@ public class Clase_CellEditor extends DefaultCellEditor implements TableCellRend
         ( (JCheckBox) component).setSelected( b );
         return ( (JCheckBox) component);     
     }
-
     
-
     public boolean stopCellEditing()                                            //Finaliza la edición de la celda definiendo el valor definido
     {        
         value = ((Boolean)getCellEditorValue()).booleanValue() ;                
         ((JCheckBox)component).setSelected( value );
         return super.stopCellEditing();
     }
-
     
     @Override                                                                   //Regresa el componente para ser insertado
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {

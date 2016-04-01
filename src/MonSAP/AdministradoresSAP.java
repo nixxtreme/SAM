@@ -210,15 +210,17 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         int j;
 //        System.out.println("Entra");
         ArrayList<String> AdminUsrAdminModificados = new ArrayList();   
-        TablaAdminUsrAdmin.clearSelection();
+        TablaAdminUsrAdmin.repaint();
         for(j=0;j<TablaAdminUsrAdmin.getRowCount();j++)
         {
-            System.out.print("\nvalor " + TablaAdminUsrAdmin.getValueAt(j, 0) + "   ");
+            System.out.print("\nvalor " + TablaAdminUsrAdmin.getCellEditor(j, 0).getCellEditorValue());
+            System.out.print("\nvalor " + TablaAdminUsrAdmin.getCellEditor(j, 0)
             if(TablaAdminUsrAdmin.getValueAt(j, 0).toString().equals("true"))
             {
-                System.out.print(TablaAdminUsrAdmin.getValueAt(j, 0) + "|" +  TablaAdminUsrAdmin.getValueAt(j, 1));
+                System.out.print(TablaAdminUsrAdmin.getValueAt(j, 0) + "|" +  TablaAdminUsrAdmin.getCellEditor(j, 0).getCellEditorValue());
             }
         }
+        TablaAdminUsrAdmin.clearSelection();
         System.out.println("\n\n\n");
     }//GEN-LAST:event_jButton1ActionPerformed
 
