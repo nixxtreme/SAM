@@ -17,6 +17,6 @@ import javax.swing.table.TableCellEditor;
  *
  * @author VS3XXBD
  */
-public class MyTableCellEditor extends AbstractCellEditor implements TableCellEditor{
+//public class MyTableCellEditor extends AbstractCellEditor implements TableCellEditor{
     
-}
+//}
