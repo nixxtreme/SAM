@@ -9,9 +9,13 @@ import Monitoreos.Clase_CellEditor;
 import Monitoreos.Clase_CellRender;
 import Monitoreos.Conexion;
 import Monitoreos.ExecQuery;
+import java.awt.Component;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JCheckBox;
 import static javax.swing.JTable.AUTO_RESIZE_OFF;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -38,7 +42,6 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         DefaultTableModel modeloBajasInt = new DefaultTableModel();             //Crea el objeto modelo de tabla
         
         
-        
         Object[] registro = new Object[6];                                     //Crea un arreglo para recibir los elementos de cada renglon
         int i = 0;                                                              //Inicializa la variable para el contador
         try
@@ -58,6 +61,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 modeloBajasInt.addColumn("Rol");
                 modeloBajasInt.addColumn("Valor de autorización");
                 AdmUsrAdm.beforeFirst();                                         //Regresa a la posición inicial del resultado
+                
                 while(AdmUsrAdm.next())                                          //Lee cada registro hasta que ya no haya más
                 {
                     for(int k=1; k<7; k++)                                     
@@ -65,7 +69,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
 //                        System.out.println("index " + k);
                         if(k==1)                                                
                         {
-                            registro[k-1]=AdmUsrAdm.getBoolean(k);                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
+                            registro[k-1]=AdmUsrAdm.getBoolean(k);                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado  
                         }
                         else
                         {
@@ -79,7 +83,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 TablaAdminUsrAdmin.setAutoResizeMode(AUTO_RESIZE_OFF);               //Se desabilita el ajuste automatico de ancho de columnas para establecerlo manualmente
                 TablaAdminUsrAdmin.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());  //Se hace uso de editor y renderizador de columnas
                 TablaAdminUsrAdmin.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
-
+           
                 TableColumn CAgregar = TablaAdminUsrAdmin.getColumn("Permitir"); //Se llama a la columna
                 CAgregar.setPreferredWidth(60);                                 //Se define su tamaño
                 TableColumn Usuario = TablaAdminUsrAdmin.getColumn("Usuario");  //Se llama a la columna
@@ -100,6 +104,8 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 TablaAdminUsrAdmin.setModel(modeloBajasInt);                         //Se define el modelo 
             }
             
+            
+            
             conLocal.Cerrar();
         }
         catch(Exception e)
@@ -111,6 +117,10 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         
     }
 
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -208,22 +218,45 @@ public class AdministradoresSAP extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int j;
-//        System.out.println("Entra");
-        ArrayList<String> AdminUsrAdminModificados = new ArrayList();   
-        TablaAdminUsrAdmin.repaint();
-        for(j=0;j<TablaAdminUsrAdmin.getRowCount();j++)
-        {
-            System.out.print("\nvalor " + TablaAdminUsrAdmin.getCellEditor(j, 0).getCellEditorValue());
-            System.out.print("\nvalor " + TablaAdminUsrAdmin.getCellEditor(j, 0)
-            if(TablaAdminUsrAdmin.getValueAt(j, 0).toString().equals("true"))
-            {
-                System.out.print(TablaAdminUsrAdmin.getValueAt(j, 0) + "|" +  TablaAdminUsrAdmin.getCellEditor(j, 0).getCellEditorValue());
-            }
-        }
-        TablaAdminUsrAdmin.clearSelection();
-        System.out.println("\n\n\n");
+        System.out.println("Entra");
+        
+         for(j=0;j<TablaAdminUsrAdmin.getRowCount();j++){
+             
+             
+         }
+        
+//        for(j=0;j<TablaAdminUsrAdmin.getRowCount();j++){
+//            
+//            System.err.println(""+TablaAdminUsrAdmin.getValueAt(j, 0)+"");
+//
+//            if(TablaAdminUsrAdmin.getValueAt(j, 0).toString().equals("false")){ 
+//            
+//            }    
+//        } 
+        
+        
+//        ArrayList<String> AdminUsrAdminModificados = new ArrayList();   
+//        
+//                
+//        for(j=0;j<TablaAdminUsrAdmin.getRowCount();j++)
+//        {
+//            System.out.print("\nvalor " + TablaAdminUsrAdmin.getValueAt(j, 0) + "     ");
+//            
+//            if(TablaAdminUsrAdmin.getValueAt(j, 0).toString().equals("true"))
+//            {
+//                System.out.print(TablaAdminUsrAdmin.getValueAt(j, 0) + "|" +  TablaAdminUsrAdmin.getValueAt(j, 1));
+//            }
+//        }
+//        TablaAdminUsrAdmin.clearSelection();
+//        System.out.println("\n\n\n");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+//     public boolean isCellEditable(int row, int col) {
+//            //Note that the data/cell address is constant,
+//            //no matter where the cell appears onscreen.
+//        return false;
+//    }
+    
     /**
      * @param args the command line arguments
      */
