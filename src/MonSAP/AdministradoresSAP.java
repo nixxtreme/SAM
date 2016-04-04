@@ -230,7 +230,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         TablaAdminUsrAdmin.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
         TablaAdminUsrAdmin.repaint();
         TablaAdminUsrAdmin.setVerifyInputWhenFocusTarget(rootPaneCheckingEnabled);
-//        TablaAdminUsrAdmin.
+        
         
         for(j=0;j<TablaAdminUsrAdmin.getRowCount();j++)
         {

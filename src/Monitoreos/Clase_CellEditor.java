@@ -35,9 +35,9 @@ public class Clase_CellEditor extends DefaultCellEditor implements TableCellRend
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) 
     {                                                                           //Edita el componente
-        ( (JCheckBox) component).setBackground( new Color(200,200,0) );         //Establece el color de fondo
+        ((JCheckBox) component).setBackground( new Color(200,200,0) );         //Establece el color de fondo
         boolean b = ((Boolean) value).booleanValue();                           //Obtiene el valor de la celda y lo coloca en el CheckBox
-        ( (JCheckBox) component).setSelected( b );
+        ((JCheckBox) component).setSelected( b );
         return ( (JCheckBox) component);     
     }
     
@@ -52,6 +52,6 @@ public class Clase_CellEditor extends DefaultCellEditor implements TableCellRend
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
          if (value == null)
             return null;         
-         return ( (JCheckBox) component );
+         return ((JCheckBox) component);
     }
 }
