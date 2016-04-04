@@ -10,6 +10,7 @@ import Monitoreos.Clase_CellRender;
 import Monitoreos.Conexion;
 import Monitoreos.ExecQuery;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import static javax.swing.JTable.AUTO_RESIZE_OFF;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -124,6 +125,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaAdminUsrAdmin = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,6 +148,8 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
         TablaAdminUsrAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -159,15 +163,28 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(TablaAdminUsrAdmin);
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 95, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -206,6 +223,27 @@ public class AdministradoresSAP extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int j;
+        ArrayList<String> AdminUsrAdminModificados = new ArrayList();   
+        TablaAdminUsrAdmin.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());  //Se hace uso de editor y renderizador de columnas
+        TablaAdminUsrAdmin.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
+        TablaAdminUsrAdmin.repaint();
+        TablaAdminUsrAdmin.setVerifyInputWhenFocusTarget(rootPaneCheckingEnabled);
+        TablaAdminUsrAdmin.
+        
+        for(j=0;j<TablaAdminUsrAdmin.getRowCount();j++)
+        {
+            System.out.print("\nvalor " + TablaAdminUsrAdmin.getModel().getValueAt(j, 0));
+            if(TablaAdminUsrAdmin.getValueAt(j, 0).toString().equals("true"))
+            {
+                System.out.print("     " + TablaAdminUsrAdmin.getModel().getValueAt(j, 0) + "  |  " +  TablaAdminUsrAdmin.getModel().getValueAt(j, 1));
+                        
+            }
+        }
+        System.out.println("\n\n\n");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +281,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaAdminUsrAdmin;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
