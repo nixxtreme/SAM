@@ -1034,7 +1034,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
               PreparaTablas.add(Monitoreos.Tablas.BorraInternosTrabajoSAP());            //Esta sección borra todas las tablas temporales que se crearon durante la ejecución anterior del programa
               PreparaTablas.add(Monitoreos.Tablas.BorraUsrAdminAgregados());
               PreparaTablas.add(Monitoreos.Tablas.BorraUsrAdminEliminados());
-             
+                          
               PreparaTablas.add(Monitoreos.Tablas.BorraBajasIntSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraBajasExtSAP());
                    
@@ -1072,7 +1072,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosInt());
 //            PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosExt());  
             
-              
+            PreparaTablas.add(Monitoreos.Tablas.BorraCruceInternosSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraCruceExternosSAP(cadenaBD)); 
             PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          //crea la tabla de usuarios administradores agregados
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));              //crea la tabla de usuarios administradores eliminados           
             PreparaTablas.add(Monitoreos.Tablas.TablaAdminUsrAdmin(cadenaBD));              
@@ -1081,7 +1082,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));         //Crea la tabla de usuarios externos                         
             PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));//borra los registros de esternos de la tabla
             PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));           //crear tabla gen sap
-           
+        
             PreparaTablas.add(Monitoreos.Tablas.GenExt(cadenaBD));              //insertar genericos de TablaEXT a TablaGen
             PreparaTablas.add(Monitoreos.Querys.BorrarGenExt(cadenaBD));        //eliminar genericos en tabla EXTERNOS
             
@@ -1092,12 +1093,12 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
             PreparaTablas.add(Monitoreos.Tablas.CruceInternosSAP(cadenaBD)); 
             PreparaTablas.add(Monitoreos.Tablas.CruceExternosSAP(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios internos//            PreparaTablas.add(Monitoreos.Querys.CruceExternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios externos
-           
+//           
             PreparaTablas.add(Monitoreos.Tablas.NoNominaCreaIntSAP(cadenaBD));         //Crea una tabla con los usuarios internos que no fueron encontrados en nómina
             PreparaTablas.add(Monitoreos.Querys.NoNominaBorraIntSAP(cadenaBD));        //Boora los usuarios internos no encontrados en la nómina del listado de usuarios internos
             PreparaTablas.add(Monitoreos.Tablas.NoNominaCreaExtSAP(cadenaBD));         //Crea una tabla con los usuarios externos que no fueron encontrados en nómina
             PreparaTablas.add(Monitoreos.Querys.NoNominaBorraExtSAP(cadenaBD));        //Boora los usuarios externos no encontrados en la nómina del listado de usuarios externos
-           
+//           
             PreparaTablas.add(Monitoreos.Tablas.CreaBajasIntSAP(cadenaBD));            //Crea una tabla con los usuarios internos que se encuentran dados de baja en la nómina
             PreparaTablas.add(Monitoreos.Querys.BorraBajasIntSAP(cadenaBD));           //Borra los usuarios internos que se encuientran dados de baja en la nómina del listado de usuarios internos
             PreparaTablas.add(Monitoreos.Tablas.CreaBajasExtSAP(cadenaBD));            //Crea una tabla con los usuarios externos que se encuentran dados de baja en la nómina

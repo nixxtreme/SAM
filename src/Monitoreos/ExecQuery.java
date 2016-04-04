@@ -119,6 +119,7 @@ public class ExecQuery
     
     public ResultSet Cons(Connection con, String query)                         //Ejecuta una consulta
     {
+        System.out.println(query);
         ResultSet Rs = null;
         try
         {
