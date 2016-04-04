@@ -29,8 +29,8 @@ public class Resultados extends javax.swing.JFrame {
     public Resultados(String cadena) {                                          //Inicializa la ventana y ejecuta los métodos para que se visualicen las tablas de resultados
         cadenaBD = cadena;                                                      //Almacena la cadena con los datos de conexión a la base de datos local
         initComponents();                                                       //Inicializa los componentes proncipales de la ventana
-        definirModelosBajasIntSAP();                                               //Define el modelo de la tabla de inconsistencias de bajas internos
-        definirModelosBajasExtSAP();                                               //Define el modelo de la tabla de inconsistencias de bajas externos
+       // definirModelosBajasIntSAP();                                               //Define el modelo de la tabla de inconsistencias de bajas internos
+        //definirModelosBajasExtSAP();                                               //Define el modelo de la tabla de inconsistencias de bajas externos
 //        definirModelosInactividadInt();                                         //Define el modelo de la tabla de inconsistencias de inactividad internos
 //        definirModelosInactividadExt();                                         //Define el modelo de la tabla de inconsistencias de inactividad externos
 //        definirModelosUserIncInt();                                             //Define el modelo de la tabla de inconsistencias de UserID incorrecto internos

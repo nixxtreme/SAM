@@ -230,7 +230,7 @@ public class Querys
     public static String ResultadosBajasIntSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS DADOS DE BAJA
     {
         String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a "
-                + " from bajasintSAP union select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
+                + " from bajasintSAP union select Numeroempleado, Usuario, NombreCompleto, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
                 + "IDNOMBRE, IDFECHA, IDESTATUS  from nonominaintSAP";
         return statement;
     }
@@ -238,7 +238,7 @@ public class Querys
     public static String ResultadosBajasExtSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS DADOS DE BAJA
     {
         String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a "
-                + " from bajasextSAP union select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
+                + " from bajasextSAP union select Numeroempleado, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
                 + "IDNOMBRE, IDFECHA, IDESTATUS  from nonominaextSAP";
         return statement;
     }
