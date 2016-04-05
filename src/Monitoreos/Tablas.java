@@ -785,7 +785,7 @@ public class Tablas
     public static String NoNominaCreaIntSAP(String cadenaBD)                       //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists nonominaintSAP SELECT * FROM cruceintSAP" + parametros[4] + " where IDNUMEMP is null";
+        String consulta = "create table if not exists nonominaintSAP SELECT * FROM cruceintSAP" + parametros[4] + " where IDNUMEMP is null or idnumemp is null";
                 
         return consulta;
     }
@@ -793,7 +793,7 @@ public class Tablas
     public static String NoNominaCreaExtSAP(String cadenaBD)                       //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists nonominaextSAP SELECT * FROM cruceextSAP" + parametros[4] + " where idusuario is null";
+        String consulta = "create table if not exists nonominaextSAP SELECT * FROM cruceextSAP" + parametros[4] + " where idusuario is null OR idnumemp is null";
                 
         return consulta;
     }
@@ -1197,6 +1197,19 @@ public class Tablas
         
         String statement = "DROP TABLE IF EXISTS InternosSAP";
         return statement;
-    }  
+    }
+    
+    public static String eliminanonominaextSAP()                                 //BORRA LA TABLA DE TRABAJO INTERNOS
+    {
+        
+        String statement = "DROP TABLE IF EXISTS nonominaextSAP";
+        return statement;
+    }
+    public static String eliminanonominaintSAP()                                 //BORRA LA TABLA DE TRABAJO INTERNOS
+    {
+        
+        String statement = "DROP TABLE IF EXISTS nonominaintSAP";
+        return statement;
+    }
     
 }
