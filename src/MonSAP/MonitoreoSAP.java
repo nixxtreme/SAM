@@ -1448,9 +1448,9 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldUsuariosActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        cadenaBD = obtieneBase()+"|"+obtieneUsuario()+"|"+obtieneContrasena()+"|"+obtieneTabla() + "|" + obtieneID() + "|" + obtieneIDAnt();
-        AdministradoresSAP asa = new AdministradoresSAP(cadenaBD);
-        asa.setVisible(true);
+//        cadenaBD = obtieneBase()+"|"+obtieneUsuario()+"|"+obtieneContrasena()+"|"+obtieneTabla() + "|" + obtieneID() + "|" + obtieneIDAnt();
+//        AdministradoresSAP asa = new AdministradoresSAP(cadenaBD);
+//        asa.setVisible(true);
 
     }//GEN-LAST:event_jButton3ActionPerformed
 

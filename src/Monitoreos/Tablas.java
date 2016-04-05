@@ -474,7 +474,7 @@ public class Tablas
     public static String CreaUsuariosSAP(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT * FROM Usuarios2" + parametros[4];
+        String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT Usuario, Nombre_Completo, Grupo, valido_de, validez_a FROM Usuarios2" + parametros[4];
         return tabla; 
     }
    
