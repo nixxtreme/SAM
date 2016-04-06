@@ -1281,6 +1281,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             {
                 System.out.println("Registrando archivo Demonsa 2");
                 PreparaTablas.add(Monitoreos.Tablas.eliminaTablaDemonsa2(cadenaBD));
+                PreparaTablas.add(Monitoreos.Tablas.idCreaDemonsa2(cadenaBD));
                 
                 Monitoreos.Archivos.lecturaUsuariosDemonsa2(UsrAdmin, cadenaBD);     //Lee el archivo de la nómina de internos e inserta los usuarios en la BD local
             }
