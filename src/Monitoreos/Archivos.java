@@ -917,11 +917,11 @@ public class Archivos
         String Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a, retorno, fechadia, fechames, fechaano;                         //Variables para almacenar los datos de cada registro
         //System.out.println("Linea " + linea);
         String[] temp = linea.split("\\|");                                      //Crea un arreglo con los datos del registro separados por el pipe
-//        for(int i=0; i<temp.length;i++)
-//        {
-//            System.out.println(i + " " + temp[i]);
-//        }
-        
+        for(int i=0; i<temp.length;i++)                                             
+        {
+            System.out.println(i + " " + temp[i]);
+        }
+        System.out.println("\n\n\n");
         if(temp[1].contains("*"))
         {
             retorno = "";
@@ -944,7 +944,6 @@ public class Archivos
             String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /
             
             fechac = Valido_de.split(".");                                      //Separa los elementos de la fecha separados por / almacenándolos en un arreglo
-            
                    
             fechames = fechac[1];                                               //Obtiene el mes de la posición 1 del arreglo
             fechadia = fechac[0];                                               //Obtiene el día de la posición 0 del arreglo
@@ -1001,8 +1000,8 @@ public class Archivos
             archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
-             primera = br.readLine(); 
-            for (int i=0;i<8;i++)                                               //Retira el encabezado del archivo 8 lineas
+              
+            for (int i=0;i<11;i++)                                               //Retira el encabezado del archivo 8 lineas
             {
                 primera = br.readLine();                
             }                                           
