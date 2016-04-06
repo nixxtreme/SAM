@@ -198,6 +198,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         jTextFieldDemonsa2 = new javax.swing.JTextField();
         jCheckDemonsa2 = new javax.swing.JCheckBox();
         jButtonDemonsa2 = new javax.swing.JButton();
+        jPanelDemonsa2 = new javax.swing.JPanel();
+        jLabelFechasAcceso3 = new javax.swing.JLabel();
+        jTextFieldFechasAcceso = new javax.swing.JTextField();
+        jCheckFechasAcceso = new javax.swing.JCheckBox();
+        jButtonFechasAcceso = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
 
@@ -859,6 +864,45 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jLabelFechasAcceso3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelFechasAcceso3.setText("Fechas de acceso");
+
+        jCheckFechasAcceso.setEnabled(false);
+
+        jButtonFechasAcceso.setText("Examinar");
+        jButtonFechasAcceso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFechasAccesoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelDemonsa2Layout = new javax.swing.GroupLayout(jPanelDemonsa2);
+        jPanelDemonsa2.setLayout(jPanelDemonsa2Layout);
+        jPanelDemonsa2Layout.setHorizontalGroup(
+            jPanelDemonsa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDemonsa2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCheckFechasAcceso)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelFechasAcceso3, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(jTextFieldFechasAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonFechasAcceso)
+                .addContainerGap())
+        );
+        jPanelDemonsa2Layout.setVerticalGroup(
+            jPanelDemonsa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDemonsa2Layout.createSequentialGroup()
+                .addGroup(jPanelDemonsa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDemonsa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelFechasAcceso3)
+                        .addComponent(jTextFieldFechasAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonFechasAcceso))
+                    .addComponent(jCheckFechasAcceso))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -878,7 +922,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                             .addComponent(jPanelInternos8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanelAdminUsr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelDemonsa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanelDemonsa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanelDemonsa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel12Layout.setVerticalGroup(
@@ -894,7 +939,9 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addComponent(jPanelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelDemonsa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelDemonsa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -929,7 +976,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -977,7 +1024,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados, Demonsa2, UsuariosSAP;
+    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados, Demonsa2, UsuariosSAP, FechasAcceso;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
 //        limpiaCampos();
@@ -1041,8 +1088,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
               PreparaTablas.add(Monitoreos.Tablas.eliminanonominaextSAP());
               PreparaTablas.add(Monitoreos.Tablas.eliminanonominaintSAP());
               PreparaTablas.add(Monitoreos.Tablas.eliminaUsuariosSAP2(cadenaBD));     
-//            PreparaTablas.add(Monitoreos.Querys.CreaInactividadInt(cadenaBD));      //Crea una tabla con los usuarios internos que no han ingresado a la aplicación en determinado tiempo
-//            PreparaTablas.add(Monitoreos.Querys.BorraInactividadInt(cadenaBD));     //Borra los usuarios internos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios internos
+
+
 //            PreparaTablas.add(Monitoreos.Querys.CreaInactividadExt(cadenaBD));      //Crea una tabla con los usuarios externos que no han ingresado a la aplicación en determinado tiempo
 //            PreparaTablas.add(Monitoreos.Querys.BorraInactividadExt(cadenaBD));     //Borra los usuarios externos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios externos
 //            PreparaTablas.add(Monitoreos.Querys.UsrIDIncInt(cadenaBD));             //Crea una tabla con los usuarios internos que tienen un UserID incorrecto
@@ -1105,6 +1152,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.CreaBajasExtSAP(cadenaBD));            //Crea una tabla con los usuarios externos que se encuentran dados de baja en la nómina
             PreparaTablas.add(Monitoreos.Querys.BorraBajasExtSAP(cadenaBD));           //Borra los usuarios externos que se encuientran dados de baja en la nómina del listado de usuarios externos
             
+            //PreparaTablas.add(Monitoreos.Tablas.CreaInactividadIntSAP(cadenaBD));      //Crea una tabla con los usuarios internos que no han ingresado a la aplicación en determinado tiempo
+            //PreparaTablas.add(Monitoreos.Querys.BorraInactividadIntSAP(cadenaBD));     //Borra los usuarios internos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios internos
             
             System.out.println("Creando nuevas tablas de trabajo");
             EjecutaSAP.Exect(ConLocal.conexion, PreparaTablas);                  //Ejecuta todas las instrucciones almacenadas en el arreglo
@@ -1296,10 +1345,17 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 
                PreparaTablas.add(Monitoreos.Tablas.eliminaTablaUsrsSAP(cadenaBD)); //elimina la tabla Usuarios SAP en caso de existir
                PreparaTablas.add(Monitoreos.Tablas.CreaUsuarios2(cadenaBD));    //crea la tabla de usuarios
-               PreparaTablas.add(Monitoreos.Tablas.InsertarUsuariosSAP(UsuariosSAP, cadenaBD));     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local
-               
-               
-               
+               PreparaTablas.add(Monitoreos.Tablas.InsertarUsuariosSAP(UsuariosSAP, cadenaBD));     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local              
+            }
+            
+            if(jCheckFechasAcceso.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
+            {
+                System.out.println("Registrando archivo UsuariosSAP");
+                
+                
+//               PreparaTablas.add(Monitoreos.Tablas.eliminaTablaUsrsSAP(cadenaBD)); //elimina la tabla Usuarios SAP en caso de existir
+//               PreparaTablas.add(Monitoreos.Tablas.CreaUsuarios2(cadenaBD));    //crea la tabla de usuarios
+//               PreparaTablas.add(Monitoreos.Tablas.InsertarUsuariosSAP(UsuariosSAP, cadenaBD));     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local              
             }
 
 //            if(Matriz.isSelected())                                             //Valida que esté habilitada la casilla de matriz de perfiles de perfiles
@@ -1459,6 +1515,28 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButtonFechasAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFechasAccesoActionPerformed
+        JFileChooser fileChooser = new JFileChooser(lastArchivo);               //Abre una ventana de exploración con la última ubicacion en que se seleccionó un archivo
+        fileChooser.setDialogTitle("Archivo Fechas de acceso");                          //Establece el titulo de la ventana de exploración
+        Dimension dim = new Dimension(800, 600);                                //Establece el tamaño de la ventana de exploración
+        fileChooser.setPreferredSize(dim);                                      //Establece el tamaño de la ventana de exploración
+
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");  //Restringe el tipo de archivos que se muestran en el explirador
+        fileChooser.setFileFilter(filter);
+        
+        int seleccion = fileChooser.showOpenDialog(this);                       
+        if(seleccion == JFileChooser.APPROVE_OPTION)                            //Valida si se seleccionó un archivo
+        {
+            FechasAcceso = fileChooser.getSelectedFile().getAbsolutePath();           //Obtiene la ubicación del archivo seleccionado
+            lastArchivo = FechasAcceso;                                               //Lo guarda como última ubicación de selección
+            jTextFieldFechasAcceso.setText(FechasAcceso);                                       //Muestra la ruta en el cuadro de texto asociado
+            jCheckFechasAcceso.setSelected(true);                                     //Selecciona la casilla de verificación
+            jCheckFechasAcceso.setEnabled(true);                                      //Permite al usuario deshabilitarla posteriormente
+        }
+              
+    }//GEN-LAST:event_jButtonFechasAccesoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1504,11 +1582,13 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonDemonsa2;
     private javax.swing.JButton jButtonExternos;
+    private javax.swing.JButton jButtonFechasAcceso;
     private javax.swing.JButton jButtonInternos;
     private javax.swing.JButton jButtonUsrAdmin;
     private javax.swing.JButton jButtonUsuarios;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JCheckBox jCheckDemonsa2;
+    private javax.swing.JCheckBox jCheckFechasAcceso;
     private javax.swing.JCheckBox jCheckUsrAdmin;
     private javax.swing.JCheckBox jCheckUsrExt;
     private javax.swing.JCheckBox jCheckUsrInt;
@@ -1541,6 +1621,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelAdminUsr;
     private javax.swing.JLabel jLabelDemonsa2;
+    private javax.swing.JLabel jLabelFechasAcceso3;
     private javax.swing.JLabel jLabelInternos;
     private javax.swing.JLabel jLabelInternos8;
     private javax.swing.JLabel jLabelUsuarios;
@@ -1556,6 +1637,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanelAdminUsr;
     private javax.swing.JPanel jPanelDemonsa1;
+    private javax.swing.JPanel jPanelDemonsa2;
     private javax.swing.JPanel jPanelInternos;
     private javax.swing.JPanel jPanelInternos8;
     private javax.swing.JPanel jPanelUsuarios;
@@ -1585,6 +1667,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextFieldDemonsa2;
     private javax.swing.JTextField jTextFieldExternos;
+    private javax.swing.JTextField jTextFieldFechasAcceso;
     private javax.swing.JTextField jTextFieldInternos;
     private javax.swing.JTextField jTextFieldUsrAdmin;
     private javax.swing.JTextField jTextFieldUsuarios;
