@@ -798,6 +798,13 @@ public class Tablas
                 
         return consulta;
     }
+    
+    public static String CreaInactividadIntSAP(String cadenaBD)                    //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS CON INACTIVIDAD
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "create table if not exists inactividadint SELECT * FROM cruceint" + parametros[4] + " WHERE DATEDIFF('" + parametros[8] + "', FECHA_ACCESO) >= 61";
+        return consulta;
+    }
                         //**************************
     
     
