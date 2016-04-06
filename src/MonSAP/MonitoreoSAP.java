@@ -199,7 +199,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         jCheckDemonsa2 = new javax.swing.JCheckBox();
         jButtonDemonsa2 = new javax.swing.JButton();
         jPanelDemonsa2 = new javax.swing.JPanel();
-        jLabelDemonsa3 = new javax.swing.JLabel();
+        jLabelFechasAcceso3 = new javax.swing.JLabel();
         jTextFieldFechasAcceso = new javax.swing.JTextField();
         jCheckFechasAcceso = new javax.swing.JCheckBox();
         jButtonFechasAcceso = new javax.swing.JButton();
@@ -864,8 +864,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLabelDemonsa3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabelDemonsa3.setText("Fechas de acceso");
+        jLabelFechasAcceso3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelFechasAcceso3.setText("Fechas de acceso");
 
         jCheckFechasAcceso.setEnabled(false);
 
@@ -884,7 +884,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jCheckFechasAcceso)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelDemonsa3, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                .addComponent(jLabelFechasAcceso3, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
                 .addComponent(jTextFieldFechasAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -896,7 +896,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             .addGroup(jPanelDemonsa2Layout.createSequentialGroup()
                 .addGroup(jPanelDemonsa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDemonsa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelDemonsa3)
+                        .addComponent(jLabelFechasAcceso3)
                         .addComponent(jTextFieldFechasAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonFechasAcceso))
                     .addComponent(jCheckFechasAcceso))
@@ -1344,10 +1344,17 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 
                PreparaTablas.add(Monitoreos.Tablas.eliminaTablaUsrsSAP(cadenaBD)); //elimina la tabla Usuarios SAP en caso de existir
                PreparaTablas.add(Monitoreos.Tablas.CreaUsuarios2(cadenaBD));    //crea la tabla de usuarios
-               PreparaTablas.add(Monitoreos.Tablas.InsertarUsuariosSAP(UsuariosSAP, cadenaBD));     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local
-               
-               
-               
+               PreparaTablas.add(Monitoreos.Tablas.InsertarUsuariosSAP(UsuariosSAP, cadenaBD));     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local              
+            }
+            
+            if(jCheckFechasAcceso.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
+            {
+                System.out.println("Registrando archivo UsuariosSAP");
+                
+                
+//               PreparaTablas.add(Monitoreos.Tablas.eliminaTablaUsrsSAP(cadenaBD)); //elimina la tabla Usuarios SAP en caso de existir
+//               PreparaTablas.add(Monitoreos.Tablas.CreaUsuarios2(cadenaBD));    //crea la tabla de usuarios
+//               PreparaTablas.add(Monitoreos.Tablas.InsertarUsuariosSAP(UsuariosSAP, cadenaBD));     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local              
             }
 
 //            if(Matriz.isSelected())                                             //Valida que esté habilitada la casilla de matriz de perfiles de perfiles
@@ -1613,7 +1620,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelAdminUsr;
     private javax.swing.JLabel jLabelDemonsa2;
-    private javax.swing.JLabel jLabelDemonsa3;
+    private javax.swing.JLabel jLabelFechasAcceso3;
     private javax.swing.JLabel jLabelInternos;
     private javax.swing.JLabel jLabelInternos8;
     private javax.swing.JLabel jLabelUsuarios;
