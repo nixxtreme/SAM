@@ -1024,7 +1024,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados, Demonsa2, UsuariosSAP;
+    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados, Demonsa2, UsuariosSAP, FechasAcceso;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
 //        limpiaCampos();
@@ -1508,7 +1508,25 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButtonFechasAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFechasAccesoActionPerformed
-        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser(lastArchivo);               //Abre una ventana de exploración con la última ubicacion en que se seleccionó un archivo
+        fileChooser.setDialogTitle("Archivo Fechas de acceso");                          //Establece el titulo de la ventana de exploración
+        Dimension dim = new Dimension(800, 600);                                //Establece el tamaño de la ventana de exploración
+        fileChooser.setPreferredSize(dim);                                      //Establece el tamaño de la ventana de exploración
+
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");  //Restringe el tipo de archivos que se muestran en el explirador
+        fileChooser.setFileFilter(filter);
+        
+        int seleccion = fileChooser.showOpenDialog(this);                       
+        if(seleccion == JFileChooser.APPROVE_OPTION)                            //Valida si se seleccionó un archivo
+        {
+            FechasAcceso = fileChooser.getSelectedFile().getAbsolutePath();           //Obtiene la ubicación del archivo seleccionado
+            lastArchivo = FechasAcceso;                                               //Lo guarda como última ubicación de selección
+            jTextFieldFechasAcceso.setText(FechasAcceso);                                       //Muestra la ruta en el cuadro de texto asociado
+            jCheckFechasAcceso.setSelected(true);                                     //Selecciona la casilla de verificación
+            jCheckFechasAcceso.setEnabled(true);                                      //Permite al usuario deshabilitarla posteriormente
+        }
+              
     }//GEN-LAST:event_jButtonFechasAccesoActionPerformed
 
     /**
