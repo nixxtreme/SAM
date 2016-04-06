@@ -1352,6 +1352,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             {
                 System.out.println("Registrando archivo UsuariosSAP");
                 
+                //prueba
                 
 //               PreparaTablas.add(Monitoreos.Tablas.eliminaTablaUsrsSAP(cadenaBD)); //elimina la tabla Usuarios SAP en caso de existir
 //               PreparaTablas.add(Monitoreos.Tablas.CreaUsuarios2(cadenaBD));    //crea la tabla de usuarios
