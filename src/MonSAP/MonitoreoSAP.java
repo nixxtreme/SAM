@@ -1042,7 +1042,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
               PreparaTablas.add(Monitoreos.Tablas.eliminanonominaintSAP());
               PreparaTablas.add(Monitoreos.Tablas.eliminaUsuariosSAP2(cadenaBD));     
 
-//            PreparaTablas.add(Monitoreos.Querys.BorraInactividadInt(cadenaBD));     //Borra los usuarios internos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios internos
+
 //            PreparaTablas.add(Monitoreos.Querys.CreaInactividadExt(cadenaBD));      //Crea una tabla con los usuarios externos que no han ingresado a la aplicación en determinado tiempo
 //            PreparaTablas.add(Monitoreos.Querys.BorraInactividadExt(cadenaBD));     //Borra los usuarios externos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios externos
 //            PreparaTablas.add(Monitoreos.Querys.UsrIDIncInt(cadenaBD));             //Crea una tabla con los usuarios internos que tienen un UserID incorrecto
@@ -1106,6 +1106,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Querys.BorraBajasExtSAP(cadenaBD));           //Borra los usuarios externos que se encuientran dados de baja en la nómina del listado de usuarios externos
             
             PreparaTablas.add(Monitoreos.Tablas.CreaInactividadIntSAP(cadenaBD));      //Crea una tabla con los usuarios internos que no han ingresado a la aplicación en determinado tiempo
+            PreparaTablas.add(Monitoreos.Querys.BorraInactividadIntSAP(cadenaBD));     //Borra los usuarios internos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios internos
+            
             System.out.println("Creando nuevas tablas de trabajo");
             EjecutaSAP.Exect(ConLocal.conexion, PreparaTablas);                  //Ejecuta todas las instrucciones almacenadas en el arreglo
 //
