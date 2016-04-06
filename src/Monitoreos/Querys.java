@@ -229,7 +229,7 @@ public class Querys
     
     public static String ResultadosBajasIntSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS DADOS DE BAJA
     {
-        String statement = "SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a, IdNumemp, IdUsuario,"
+        String statement = "SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a, IdNumemp, IdUsuario,"
                 + " IDNombre, IDregion, IDgerencia, IDDepartamento, IdPuesto,  IdIdPuesto, IdEstatus, IdFecha FROM bajasintSAP";
         
         return statement;
@@ -237,7 +237,7 @@ public class Querys
     
     public static String ResultadosBajasExtSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS DADOS DE BAJA
     {
-        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a, IdNumemp, IdUsuario,"
+        String statement = "select Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a, IdNumemp, IdUsuario,"
                 + " IDNombre, IDregion, IDgerencia, IDDepartamento, IdPuesto, IdIdPuesto, IdEstatus, IdFecha from bajasextSAP";
         return statement;
     }
@@ -399,19 +399,19 @@ public class Querys
     
     public static String ResultadosUsrExt()                             //OBTIENE EL RESULTADO DE LOS USUARIOS EXTERNOS
     {
-        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a  FROM ExternosSAP";
+        String statement = "select Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a  FROM ExternosSAP";
         return statement;
     }
     
     public static String ResultadosUsrInt()                             //OBTIENE EL RESULTADO DE LOS USUARIOS INTERNOS 
     {
-        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a  FROM InternosSAP";
+        String statement = "select Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a  FROM InternosSAP";
         return statement;
     }
     
     public static String ResultadosUsrGen()                             //OBTIENE EL RESULTADO DE LOS USUARIOS GENERICOS 
     {
-        String statement = "select Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM GenericosSAP";
+        String statement = "select Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM GenericosSAP";
         return statement;
     }
     

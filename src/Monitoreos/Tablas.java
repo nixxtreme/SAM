@@ -407,7 +407,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "CREATE TABLE IF NOT EXISTS ExternosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4]
+        statement = "CREATE TABLE IF NOT EXISTS ExternosSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4]
                     + " WHERE usuario LIKE 'EX%' ";
         return statement;
     }
@@ -417,7 +417,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4] 
+        statement = "create table if not exists GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4] 
                     + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%' "
                 + "OR usuario LIKE '%C%' "
                 + "OR usuario LIKE '%D%' "
@@ -450,7 +450,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists InternosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4];
+        statement = "create table if not exists InternosSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4];
         return statement;
     }
     
@@ -474,7 +474,8 @@ public class Tablas
     public static String CreaUsuariosSAP(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT Usuario, Nombre_Completo, Grupo, valido_de, validez_a FROM Usuarios2" + parametros[4];
+        String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT Usuario, Nombre_Completo, Grupo, valido_de, validez_a FROM Usuarios2" + parametros[4]
+                     + " WHERE bloq IS NULL";
         return tabla; 
     }
    
@@ -482,7 +483,7 @@ public class Tablas
     {
        String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Nombre_Completo VARCHAR(45), Grupo VARCHAR(20), "
-                + "Bloq varchar(45), valido_de DATE, Validez_a DATE, PRIMARY KEY(usuario))";
+                + "Bloq varchar(45) DEFAULT NULL, valido_de DATE, Validez_a DATE, PRIMARY KEY(usuario))";
         return tabla;
     }
     
@@ -501,7 +502,7 @@ public class Tablas
     public static String GenExt(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String tabla = "INSERT IGNORE INTO GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a FROM ExternosSAP"
+        String tabla = "INSERT IGNORE INTO GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM ExternosSAP"
                 + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%' "
                 + "OR usuario LIKE '%C%' "
                 + "OR usuario LIKE '%D%' "
@@ -1133,7 +1134,7 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists cruceintSAP" + parametros[4] + " SELECT INTERNOSSAP.Usuario, INTERNOSSAP.Nombre_Completo, INTERNOSSAP.Grupo, INTERNOSSAP.Bloq,"
+        statement = "create table if not exists cruceintSAP" + parametros[4] + " SELECT INTERNOSSAP.Usuario, INTERNOSSAP.Nombre_Completo, INTERNOSSAP.Grupo,"
                 + " INTERNOSSAP.Valido_de, INTERNOSSAP.Validez_a, "
                 + "idint" + parametros[4] + ".NUMEROEMPLEADO AS IDNUMEMP, "
                 + "idint" + parametros[4] + ".USUARIO AS IDUSUARIO, idint" + parametros[4] + ".NOMBRECOMPLETO AS IDNOMBRE, "
@@ -1153,8 +1154,8 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists cruceextSAP" + parametros[4] + " SELECT EXTERNOSSAP.Usuario, EXTERNOSSAP.Nombre_Completo, EXTERNOSSAP.Grupo, EXTERNOSSAP.Bloq, "
-                + "EXTERNOSSAP.Valido_de, EXTERNOSSAP.Validez_a, "
+        statement = "create table if not exists cruceextSAP" + parametros[4] + " SELECT EXTERNOSSAP.Usuario, EXTERNOSSAP.Nombre_Completo, EXTERNOSSAP.Grupo,"
+                + " EXTERNOSSAP.Valido_de, EXTERNOSSAP.Validez_a, "
                     + "idext" + parametros[4] + ".NUMEROEMPLEADO AS IDNUMEMP, " 
                     + "idext" + parametros[4] + ".USUARIO AS IDUSUARIO, idext" + parametros[4] + ".NOMBRECOMPLETO AS IDNOMBRE, "
                     + "idext" + parametros[4] + ".REGION AS IDREGION, idext" + parametros[4] + ".GERENCIA AS IDGERENCIA, "

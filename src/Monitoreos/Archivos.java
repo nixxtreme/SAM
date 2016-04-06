@@ -935,8 +935,8 @@ public class Archivos
             Valido_de = temp[7];                                                     //Obtiene valido la posición 7 del arreglo
             Validez_a = temp[8];
             Usuario = Usuario.replace(" ", "");                                 //ELIMINAR LOS ESPACIOS ENTRE CAMPOS
-            Nombre_Completo = Nombre_Completo.replace(" ", "");
             Grupo = Grupo.replace(" ", "");
+            Bloq = Bloq.trim();
             
             retorno = "('" + Usuario + "', '" + Nombre_Completo + "', '" + Grupo + "', '" + Bloq + "', '" + Valido_de + "', '" + Validez_a + "' )"; //Regresa la línea para ser insertada en la BD local
         }

@@ -54,7 +54,7 @@ public class Resultados extends javax.swing.JFrame {
         
         
         
-        Object[] registro = new Object[17];                                     //Crea un arreglo para recibir los elementos de cada renglon
+        Object[] registro = new Object[18];                                     //Crea un arreglo para recibir los elementos de cada renglon
         int i = 0;                                                              //Inicializa la variable para el contador
         try
         {
@@ -69,7 +69,6 @@ public class Resultados extends javax.swing.JFrame {
                 modeloBajasInt.addColumn("Usuario");
                 modeloBajasInt.addColumn("Nombre_Completo");
                 modeloBajasInt.addColumn("Grupo");
-                modeloBajasInt.addColumn("Bloq");
                 modeloBajasInt.addColumn("Valido_de");
                 modeloBajasInt.addColumn("Validez_a");
                 modeloBajasInt.addColumn("ID Numero de empleado");
@@ -86,7 +85,7 @@ public class Resultados extends javax.swing.JFrame {
                 bajasIntSAP.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 while(bajasIntSAP.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<18; k++)                                     
+                    for(int k=1; k<17; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -113,9 +112,7 @@ public class Resultados extends javax.swing.JFrame {
                 TableColumn CNombre = tablaBajasInt.getColumn("Nombre_Completo");       //Se llama a la columna
                 CNombre.setPreferredWidth(150);                                  //Se define su tamaño
                 TableColumn CGpo = tablaBajasInt.getColumn("Grupo");        //Se llama a la columna
-                CGpo.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CBloq = tablaBajasInt.getColumn("Bloq");        //Se llama a la columna
-                CBloq.setPreferredWidth(85);                                 //Se define su tamaño
+                CGpo.setPreferredWidth(85);                                 //Se define su tamaño            
                 TableColumn CValido = tablaBajasInt.getColumn("Valido_de");        //Se llama a la columna
                 CValido.setPreferredWidth(85);                                 //Se define su tamaño
                 TableColumn CValidez = tablaBajasInt.getColumn("Validez_a");        //Se llama a la columna
@@ -159,7 +156,7 @@ public class Resultados extends javax.swing.JFrame {
     {
         DefaultTableModel modeloBajasExt = new DefaultTableModel();             //Define el objeto modelo de tabla
           
-        Object[] registro = new Object[17];                                     //Crea el arreglo para almacenar los datos de cada registro
+        Object[] registro = new Object[18];                                     //Crea el arreglo para almacenar los datos de cada registro
         int i = 0;
         try
         {
@@ -174,7 +171,6 @@ public class Resultados extends javax.swing.JFrame {
                 modeloBajasExt.addColumn("Usuario");
                 modeloBajasExt.addColumn("Nombre_Completo");
                 modeloBajasExt.addColumn("Grupo");
-                modeloBajasExt.addColumn("Bloq");
                 modeloBajasExt.addColumn("Valido_de");
                 modeloBajasExt.addColumn("Validez_a");
                 modeloBajasExt.addColumn("ID Numero de empleado");
@@ -190,7 +186,7 @@ public class Resultados extends javax.swing.JFrame {
                 bajasExtSAP.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 while(bajasExtSAP.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<18; k++)                                     
+                    for(int k=1; k<17; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -216,9 +212,7 @@ public class Resultados extends javax.swing.JFrame {
                 TableColumn CNombre = tablaBajasExt.getColumn("Nombre_Completo");       //Se llama a la columna
                 CNombre.setPreferredWidth(150);                                  //Se define su tamaño
                 TableColumn CGpo = tablaBajasExt.getColumn("Grupo");        //Se llama a la columna
-                CGpo.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CBloq = tablaBajasExt.getColumn("Bloq");        //Se llama a la columna
-                CBloq.setPreferredWidth(85);                                 //Se define su tamaño
+                CGpo.setPreferredWidth(85);                                 //Se define su tamaño               
                 TableColumn CValido = tablaBajasExt.getColumn("Valido_de");        //Se llama a la columna
                 CValido.setPreferredWidth(85);                                 //Se define su tamaño
                 TableColumn CValidez = tablaBajasExt.getColumn("Validez_a");        //Se llama a la columna
@@ -1416,8 +1410,7 @@ public class Resultados extends javax.swing.JFrame {
                 modeloInt.addColumn("Agregar");
                 modeloInt.addColumn("Usuario");                                  //Crea las columnas necesarias para el reporte
                 modeloInt.addColumn("Nombre_Completo");
-                modeloInt.addColumn("Grupo");
-                modeloInt.addColumn("Bloq");
+                modeloInt.addColumn("Grupo");             
                 modeloInt.addColumn("Valido_de");
                 modeloInt.addColumn("Validez_a");
                 
@@ -1425,7 +1418,7 @@ public class Resultados extends javax.swing.JFrame {
                                                
                 while(Uint.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<8; k++)                                     
+                    for(int k=1; k<7; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -1452,8 +1445,6 @@ public class Resultados extends javax.swing.JFrame {
                 CNombre.setPreferredWidth(300);                                 //Se define su tamaño
                 TableColumn CGrupo = tablaUserInt.getColumn("Grupo");       //Se llama a la columna
                 CGrupo.setPreferredWidth(300);                                  //Se define su tamaño
-                TableColumn CBloq = tablaUserInt.getColumn("Bloq");        //Se llama a la columna
-                CBloq.setPreferredWidth(360);                                 //Se define su tamaño
                 TableColumn CValor = tablaUserInt.getColumn("Valido_de"); //Se llama a la columna
                 CValor.setPreferredWidth(160);                                  //Se define su tamaño
                 TableColumn CValidez = tablaUserInt.getColumn("Validez_a"); //Se llama a la columna
@@ -1493,15 +1484,14 @@ public class Resultados extends javax.swing.JFrame {
                 modeloExt.addColumn("Agregar");
                 modeloExt.addColumn("Usuario");                                  //Crea las columnas necesarias para el reporte
                 modeloExt.addColumn("Nombre_Completo");
-                modeloExt.addColumn("Grupo");
-                modeloExt.addColumn("Bloq");
+                modeloExt.addColumn("Grupo");      
                 modeloExt.addColumn("Valido_de");
                 modeloExt.addColumn("Validez_a");
                 
                                                
                 while(Uext.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<8; k++)                                     
+                    for(int k=1; k<7; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -1528,8 +1518,6 @@ public class Resultados extends javax.swing.JFrame {
                 CNombre.setPreferredWidth(300);                                 //Se define su tamaño
                 TableColumn CGrupo = tablaUserExt.getColumn("Grupo");       //Se llama a la columna
                 CGrupo.setPreferredWidth(300);                                  //Se define su tamaño
-                TableColumn CBloq = tablaUserExt.getColumn("Bloq");        //Se llama a la columna
-                CBloq.setPreferredWidth(360);                                 //Se define su tamaño
                 TableColumn CValor = tablaUserExt.getColumn("Valido_de"); //Se llama a la columna
                 CValor.setPreferredWidth(160);                                  //Se define su tamaño
                 TableColumn CValidez = tablaUserExt.getColumn("Validez_a"); //Se llama a la columna
@@ -1571,14 +1559,13 @@ public class Resultados extends javax.swing.JFrame {
                 modeloGen.addColumn("Usuario");                                  //Crea las columnas necesarias para el reporte
                 modeloGen.addColumn("Nombre_Completo");
                 modeloGen.addColumn("Grupo");
-                modeloGen.addColumn("Bloq");
                 modeloGen.addColumn("Valido_de");
                 modeloGen.addColumn("Validez_a");
                 
                                                
                 while(Ugen.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<8; k++)                                     
+                    for(int k=1; k<7; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -1604,9 +1591,7 @@ public class Resultados extends javax.swing.JFrame {
                 TableColumn CNombre = tablaUsrGen.getColumn("Nombre_Completo");    //Se llama a la columna
                 CNombre.setPreferredWidth(300);                                 //Se define su tamaño
                 TableColumn CGrupo = tablaUsrGen.getColumn("Grupo");       //Se llama a la columna
-                CGrupo.setPreferredWidth(300);                                  //Se define su tamaño
-                TableColumn CBloq = tablaUsrGen.getColumn("Bloq");        //Se llama a la columna
-                CBloq.setPreferredWidth(360);                                 //Se define su tamaño
+                CGrupo.setPreferredWidth(300);                                  //Se define su tamaño                           
                 TableColumn CValor = tablaUsrGen.getColumn("Valido_de"); //Se llama a la columna
                 CValor.setPreferredWidth(160);                                  //Se define su tamaño
                 TableColumn CValidez = tablaUsrGen.getColumn("Validez_a"); //Se llama a la columna

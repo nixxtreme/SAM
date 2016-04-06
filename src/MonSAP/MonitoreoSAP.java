@@ -1029,12 +1029,13 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            PreparaTablas.add(Monitoreos.Querys.BorraPerfilNoAutorizadosInt());
 //            PreparaTablas.add(Monitoreos.Querys.BorraPerfilNoAutorizadosExt());
               
-//              PreparaTablas.add(Monitoreos.Tablas.BorraExternosTrabajoSAP());
-//              PreparaTablas.add(Monitoreos.Tablas.BorraGenericosTrabajoSAP());
-//              PreparaTablas.add(Monitoreos.Tablas.BorraInternosTrabajoSAP());            //Esta sección borra todas las tablas temporales que se crearon durante la ejecución anterior del programa
+              PreparaTablas.add(Monitoreos.Tablas.BorraExternosTrabajoSAP());
+              PreparaTablas.add(Monitoreos.Tablas.BorraGenericosTrabajoSAP());
+              PreparaTablas.add(Monitoreos.Tablas.BorraInternosTrabajoSAP());            //Esta sección borra todas las tablas temporales que se crearon durante la ejecución anterior del programa
               PreparaTablas.add(Monitoreos.Tablas.BorraUsrAdminAgregados());
               PreparaTablas.add(Monitoreos.Tablas.BorraUsrAdminEliminados());
-                          
+              PreparaTablas.add(Monitoreos.Tablas.BorraCruceInternosSAP(cadenaBD));
+              PreparaTablas.add(Monitoreos.Tablas.BorraCruceExternosSAP(cadenaBD));             
               PreparaTablas.add(Monitoreos.Tablas.BorraBajasIntSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraBajasExtSAP());
               PreparaTablas.add(Monitoreos.Tablas.eliminanonominaextSAP());
@@ -1074,8 +1075,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosInt());
 //            PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosExt());  
             
-            PreparaTablas.add(Monitoreos.Tablas.BorraCruceInternosSAP(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.BorraCruceExternosSAP(cadenaBD)); 
+            
             PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          //crea la tabla de usuarios administradores agregados
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));              //crea la tabla de usuarios administradores eliminados           
             PreparaTablas.add(Monitoreos.Tablas.TablaAdminUsrAdmin(cadenaBD));              
