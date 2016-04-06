@@ -995,13 +995,13 @@ public class Archivos
         usuarios="";
         linea = "";
         //System.out.println("linea " + linea);        
-
+       
         try
         {
             archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
-            
+             primera = br.readLine(); 
             for (int i=0;i<8;i++)                                               //Retira el encabezado del archivo 8 lineas
             {
                 primera = br.readLine();                
