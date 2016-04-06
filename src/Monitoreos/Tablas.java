@@ -462,6 +462,18 @@ public class Tablas
         return valores;
     }
     
+    
+    public static String InsertarDemonsa (String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+       
+        String valores = "INSERT IGNORE INTO Usuarios2" + parametros[4] + " (USUARIO, NOMBRE_COMPLETO, GRUPO, BLOQ, VALIDO_DE, VALIDEZ_A) "
+                + "values ";
+        
+        valores = valores + Archivos.lecturaUsuariosSAP(usuarios, cadenaBD);
+        return valores;
+    }
+    
     public static String GenExt(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
     {
         String[] parametros = cadenaBD.split("\\|");
