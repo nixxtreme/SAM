@@ -789,7 +789,7 @@ public class Archivos
         
     }
     
-    public static void lecturaUsuariosDemonsa2(String ruta, String bd )            //LEE EL ARCHIVO DE NOMINA INTERNOS
+    public static String lecturaUsuariosDemonsa2(String ruta, String bd )            //LEE EL ARCHIVO DE NOMINA INTERNOS
     {
         String[] parametros = bd.split("\\|");                                   //SEPARA LOS ELEMENTOS DE LA CADENA HASTA SU REFERENCIA DE CORTE
         File archivo = null;                                                    //Crea el objeto del archivo vacío
@@ -824,7 +824,7 @@ public class Archivos
             System.out.println("length " + linea.length());
             linea = linea.substring(0, linea.length()-1);                         //Elimina la última coma de la cadena
             System.out.println("Salida = " + linea);
-            Monitoreos.Tablas.Demonsa2Tabla(linea, bd);                            //Insera los registros en la tabla correspondiente
+           
         }
 //        catch(SQLException sqle)
 //        {
@@ -847,6 +847,7 @@ public class Archivos
             {
                 e2.printStackTrace();
             }
+            return linea;
         }
         
     }

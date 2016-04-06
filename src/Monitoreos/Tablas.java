@@ -470,7 +470,7 @@ public class Tablas
         String valores = "INSERT IGNORE INTO Usuarios2" + parametros[4] + " (USUARIO, NOMBRE_COMPLETO, GRUPO, BLOQ, VALIDO_DE, VALIDEZ_A) "
                 + "values ";
         
-        valores = valores + Archivos.lecturaUsuariosSAP(usuarios, cadenaBD);
+        valores = valores + Archivos.lecturaUsuariosDemonsa2(usuarios, cadenaBD);
         return valores;
     }
     
