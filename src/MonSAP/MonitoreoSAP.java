@@ -1280,6 +1280,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             if(jCheckDemonsa2.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
             {
                 System.out.println("Registrando archivo Demonsa 2");
+                PreparaTablas.add(Monitoreos.Tablas.eliminaTablaDemonsa2(cadenaBD));
+                
                 Monitoreos.Archivos.lecturaUsuariosDemonsa2(UsrAdmin, cadenaBD);     //Lee el archivo de la nómina de internos e inserta los usuarios en la BD local
             }
             
