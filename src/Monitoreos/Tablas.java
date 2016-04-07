@@ -283,7 +283,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS demonsa2"+ parametros[4] + " (NUMEMP VARCHAR(25) NOT NULL, NOMBRE VARCHAR(45), IDPUESTO VARCHAR(25), "
-        + "PUESTO VARCHAR(45) , GERENCIA VARCHAR(45), REGION VARCHAR(25) PRIMARY KEY (NUMEMP))";
+        + "PUESTO VARCHAR(45) , GERENCIA VARCHAR(45), REGION VARCHAR(25), PRIMARY KEY (NUMEMP))";
         
         return tabla;
     }
@@ -467,7 +467,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
        
-        String valores = "INSERT IGNORE INTO Usuarios2" + parametros[4] + " (USUARIO, NOMBRE_COMPLETO, GRUPO, BLOQ, VALIDO_DE, VALIDEZ_A) "
+        String valores = "INSERT IGNORE INTO demonsa2" + parametros[4] + " (NUMEMP, NOMBRE, IDPUESTO, PUESTO, GERENCIA, REGION) "
                 + "values ";
         
         valores = valores + Archivos.lecturaUsuariosDemonsa2(usuarios, cadenaBD);
