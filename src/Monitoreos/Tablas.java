@@ -1211,7 +1211,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "create table if not exists demonsaIE select * "
-                + "FROM cruceintsap" + parametros[4] + "WHERE numemp IS NOT null";
+                + "FROM cruceintsap" + parametros[4] + ", cruceextsap" + parametros[4] + " WHERE numemp IS NOT null";
         return statement;
     }
     
