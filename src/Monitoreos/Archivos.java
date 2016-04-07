@@ -975,10 +975,10 @@ public class Archivos
             String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /
 //            System.out.println("Valido a " + Validez_a);
             fechac = Validez_a.split("\\.");                                      //Separa los elementos de la fecha separados por / almacenándolos en un arreglo
-            for(int w = 0; w<3; w++)
-            {
-                System.out.println(w + "  fecha " + fechac[w]);
-            }
+//            for(int w = 0; w<3; w++)
+//            {
+//                System.out.println(w + "  fecha " + fechac[w]);
+//            }
                    
             fechames = fechac[1];                                               //Obtiene el mes de la posición 1 del arreglo
             fechadia = fechac[0];                                               //Obtiene el día de la posición 0 del arreglo
@@ -994,7 +994,7 @@ public class Archivos
             
             retorno = "('" + Usuario + "', '" + Nombre_Completo + "', '" + Grupo + "', '" + Bloq + "', " + Valido_de + ", " + Validez_a + " )"; //Regresa la línea para ser insertada en la BD local
         }
-        System.out.println("Retorno " + retorno);
+//        System.out.println("Retorno " + retorno);
         return retorno;
     }
     
