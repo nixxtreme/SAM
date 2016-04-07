@@ -954,10 +954,10 @@ public class Archivos
             
             fechac = Valido_de.split("\\.");                                      //Separa los elementos de la fecha separados por / almacenándolos en un arreglo
             //System.out.println("fechac " + fechac.length + "   " + fechac.toString());
-            for(int w = 0; w<3; w++)
-            {
-                System.out.println(w + "  fecha " + fechac[w]);
-            }
+//            for(int w = 0; w<3; w++)
+//            {
+//                System.out.println(w + "  fecha " + fechac[w]);
+//            }
             fechames = fechac[1];                                               //Obtiene el mes de la posición 1 del arreglo
             fechadia = fechac[0];                                               //Obtiene el día de la posición 0 del arreglo
             fechaano = fechac[2];                                               //Obtiene el año de la posición 2 del arreglo
@@ -966,14 +966,14 @@ public class Archivos
         }
         else
         {
-            System.out.println("else");
+//            System.out.println("else");
             Valido_de = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
         }
         
         if(!Validez_a.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
         {
             String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /
-            System.out.println("Valido a " + Validez_a);
+//            System.out.println("Valido a " + Validez_a);
             fechac = Validez_a.split("\\.");                                      //Separa los elementos de la fecha separados por / almacenándolos en un arreglo
             for(int w = 0; w<3; w++)
             {
