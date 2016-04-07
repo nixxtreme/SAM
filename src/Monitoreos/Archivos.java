@@ -201,8 +201,8 @@ public class Archivos
         jefe = temp[21];                                                        //Obtiene el jefe inmediato de la posición 21 del arreglo
         estatus = temp[29];                                                     //Obtiene el estatus de la posición 29 del arreglo
         fecha = temp[28];                                                       //Obtiene el fecha de la posición 28 del arreglo
-        System.out.println("numemp " + numero + " usuario " + usuario + " nombre " + nombre + " region " + region + " gerencia " + gerencia + " departamento " + departamento 
-        + " idpuesto " + idpuesto + " jefe " + jefe + " estatus " + estatus + " fecha " + fecha);
+//        System.out.println("numemp " + numero + " usuario " + usuario + " nombre " + nombre + " region " + region + " gerencia " + gerencia + " departamento " + departamento 
+//        + " idpuesto " + idpuesto + " jefe " + jefe + " estatus " + estatus + " fecha " + fecha);
         if(fecha.contains("null") || fecha.contains("Null") || fecha.contains("NULL"))
         {
             fecha = "";
