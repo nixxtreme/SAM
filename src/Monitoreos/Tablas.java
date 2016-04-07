@@ -1176,16 +1176,25 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists cruceextSAP" + parametros[4] + " SELECT EXTERNOSSAP.Usuario, EXTERNOSSAP.Nombre_Completo, EXTERNOSSAP.Grupo,"
-                + " EXTERNOSSAP.Valido_de, EXTERNOSSAP.Validez_a, "
-                    + "idext" + parametros[4] + ".NUMEROEMPLEADO AS IDNUMEMP, " 
-                    + "idext" + parametros[4] + ".USUARIO AS IDUSUARIO, idext" + parametros[4] + ".NOMBRECOMPLETO AS IDNOMBRE, "
-                    + "idext" + parametros[4] + ".REGION AS IDREGION, idext" + parametros[4] + ".GERENCIA AS IDGERENCIA, "
-                    + "idext" + parametros[4] + ".DEPARTAMENTO AS IDDEPARTAMENTO, "
-                    + "idext" + parametros[4] + ".PUESTO AS IDPUESTO, idext" + parametros[4] + ".IDPUESTO AS IDIDPUESTO, "                    
-                    + "idext" + parametros[4] + ".ESTATUS AS IDESTATUS, idext" + parametros[4] + ".FECHA AS IDFECHA  "
-                    + "FROM EXTERNOSSAP left join idext" + parametros[4]
-                    + " on EXTERNOSSAP.Usuario=idext" + parametros[4] + ".NUMEROEMPLEADO ";
+        statement = "CREATE TABLE IF NOT EXISTS cruceextSAP"+ parametros[4] + " SELECT externossap.Usuario, externossap.Nombre_completo, "
+                + "externossap.Grupo, externossap.Valido_De, externossap.Validez_a,"
+                + " idext" + parametros[4] + ".NUMEROEMPLEADO,"
+                + " idext" + parametros[4] + ".USUARIO AS IDUSUARIO,"
+                + " idext" + parametros[4] + ".NOMBRECOMPLETO,"
+                + " idext" + parametros[4] + ".REGION," 
+                + " idext" + parametros[4] + ".GERENCIA,"
+                + " idext" + parametros[4] + ".DEPARTAMENTO,"
+                + " idext" + parametros[4] + ".PUESTO,"
+                + " idext" + parametros[4] + ".IDPUESTO," 
+                + " idext" + parametros[4] + ".ESTATUS," 
+                + " idext" + parametros[4] + ".FECHA,"
+                + " demonsa2" + parametros[4] + ".NUMEMP," 
+                + " demonsa2" + parametros[4] + ".NOMBRE," 
+                + " demonsa2" + parametros[4] + ".IDPUESTO AS IDPUESTO_DEM,"
+                + " demonsa2" + parametros[4] + ".GERENCIA AS GERENCIA_DEM,"
+                + " demonsa2" + parametros[4] + ".REGION AS REGIO_DEM"
+                + " FROM (externossap left join demonsa2" +parametros[4] + " on externossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
+                + " left join idext" + parametros[4] + " on externossap.usuario = idext" + parametros[4] + ".NUMEROEMPLEADO ";
             
         return statement;
     }
