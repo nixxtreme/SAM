@@ -527,6 +527,17 @@ public class Tablas
         return tabla;
     }
     
+    public static String InsertarFechasAcceso (String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+       
+        String valores = "INSERT IGNORE INTO FechasA" + parametros[4] + " (USUARIO, NOMBRE_COMPLETO, GRUPO, BLOQ, VALIDO_DE, VALIDEZ_A) "
+                + "values ";
+        
+        valores = valores + Archivos.lecturaUsuariosSAP(usuarios, cadenaBD);
+        return valores;
+    }
+    
                 //***************************************
     
     
