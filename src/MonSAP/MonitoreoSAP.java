@@ -1331,11 +1331,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 System.out.println("Registrando archivo Demonsa 2");
                 PreparaTablas.add(Monitoreos.Tablas.eliminaTablaDemonsa2(cadenaBD));
                 PreparaTablas.add(Monitoreos.Tablas.idCreaDemonsa2(cadenaBD));
-                PreparaTablas.add(Monitoreos.Tablas.InsertarDemonsa(UsuariosSAP, cadenaBD));
+                PreparaTablas.add(Monitoreos.Tablas.InsertarDemonsa(Demonsa2, cadenaBD));
                 
                 
                 
-                Monitoreos.Archivos.lecturaUsuariosDemonsa2(UsrAdmin, cadenaBD);     //Lee el archivo de la nómina de internos e inserta los usuarios en la BD local
+//                Monitoreos.Archivos.lecturaUsuariosDemonsa2(UsrAdmin, cadenaBD);     //Lee el archivo de la nómina de internos e inserta los usuarios en la BD local
             }
             
             if(jCheckUsrs.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
@@ -1370,7 +1370,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //                EjecutaLo.Exect(ConLocal.conexion, MonPac.Querys.CreaMatrizPerfiles(cadenaBD, MatrizPerfiles)); //Lee el archivo de matriz de perfiles y la inserta en la BD local
 //
 //            }
-            System.out.println("Creando nuevas tablas de trabajo");
+//            System.out.println("Creando nuevas tablas de trabajo");
             EjecutaSAP.Exect(ConLocal.conexion, PreparaTablas);    
             JOptionPane.showMessageDialog(null, "El proceso de importación de los archivos ha finalizado", "Proceso terminado", JOptionPane.INFORMATION_MESSAGE);
         }

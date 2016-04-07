@@ -799,7 +799,7 @@ public class Archivos
         
         usuarios="";
         linea = "";
-        //System.out.println("linea " + linea);
+//        System.out.println("linea " + linea);
         
         
 
@@ -821,9 +821,9 @@ public class Archivos
                 //System.out.println("Linea  " + creaLinea(temp));
 
             }
-            System.out.println("length " + linea.length());
+//            System.out.println("length " + linea.length());
             linea = linea.substring(0, linea.length()-1);                         //Elimina la última coma de la cadena
-            System.out.println("Salida = " + linea);
+//            System.out.println("Salida = " + linea);
            
         }
 //        catch(SQLException sqle)
@@ -914,7 +914,7 @@ public class Archivos
     private static String creaLineaUsrSAP(String linea)                          //CREA LA LÍNEA DE REGISTRO DE USUARIOS ADMINISTRADORES
     {
         String Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a, retorno, fechadia, fechames, fechaano;                         //Variables para almacenar los datos de cada registro
-        System.out.println("Linea " + linea);
+//        System.out.println("Linea " + linea);
         String[] temp = linea.split("\\|");                                      //Crea un arreglo con los datos del registro separados por el pipe
 //        for(int i=0; i<temp.length;i++)                                             
 //        {

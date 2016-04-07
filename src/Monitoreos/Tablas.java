@@ -471,6 +471,7 @@ public class Tablas
                 + "values ";
         
         valores = valores + Archivos.lecturaUsuariosDemonsa2(usuarios, cadenaBD);
+        System.out.println("SQL " + valores);
         return valores;
     }
     
