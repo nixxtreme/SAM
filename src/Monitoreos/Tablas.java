@@ -594,6 +594,14 @@ public class Tablas
         String statement = "DROP TABLE IF EXISTS CRUCEEXTSAP" + parametros[4];
         return statement;
     }    
+    
+    public static String BorraTablaDemIE(String cadenaBD)             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "DROP TABLE IF EXISTS demonsaIE" + parametros[4];
+        return statement;
+    }
+    
                         //********************
     
     
@@ -1196,6 +1204,14 @@ public class Tablas
                 + " FROM (externossap left join demonsa2" +parametros[4] + " on externossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
                 + " left join idext" + parametros[4] + " on externossap.usuario = idext" + parametros[4] + ".NUMEROEMPLEADO ";
             
+        return statement;
+    }
+    
+    public static String CreaDemIE(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "create table if not exists demonsaIE select * "
+                + "FROM cruceintsap" + parametros[4] + ", cruceextsap" + parametros[4] + " WHERE numemp IS NOT null";
         return statement;
     }
     

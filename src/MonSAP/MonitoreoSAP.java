@@ -1088,7 +1088,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
               PreparaTablas.add(Monitoreos.Tablas.eliminanonominaextSAP());
               PreparaTablas.add(Monitoreos.Tablas.eliminanonominaintSAP());
               PreparaTablas.add(Monitoreos.Tablas.eliminaUsuariosSAP2(cadenaBD));     
-
+              PreparaTablas.add(Monitoreos.Tablas.BorraTablaDemIE(cadenaBD));
 
 //            PreparaTablas.add(Monitoreos.Querys.CreaInactividadExt(cadenaBD));      //Crea una tabla con los usuarios externos que no han ingresado a la aplicación en determinado tiempo
 //            PreparaTablas.add(Monitoreos.Querys.BorraInactividadExt(cadenaBD));     //Borra los usuarios externos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios externos
@@ -1141,7 +1141,12 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
             PreparaTablas.add(Monitoreos.Tablas.CruceInternosSAP(cadenaBD)); 
             PreparaTablas.add(Monitoreos.Tablas.CruceExternosSAP(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios internos//            PreparaTablas.add(Monitoreos.Querys.CruceExternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios externos
-//           
+
+            //elminacion demonsa en cruces
+            PreparaTablas.add(Monitoreos.Tablas.CreaDemIE(cadenaBD));
+            //PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceInt());
+            //PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceExt();
+            
             PreparaTablas.add(Monitoreos.Tablas.NoNominaCreaIntSAP(cadenaBD));         //Crea una tabla con los usuarios internos que no fueron encontrados en nómina
             PreparaTablas.add(Monitoreos.Querys.NoNominaBorraIntSAP(cadenaBD));        //Boora los usuarios internos no encontrados en la nómina del listado de usuarios internos
             PreparaTablas.add(Monitoreos.Tablas.NoNominaCreaExtSAP(cadenaBD));         //Crea una tabla con los usuarios externos que no fueron encontrados en nómina
