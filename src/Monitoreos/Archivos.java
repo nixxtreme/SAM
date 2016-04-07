@@ -817,7 +817,7 @@ public class Archivos
                     
 //                System.out.println("temp = " + temp);
                 //System.out.println("Linea antes " + linea);
-                linea = linea + "\n " + creaLineaUsrAdmin(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
+                linea = linea + "\n " + creaLineaDemonsa2(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
                 //System.out.println("Linea  " + creaLinea(temp));
 
             }
