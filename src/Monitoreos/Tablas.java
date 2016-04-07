@@ -1159,10 +1159,13 @@ public class Tablas
                 + " idint" + parametros[4] + ".IDPUESTO," 
                 + " idint" + parametros[4] + ".ESTATUS," 
                 + " idint" + parametros[4] + ".FECHA,"
-                + " demonsa200000000.NUMEMP, demonsa200000000.NOMBRE, demonsa200000000.IDPUESTO AS IDPUESTO_DEM,"
-                + " demonsa200000000.GERENCIA AS GERENCIA_DEM, demonsa200000000.REGION AS REGIO_DEM"
-                + " FROM (internossap left join demonsa200000000 on internossap.usuario = demonsa200000000.NUMEMP) "
-                + " left join idint00000000 on internossap.usuario = idint00000000.NUMEROEMPLEADO ";
+                + " demonsa2" + parametros[4] + ".NUMEMP," 
+                + " demonsa2" + parametros[4] + ".NOMBRE," 
+                + " demonsa2" + parametros[4] + ".IDPUESTO AS IDPUESTO_DEM,"
+                + " demonsa2" + parametros[4] + ".GERENCIA AS GERENCIA_DEM,"
+                + " demonsa2" + parametros[4] + ".REGION AS REGIO_DEM"
+                + " FROM (internossap left join demonsa2" +parametros[4] + " on internossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
+                + " left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO ";
                              
         
         return statement;
