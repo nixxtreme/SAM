@@ -902,7 +902,9 @@ public class Archivos
         nombre = temp[1];                                                       //Obtiene el nombre de la posición 2 del arreglo
         idpuesto = temp[2];                                                     //Obtiene la rol de la posición 4 del arreglo
         puesto = temp[3];                                                       //Obtiene la apellido de la posición 3 del arreglo
+        puesto = Monitoreos.Archivos.escapaChar(puesto, "\\'");
         gerencia = temp[4];                                                     //Obtiene el valor de autorizacion de la posición 7 del arreglo
+        gerencia = Monitoreos.Archivos.escapaChar(gerencia, "\\'");
         region = temp[5];
         retorno = "('" + numemp + "', '" + nombre + "', '" + idpuesto + "', "
                 + "'" + puesto + "', '" + gerencia +  "', '" + region + "')";   //Regresa la línea para ser insertada en la BD local
