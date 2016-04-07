@@ -1350,13 +1350,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             
             if(jCheckFechasAcceso.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
             {
-                System.out.println("Registrando archivo UsuariosSAP");
+                System.out.println("Registrando archivo Fechas de acceso");
                 
-                //prueba
-                
-//               PreparaTablas.add(Monitoreos.Tablas.eliminaTablaUsrsSAP(cadenaBD)); //elimina la tabla Usuarios SAP en caso de existir
-//               PreparaTablas.add(Monitoreos.Tablas.CreaUsuarios2(cadenaBD));    //crea la tabla de usuarios
-//               PreparaTablas.add(Monitoreos.Tablas.InsertarUsuariosSAP(UsuariosSAP, cadenaBD));     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local              
+               PreparaTablas.add(Monitoreos.Tablas.eliminaFechasAcceso(cadenaBD)); //elimina la tabla de FECHAS en caso de existir
+               PreparaTablas.add(Monitoreos.Tablas.CreaFechasAcceso(cadenaBD));    //crea la tabla de usuarios
+               PreparaTablas.add(Monitoreos.Tablas.InsertarFechasAcceso(FechasAcceso, cadenaBD));     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local              
             }
 
 //            if(Matriz.isSelected())                                             //Valida que esté habilitada la casilla de matriz de perfiles de perfiles

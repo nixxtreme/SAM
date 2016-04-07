@@ -432,6 +432,8 @@ public class Tablas
         String statment="DROP TABLE IF EXISTS `UsuariosSAP"+ parametros[4] + "`";    
         return statment;
     }
+     
+     
     
                 //USUARIOS 2 SAP
     public static String CreaUsuariosSAP(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
@@ -507,8 +509,36 @@ public class Tablas
     }
     
     
+                //**************Inactividad****************
+   
+    public static String eliminaFechasAcceso(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statment = "DROP TABLE IF EXISTS `FechasA"+ parametros[4] + "`";  
+        return statment;
+        
+    }   
     
+    public static String CreaFechasAcceso(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DE SAP SAP
+    {
+       String[] parametros = cadenaBD.split("\\|");
+        String tabla = "CREATE TABLE IF NOT EXISTS FechasA" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Nombre_Completo VARCHAR(45), Grupo VARCHAR(20), "
+                + "Bloq varchar(45), valido_de DATE, Validez_a DATE, PRIMARY KEY(usuario))";
+        return tabla;
+    }
     
+    public static String InsertarFechasAcceso (String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+       
+        String valores = "INSERT IGNORE INTO FechasA" + parametros[4] + " (USUARIO, NOMBRE_COMPLETO, GRUPO, BLOQ, VALIDO_DE, VALIDEZ_A) "
+                + "values ";
+        
+        valores = valores + Archivos.lecturaUsuariosSAP(usuarios, cadenaBD);
+        return valores;
+    }
+    
+                //***************************************
     
     
     public static String BorraInternosTrabajo()                                 //BORRA LA TABLA DE TRABAJO INTERNOS
