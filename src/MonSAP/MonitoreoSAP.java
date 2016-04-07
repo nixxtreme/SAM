@@ -1353,7 +1353,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 System.out.println("Registrando archivo Fechas de acceso");
                 
                PreparaTablas.add(Monitoreos.Tablas.eliminaFechasAcceso(cadenaBD)); //elimina la tabla de FECHAS en caso de existir
-               PreparaTablas.add(Monitoreos.Tablas.FechasAcceso(cadenaBD));    //crea la tabla de usuarios
+               PreparaTablas.add(Monitoreos.Tablas.CreaFechasAcceso(cadenaBD));    //crea la tabla de usuarios
                PreparaTablas.add(Monitoreos.Tablas.InsertarFechasAcceso(FechasAcceso, cadenaBD));     //Lee el archivo de  usuarios SAP e inserta usuarios en la BD local              
             }
 
