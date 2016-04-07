@@ -1147,17 +1147,23 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists cruceintSAP" + parametros[4] + " SELECT INTERNOSSAP.Usuario, INTERNOSSAP.Nombre_Completo, INTERNOSSAP.Grupo,"
-                + " INTERNOSSAP.Valido_de, INTERNOSSAP.Validez_a, "
-                + "idint" + parametros[4] + ".NUMEROEMPLEADO AS IDNUMEMP, "
-                + "idint" + parametros[4] + ".USUARIO AS IDUSUARIO, idint" + parametros[4] + ".NOMBRECOMPLETO AS IDNOMBRE, "
-                + "idint" + parametros[4] + ".REGION AS IDREGION, idint" + parametros[4] + ".GERENCIA AS IDGERENCIA, "
-                + "idint" + parametros[4] + ".DEPARTAMENTO AS IDDEPARTAMENTO, "
-                + "idint" + parametros[4] + ".PUESTO AS IDPUESTO, idint" + parametros[4] + ".IDPUESTO AS IDIDPUESTO, "       
-                + "idint" + parametros[4] + ".ESTATUS AS IDESTATUS, idint" + parametros[4] + ".FECHA AS IDFECHA "
-                + ""
-                + "FROM INTERNOSSAP left join idint" + parametros[4] 
-                + " on INTERNOSSAP.Usuario=idint" + parametros[4] + ".NUMEROEMPLEADO";
+        statement = "CREATE TABLE IF NOT EXISTS cruceintSAP"+ parametros[4] + " SELECT internossap.Usuario, internossap.Nombre_completo, "
+                + "internossap.Grupo, internossap.Valido_De, internossap.Validez_a,"
+                + " idint" + parametros[4] + ".NUMEROEMPLEADO,"
+                + " idint" + parametros[4] + ".USUARIO AS IDUSUARIO,"
+                + " idint" + parametros[4] + ".NOMBRECOMPLETO,"
+                + " idint" + parametros[4] + ".REGION," 
+                + " idint" + parametros[4] + ".GERENCIA,"
+                + " idint" + parametros[4] + ".DEPARTAMENTO,"
+                + " idint" + parametros[4] + ".PUESTO,"
+                + " idint" + parametros[4] + ".IDPUESTO," 
+                + " idint" + parametros[4] + ".ESTATUS," 
+                + " idint" + parametros[4] + ".FECHA,"
+                + " demonsa200000000.NUMEMP, demonsa200000000.NOMBRE, demonsa200000000.IDPUESTO AS IDPUESTO_DEM,"
+                + " demonsa200000000.GERENCIA AS GERENCIA_DEM, demonsa200000000.REGION AS REGIO_DEM"
+                + " FROM (internossap left join demonsa200000000 on internossap.usuario = demonsa200000000.NUMEMP) "
+                + " left join idint00000000 on internossap.usuario = idint00000000.NUMEROEMPLEADO ";
+                             
         
         return statement;
     }
