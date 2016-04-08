@@ -30,7 +30,7 @@ public class Resultados extends javax.swing.JFrame {
         cadenaBD = cadena;                                                      //Almacena la cadena con los datos de conexión a la base de datos local
         initComponents();                                                       //Inicializa los componentes proncipales de la ventana
         definirModelosBajasIntSAP();                                               //Define el modelo de la tabla de inconsistencias de bajas internos
-        definirModelosBajasExtSAP();                                               //Define el modelo de la tabla de inconsistencias de bajas externos
+//        definirModelosBajasExtSAP();                                               //Define el modelo de la tabla de inconsistencias de bajas externos
 //        definirModelosInactividadInt();                                         //Define el modelo de la tabla de inconsistencias de inactividad internos
 //        definirModelosInactividadExt();                                         //Define el modelo de la tabla de inconsistencias de inactividad externos
 //        definirModelosUserIncInt();                                             //Define el modelo de la tabla de inconsistencias de UserID incorrecto internos
@@ -66,14 +66,14 @@ public class Resultados extends javax.swing.JFrame {
             if(bajasIntSAP.next())                                                 //Verifica que el resultado no esté vacío
             {
                 modeloBajasInt.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
-                modeloBajasInt.addColumn("Numero de empleado");
-                modeloBajasInt.addColumn("Nombre Completo");
+                modeloBajasInt.addColumn("Número de empleado");
+                modeloBajasInt.addColumn("Nombre completo");
                 modeloBajasInt.addColumn("Grupo");
-                modeloBajasInt.addColumn("Valido_de");
-                modeloBajasInt.addColumn("Validez_a");
-                modeloBajasInt.addColumn("ID Numero de empleado");
-                modeloBajasInt.addColumn("ID Usuario");
-                modeloBajasInt.addColumn("ID Nombre");
+                modeloBajasInt.addColumn("Valido de");
+                modeloBajasInt.addColumn("Validez a");
+                modeloBajasInt.addColumn("ID numero de empleado");
+                modeloBajasInt.addColumn("ID usuario");
+                modeloBajasInt.addColumn("ID nombre");
                 modeloBajasInt.addColumn("Región");
                 modeloBajasInt.addColumn("Gerencia");
                 modeloBajasInt.addColumn("Departamento");
@@ -107,9 +107,9 @@ public class Resultados extends javax.swing.JFrame {
 
                 TableColumn CAgregar = tablaBajasInt.getColumn("Agregar");      //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CUsuario = tablaBajasInt.getColumn("Numero de empleado");    //Se llama a la columna
-                CUsuario.setPreferredWidth(80);                                 //Se define su tamaño
-                TableColumn CNombre = tablaBajasInt.getColumn("Nombre Completo");       //Se llama a la columna
+                TableColumn CUsuario = tablaBajasInt.getColumn("Número de empleado");    //Se llama a la columna
+                CUsuario.setPreferredWidth(150);                                 //Se define su tamaño
+                TableColumn CNombre = tablaBajasInt.getColumn("Nombre completo");       //Se llama a la columna
                 CNombre.setPreferredWidth(150);                                  //Se define su tamaño
                 TableColumn CGpo = tablaBajasInt.getColumn("Grupo");        //Se llama a la columna
                 CGpo.setPreferredWidth(85);                                 //Se define su tamaño            
@@ -117,12 +117,12 @@ public class Resultados extends javax.swing.JFrame {
                 CValido.setPreferredWidth(85);                                 //Se define su tamaño
                 TableColumn CValidez = tablaBajasInt.getColumn("Validez a");        //Se llama a la columna
                 CValidez.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CIDUsuario = tablaBajasInt.getColumn("ID Usuario"); //Se llama a la columna
+                TableColumn CIDUsuario = tablaBajasInt.getColumn("ID usuario"); //Se llama a la columna
                 CIDUsuario.setPreferredWidth(80);                                  //Se define su tamaño
-                TableColumn CBBFNumEMP = tablaBajasInt.getColumn("ID Numero de empleado");  //Se llama a la columna
+                TableColumn CBBFNumEMP = tablaBajasInt.getColumn("ID numero de empleado");  //Se llama a la columna
                 CBBFNumEMP.setPreferredWidth(80);                              //Se define su tamaño
                 TableColumn CBBFNombre = tablaBajasInt.getColumn("Nombre");    //Se llama a la columna
-                CBBFNombre.setPreferredWidth(100);                              //Se define su tamaño
+                CBBFNombre.setPreferredWidth(150);                              //Se define su tamaño
                 TableColumn CRegion = tablaBajasInt.getColumn("Región");        //Se llama a la columna
                 CRegion.setPreferredWidth(70);                                  //Se define su tamaño
                 TableColumn CGerencia = tablaBajasInt.getColumn("Gerencia");        //Se llama a la columna
