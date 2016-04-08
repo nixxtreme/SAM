@@ -1069,6 +1069,77 @@ public class Archivos
         }       
         
     }
+    
+    public static String lecturaFechasAcceso (String ruta, String bd )
+    {
+        String[] parametros = bd.split("\\|");                                  //SEPARA LOS ELEMENTOS DE LA CADENA HASTA SU REFERENCIA DE CORTE
+        File archivo = null;                                                    //Crea el objeto del archivo vacío
+        FileReader fr = null;                                                   //Crea el objeto del lector de archivos vacío
+        BufferedReader br = null;                                               //Crea el bufer de lectura vacío
+        String usuarios, linea, temp, primera;                                  
+        
+        usuarios="";
+        linea = "";
+        //System.out.println("linea " + linea);        
+       
+        try
+        {
+            archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+              
+            for (int i=0;i<29;i++)                                               //Retira el encabezado del archivo 8 lineas
+            {
+                primera = br.readLine();                
+            }                                           
+
+            while((temp=br.readLine()) != null)                                 //Valida que la siguiente línea del archivo no esté vacía
+            {
+                
+                if(temp.contains("----"))                                       //Valida si contiene guiones en la línea para descartarla
+                {
+
+                }
+                else
+                {
+                    
+//                    System.out.println("temp = " + temp);
+                    //System.out.println("Linea antes " + linea);
+                    linea = linea + "\n " + creaLineaUsrSAP(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
+                    //System.out.println("Linea  " + creaLinea(temp));
+                }            
+                
+            }
+//            System.out.println("length " + linea.length());
+            linea = linea.substring(0, linea.length()-1);                         //Elimina la última coma de la cadena
+//            System.out.println("Salida = " + linea);                                     
+        }
+//        catch(SQLException sqle)
+//        {
+//            sqle.printStackTrace();
+//        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally                                                                 //Finaliza la lectura del archivo
+        {
+            try
+            {
+                if(fr != null)
+                {
+                    fr.close();
+                }
+            }
+            catch(Exception e2)
+            {
+                e2.printStackTrace();
+            }
+         return linea;
+        }       
+        
+    }
+    
 }
        
  

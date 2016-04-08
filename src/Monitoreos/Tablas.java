@@ -541,10 +541,11 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
        
-        String valores = "INSERT IGNORE INTO FechasA" + parametros[4] + " (USUARIO, NOMBRE_COMPLETO, GRUPO, BLOQ, VALIDO_DE, VALIDEZ_A) "
+        String valores = "INSERT IGNORE INTO FechasA" + parametros[4] + " (USUARIO, GRUPO, CREADO_POR, FECHA_CREACION,"
+                + " VALIDO_DE, FIN_VALIDEZ, ENTRADA_SIST, CLAVE_ACC, BLOQUEO) "
                 + "values ";
         
-        valores = valores + Archivos.lecturaUsuariosSAP(usuarios, cadenaBD);
+        valores = valores + Archivos.lecturaFechasAcceso(usuarios, cadenaBD);
         return valores;
     }
     
