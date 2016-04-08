@@ -999,6 +999,121 @@ public class Archivos
     }
     
     
+    private static String creaLineaFechasAcceso(String linea)                          //CREA LA LÍNEA DE REGISTRO DE USUARIOS ADMINISTRADORES
+    {
+        String Usuario, Grupo, Creado_por, Fecha_creacion, Valido_de, Fin_validez, Entrada_Sist, Clave_acc, Bloqueo, retorno, fechames, fechaano, fechadia;                         //Variables para almacenar los datos de cada registro
+//        System.out.println("Linea " + linea);
+        String[] temp = linea.split("\\|");                                      //Crea un arreglo con los datos del registro separados por el pipe
+//        for(int i=0; i<temp.length;i++)                                             
+//        {
+//            System.out.println(i + " " + temp[i]);
+//        }
+//        System.out.println("\n\n\n");
+        if(temp[1].contains("*"))
+        {
+            retorno = "";
+        }
+        else
+        {
+            Usuario = temp[1];                                                      //Obtiene el Usuario de la posición 1 del arreglo
+            Grupo = temp[2];                                                        //Obtiene el grupo de la posición 2 del arreglo
+            Creado_por = temp[4];                                                   //Obtiene el creado de la posición 4 del arreglo
+            Fecha_creacion = temp[5];                                                    
+            Valido_de = temp[6];                                                     
+            Fin_validez = temp[7];
+            Entrada_Sist = temp[8];
+            Clave_acc = temp[11];
+            Bloqueo = temp[13];
+            
+            Usuario = Usuario.trim();                                           //ELIMINAR LOS ESPACIOS ENTRE CAMPOS
+            Grupo = Grupo.trim();
+           
+        //validacion de fechas
+                
+        if(!Fecha_creacion.isEmpty())                                           //Verifica si el campo de fecha se encuentra vacío
+        {
+            String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /            
+            fechac = Fecha_creacion.split("\\.");                                      //Separa los elementos de la fecha separados por / almacenándolos en un arreglo 
+            fechames = fechac[1];                                               //Obtiene el mes de la posición 1 del arreglo
+            fechadia = fechac[0];                                               //Obtiene el día de la posición 0 del arreglo
+            fechaano = fechac[2];                                               //Obtiene el año de la posición 2 del arreglo
+            
+            Fecha_creacion = "'" + fechaano + "-" + fechames + "-" + fechadia + "'";     //Establece el campo fecha en formato aaaa-mm-dd
+        }
+        else
+        {    
+            Fecha_creacion = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+        }
+        
+        if(!Valido_de.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
+        {
+            String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /            
+            fechac = Valido_de.split("\\.");                                      //Separa los elementos de la fecha separados por / almacenándolos en un arreglo 
+            fechames = fechac[1];                                               //Obtiene el mes de la posición 1 del arreglo
+            fechadia = fechac[0];                                               //Obtiene el día de la posición 0 del arreglo
+            fechaano = fechac[2];                                               //Obtiene el año de la posición 2 del arreglo
+            
+            Valido_de = "'" + fechaano + "-" + fechames + "-" + fechadia + "'";     //Establece el campo fecha en formato aaaa-mm-dd
+        }
+        else
+        {    
+            Valido_de = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+        }
+        
+        
+        if(!Fin_validez.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
+        {
+            String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /  
+            fechac = Fin_validez.split("\\.");                                      //Separa los elementos de la fecha separados por / almacenándolos en un arreglo
+            fechames = fechac[1];                                               //Obtiene el mes de la posición 1 del arreglo
+            fechadia = fechac[0];                                               //Obtiene el día de la posición 0 del arreglo
+            fechaano = fechac[2];                                               //Obtiene el año de la posición 2 del arreglo
+            
+            Fin_validez = "'" + fechaano + "-" + fechames + "-" + fechadia + "'";     //Establece el campo fecha en formato aaaa-mm-dd
+        }
+        else
+        {
+            Fin_validez = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+        }
+        
+        if(!Entrada_Sist.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
+        {
+            String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /  
+            fechac = Entrada_Sist.split("\\.");                                      //Separa los elementos de la fecha separados por / almacenándolos en un arreglo
+            fechames = fechac[1];                                               //Obtiene el mes de la posición 1 del arreglo
+            fechadia = fechac[0];                                               //Obtiene el día de la posición 0 del arreglo
+            fechaano = fechac[2];                                               //Obtiene el año de la posición 2 del arreglo
+            
+            Entrada_Sist = "'" + fechaano + "-" + fechames + "-" + fechadia + "'";     //Establece el campo fecha en formato aaaa-mm-dd
+        }
+        else
+        {
+            Entrada_Sist = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+        }
+        
+        if(!Clave_acc.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
+        {
+            String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /  
+            fechac = Clave_acc.split("\\.");                                      //Separa los elementos de la fecha separados por / almacenándolos en un arreglo
+            fechames = fechac[1];                                               //Obtiene el mes de la posición 1 del arreglo
+            fechadia = fechac[0];                                               //Obtiene el día de la posición 0 del arreglo
+            fechaano = fechac[2];                                               //Obtiene el año de la posición 2 del arreglo
+            
+            Entrada_Sist = "'" + fechaano + "-" + fechames + "-" + fechadia + "'";     //Establece el campo fecha en formato aaaa-mm-dd
+        }
+        else
+        {
+            Clave_acc = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+        }
+        
+            
+            retorno = "('" + Usuario + "', '" + Grupo + "', '" + Creado_por + "', '" + Fecha_creacion + "', '" + Valido_de + "', '" 
+                    + Fin_validez +  "," + Entrada_Sist + "," + Clave_acc + "," + Bloqueo + " )"; //Regresa la línea para ser insertada en la BD local
+        }
+        return retorno;
+    }
+    
+    
     
     public static String lecturaUsuariosSAP (String ruta, String bd )
     {
@@ -1105,7 +1220,7 @@ public class Archivos
                     
 //                    System.out.println("temp = " + temp);
                     //System.out.println("Linea antes " + linea);
-                    linea = linea + "\n " + creaLineaUsrSAP(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
+                    linea = linea + "\n " + creaLineaFechasAcceso(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
                     //System.out.println("Linea  " + creaLinea(temp));
                 }            
                 
