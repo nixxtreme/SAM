@@ -535,9 +535,10 @@ public class Tablas
                 + "Creado_por varchar(20), Fecha_Creacion DATE, Valido_de DATE, Fin_Validez DATE, Entrada_Sist DATE,"
                 + " Clave_acc DATE, Bloqueo Varchar(50), PRIMARY KEY(usuario))";
         return tabla;
+        
     }
     
-    public static String InsertarFechasAcceso (String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
+    public static String InsertarFechasAcceso (String fechas , String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
        
@@ -545,8 +546,9 @@ public class Tablas
                 + " VALIDO_DE, FIN_VALIDEZ, ENTRADA_SIST, CLAVE_ACC, BLOQUEO) "
                 + "values ";
         
-        valores = valores + Archivos.lecturaFechasAcceso(usuarios, cadenaBD);
+        valores = valores + Archivos.lecturaFechasAcceso(fechas, cadenaBD);
         return valores;
+        
     }
     
                 //***************************************

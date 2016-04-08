@@ -1032,6 +1032,7 @@ public class Archivos
             Fin_validez = Fin_validez.trim();
             Entrada_Sist = Entrada_Sist.trim();
             Clave_acc = Clave_acc.trim();
+            Bloqueo = Bloqueo.trim();
             
             
         //validacion de fechas
@@ -1110,7 +1111,7 @@ public class Archivos
             fechadia = fechac[0];                                               //Obtiene el día de la posición 0 del arreglo
             fechaano = fechac[2];                                               //Obtiene el año de la posición 2 del arreglo
             
-            Entrada_Sist = "'" + fechaano + "-" + fechames + "-" + fechadia + "'";     //Establece el campo fecha en formato aaaa-mm-dd
+            Clave_acc = "'" + fechaano + "-" + fechames + "-" + fechadia + "'";     //Establece el campo fecha en formato aaaa-mm-dd
         }
         else
         {
@@ -1118,8 +1119,8 @@ public class Archivos
         }
         
             
-            retorno = "('" + Usuario + "', '" + Grupo + "', '" + Creado_por + "', '" + Fecha_creacion + "', '" + Valido_de + "', '" 
-                    + Fin_validez +  "," + Entrada_Sist + "," + Clave_acc + "," + Bloqueo + " )"; //Regresa la línea para ser insertada en la BD local
+            retorno = "('" + Usuario + "', '" + Grupo + "', '" + Creado_por + ", " + Fecha_creacion + ", " + Valido_de + ", " 
+                    + Fin_validez +  "," + Entrada_Sist + "," + Clave_acc + ",'" + Bloqueo + "' )"; //Regresa la línea para ser insertada en la BD local
         }
         return retorno;
     }
@@ -1232,7 +1233,7 @@ public class Archivos
 //                    System.out.println("temp = " + temp);
                     //System.out.println("Linea antes " + linea);
                     linea = linea + "\n " + creaLineaFechasAcceso(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
-                    //System.out.println("Linea  " + creaLinea(temp));
+                   // System.out.println("Linea  " + creaLineaFechasAcceso(temp));
                 }            
                 
             }
