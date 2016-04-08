@@ -66,14 +66,14 @@ public class Resultados extends javax.swing.JFrame {
             if(bajasIntSAP.next())                                                 //Verifica que el resultado no esté vacío
             {
                 modeloBajasInt.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
-                modeloBajasInt.addColumn("Usuario");
-                modeloBajasInt.addColumn("Nombre_Completo");
+                modeloBajasInt.addColumn("Numero de empleado");
+                modeloBajasInt.addColumn("Nombre Completo");
                 modeloBajasInt.addColumn("Grupo");
                 modeloBajasInt.addColumn("Valido_de");
                 modeloBajasInt.addColumn("Validez_a");
                 modeloBajasInt.addColumn("ID Numero de empleado");
-                modeloBajasInt.addColumn("ID_Usuario");
-                modeloBajasInt.addColumn("Nombre ");
+                modeloBajasInt.addColumn("ID Usuario");
+                modeloBajasInt.addColumn("ID Nombre");
                 modeloBajasInt.addColumn("Región");
                 modeloBajasInt.addColumn("Gerencia");
                 modeloBajasInt.addColumn("Departamento");
@@ -107,17 +107,17 @@ public class Resultados extends javax.swing.JFrame {
 
                 TableColumn CAgregar = tablaBajasInt.getColumn("Agregar");      //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CUsuario = tablaBajasInt.getColumn("Usuario");    //Se llama a la columna
+                TableColumn CUsuario = tablaBajasInt.getColumn("Numero de empleado");    //Se llama a la columna
                 CUsuario.setPreferredWidth(80);                                 //Se define su tamaño
-                TableColumn CNombre = tablaBajasInt.getColumn("Nombre_Completo");       //Se llama a la columna
+                TableColumn CNombre = tablaBajasInt.getColumn("Nombre Completo");       //Se llama a la columna
                 CNombre.setPreferredWidth(150);                                  //Se define su tamaño
                 TableColumn CGpo = tablaBajasInt.getColumn("Grupo");        //Se llama a la columna
                 CGpo.setPreferredWidth(85);                                 //Se define su tamaño            
-                TableColumn CValido = tablaBajasInt.getColumn("Valido_de");        //Se llama a la columna
+                TableColumn CValido = tablaBajasInt.getColumn("Valido de");        //Se llama a la columna
                 CValido.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CValidez = tablaBajasInt.getColumn("Validez_a");        //Se llama a la columna
+                TableColumn CValidez = tablaBajasInt.getColumn("Validez a");        //Se llama a la columna
                 CValidez.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CIDUsuario = tablaBajasInt.getColumn("ID_Usuario"); //Se llama a la columna
+                TableColumn CIDUsuario = tablaBajasInt.getColumn("ID Usuario"); //Se llama a la columna
                 CIDUsuario.setPreferredWidth(80);                                  //Se define su tamaño
                 TableColumn CBBFNumEMP = tablaBajasInt.getColumn("ID Numero de empleado");  //Se llama a la columna
                 CBBFNumEMP.setPreferredWidth(80);                              //Se define su tamaño
