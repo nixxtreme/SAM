@@ -45,7 +45,7 @@ public class Querys
     public static String NoNominaBorraIntSAP(String cadenaBD)                      //ELIMINA LOS USUARIOS INTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceintSAP" + parametros[4] + " where IDNUMEMP is null";
+        String consulta = "DELETE FROM cruceintSAP" + parametros[4] + " where NUMEROEMPLEADO is null";
                 
         return consulta;
     }    
@@ -53,7 +53,23 @@ public class Querys
     public static String NoNominaBorraExtSAP(String cadenaBD)                      //ELIMINA LOS USUARIOS EXTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceextSAP" + parametros[4] + " where idusuario is null";
+        String consulta = "DELETE FROM cruceextSAP" + parametros[4] + " where NUMEROEMPLEADO is null";
+                
+        return consulta;
+    }
+    
+    public static String eliminarDemCruceInt(String cadenaBD)                      //ELIMINA LOS USUARIOS EXTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceintSAP" + parametros[4] + " where numemp IS NOT null";
+                
+        return consulta;
+    }
+    
+    public static String eliminarDemCruceExt(String cadenaBD)                      //ELIMINA LOS USUARIOS EXTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceextSAP" + parametros[4] + " where numemp IS NOT null";
                 
         return consulta;
     }
@@ -61,7 +77,7 @@ public class Querys
     public static String BorraBajasExtSAP(String cadenaBD)                         //ELIMINA LOS USUARIOS EXTERNOS QUE ESTÁN REGSTRADOS COMO BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceextSAP" + parametros[4] + " WHERE IDESTATUS = 'ELIMINADO'";
+        String consulta = "DELETE FROM cruceextSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
                 
         return consulta;
     }
@@ -69,7 +85,7 @@ public class Querys
     public static String BorraBajasIntSAP(String cadenaBD)                         //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceintSAP" + parametros[4] + " WHERE IDESTATUS = 'ELIMINADO'";
+        String consulta = "DELETE FROM cruceintSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
                 
         return consulta;
     }

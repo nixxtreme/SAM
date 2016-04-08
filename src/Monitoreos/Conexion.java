@@ -38,7 +38,7 @@ public class Conexion
     
     public  void AbrirLocal(String cadenaBD)                                    //Abre la conexión de base de datos local
     {
-        System.out.println("Cadena " + cadenaBD);
+//        System.out.println("Cadena " + cadenaBD);
         try
         {
             DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());        //Registro de driver

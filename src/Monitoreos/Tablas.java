@@ -800,7 +800,7 @@ public class Tablas
     public static String NoNominaCreaIntSAP(String cadenaBD)                       //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists nonominaintSAP SELECT * FROM cruceintSAP" + parametros[4] + " where IDNUMEMP is null or idnumemp is null";
+        String consulta = "create table if not exists nonominaintSAP SELECT * FROM cruceintSAP" + parametros[4] + " where NUMEROEMPLEADO is null";
                 
         return consulta;
     }
@@ -808,7 +808,7 @@ public class Tablas
     public static String NoNominaCreaExtSAP(String cadenaBD)                       //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists nonominaextSAP SELECT * FROM cruceextSAP" + parametros[4] + " where idusuario is null OR idnumemp is null";
+        String consulta = "create table if not exists nonominaextSAP SELECT * FROM cruceextSAP" + parametros[4] + " where NUMEROEMPLEADO is null";
                 
         return consulta;
     }
@@ -837,7 +837,7 @@ public class Tablas
     public static String CreaBajasExtSAP(String cadenaBD)                          //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS QUE ESTÁN DADOS DE BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists bajasextSAP SELECT * FROM cruceextSAP" + parametros[4] + " WHERE IDESTATUS = 'ELIMINADO'";
+        String consulta = "create table if not exists bajasextSAP SELECT * FROM cruceextSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
                 
         return consulta;
     }
@@ -845,7 +845,7 @@ public class Tablas
     public static String CreaBajasIntSAP(String cadenaBD)                          //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS QUE ESTÁN DADOS DE BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists bajasintSAP SELECT * FROM cruceintSAP" + parametros[4] + " WHERE IDESTATUS = 'ELIMINADO'";
+        String consulta = "create table if not exists bajasintSAP SELECT * FROM cruceintSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
                 
         return consulta;
     }
@@ -1211,7 +1211,9 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "create table if not exists demonsaIE select * "
-                + "FROM cruceintsap" + parametros[4] + ", cruceextsap" + parametros[4] + " WHERE numemp IS NOT null";
+                + "FROM cruceintsap" + parametros[4] + " WHERE numemp IS NOT null "
+                + "UNION "
+                + "SELECT * FROM cruceextsap" + parametros[4] + " WHERE numemp IS NOT null";
         return statement;
     }
     
