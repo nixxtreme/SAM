@@ -1119,7 +1119,7 @@ public class Archivos
         }
         
             
-            retorno = "('" + Usuario + "', '" + Grupo + "', '" + Creado_por + ", " + Fecha_creacion + ", " + Valido_de + ", " 
+            retorno = "('" + Usuario + "', '" + Grupo + "', '" + Creado_por + "', " + Fecha_creacion + ", " + Valido_de + ", " 
                     + Fin_validez +  "," + Entrada_Sist + "," + Clave_acc + ",'" + Bloqueo + "' )"; //Regresa la línea para ser insertada en la BD local
         }
         return retorno;
