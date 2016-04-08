@@ -531,8 +531,8 @@ public class Tablas
     public static String CreaFechasAcceso(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS OBTENIDOS DE LA BASE DE DATOS DE SAP SAP
     {
        String[] parametros = cadenaBD.split("\\|");
-        String tabla = "CREATE TABLE IF NOT EXISTS FechasA" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Nombre_Completo VARCHAR(45), Grupo VARCHAR(20), "
-                + "Bloq varchar(45), valido_de DATE, Validez_a DATE, PRIMARY KEY(usuario))";
+        String tabla = "CREATE TABLE IF NOT EXISTS FechasA" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Grupo VARCHAR(20), "
+                + "Creado_por varchar(45), valido_de DATE, Validez_a DATE, PRIMARY KEY(usuario))";
         return tabla;
     }
     
