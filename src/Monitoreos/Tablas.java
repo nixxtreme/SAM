@@ -366,6 +366,15 @@ public class Tablas
     }                                
    
     
+    public static String TablaTransfer(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;
+        String[] parametros = cadenaBD.split("\\|");
+        statement = "CREATE TABLE IF NOT EXISTS TransferSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4]
+                    + " WHERE usuario LIKE 'TR%' ";
+        return statement;
+    }
+    
     public static String TablaExtSAP(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
     {
         String statement = null;
@@ -601,6 +610,14 @@ public class Tablas
         String statement = "DROP TABLE IF EXISTS demonsaIE" + parametros[4];
         return statement;
     }
+    
+    public static String BorraTablaTransfer(String cadenaBD)             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "DROP TABLE IF EXISTS TransferSAP " + parametros[4];
+        return statement;
+    }
+    
     
                         //********************
     
