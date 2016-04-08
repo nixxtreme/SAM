@@ -532,7 +532,8 @@ public class Tablas
     {
        String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS FechasA" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Grupo VARCHAR(20), "
-                + "Creado_por varchar(45), valido_de DATE, Validez_a DATE, PRIMARY KEY(usuario))";
+                + "Creado_por varchar(20), Fecha_Creacion DATE, Valido_de DATE, Fin_Validez DATE, Entrada_Sist DATE,"
+                + " Clave_acc DATE, Bloqueo Varchar(50), PRIMARY KEY(usuario))";
         return tabla;
     }
     
@@ -540,10 +541,11 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
        
-        String valores = "INSERT IGNORE INTO FechasA" + parametros[4] + " (USUARIO, NOMBRE_COMPLETO, GRUPO, BLOQ, VALIDO_DE, VALIDEZ_A) "
+        String valores = "INSERT IGNORE INTO FechasA" + parametros[4] + " (USUARIO, GRUPO, CREADO_POR, FECHA_CREACION,"
+                + " VALIDO_DE, FIN_VALIDEZ, ENTRADA_SIST, CLAVE_ACC, BLOQUEO) "
                 + "values ";
         
-        valores = valores + Archivos.lecturaUsuariosSAP(usuarios, cadenaBD);
+        valores = valores + Archivos.lecturaFechasAcceso(usuarios, cadenaBD);
         return valores;
     }
     
