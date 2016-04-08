@@ -110,7 +110,7 @@ public class Resultados extends javax.swing.JFrame {
                 TableColumn CUsuario = tablaBajasInt.getColumn("Número de empleado");    //Se llama a la columna
                 CUsuario.setPreferredWidth(150);                                 //Se define su tamaño
                 TableColumn CNombre = tablaBajasInt.getColumn("Nombre completo");       //Se llama a la columna
-                CNombre.setPreferredWidth(150);                                  //Se define su tamaño
+                CNombre.setPreferredWidth(300);                                  //Se define su tamaño
                 TableColumn CGpo = tablaBajasInt.getColumn("Grupo");        //Se llama a la columna
                 CGpo.setPreferredWidth(85);                                 //Se define su tamaño            
                 TableColumn CValido = tablaBajasInt.getColumn("Valido de");        //Se llama a la columna
@@ -120,23 +120,23 @@ public class Resultados extends javax.swing.JFrame {
                 TableColumn CIDUsuario = tablaBajasInt.getColumn("ID usuario"); //Se llama a la columna
                 CIDUsuario.setPreferredWidth(80);                                  //Se define su tamaño
                 TableColumn CBBFNumEMP = tablaBajasInt.getColumn("ID numero de empleado");  //Se llama a la columna
-                CBBFNumEMP.setPreferredWidth(80);                              //Se define su tamaño
-                TableColumn CBBFNombre = tablaBajasInt.getColumn("Nombre");    //Se llama a la columna
-                CBBFNombre.setPreferredWidth(150);                              //Se define su tamaño
+                CBBFNumEMP.setPreferredWidth(150);                              //Se define su tamaño
+                TableColumn CBBFNombre = tablaBajasInt.getColumn("ID nombre");    //Se llama a la columna
+                CBBFNombre.setPreferredWidth(300);                              //Se define su tamaño
                 TableColumn CRegion = tablaBajasInt.getColumn("Región");        //Se llama a la columna
-                CRegion.setPreferredWidth(70);                                  //Se define su tamaño
+                CRegion.setPreferredWidth(200);                                  //Se define su tamaño
                 TableColumn CGerencia = tablaBajasInt.getColumn("Gerencia");        //Se llama a la columna
-                CGerencia.setPreferredWidth(100);                                 //Se define su tamaño
+                CGerencia.setPreferredWidth(350);                                 //Se define su tamaño
                 TableColumn CIP = tablaBajasInt.getColumn("Departamento");                //Se llama a la columna
-                CIP.setPreferredWidth(120);                                     //Se define su tamaño
+                CIP.setPreferredWidth(350);                                     //Se define su tamaño
                 TableColumn CIDPerfil = tablaBajasInt.getColumn("Puesto");   //Se llama a la columna
-                CIDPerfil.setPreferredWidth(85);                                //Se define su tamaño
+                CIDPerfil.setPreferredWidth(355);                                //Se define su tamaño
                  TableColumn CPerfil = tablaBajasInt.getColumn("ID Puesto");   //Se llama a la columna
-                CPerfil.setPreferredWidth(85);                                //Se define su tamaño                                                             
+                CPerfil.setPreferredWidth(155);                                //Se define su tamaño                                                             
                 TableColumn Estatus = tablaBajasInt.getColumn("Estatus");       //Se llama a la columna
-                Estatus.setPreferredWidth(160);                                 //Se define su tamaño
+                Estatus.setPreferredWidth(140);                                 //Se define su tamaño
                 TableColumn CBBFFechaBaja = tablaBajasInt.getColumn("Fecha de baja");   //Se llama a la columna
-                CBBFFechaBaja.setPreferredWidth(160);                           //Se define su tamaño
+                CBBFFechaBaja.setPreferredWidth(140);                           //Se define su tamaño
             }
             else                                                                //Si el resultado se encontraba vacío
             {
