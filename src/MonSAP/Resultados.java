@@ -1729,7 +1729,9 @@ public class Resultados extends javax.swing.JFrame {
         tablaUsrGen = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1370, 730));
         setResizable(false);
+        setSize(new java.awt.Dimension(1370, 730));
 
         jTabbedPane3.setName(""); // NOI18N
 
@@ -1755,8 +1757,8 @@ public class Resultados extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1800, 551));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setMinimumSize(new java.awt.Dimension(1000, 419));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(1800, 419));
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(1000, 400));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1800, 400));
 
         tablaBajasInt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jScrollPane1.setViewportView(tablaBajasInt);
@@ -1769,7 +1771,7 @@ public class Resultados extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
