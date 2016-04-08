@@ -1089,7 +1089,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
               PreparaTablas.add(Monitoreos.Tablas.eliminanonominaintSAP());
               PreparaTablas.add(Monitoreos.Tablas.eliminaUsuariosSAP2(cadenaBD));     
               PreparaTablas.add(Monitoreos.Tablas.BorraTablaDemIE(cadenaBD));
-
+              PreparaTablas.add(Monitoreos.Tablas.BorraTablaTransfer(cadenaBD));
+              
 //            PreparaTablas.add(Monitoreos.Querys.CreaInactividadExt(cadenaBD));      //Crea una tabla con los usuarios externos que no han ingresado a la aplicación en determinado tiempo
 //            PreparaTablas.add(Monitoreos.Querys.BorraInactividadExt(cadenaBD));     //Borra los usuarios externos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios externos
 //            PreparaTablas.add(Monitoreos.Querys.UsrIDIncInt(cadenaBD));             //Crea una tabla con los usuarios internos que tienen un UserID incorrecto
@@ -1128,6 +1129,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.TablaAdminUsrAdmin(cadenaBD));              
             
             PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));  //crea la tabla de usuariosSAP de la tabla Usuarios2 para su manipulacion
+           
             //Identificacion de transfer en genericos
             PreparaTablas.add(Monitoreos.Tablas.TablaTransfer(cadenaBD)); 
             PreparaTablas.add(Monitoreos.Querys.BorrarTransferTablaSAP(cadenaBD));

@@ -611,6 +611,14 @@ public class Tablas
         return statement;
     }
     
+    public static String BorraTablaTransfer(String cadenaBD)             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "DROP TABLE IF EXISTS TransferSAP " + parametros[4];
+        return statement;
+    }
+    
+    
                         //********************
     
     
