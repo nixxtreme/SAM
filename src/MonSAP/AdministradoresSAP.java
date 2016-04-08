@@ -186,7 +186,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
         );
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Reportar usuarios administradores");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -199,7 +199,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -232,12 +232,19 @@ public class AdministradoresSAP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.print("\n jButton1ActionPerformed: ************************************ INICIO ");     
+        ArrayList<String> preparaInstruccion = new ArrayList();
+        Conexion conLocal = new Conexion();     
+        conLocal.AbrirLocal(cadenaBD);
+        MonAD.ExecQuery EjecutaSAP = new MonAD.ExecQuery();
         for(int s=0; s<TablaAdminUsrAdmin.getRowCount();s++){
-            System.out.print("\n Check:" +s+ " " +TablaAdminUsrAdmin.getModel().getValueAt(s, 0));
+            if(TablaAdminUsrAdmin.getModel().getValueAt(s, 0).equals(true))
+            {
+                preparaInstruccion.add("UPDATE `adminusradminsap` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrAdmin.getModel().getValueAt(s, 1) + "'");
+            }
             System.out.print("  Nombre: " + TablaAdminUsrAdmin.getModel().getValueAt(s, 1));
         }
-        System.out.print("\n jButton1ActionPerformed: *************************************** FIN ");
+        EjecutaSAP.Exect(conLocal.conexion, preparaInstruccion);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
