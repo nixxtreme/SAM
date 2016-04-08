@@ -430,7 +430,7 @@ public class Tablas
      public static String eliminaTablaUsrsSAP(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statment = "DROP TABLE IF EXISTS `Usuarios2"+ parametros[4] + "`";  
+        String statment = "DROP TABLE IF EXISTS Usuarios2"+ parametros[4];  
         return statment;
         
     }
@@ -438,7 +438,7 @@ public class Tablas
      public static String eliminaUsuariosSAP2(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statment="DROP TABLE IF EXISTS `UsuariosSAP"+ parametros[4] + "`";    
+        String statment="DROP TABLE IF EXISTS UsuariosSAP"+ parametros[4];    
         return statment;
     }
      
@@ -611,10 +611,9 @@ public class Tablas
         return statement;
     }
     
-    public static String BorraTablaTransfer(String cadenaBD)             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    public static String BorraTablaTransfer()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
     {
-        String[] parametros = cadenaBD.split("\\|");
-        String statement = "DROP TABLE IF EXISTS TransferSAP " + parametros[4];
+        String statement = "DROP TABLE IF EXISTS TransferSAP";
         return statement;
     }
     
