@@ -1130,7 +1130,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));  //crea la tabla de usuariosSAP de la tabla Usuarios2 para su manipulacion
             //Identificacion de transfer en genericos
             PreparaTablas.add(Monitoreos.Tablas.TablaTransfer(cadenaBD)); 
-            
+            PreparaTablas.add(Monitoreos.Querys.BorrarTransferTablaSAP(cadenaBD));
             
             PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));         //Crea la tabla de usuarios externos                         
             PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));//borra los registros de esternos de la tabla

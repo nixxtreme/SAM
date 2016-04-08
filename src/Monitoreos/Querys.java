@@ -349,7 +349,15 @@ public class Querys
         return statement;
     }
             
-            //externos y genericos
+            //externos, genericos y transfer
+    
+    public static String BorrarTransferTablaSAP(String cadenaBD)                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "DELETE FROM USUARIOSSAP" + parametros[4] + " WHERE Usuario LIKE 'TR%'";
+        return statement;
+    }
+    
     public static String BorrarExternosTablaSAP(String cadenaBD)                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");

@@ -370,8 +370,8 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "CREATE TABLE IF NOT EXISTS ExternosSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4]
-                    + " WHERE usuario LIKE 'EX%' ";
+        statement = "CREATE TABLE IF NOT EXISTS TransferSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4]
+                    + " WHERE usuario LIKE 'TR%' ";
         return statement;
     }
     
