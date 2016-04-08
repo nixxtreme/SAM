@@ -6,6 +6,9 @@
 package MonSAP;
 
 
+import Monitoreos.EachRowEditor;
+import Monitoreos.CheckBoxRenderer;
+import Monitoreos.EachRowRenderer;
 import Monitoreos.Clase_CellEditor;
 import Monitoreos.Clase_CellRender;
 import Monitoreos.Conexion;

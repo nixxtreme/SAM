@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MonSAP;
+package Monitoreos;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -17,7 +17,7 @@ import java.awt.Component;
  */
 public class CheckBoxRenderer extends JCheckBox implements TableCellRenderer {
 
-  CheckBoxRenderer() {
+  public CheckBoxRenderer() {
     setHorizontalAlignment(JLabel.CENTER);
   }
 
