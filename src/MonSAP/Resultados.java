@@ -168,14 +168,14 @@ public class Resultados extends javax.swing.JFrame {
             if(bajasExtSAP.next())                                                 //Verifica que el resultado no esté vacío
             {
                 modeloBajasExt.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
-                modeloBajasExt.addColumn("Usuario");
-                modeloBajasExt.addColumn("Nombre_Completo");
+                modeloBajasExt.addColumn("Número de empleado");
+                modeloBajasExt.addColumn("Nombre completo");
                 modeloBajasExt.addColumn("Grupo");
-                modeloBajasExt.addColumn("Valido_de");
-                modeloBajasExt.addColumn("Validez_a");
-                modeloBajasExt.addColumn("ID Numero de empleado");
-                modeloBajasExt.addColumn("ID_Usuario");
-                modeloBajasExt.addColumn("Nombre ");
+                modeloBajasExt.addColumn("Valido de");
+                modeloBajasExt.addColumn("Validez a");
+                modeloBajasExt.addColumn("ID numero de empleado");
+                modeloBajasExt.addColumn("ID usuario");
+                modeloBajasExt.addColumn("ID nombre");
                 modeloBajasExt.addColumn("Región");
                 modeloBajasExt.addColumn("Gerencia");
                 modeloBajasExt.addColumn("Departamento");
@@ -207,36 +207,36 @@ public class Resultados extends javax.swing.JFrame {
 
                 TableColumn CAgregar = tablaBajasExt.getColumn("Agregar");      //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CUsuario = tablaBajasExt.getColumn("Usuario");    //Se llama a la columna
-                CUsuario.setPreferredWidth(80);                                 //Se define su tamaño
-                TableColumn CNombre = tablaBajasExt.getColumn("Nombre_Completo");       //Se llama a la columna
-                CNombre.setPreferredWidth(150);                                  //Se define su tamaño
-                TableColumn CGpo = tablaBajasExt.getColumn("Grupo");        //Se llama a la columna
-                CGpo.setPreferredWidth(85);                                 //Se define su tamaño               
-                TableColumn CValido = tablaBajasExt.getColumn("Valido_de");        //Se llama a la columna
-                CValido.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CValidez = tablaBajasExt.getColumn("Validez_a");        //Se llama a la columna
+                TableColumn CUsuario = tablaBajasExt.getColumn("Número de empleado");    //Se llama a la columna
+                CUsuario.setPreferredWidth(150);                                 //Se define su tamaño
+                TableColumn CNombre = tablaBajasExt.getColumn("Nombre completo");       //Se llama a la columna
+                CNombre.setPreferredWidth(300);                                  //Se define su tamaño
+                TableColumn CGpo = tablaBajasExt.getColumn("Grupo");            //Se llama a la columna
+                CGpo.setPreferredWidth(85);                                     //Se define su tamaño            
+                TableColumn CValido = tablaBajasExt.getColumn("Valido de");        //Se llama a la columna
+                CValido.setPreferredWidth(85);                                  //Se define su tamaño
+                TableColumn CValidez = tablaBajasExt.getColumn("Validez a");        //Se llama a la columna
                 CValidez.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CIDUsuario = tablaBajasExt.getColumn("ID_Usuario"); //Se llama a la columna
+                TableColumn CIDUsuario = tablaBajasExt.getColumn("ID usuario"); //Se llama a la columna
                 CIDUsuario.setPreferredWidth(80);                                  //Se define su tamaño
-                TableColumn CBBFNumEMP = tablaBajasExt.getColumn("ID Numero de empleado");  //Se llama a la columna
-                CBBFNumEMP.setPreferredWidth(80);                              //Se define su tamaño
-                TableColumn CBBFNombre = tablaBajasExt.getColumn("Nombre ");    //Se llama a la columna
-                CBBFNombre.setPreferredWidth(85);                              //Se define su tamaño
+                TableColumn CBBFNumEMP = tablaBajasExt.getColumn("ID numero de empleado");  //Se llama a la columna
+                CBBFNumEMP.setPreferredWidth(150);                              //Se define su tamaño
+                TableColumn CBBFNombre = tablaBajasExt.getColumn("ID nombre");  //Se llama a la columna
+                CBBFNombre.setPreferredWidth(300);                              //Se define su tamaño
                 TableColumn CRegion = tablaBajasExt.getColumn("Región");        //Se llama a la columna
-                CRegion.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CGerencia = tablaBajasExt.getColumn("Gerencia");        //Se llama a la columna
-                CGerencia.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CIP = tablaBajasExt.getColumn("Departamento");                //Se llama a la columna
-                CIP.setPreferredWidth(120);                                     //Se define su tamaño
-                TableColumn CIDPerfil = tablaBajasExt.getColumn("Puesto");   //Se llama a la columna
-                CIDPerfil.setPreferredWidth(85);                                //Se define su tamaño
-                 TableColumn CPerfil = tablaBajasExt.getColumn("ID Puesto");   //Se llama a la columna
-                CPerfil.setPreferredWidth(85);                                //Se define su tamaño                                                             
+                CRegion.setPreferredWidth(200);                                 //Se define su tamaño
+                TableColumn CGerencia = tablaBajasExt.getColumn("Gerencia");    //Se llama a la columna
+                CGerencia.setPreferredWidth(350);                               //Se define su tamaño
+                TableColumn CIP = tablaBajasExt.getColumn("Departamento");      //Se llama a la columna
+                CIP.setPreferredWidth(350);                                     //Se define su tamaño
+                TableColumn CIDPerfil = tablaBajasExt.getColumn("Puesto");      //Se llama a la columna
+                CIDPerfil.setPreferredWidth(355);                               //Se define su tamaño
+                 TableColumn CPerfil = tablaBajasExt.getColumn("ID Puesto");    //Se llama a la columna
+                CPerfil.setPreferredWidth(155);                                 //Se define su tamaño                                                             
                 TableColumn Estatus = tablaBajasExt.getColumn("Estatus");       //Se llama a la columna
-                Estatus.setPreferredWidth(160);                                 //Se define su tamaño
+                Estatus.setPreferredWidth(140);                                 //Se define su tamaño
                 TableColumn CBBFFechaBaja = tablaBajasExt.getColumn("Fecha de baja");   //Se llama a la columna
-                CBBFFechaBaja.setPreferredWidth(160);                                 //Se define su tamaño
+                CBBFFechaBaja.setPreferredWidth(140);                              //Se define su tamaño
             }
             else                                                                //Si el resultado se encontraba vacío
             {
