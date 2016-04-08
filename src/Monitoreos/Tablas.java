@@ -523,7 +523,7 @@ public class Tablas
     public static String eliminaFechasAcceso(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statment = "DROP TABLE IF EXISTS `FechasA"+ parametros[4] + "`";  
+        String statment = "DROP TABLE IF EXISTS FechasA"+ parametros[4];  
         return statment;
         
     }   

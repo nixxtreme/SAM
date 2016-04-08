@@ -1027,7 +1027,13 @@ public class Archivos
             
             Usuario = Usuario.trim();                                           //ELIMINAR LOS ESPACIOS ENTRE CAMPOS
             Grupo = Grupo.trim();
-           
+            Fecha_creacion = Fecha_creacion.trim();
+            Valido_de = Valido_de.trim();
+            Fin_validez = Fin_validez.trim();
+            Entrada_Sist = Entrada_Sist.trim();
+            Clave_acc = Clave_acc.trim();
+            
+            
         //validacion de fechas
                 
         if(!Fecha_creacion.isEmpty())                                           //Verifica si el campo de fecha se encuentra vacío
@@ -1076,6 +1082,11 @@ public class Archivos
             Fin_validez = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
         }
         
+       if (Entrada_Sist.contains("No utilizado"))
+       {
+           Entrada_Sist = "";    
+       }
+           
         if(!Entrada_Sist.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
         {
             String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /  
