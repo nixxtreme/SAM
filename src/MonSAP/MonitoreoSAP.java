@@ -570,7 +570,6 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
         jLabel35.setText("Archivos identidad");
 
-        jTextField31.setText("00000000");
         jTextField31.setToolTipText("Ingrese aquí la fecha del monitoreo con formato ddmmaaaa. Una vez cargados los archivos con la fecha quedarán almacenados de manera definitiva en el sistema.");
         jTextField31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -580,7 +579,6 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
         jLabel36.setText("Archivos identidad anterior");
 
-        jTextField32.setText("00000001");
         jTextField32.setToolTipText("Ingrese aquí la fecha del monitoreo con formato ddmmaaaa. Una vez cargados los archivos con la fecha quedarán almacenados de manera definitiva en el sistema.");
         jTextField32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
