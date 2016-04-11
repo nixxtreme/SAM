@@ -1049,7 +1049,7 @@ public class Archivos
         }
         else
         {    
-            Fecha_creacion = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+            Fecha_creacion = "NULL";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
         }
         
         if(!Valido_de.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
@@ -1064,7 +1064,7 @@ public class Archivos
         }
         else
         {    
-            Valido_de = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+            Valido_de = "NULL";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
         }
         
         
@@ -1080,7 +1080,7 @@ public class Archivos
         }
         else
         {
-            Fin_validez = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+            Fin_validez = "NULL";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
         }
         
        if (Entrada_Sist.contains("No utilizado"))
@@ -1100,7 +1100,7 @@ public class Archivos
         }
         else
         {
-            Entrada_Sist = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+            Entrada_Sist = "NULL";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
         }
         
         if(!Clave_acc.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
@@ -1115,7 +1115,7 @@ public class Archivos
         }
         else
         {
-            Clave_acc = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+            Clave_acc = "NULL";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
         }
         
             
