@@ -876,6 +876,14 @@ public class Tablas
         String consulta = "create table if not exists inactividadintsap SELECT * FROM cruceintsap" + parametros[4] + " WHERE DATEDIFF('" + parametros[8] + "', FECHA_ACCESO) >= 61";
         return consulta;
     }
+    
+    public static String CreaInactividadExtSAP(String cadenaBD)                    //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS CON INACTIVIDAD
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "create table if not exists inactividadext SELECT * FROM cruceext" + parametros[4] + " WHERE DATEDIFF('" + parametros[8] + "', FECHA_ACCESO) >= 61";
+        return consulta;
+    }
+    
                         //**************************
     
     
@@ -1192,8 +1200,17 @@ public class Tablas
                 + " demonsa2" + parametros[4] + ".IDPUESTO AS IDPUESTO_DEM,"
                 + " demonsa2" + parametros[4] + ".GERENCIA AS GERENCIA_DEM,"
                 + " demonsa2" + parametros[4] + ".REGION AS REGIO_DEM"
-                + " FROM (internossap left join demonsa2" +parametros[4] + " on internossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
-                + " left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO ";
+                + " fechasa" + parametros[4] + ".Usuario AS usuario_fecha"
+                + " fechasa" + parametros[4] + ".Creado_por"
+                + " fechasa" + parametros[4] + ".Fecha_creacion"
+                + " fechasa" + parametros[4] + ".valido_de AS Inicio_validez"
+                + " fechasa" + parametros[4] + ".fin_validez"
+                + " fechasa" + parametros[4] + ".Entrada_sist"
+                + " fechasa" + parametros[4] + ".Clava_acc"
+                + " fechasa" + parametros[4] + ".Bloqueo"     
+                + " FROM ((internossap left join demonsa2" + parametros[4] + " on internossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
+                + " left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
+                + " internossap.usuario on fechasa" + parametros[4] +".usuario = internos.usuario";
                              
         
         return statement;

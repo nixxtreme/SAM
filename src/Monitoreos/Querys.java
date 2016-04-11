@@ -265,6 +265,13 @@ public class Querys
         return consulta;
     }
     
+    public static String BorraInactividadExtSAP(String cadenaBD)                   //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO INACTIVIDAD
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceintsap" + parametros[4] + " WHERE DATEDIFF('" + parametros[8] + "', FECHA_ACCESO) >= 61";
+        return consulta;
+    }
+    
                             //*******************
     
     
