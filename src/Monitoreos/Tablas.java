@@ -627,6 +627,12 @@ public class Tablas
         return statement;
     }
     
+    public static String BorraInacExtSAP()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS inactividadExtsap";
+        return statement;
+    }
+    
                         //********************
     
     
