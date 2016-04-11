@@ -621,7 +621,7 @@ public class Tablas
         return statement;
     }
     
-    public static String BorraInacInt()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    public static String BorraInacIntSAP()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
     {
         String statement = "DROP TABLE IF EXISTS inactividadintsap";
         return statement;
@@ -879,7 +879,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "CREATE TABLE IF NOT EXISTS inactividadintsap SELECT * FROM cruceintsap" + parametros[4]  
-                +" WHERE DATEDIFF(" + parametros[7] + ",Clave_acc) >= 61 OR (DATEDIFF(" + parametros[7] +",Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
+                +" WHERE DATEDIFF('" + parametros[7] + "', Entrada_Sist) >= 61 OR (DATEDIFF('" + parametros[7] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
     }
     

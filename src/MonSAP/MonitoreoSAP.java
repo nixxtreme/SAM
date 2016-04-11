@@ -1088,7 +1088,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
               PreparaTablas.add(Monitoreos.Tablas.eliminaUsuariosSAP2(cadenaBD));     
               PreparaTablas.add(Monitoreos.Tablas.BorraTablaDemIE(cadenaBD));
               PreparaTablas.add(Monitoreos.Tablas.BorraTablaTransfer());
-              PreparaTablas.add(Monitoreos.Tablas.BorraInacInt());
+              PreparaTablas.add(Monitoreos.Tablas.BorraInacIntSAP());
 
 //            PreparaTablas.add(Monitoreos.Querys.UsrIDIncInt(cadenaBD));             //Crea una tabla con los usuarios internos que tienen un UserID incorrecto
 //            PreparaTablas.add(Monitoreos.Querys.BorraUsrIDIncInt(cadenaBD));        //Borra los usuaios internos con UserID incorrecto de la tabla de usuarios internos
