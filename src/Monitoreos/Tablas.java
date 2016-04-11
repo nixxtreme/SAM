@@ -879,14 +879,15 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "CREATE TABLE IF NOT EXISTS inactividadintsap SELECT * FROM cruceintsap" + parametros[4]  
-                +" WHERE DATEDIFF('" + parametros[7] + "', Entrada_Sist) >= 61 OR (DATEDIFF('" + parametros[7] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
+                +" WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
     }
     
     public static String CreaInactividadExtSAP(String cadenaBD)                    //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS CON INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists inactividadext SELECT * FROM cruceext" + parametros[4] + " WHERE DATEDIFF('" + parametros[8] + "', FECHA_ACCESO) >= 61";
+        String consulta = "CREATE TABLE IF NOT EXISTS inactividadextsap SELECT * FROM cruceextsap" + parametros[4]  
+                +" WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
     }
     
@@ -1227,8 +1228,8 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "CREATE TABLE IF NOT EXISTS cruceextSAP"+ parametros[4] + " SELECT externossap.Usuario, externossap.Nombre_completo, "
-                + "externossap.Grupo, externossap.Valido_De, externossap.Validez_a,"
+        statement = "CREATE TABLE IF NOT EXISTS cruceextSAP"+ parametros[4] + " SELECT internossap.Usuario, internossap.Nombre_completo, "
+                + "internossap.Grupo, internossap.Valido_De, internossap.Validez_a,"
                 + " idext" + parametros[4] + ".NUMEROEMPLEADO,"
                 + " idext" + parametros[4] + ".USUARIO AS IDUSUARIO,"
                 + " idext" + parametros[4] + ".NOMBRECOMPLETO,"
@@ -1243,9 +1244,18 @@ public class Tablas
                 + " demonsa2" + parametros[4] + ".NOMBRE," 
                 + " demonsa2" + parametros[4] + ".IDPUESTO AS IDPUESTO_DEM,"
                 + " demonsa2" + parametros[4] + ".GERENCIA AS GERENCIA_DEM,"
-                + " demonsa2" + parametros[4] + ".REGION AS REGIO_DEM"
-                + " FROM (externossap left join demonsa2" +parametros[4] + " on externossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
-                + " left join idext" + parametros[4] + " on externossap.usuario = idext" + parametros[4] + ".NUMEROEMPLEADO ";
+                + " demonsa2" + parametros[4] + ".REGION AS REGIO_DEM,"
+                + " fechasa" + parametros[4] + ".Usuario AS usuario_fecha,"
+                + " fechasa" + parametros[4] + ".Creado_por,"
+                + " fechasa" + parametros[4] + ".Fecha_creacion,"
+                + " fechasa" + parametros[4] + ".valido_de AS Inicio_validez,"
+                + " fechasa" + parametros[4] + ".fin_validez,"
+                + " fechasa" + parametros[4] + ".Entrada_sist,"
+                + " fechasa" + parametros[4] + ".Clave_acc,"
+                + " fechasa" + parametros[4] + ".Bloqueo"     
+                + " FROM ((externossap left join demonsa2" + parametros[4] + " on externossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
+                + " left join idint" + parametros[4] + " on externossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
+                + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = externossap.usuario";
             
         return statement;
     }
