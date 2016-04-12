@@ -868,7 +868,9 @@ public class Tablas
     public static String CreaBajasExtSAP(String cadenaBD)                          //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS QUE ESTÁN DADOS DE BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists bajasextSAP SELECT * FROM cruceextSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
+        String consulta = "create table if not exists bajasextSAP SELECT usuario, nombre_completo, Entrada_Sist, numeroempleado,"
+                + " idusuario, puesto, gerencia, nombrecompleto, estatus, fecha"
+                + " FROM cruceextSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
                 
         return consulta;
     }
@@ -876,7 +878,9 @@ public class Tablas
     public static String CreaBajasIntSAP(String cadenaBD)                          //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS QUE ESTÁN DADOS DE BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists bajasintSAP SELECT * FROM cruceintSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
+        String consulta = "create table if not exists bajasintSAP SELECT usuario, nombre_completo, Entrada_Sist, numeroempleado,"
+                + " idusuario, puesto, gerencia, nombrecompleto, estatus, fecha"
+                + " FROM cruceintSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
                 
         return consulta;
     }
@@ -884,8 +888,8 @@ public class Tablas
     public static String CreaInactividadIntSAP(String cadenaBD)                    //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS CON INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "CREATE TABLE IF NOT EXISTS inactividadintsap SELECT numeroempleado, idusuario, nombrecompleto, region, gerencia,"
-                + " departamento, puesto, creado_por, fecha_creacion, entrada_sist, clave_acc"
+        String consulta = "CREATE TABLE IF NOT EXISTS inactividadintsap SELECT usuario, nombre_completo, Fecha_Creacion, Entrada_Sist,"
+                + " numeroempleado, idusuario, puesto, gerencia, nombrecompleto"
                 + " FROM cruceintsap" + parametros[4]  
                 +" WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
@@ -894,8 +898,8 @@ public class Tablas
     public static String CreaInactividadExtSAP(String cadenaBD)                    //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS CON INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "CREATE TABLE IF NOT EXISTS inactividadextsap SELECT numeroempleado, idusuario, nombrecompleto, region, gerencia,"
-                + " departamento, puesto, creado_por, fecha_creacion, entrada_sist, clave_acc"
+        String consulta = "CREATE TABLE IF NOT EXISTS inactividadextsap SELECT usuario, nombre_completo, Fecha_Creacion, Entrada_Sist,"
+                + " numeroempleado, idusuario, puesto, gerencia, nombrecompleto"
                 + " FROM cruceextsap" + parametros[4]  
                 +" WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;

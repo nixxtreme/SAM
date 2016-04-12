@@ -245,16 +245,16 @@ public class Querys
     
     public static String ResultadosBajasIntSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS DADOS DE BAJA
     {
-        String statement = "SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a, NUMEROEMPLEADO, IdUsuario,"
-                + " NOMBRECOMPLETO, REGION, GERENCIA, DEPARTAMENTO, IDPUESTO,  PUESTO, ESTATUS, FECHA FROM bajasintSAP";
+        String statement = "SELECT Usuario, Nombre_Completo, Entrada_Sist, NUMEROEMPLEADO, IdUsuario,"
+                + " PUESTO, Gerencia, Nombrecompleto, ESTATUS, FECHA FROM bajasintSAP";
         
         return statement;
     }
     
     public static String ResultadosBajasExtSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS DADOS DE BAJA
     {
-        String statement = "select Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a, NUMEROEMPLEADO, IdUsuario,"
-                + " NOMBRECOMPLETO, REGION, GERENCIA, DEPARTAMENTO, PUESTO, IDPUESTO, ESTATUS, FECHA from bajasextSAP";
+        String statement = "SELECT Usuario, Nombre_Completo, Entrada_Sist, NUMEROEMPLEADO, IdUsuario,"
+                + " PUESTO, Gerencia, Nombrecompleto, ESTATUS, FECHA FROM bajasextSAP";
         return statement;
     }
     
@@ -274,15 +274,15 @@ public class Querys
     
     public static String ResultadosInactividadIntSAP()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS INACTIVOS
     {
-        String statement = "select numeroempleado, idusuario, nombrecompleto, region, gerencia, departamento, puesto, creado_por,"
-                + " fecha_creacion, entrada_sist, clave_acc from inactividadintsap";
+        String statement = "SELECT Usuario, Nombre_Completo, Fecha_creacion, Entrada_Sist, NUMEROEMPLEADO, IdUsuario,"
+                + " PUESTO, Gerencia, Nombrecompleto from inactividadintsap";
         return statement;
     }
    
     public static String ResultadosInactividadExtSAP()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS INACTIVOS
     {
-        String statement = "select numeroempleado, idusuario, nombrecompleto, region, gerencia, departamento, puesto, creado_por,"
-                + " fecha_creacion, entrada_sist, clave_acc from inactividadextsap";
+        String statement = "SELECT Usuario, Nombre_Completo, Fecha_creacion, Entrada_Sist, NUMEROEMPLEADO, IdUsuario,"
+                + " PUESTO, Gerencia, Nombrecompleto FROM inactividadextSAP";
         return statement;
     } 
     

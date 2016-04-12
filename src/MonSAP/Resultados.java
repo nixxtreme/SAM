@@ -54,7 +54,7 @@ public class Resultados extends javax.swing.JFrame {
         
         
         
-        Object[] registro = new Object[18];                                     //Crea un arreglo para recibir los elementos de cada renglon
+        Object[] registro = new Object[13];                                     //Crea un arreglo para recibir los elementos de cada renglon
         int i = 0;                                                              //Inicializa la variable para el contador
         try
         {
@@ -68,24 +68,20 @@ public class Resultados extends javax.swing.JFrame {
                 modeloBajasInt.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
                 modeloBajasInt.addColumn("Número de empleado");
                 modeloBajasInt.addColumn("Nombre completo");
-                modeloBajasInt.addColumn("Grupo");
-                modeloBajasInt.addColumn("Valido de");
-                modeloBajasInt.addColumn("Validez a");
-                modeloBajasInt.addColumn("ID numero de empleado");
-                modeloBajasInt.addColumn("ID usuario");
-                modeloBajasInt.addColumn("ID nombre");
-                modeloBajasInt.addColumn("Región");
-                modeloBajasInt.addColumn("Gerencia");
-                modeloBajasInt.addColumn("Departamento");
-                modeloBajasInt.addColumn("ID Puesto");
+                modeloBajasInt.addColumn("Fecha ultimo acceso");
+                modeloBajasInt.addColumn("Número de empleado");
+                modeloBajasInt.addColumn("UserID");
                 modeloBajasInt.addColumn("Puesto");
-                modeloBajasInt.addColumn("Estatus");
-                modeloBajasInt.addColumn("Fecha de baja");
+                modeloBajasInt.addColumn("Gerencia");
+                modeloBajasInt.addColumn("Nombre");
+                modeloBajasInt.addColumn("Estatus");        
+                modeloBajasInt.addColumn("Fecha de Baja");
+               
                
                 bajasIntSAP.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 while(bajasIntSAP.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<17; k++)                                     
+                    for(int k=1; k<12; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -108,35 +104,25 @@ public class Resultados extends javax.swing.JFrame {
                 TableColumn CAgregar = tablaBajasInt.getColumn("Agregar");      //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
                 TableColumn CUsuario = tablaBajasInt.getColumn("Número de empleado");    //Se llama a la columna
-                CUsuario.setPreferredWidth(150);                                 //Se define su tamaño
+                CUsuario.setPreferredWidth(110);                                 //Se define su tamaño
                 TableColumn CNombre = tablaBajasInt.getColumn("Nombre completo");       //Se llama a la columna
-                CNombre.setPreferredWidth(350);                                  //Se define su tamaño
-                TableColumn CGpo = tablaBajasInt.getColumn("Grupo");        //Se llama a la columna
-                CGpo.setPreferredWidth(85);                                 //Se define su tamaño            
-                TableColumn CValido = tablaBajasInt.getColumn("Valido de");        //Se llama a la columna
-                CValido.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CValidez = tablaBajasInt.getColumn("Validez a");        //Se llama a la columna
-                CValidez.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CIDUsuario = tablaBajasInt.getColumn("ID usuario"); //Se llama a la columna
-                CIDUsuario.setPreferredWidth(80);                                  //Se define su tamaño
-                TableColumn CBBFNumEMP = tablaBajasInt.getColumn("ID numero de empleado");  //Se llama a la columna
-                CBBFNumEMP.setPreferredWidth(150);                              //Se define su tamaño
-                TableColumn CBBFNombre = tablaBajasInt.getColumn("ID nombre");    //Se llama a la columna
-                CBBFNombre.setPreferredWidth(350);                              //Se define su tamaño
-                TableColumn CRegion = tablaBajasInt.getColumn("Región");        //Se llama a la columna
-                CRegion.setPreferredWidth(200);                                  //Se define su tamaño
-                TableColumn CGerencia = tablaBajasInt.getColumn("Gerencia");        //Se llama a la columna
-                CGerencia.setPreferredWidth(350);                                 //Se define su tamaño
-                TableColumn CIP = tablaBajasInt.getColumn("Departamento");                //Se llama a la columna
-                CIP.setPreferredWidth(350);                                     //Se define su tamaño
-                TableColumn CIDPerfil = tablaBajasInt.getColumn("Puesto");   //Se llama a la columna
-                CIDPerfil.setPreferredWidth(395);                                //Se define su tamaño
-                 TableColumn CPerfil = tablaBajasInt.getColumn("ID Puesto");   //Se llama a la columna
-                CPerfil.setPreferredWidth(155);                                //Se define su tamaño                                                             
+                CNombre.setPreferredWidth(330);                                  //Se define su tamaño
+                TableColumn CAcceso = tablaBajasInt.getColumn("Fecha ultimo acceso");        //Se llama a la columna
+                CAcceso.setPreferredWidth(150);                                 //Se define su tamaño            
+                TableColumn CNumemp = tablaBajasInt.getColumn("Número de empleado");        //Se llama a la columna
+                CNumemp.setPreferredWidth(150);                                 //Se define su tamaño
+                TableColumn CUserid = tablaBajasInt.getColumn("UserID");        //Se llama a la columna
+                CUserid.setPreferredWidth(85);                                 //Se define su tamaño
+                TableColumn CPuesto = tablaBajasInt.getColumn("Puesto"); //Se llama a la columna
+                CPuesto.setPreferredWidth(240);                                  //Se define su tamaño
+                TableColumn CGerencia = tablaBajasInt.getColumn("Gerencia");  //Se llama a la columna
+                CGerencia.setPreferredWidth(240);                              //Se define su tamaño
+                TableColumn CNombrec = tablaBajasInt.getColumn("Nombre");    //Se llama a la columna
+                CNombrec.setPreferredWidth(330);                              //Se define su tamaño                                                                         
                 TableColumn Estatus = tablaBajasInt.getColumn("Estatus");       //Se llama a la columna
                 Estatus.setPreferredWidth(115);                                 //Se define su tamaño
                 TableColumn CBBFFechaBaja = tablaBajasInt.getColumn("Fecha de baja");   //Se llama a la columna
-                CBBFFechaBaja.setPreferredWidth(140);                           //Se define su tamaño
+                CBBFFechaBaja.setPreferredWidth(250);                           //Se define su tamaño
             }
             else                                                                //Si el resultado se encontraba vacío
             {
@@ -156,7 +142,7 @@ public class Resultados extends javax.swing.JFrame {
     {
         DefaultTableModel modeloBajasExt = new DefaultTableModel();             //Define el objeto modelo de tabla
           
-        Object[] registro = new Object[18];                                     //Crea el arreglo para almacenar los datos de cada registro
+        Object[] registro = new Object[13];                                     //Crea el arreglo para almacenar los datos de cada registro
         int i = 0;
         try
         {
@@ -170,23 +156,19 @@ public class Resultados extends javax.swing.JFrame {
                 modeloBajasExt.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
                 modeloBajasExt.addColumn("Número de empleado");
                 modeloBajasExt.addColumn("Nombre completo");
-                modeloBajasExt.addColumn("Grupo");
-                modeloBajasExt.addColumn("Valido de");
-                modeloBajasExt.addColumn("Validez a");
-                modeloBajasExt.addColumn("ID numero de empleado");
-                modeloBajasExt.addColumn("ID usuario");
-                modeloBajasExt.addColumn("ID nombre");
-                modeloBajasExt.addColumn("Región");
-                modeloBajasExt.addColumn("Gerencia");
-                modeloBajasExt.addColumn("Departamento");
-                modeloBajasExt.addColumn("ID Puesto");
+                modeloBajasExt.addColumn("Fecha ultimo acceso");
+                modeloBajasExt.addColumn("Número de empleado");
+                modeloBajasExt.addColumn("UserID");
                 modeloBajasExt.addColumn("Puesto");
+                modeloBajasExt.addColumn("Gerencia");
+                modeloBajasExt.addColumn("Nombre");
                 modeloBajasExt.addColumn("Estatus");
-                modeloBajasExt.addColumn("Fecha de baja");
+                modeloBajasExt.addColumn("Fecha de Baja");
+                
                 bajasExtSAP.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 while(bajasExtSAP.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<17; k++)                                     
+                    for(int k=1; k<12; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -208,35 +190,25 @@ public class Resultados extends javax.swing.JFrame {
                 TableColumn CAgregar = tablaBajasExt.getColumn("Agregar");      //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
                 TableColumn CUsuario = tablaBajasExt.getColumn("Número de empleado");    //Se llama a la columna
-                CUsuario.setPreferredWidth(150);                                 //Se define su tamaño
+                CUsuario.setPreferredWidth(110);                                 //Se define su tamaño
                 TableColumn CNombre = tablaBajasExt.getColumn("Nombre completo");       //Se llama a la columna
-                CNombre.setPreferredWidth(350);                                  //Se define su tamaño
-                TableColumn CGpo = tablaBajasExt.getColumn("Grupo");            //Se llama a la columna
-                CGpo.setPreferredWidth(85);                                     //Se define su tamaño            
-                TableColumn CValido = tablaBajasExt.getColumn("Valido de");        //Se llama a la columna
-                CValido.setPreferredWidth(85);                                  //Se define su tamaño
-                TableColumn CValidez = tablaBajasExt.getColumn("Validez a");        //Se llama a la columna
-                CValidez.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CIDUsuario = tablaBajasExt.getColumn("ID usuario"); //Se llama a la columna
-                CIDUsuario.setPreferredWidth(80);                                  //Se define su tamaño
-                TableColumn CBBFNumEMP = tablaBajasExt.getColumn("ID numero de empleado");  //Se llama a la columna
-                CBBFNumEMP.setPreferredWidth(150);                              //Se define su tamaño
-                TableColumn CBBFNombre = tablaBajasExt.getColumn("ID nombre");  //Se llama a la columna
-                CBBFNombre.setPreferredWidth(350);                              //Se define su tamaño
-                TableColumn CRegion = tablaBajasExt.getColumn("Región");        //Se llama a la columna
-                CRegion.setPreferredWidth(200);                                 //Se define su tamaño
-                TableColumn CGerencia = tablaBajasExt.getColumn("Gerencia");    //Se llama a la columna
-                CGerencia.setPreferredWidth(350);                               //Se define su tamaño
-                TableColumn CIP = tablaBajasExt.getColumn("Departamento");      //Se llama a la columna
-                CIP.setPreferredWidth(350);                                     //Se define su tamaño
-                TableColumn CIDPerfil = tablaBajasExt.getColumn("Puesto");      //Se llama a la columna
-                CIDPerfil.setPreferredWidth(395);                               //Se define su tamaño
-                 TableColumn CPerfil = tablaBajasExt.getColumn("ID Puesto");    //Se llama a la columna
-                CPerfil.setPreferredWidth(155);                                 //Se define su tamaño                                                             
+                CNombre.setPreferredWidth(330);                                  //Se define su tamaño
+                TableColumn CAcceso = tablaBajasExt.getColumn("Fecha ultimo acceso");        //Se llama a la columna
+                CAcceso.setPreferredWidth(150);                                 //Se define su tamaño            
+                TableColumn CNumemp = tablaBajasExt.getColumn("Número de empleado");        //Se llama a la columna
+                CNumemp.setPreferredWidth(150);                                 //Se define su tamaño
+                TableColumn CUserid = tablaBajasExt.getColumn("UserID");        //Se llama a la columna
+                CUserid.setPreferredWidth(85);                                 //Se define su tamaño
+                TableColumn CPuesto = tablaBajasExt.getColumn("Puesto"); //Se llama a la columna
+                CPuesto.setPreferredWidth(240);                                  //Se define su tamaño
+                TableColumn CGerencia = tablaBajasExt.getColumn("Gerencia");  //Se llama a la columna
+                CGerencia.setPreferredWidth(240);                              //Se define su tamaño
+                TableColumn CNombrec = tablaBajasExt.getColumn("Nombre");    //Se llama a la columna
+                CNombrec.setPreferredWidth(330);                              //Se define su tamaño                                                                         
                 TableColumn Estatus = tablaBajasExt.getColumn("Estatus");       //Se llama a la columna
                 Estatus.setPreferredWidth(115);                                 //Se define su tamaño
                 TableColumn CBBFFechaBaja = tablaBajasExt.getColumn("Fecha de baja");   //Se llama a la columna
-                CBBFFechaBaja.setPreferredWidth(140);                              //Se define su tamaño
+                CBBFFechaBaja.setPreferredWidth(250);                           //Se define su tamaño
             }
             else                                                                //Si el resultado se encontraba vacío
             {
@@ -256,7 +228,7 @@ public class Resultados extends javax.swing.JFrame {
     void definirModelosInactividadInt()                                         //Crea el modelo para la tabla de inconsistencias de usuarios internos inactivos
     {
         DefaultTableModel modeloInactividadInt = new DefaultTableModel();       //Define el objeto modelo de tabla
-        Object[] registro = new Object[13];                                     //Crea un arreglo para recibir los elementos de cada renglon
+        Object[] registro = new Object[12];                                     //Crea un arreglo para recibir los elementos de cada renglon
         
         try
         {
@@ -266,23 +238,24 @@ public class Resultados extends javax.swing.JFrame {
             inactInt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosInactividadIntSAP()); //Ejecuta la consulta y almacena el resultado en bajasExt
             if(inactInt.next())                                                 //Valida que no se encuentre vacío el resutado de la consulta
             {
-                inactInt.beforeFirst();                                         //Regresa a la posición inicial del resultado
+                
+                inactInt.beforeFirst(); 
                 modeloInactividadInt.addColumn("Agregar");
-                modeloInactividadInt.addColumn("Numero Empleado");
-                modeloInactividadInt.addColumn("Usuario");
-                modeloInactividadInt.addColumn("Nombre Completo");
-                modeloInactividadInt.addColumn("Region");
-                modeloInactividadInt.addColumn("Gerencia");
-                modeloInactividadInt.addColumn("Departamento");
+                modeloInactividadInt.addColumn("Número de empleado");
+                modeloInactividadInt.addColumn("Nombre");
+                modeloInactividadInt.addColumn("Fecha de creacion");
+                modeloInactividadInt.addColumn("Fecha de ultimo Acceso");
+                modeloInactividadInt.addColumn("Número de empleado");
+                modeloInactividadInt.addColumn("UserId");
                 modeloInactividadInt.addColumn("Puesto");
-                modeloInactividadInt.addColumn("Creado Por");
-                modeloInactividadInt.addColumn("Fecha Creacion");
-                modeloInactividadInt.addColumn("Entrada Sistema");
-                modeloInactividadInt.addColumn("Clave Acc");
+                modeloInactividadInt.addColumn("Gerencia");
+                modeloInactividadInt.addColumn("Nombre");
+                
+                                                        //Regresa a la posición inicial del resultado
                 
                 while(inactInt.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<13; k++)                                     //Recorre los elementos del registro para obtener cada dato de las columnas
+                    for(int k=1; k<11; k++)                                     //Recorre los elementos del registro para obtener cada dato de las columnas
                     {
                         if(k==1)                                                //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
                         {
@@ -302,28 +275,25 @@ public class Resultados extends javax.swing.JFrame {
 
                 TableColumn CAgregar = tablaInacInt.getColumn("Agregar");       //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CNumEmp = tablaInacInt.getColumn("Número Empleado"); //Se llama a la columna
-                CNumEmp.setPreferredWidth(140);                                 //Se define su tamaño
-                TableColumn CUserID = tablaInacInt.getColumn("Usuario");        //Se llama a la columna
-                CUserID.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CNombre = tablaInacInt.getColumn("Nombre Completo");         //Se llama a la columna
-                CNombre.setPreferredWidth(360);                                 //Se define su tamaño
-                TableColumn CRegion = tablaInacInt.getColumn("Region");  //Se llama a la columna
-                CRegion.setPreferredWidth(160);                                  //Se define su tamaño
-                TableColumn CGerencia = tablaInacInt.getColumn("Gerencia");         //Se llama a la columna
-                CGerencia.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CDep = tablaInacInt.getColumn("Departamento");                 //Se llama a la columna
-                CDep.setPreferredWidth(120);                                     //Se define su tamaño
+                TableColumn CNumEmp = tablaInacInt.getColumn("Número de empleado"); //Se llama a la columna
+                CNumEmp.setPreferredWidth(200);                                 //Se define su tamaño
+                TableColumn CNombre = tablaInacInt.getColumn("Nombre");        //Se llama a la columna
+                CNombre.setPreferredWidth(300);                                  //Se define su tamaño
+                TableColumn CFechac = tablaInacInt.getColumn("Fecha de creacion");         //Se llama a la columna
+                CFechac.setPreferredWidth(200);                                 //Se define su tamaño
+                TableColumn CAcceso = tablaInacInt.getColumn("Fecha de acceso");  //Se llama a la columna
+                CAcceso.setPreferredWidth(200);                                  //Se define su tamaño
+                TableColumn CNumeroemp = tablaInacInt.getColumn("Número de empleado");         //Se llama a la columna
+                CNumeroemp.setPreferredWidth(150);                                  //Se define su tamaño
+                TableColumn CUserid = tablaInacInt.getColumn("UserID");                 //Se llama a la columna
+                CUserid.setPreferredWidth(200);                                     //Se define su tamaño
                 TableColumn CPuesto = tablaInacInt.getColumn("Puesto");    //Se llama a la columna
-                CPuesto.setPreferredWidth(85);                                //Se define su tamaño
-                TableColumn CCreado = tablaInacInt.getColumn("Creado por");         //Se llama a la columna
-                CCreado.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CCreacion = tablaInacInt.getColumn("Fecha Creacion");         //Se llama a la columna
-                CCreacion.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CEntrada = tablaInacInt.getColumn("Entrada Sistema");         //Se llama a la columna
-                CEntrada.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CClave = tablaInacInt.getColumn("Clave Acc");         //Se llama a la columna
-                CClave.setPreferredWidth(400);                                 //Se define su tamaño
+                CPuesto.setPreferredWidth(200);                                //Se define su tamaño
+                TableColumn CGerencia = tablaInacInt.getColumn("Gerencia");         //Se llama a la columna
+                CGerencia.setPreferredWidth(200);                                 //Se define su tamaño
+                TableColumn CNNombre = tablaInacInt.getColumn("Nombre");         //Se llama a la columna
+                CNNombre.setPreferredWidth(300);                                 //Se define su tamaño
+                
             }
             else
             {
@@ -343,7 +313,7 @@ public class Resultados extends javax.swing.JFrame {
     {
         
         DefaultTableModel modeloInactividadExt = new DefaultTableModel();       //Define el objeto modelo de tabla
-        Object[] registro = new Object[13];                                     //Crea un arreglo para recibir los elementos de cada renglon
+        Object[] registro = new Object[11];                                     //Crea un arreglo para recibir los elementos de cada renglon
         
         
         try
@@ -354,23 +324,23 @@ public class Resultados extends javax.swing.JFrame {
             inactExt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosInactividadExtSAP()); //Ejecuta la consulta y almacena el resultado en bajasExt
             if(inactExt.next())                                                 //Valida que no se encuentre vacío el resutado de la consulta
             {
+               
                 inactExt.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 modeloInactividadExt.addColumn("Agregar");
-                modeloInactividadExt.addColumn("Numero Empleado");
-                modeloInactividadExt.addColumn("Usuario");
-                modeloInactividadExt.addColumn("Nombre Completo");
-                modeloInactividadExt.addColumn("Region");
-                modeloInactividadExt.addColumn("Gerencia");
-                modeloInactividadExt.addColumn("Departamento");
+                modeloInactividadExt.addColumn("Número de empleado");
+                modeloInactividadExt.addColumn("Nombre");
+                modeloInactividadExt.addColumn("Fecha de creacion");
+                modeloInactividadExt.addColumn("Fecha de ultimo Acceso");
+                modeloInactividadExt.addColumn("Número de empleado");
+                modeloInactividadExt.addColumn("UserId");
                 modeloInactividadExt.addColumn("Puesto");
-                modeloInactividadExt.addColumn("Creado Por");
-                modeloInactividadExt.addColumn("Fecha Creacion");
-                modeloInactividadExt.addColumn("Entrada Sistema");
-                modeloInactividadExt.addColumn("Clave Acc");
+                modeloInactividadExt.addColumn("Gerencia");
+                modeloInactividadExt.addColumn("Nombre");
                 
+                                                         
                 while(inactExt.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<13; k++)                                     //Recorre los elementos del registro para obtener cada dato de las columnas
+                    for(int k=1; k<11; k++)                                     //Recorre los elementos del registro para obtener cada dato de las columnas
                     {
                         if(k==1)
                         {
@@ -390,28 +360,24 @@ public class Resultados extends javax.swing.JFrame {
 
                 TableColumn CAgregar = tablaInacExt.getColumn("Agregar");       //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CNumEmp = tablaInacExt.getColumn("Número Empleado"); //Se llama a la columna
-                CNumEmp.setPreferredWidth(140);                                 //Se define su tamaño
-                TableColumn CUserID = tablaInacExt.getColumn("Usuario");        //Se llama a la columna
-                CUserID.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CNombre = tablaInacExt.getColumn("Nombre Completo");         //Se llama a la columna
-                CNombre.setPreferredWidth(360);                                 //Se define su tamaño
-                TableColumn CRegion = tablaInacExt.getColumn("Region");  //Se llama a la columna
-                CRegion.setPreferredWidth(160);                                  //Se define su tamaño
-                TableColumn CGerencia = tablaInacExt.getColumn("Gerencia");         //Se llama a la columna
-                CGerencia.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CDep = tablaInacExt.getColumn("Departamento");                 //Se llama a la columna
-                CDep.setPreferredWidth(120);                                     //Se define su tamaño
+                TableColumn CNumEmp = tablaInacExt.getColumn("Número empleado"); //Se llama a la columna
+                CNumEmp.setPreferredWidth(150);                                 //Se define su tamaño
+                TableColumn CNombre = tablaInacExt.getColumn("Nombre");        //Se llama a la columna
+                CNombre.setPreferredWidth(300);                                  //Se define su tamaño
+                TableColumn CFechac = tablaInacExt.getColumn("Fecha de creacion");         //Se llama a la columna
+                CFechac.setPreferredWidth(150);                                 //Se define su tamaño
+                TableColumn CAcceso = tablaInacExt.getColumn("Fecha de acceso");  //Se llama a la columna
+                CAcceso.setPreferredWidth(200);                                  //Se define su tamaño
+                TableColumn CNumeroemp = tablaInacExt.getColumn("Número de empleado");         //Se llama a la columna
+                CNumeroemp.setPreferredWidth(200);                                  //Se define su tamaño
+                TableColumn CUserid = tablaInacExt.getColumn("UserID");                 //Se llama a la columna
+                CUserid.setPreferredWidth(200);                                     //Se define su tamaño
                 TableColumn CPuesto = tablaInacExt.getColumn("Puesto");    //Se llama a la columna
-                CPuesto.setPreferredWidth(85);                                //Se define su tamaño
-                TableColumn CCreado = tablaInacExt.getColumn("Creado por");         //Se llama a la columna
-                CCreado.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CCreacion = tablaInacExt.getColumn("Fecha Creacion");         //Se llama a la columna
-                CCreacion.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CEntrada = tablaInacExt.getColumn("Entrada Sistema");         //Se llama a la columna
-                CEntrada.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CClave = tablaInacExt.getColumn("Clave Acc");         //Se llama a la columna
-                CClave.setPreferredWidth(400);                                 //Se define su tamaño
+                CPuesto.setPreferredWidth(300);                                //Se define su tamaño
+                TableColumn CGerencia = tablaInacExt.getColumn("Gerencia");         //Se llama a la columna
+                CGerencia.setPreferredWidth(300);                                 //Se define su tamaño
+                TableColumn CNNombre = tablaInacExt.getColumn("Nombre");         //Se llama a la columna
+                CNNombre.setPreferredWidth(300);                                 //Se define su tamaño
             }
             else
             {
