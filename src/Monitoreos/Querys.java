@@ -272,6 +272,21 @@ public class Querys
         return consulta;
     }
     
+    public static String ResultadosInactividadIntSAP()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS INACTIVOS
+    {
+        String statement = "select numeroempleado, idusuario, nombrecompleto, region, gerencia, departamento, puesto, creado_por,"
+                + " fecha_creacion, entrada_sist, clave_acc from inactividadintsap";
+        return statement;
+    }
+   
+    public static String ResultadosInactividadExtSAP()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS INACTIVOS
+    {
+        String statement = "select numeroempleado, idusuario, nombrecompleto, region, gerencia, departamento, puesto, creado_por,"
+                + " fecha_creacion, entrada_sist, clave_acc from inactividadextsap";
+        return statement;
+    } 
+    
+    
                             //*******************
     
     

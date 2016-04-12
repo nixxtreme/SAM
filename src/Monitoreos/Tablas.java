@@ -884,7 +884,9 @@ public class Tablas
     public static String CreaInactividadIntSAP(String cadenaBD)                    //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS CON INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "CREATE TABLE IF NOT EXISTS inactividadintsap SELECT * FROM cruceintsap" + parametros[4]  
+        String consulta = "CREATE TABLE IF NOT EXISTS inactividadintsap SELECT numeroempleado, idusuario, nombrecompleto, region, gerencia,"
+                + " departamento, puesto, creado_por, fecha_creacion, entrada_sist, clave_acc"
+                + " FROM cruceintsap" + parametros[4]  
                 +" WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
     }
@@ -892,7 +894,9 @@ public class Tablas
     public static String CreaInactividadExtSAP(String cadenaBD)                    //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS CON INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "CREATE TABLE IF NOT EXISTS inactividadextsap SELECT * FROM cruceextsap" + parametros[4]  
+        String consulta = "CREATE TABLE IF NOT EXISTS inactividadextsap SELECT numeroempleado, idusuario, nombrecompleto, region, gerencia,"
+                + " departamento, puesto, creado_por, fecha_creacion, entrada_sist, clave_acc"
+                + " FROM cruceextsap" + parametros[4]  
                 +" WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
     }
@@ -1234,8 +1238,8 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "CREATE TABLE IF NOT EXISTS cruceextSAP"+ parametros[4] + " SELECT internossap.Usuario, internossap.Nombre_completo, "
-                + "internossap.Grupo, internossap.Valido_De, internossap.Validez_a,"
+        statement = "CREATE TABLE IF NOT EXISTS cruceextSAP"+ parametros[4] + " SELECT externossap.Usuario, externossap.Nombre_completo, "
+                + "externossap.Grupo, externossap.Valido_De, externossap.Validez_a,"
                 + " idext" + parametros[4] + ".NUMEROEMPLEADO,"
                 + " idext" + parametros[4] + ".USUARIO AS IDUSUARIO,"
                 + " idext" + parametros[4] + ".NOMBRECOMPLETO,"
@@ -1260,7 +1264,7 @@ public class Tablas
                 + " fechasa" + parametros[4] + ".Clave_acc,"
                 + " fechasa" + parametros[4] + ".Bloqueo"     
                 + " FROM ((externossap left join demonsa2" + parametros[4] + " on externossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
-                + " left join idint" + parametros[4] + " on externossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
+                + " left join idext" + parametros[4] + " on externossap.usuario = idext" + parametros[4] + ".NUMEROEMPLEADO) left join"
                 + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = externossap.usuario";
             
         return statement;
