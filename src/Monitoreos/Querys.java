@@ -261,14 +261,16 @@ public class Querys
     public static String BorraInactividadIntSAP(String cadenaBD)                   //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceintsap" + parametros[4] + " WHERE DATEDIFF('" + parametros[8] + "', FECHA_ACCESO) >= 61";
+        String consulta = "DELETE FROM cruceintsap" + parametros[4] + " WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 "
+                + "OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
     }
     
     public static String BorraInactividadExtSAP(String cadenaBD)                   //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceintsap" + parametros[4] + " WHERE DATEDIFF('" + parametros[8] + "', FECHA_ACCESO) >= 61";
+        String consulta = "DELETE FROM cruceextsap" + parametros[4] +  " WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 "
+                + "OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
     }
     
