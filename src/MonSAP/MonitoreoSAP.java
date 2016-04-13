@@ -1611,7 +1611,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         {
             UsrPerfil = fileChooser.getSelectedFile().getAbsolutePath();           //Obtiene la ubicación del archivo seleccionado
             lastArchivo = UsrPerfil;                                               //Lo guarda como última ubicación de selección
-            jTextFieldUsrPerfil.setText(FechasAcceso);                                       //Muestra la ruta en el cuadro de texto asociado
+            jTextFieldUsrPerfil.setText(UsrPerfil);                                       //Muestra la ruta en el cuadro de texto asociado
             jCheckUsrPerfil.setSelected(true);                                     //Selecciona la casilla de verificación
             jCheckUsrPerfil.setEnabled(true);                                      //Permite al usuario deshabilitarla posteriormente
         }       

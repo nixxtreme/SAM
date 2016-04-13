@@ -575,7 +575,7 @@ public class Tablas
         String[] parametros = cadenaBD.split("\\|");
        
         String valores = "INSERT IGNORE INTO Uperfiles" + parametros[4] + " (UserID, Nombre, Apellido, Grupo,"
-                + " Rol, Descripcion_Rol, Fecha_inicio, Fecha_fin) "
+                + " Rol, Descripcion_Rol, Fecha_inicio, Fecha_fin)"
                 + "values ";
         
         valores = valores + Archivos.lecturaUsuariosPerfil(fechas, cadenaBD);

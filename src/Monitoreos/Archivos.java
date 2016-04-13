@@ -1143,17 +1143,20 @@ public class Archivos
         else
         {
             Usuario = temp[1];                                                      //Obtiene el Usuario de la posición 1 del arreglo
-            Nombre = temp[2];                                                        //Obtiene el nombre de la posición 2 del arreglo
-            Apellido = temp[3]; 
-            Grupo = temp[4]; 
-            Rol = temp[5]; 
-            Descripcion_Rol = temp[6]; 
-            Fecha_inicio = temp[7]; 
-            Fecha_fin = temp[8];                
+            Nombre = temp[3];                                                        //Obtiene el nombre de la posición 2 del arreglo
+            Apellido = temp[4]; 
+            Grupo = temp[5]; 
+            Rol = temp[6]; 
+            Descripcion_Rol = temp[7]; 
+            Fecha_inicio = temp[8]; 
+            Fecha_fin = temp[9];                
             
             Usuario = Usuario.trim();                                           //ELIMINAR LOS ESPACIOS ENTRE CAMPOS
-            Grupo = Grupo.trim();
             Nombre = Nombre.trim();
+            Apellido = Apellido.trim();
+            Grupo = Grupo.trim();
+            Rol = Rol.trim();
+            Descripcion_Rol = Descripcion_Rol.trim();
             Fecha_inicio = Fecha_inicio.trim();
             Fecha_fin = Fecha_fin.trim();
       
@@ -1363,7 +1366,7 @@ public class Archivos
             while((temp=br.readLine()) != null)                                 //Valida que la siguiente línea del archivo no esté vacía
             {
                 
-                if(temp.contains("----"))                                       //Valida si contiene guiones en la línea para descartarla
+                if(temp.contains("----") || temp.charAt(1)=='*')                                       //Valida si contiene guiones en la línea para descartarla
                 {
 
                 }
