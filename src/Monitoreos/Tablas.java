@@ -578,7 +578,7 @@ public class Tablas
                 + " Rol, Descripcion_Rol, Fecha_inicio, Fecha_fin) "
                 + "values ";
         
-        valores = valores + Archivos.lecturaFechasAcceso(fechas, cadenaBD);
+        valores = valores + Archivos.lecturaUsuariosPerfil(fechas, cadenaBD);
         return valores;
         
     }

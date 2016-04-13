@@ -1126,6 +1126,76 @@ public class Archivos
     }
     
     
+    private static String creaLineaUsrPerfil(String linea)                          //CREA LA LÍNEA DE REGISTRO DE USUARIO PERFIL
+    {
+        String Usuario, Nombre, Apellido, Grupo, Rol, Descripcion_Rol, Fecha_inicio, Fecha_fin, retorno, fechames, fechaano, fechadia;                         //Variables para almacenar los datos de cada registro
+//        System.out.println("Linea " + linea);
+        String[] temp = linea.split("\\|");                                      //Crea un arreglo con los datos del registro separados por el pipe
+//        for(int i=0; i<temp.length;i++)                                             
+//        {
+//            System.out.println(i + " " + temp[i]);
+//        }
+//        System.out.println("\n\n\n");
+        if(temp[1].contains("*"))
+        {
+            retorno = "";
+        }
+        else
+        {
+            Usuario = temp[1];                                                      //Obtiene el Usuario de la posición 1 del arreglo
+            Nombre = temp[2];                                                        //Obtiene el nombre de la posición 2 del arreglo
+            Apellido = temp[3]; 
+            Grupo = temp[4]; 
+            Rol = temp[5]; 
+            Descripcion_Rol = temp[6]; 
+            Fecha_inicio = temp[7]; 
+            Fecha_fin = temp[8];                
+            
+            Usuario = Usuario.trim();                                           //ELIMINAR LOS ESPACIOS ENTRE CAMPOS
+            Grupo = Grupo.trim();
+            Nombre = Nombre.trim();
+            Fecha_inicio = Fecha_inicio.trim();
+            Fecha_fin = Fecha_fin.trim();
+      
+        //validacion de fechas
+                
+        if(!Fecha_inicio.isEmpty())                                           //Verifica si el campo de fecha se encuentra vacío
+        {
+            String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /            
+            fechac = Fecha_inicio.split("\\.");                                      //Separa los elementos de la fecha separados por / almacenándolos en un arreglo 
+            fechames = fechac[1];                                               //Obtiene el mes de la posición 1 del arreglo
+            fechadia = fechac[0];                                               //Obtiene el día de la posición 0 del arreglo
+            fechaano = fechac[2];                                               //Obtiene el año de la posición 2 del arreglo
+            
+            Fecha_inicio = "'" + fechaano + "-" + fechames + "-" + fechadia + "'";     //Establece el campo fecha en formato aaaa-mm-dd
+        }
+        else
+        {    
+            Fecha_inicio = "NULL";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+        }
+        
+        
+        if(!Fecha_fin.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
+        {
+            String [] fechac;                                                   //Si el campo no está vacío verifica si está separado por /            
+            fechac = Fecha_fin.split("\\.");                                      //Separa los elementos de la fecha separados por / almacenándolos en un arreglo 
+            fechames = fechac[1];                                               //Obtiene el mes de la posición 1 del arreglo
+            fechadia = fechac[0];                                               //Obtiene el día de la posición 0 del arreglo
+            fechaano = fechac[2];                                               //Obtiene el año de la posición 2 del arreglo
+            
+            Fecha_fin = "'" + fechaano + "-" + fechames + "-" + fechadia + "'";     //Establece el campo fecha en formato aaaa-mm-dd
+        }
+        else
+        {    
+            Fecha_fin = "NULL";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+        }
+                   
+            retorno = "('" + Usuario + "', '" + Nombre + "', '" + Apellido + "', '" + Grupo + "', '" + Rol + "', '" 
+                    + Descripcion_Rol +  "'," + Fecha_inicio + "," + Fecha_fin + ")"; //Regresa la línea para ser insertada en la BD local
+        }
+        return retorno;
+    }
+    
     
     public static String lecturaUsuariosSAP (String ruta, String bd )
     {
@@ -1266,6 +1336,77 @@ public class Archivos
         }       
         
     }
+        
+    public static String lecturaUsuariosPerfil (String ruta, String bd )
+    {
+        String[] parametros = bd.split("\\|");                                  //SEPARA LOS ELEMENTOS DE LA CADENA HASTA SU REFERENCIA DE CORTE
+        File archivo = null;                                                    //Crea el objeto del archivo vacío
+        FileReader fr = null;                                                   //Crea el objeto del lector de archivos vacío
+        BufferedReader br = null;                                               //Crea el bufer de lectura vacío
+        String usuarios, linea, temp, primera;                                  
+        
+        usuarios="";
+        linea = "";
+        //System.out.println("linea " + linea);        
+       
+        try
+        {
+            archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+              
+            for (int i=0;i<8;i++)                                               //Retira el encabezado del archivo 8 lineas
+            {
+                primera = br.readLine();                
+            }                                           
+
+            while((temp=br.readLine()) != null)                                 //Valida que la siguiente línea del archivo no esté vacía
+            {
+                
+                if(temp.contains("----"))                                       //Valida si contiene guiones en la línea para descartarla
+                {
+
+                }
+                else
+                {
+                    
+//                    System.out.println("temp = " + temp);
+                    //System.out.println("Linea antes " + linea);
+                    linea = linea + "\n " + creaLineaUsrPerfil(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
+                   // System.out.println("Linea  " + creaLineaFechasAcceso(temp));
+                }            
+                
+            }
+//            System.out.println("length " + linea.length());
+            linea = linea.substring(0, linea.length()-1);                         //Elimina la última coma de la cadena
+//            System.out.println("Salida = " + linea);                                     
+        }
+//        catch(SQLException sqle)
+//        {
+//            sqle.printStackTrace();
+//        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally                                                                 //Finaliza la lectura del archivo
+        {
+            try
+            {
+                if(fr != null)
+                {
+                    fr.close();
+                }
+            }
+            catch(Exception e2)
+            {
+                e2.printStackTrace();
+            }
+         return linea;
+        }       
+        
+    }
+    
     
 }
        

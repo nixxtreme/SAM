@@ -1054,7 +1054,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados, Demonsa2, UsuariosSAP, FechasAcceso;
+    String Corporativo, NomInt, NomExt, BajasInt, BajasExt, BFalta, BFbaja, ExcepDuplicado, MatrizPerfiles, UsrAdmin, UsrAdminAgregados, UsrAdminEliminados, Demonsa2, UsuariosSAP, FechasAcceso, UsrPerfil;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
 //        limpiaCampos();
@@ -1414,7 +1414,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 
                PreparaTablas.add(Monitoreos.Tablas.eliminaPerfiles(cadenaBD)); //elimina la tabla de perfiles en caso de existir
                PreparaTablas.add(Monitoreos.Tablas.CreaPerfiles(cadenaBD));    //crea la tabla de perfiles
-               PreparaTablas.add(Monitoreos.Tablas.InsertarPerfiles(FechasAcceso, cadenaBD));     //Lee el archivo de  perfiles e inserta usuarios en la BD local              
+               PreparaTablas.add(Monitoreos.Tablas.InsertarPerfiles(UsrPerfil, cadenaBD));     //Lee el archivo de  perfiles e inserta usuarios en la BD local              
             }
 
 //            if(Matriz.isSelected())                                             //Valida que esté habilitada la casilla de matriz de perfiles de perfiles
@@ -1597,7 +1597,24 @@ public class MonitoreoSAP extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFechasAccesoActionPerformed
 
     private void jButtonUsrPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsrPerfilActionPerformed
-        // TODO add your handling code here:
+      JFileChooser fileChooser = new JFileChooser(lastArchivo);               //Abre una ventana de exploración con la última ubicacion en que se seleccionó un archivo
+        fileChooser.setDialogTitle("Archivo Usuarios Perfil");                          //Establece el titulo de la ventana de exploración
+        Dimension dim = new Dimension(800, 600);                                //Establece el tamaño de la ventana de exploración
+        fileChooser.setPreferredSize(dim);                                      //Establece el tamaño de la ventana de exploración
+
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");  //Restringe el tipo de archivos que se muestran en el explirador
+        fileChooser.setFileFilter(filter);
+        
+        int seleccion = fileChooser.showOpenDialog(this);                       
+        if(seleccion == JFileChooser.APPROVE_OPTION)                            //Valida si se seleccionó un archivo
+        {
+            UsrPerfil = fileChooser.getSelectedFile().getAbsolutePath();           //Obtiene la ubicación del archivo seleccionado
+            lastArchivo = UsrPerfil;                                               //Lo guarda como última ubicación de selección
+            jTextFieldUsrPerfil.setText(FechasAcceso);                                       //Muestra la ruta en el cuadro de texto asociado
+            jCheckUsrPerfil.setSelected(true);                                     //Selecciona la casilla de verificación
+            jCheckUsrPerfil.setEnabled(true);                                      //Permite al usuario deshabilitarla posteriormente
+        }       
     }//GEN-LAST:event_jButtonUsrPerfilActionPerformed
 
     /**
