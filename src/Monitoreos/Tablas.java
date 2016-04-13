@@ -556,16 +556,16 @@ public class Tablas
      public static String eliminaPerfiles(String cadenaBD)                         //ELIMINA LA TABLA DE Usuarios perfiles
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statment = "DROP TABLE IF EXISTS FechasA"+ parametros[4];  
+        String statment = "DROP TABLE IF EXISTS UPerfiles"+ parametros[4];  
         return statment;        
     }   
     
     public static String CreaPerfiles(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS Perfiles OBTENIDOS DE LA BASE DE DATOS DE SAP 
     {
        String[] parametros = cadenaBD.split("\\|");
-        String tabla = "CREATE TABLE IF NOT EXISTS FechasA" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Grupo VARCHAR(20), "
-                + "Creado_por varchar(20), Fecha_Creacion DATE DEFAULT NULL, Valido_de DATE DEFAULT NULL, Fin_Validez DATE DEFAULT NULL, Entrada_Sist DATE DEFAULT NULL,"
-                + " Clave_acc DATE DEFAULT NULL, Bloqueo Varchar(50), PRIMARY KEY(usuario))";
+        String tabla = "CREATE TABLE IF NOT EXISTS UPerfiles" + parametros[4] + " (UserID VARCHAR(20) NOT NULL, Nombre VARCHAR(30), "
+                + "Apellido varchar(30), Grupo VARCHAR(15), Rol VARCHAR(20), Descripcion_Rol VARCHAR(55), Fecha_inicio DATE DEFAULT NULL,"
+                + " Fecha_fin DATE DEFAULT NULL)";
         return tabla;
         
     }
@@ -574,8 +574,8 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
        
-        String valores = "INSERT IGNORE INTO FechasA" + parametros[4] + " (USUARIO, GRUPO, CREADO_POR, FECHA_CREACION,"
-                + " VALIDO_DE, FIN_VALIDEZ, ENTRADA_SIST, CLAVE_ACC, BLOQUEO) "
+        String valores = "INSERT IGNORE INTO Uperfiles" + parametros[4] + " (UserID, Nombre, Apellido, Grupo,"
+                + " Rol, Descripcion_Rol, Fecha_inicio, Fecha_fin) "
                 + "values ";
         
         valores = valores + Archivos.lecturaFechasAcceso(fechas, cadenaBD);
