@@ -551,8 +551,39 @@ public class Tablas
         
     }
     
-                //***************************************
+                //**************PERFILES****************
     
+     public static String eliminaPerfiles(String cadenaBD)                         //ELIMINA LA TABLA DE Usuarios perfiles
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statment = "DROP TABLE IF EXISTS FechasA"+ parametros[4];  
+        return statment;        
+    }   
+    
+    public static String CreaPerfiles(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS Perfiles OBTENIDOS DE LA BASE DE DATOS DE SAP 
+    {
+       String[] parametros = cadenaBD.split("\\|");
+        String tabla = "CREATE TABLE IF NOT EXISTS FechasA" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Grupo VARCHAR(20), "
+                + "Creado_por varchar(20), Fecha_Creacion DATE DEFAULT NULL, Valido_de DATE DEFAULT NULL, Fin_Validez DATE DEFAULT NULL, Entrada_Sist DATE DEFAULT NULL,"
+                + " Clave_acc DATE DEFAULT NULL, Bloqueo Varchar(50), PRIMARY KEY(usuario))";
+        return tabla;
+        
+    }
+    
+    public static String InsertarPerfiles (String fechas , String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE Usuarios Perfiles
+    {
+        String[] parametros = cadenaBD.split("\\|");
+       
+        String valores = "INSERT IGNORE INTO FechasA" + parametros[4] + " (USUARIO, GRUPO, CREADO_POR, FECHA_CREACION,"
+                + " VALIDO_DE, FIN_VALIDEZ, ENTRADA_SIST, CLAVE_ACC, BLOQUEO) "
+                + "values ";
+        
+        valores = valores + Archivos.lecturaFechasAcceso(fechas, cadenaBD);
+        return valores;
+        
+    }
+                //*****************************************
+
     
     public static String BorraInternosTrabajo()                                 //BORRA LA TABLA DE TRABAJO INTERNOS
     {

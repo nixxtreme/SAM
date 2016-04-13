@@ -1412,9 +1412,9 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             {
                 System.out.println("Registrando archivo Usuarios Perfil");
                 
-               PreparaTablas.add(Monitoreos.Tablas.eliminaFechasAcceso(cadenaBD)); //elimina la tabla de perfiles en caso de existir
-               PreparaTablas.add(Monitoreos.Tablas.CreaFechasAcceso(cadenaBD));    //crea la tabla de perfiles
-               PreparaTablas.add(Monitoreos.Tablas.InsertarFechasAcceso(FechasAcceso, cadenaBD));     //Lee el archivo de  perfiles e inserta usuarios en la BD local              
+               PreparaTablas.add(Monitoreos.Tablas.eliminaPerfiles(cadenaBD)); //elimina la tabla de perfiles en caso de existir
+               PreparaTablas.add(Monitoreos.Tablas.CreaPerfiles(cadenaBD));    //crea la tabla de perfiles
+               PreparaTablas.add(Monitoreos.Tablas.InsertarPerfiles(FechasAcceso, cadenaBD));     //Lee el archivo de  perfiles e inserta usuarios en la BD local              
             }
 
 //            if(Matriz.isSelected())                                             //Valida que esté habilitada la casilla de matriz de perfiles de perfiles
