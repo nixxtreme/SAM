@@ -1174,7 +1174,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));//borrar los registros genericos sap de la tabla
             PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));          //Crea la tabla de usuarios internos
             
-            
+
             //Realizar cruce con archivo usuario perfiles.
             PreparaTablas.add(Monitoreos.Tablas.CruceInternosSAP(cadenaBD)); 
             PreparaTablas.add(Monitoreos.Tablas.CruceExternosSAP(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios internos//            PreparaTablas.add(Monitoreos.Querys.CruceExternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios externos
