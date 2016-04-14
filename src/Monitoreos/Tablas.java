@@ -1331,6 +1331,15 @@ public class Tablas
         return statement;
     }
     
+    public static String DMEXGen(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String tabla = "INSERT IGNORE INTO DemonsaIE SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM GenericosSAP"
+                + " WHERE usuario LIKE '% DMEX %' ";
+                
+        return tabla; 
+    }
+    
                     //*******************************
     
     public static String BorraUsrAdminAgregados()                          //BORRA LA TABLA DE TRABAJO DE USUARIOS ADMINISTRADORES AGREGADOS

@@ -859,13 +859,14 @@ public class Archivos
         
         //System.out.println("Linea " + linea);
         String[] temp = linea.split("\\|");                                      //Crea un arreglo con los datos del registro separados por el pipe
-//        for(int i=0; i<temp.length;i++)
-//        {
-//            System.out.println(i + " " + temp[i]);
-//        }
+        for(int i=0; i<temp.length;i++)
+        {
+            System.out.println(i + " " + temp[i]);
+        }
         
         if(temp[1].contains("*"))
         {
+            
             retorno = "";
         }
         else

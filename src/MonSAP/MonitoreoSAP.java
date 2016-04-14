@@ -1181,9 +1181,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
             //elminacion demonsa en cruces
             PreparaTablas.add(Monitoreos.Tablas.CreaDemIE(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.DMEXGen(cadenaBD));
             PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceInt(cadenaBD));
             PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceExt(cadenaBD));
-            // sacar DMEX de Genericos a Demonsa
+            
             
             
             
