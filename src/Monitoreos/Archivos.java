@@ -1136,6 +1136,8 @@ public class Archivos
 //            System.out.println(i + " " + temp[i]);
 //        }
 //        System.out.println("\n\n\n");
+       
+        
         if(temp[1].contains("*"))
         {
             retorno = "";
@@ -1147,7 +1149,9 @@ public class Archivos
             Apellido = temp[4]; 
             Grupo = temp[5]; 
             Rol = temp[6]; 
-            Descripcion_Rol = temp[7]; 
+            Descripcion_Rol = temp[7];
+            Descripcion_Rol = Monitoreos.Archivos.escapaChar(Descripcion_Rol, "'"); //Escapa ' en el campo Descripcion del Rol
+            
             Fecha_inicio = temp[8]; 
             Fecha_fin = temp[9];                
             
