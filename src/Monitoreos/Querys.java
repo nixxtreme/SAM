@@ -90,6 +90,15 @@ public class Querys
         return consulta;
     }
     
+    
+    public static String BorraDMEXGen(String cadenaBD)                         //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO BAJA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM genericosSAP" + parametros[4] + " WHERE usuario LIKE '% DMEX %'";
+                
+        return consulta;
+    }
+    
                 //*******************************
     
     

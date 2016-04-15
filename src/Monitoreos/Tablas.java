@@ -1335,7 +1335,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "INSERT IGNORE INTO DemonsaIE SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM GenericosSAP"
-                + " WHERE usuario LIKE '% DMEX %' ";
+                + " WHERE usuario LIKE '% DMEX %'";
                 
         return tabla; 
     }
