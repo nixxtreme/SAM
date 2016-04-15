@@ -192,7 +192,7 @@ public class Archivos
         
         numero = temp[0];                                                       //Obtiene el número de empleado de la posición 0 del arreglo
         usuario = temp[1];                                                      //Obtiene el UserID de la posición 1 del arreglo
-        nombre = temp[2];                                                       //Obtiene el nombre de la posición 2 del arreglo
+        nombre = temp[2];                                                       //Obtiene el nombre de la posición 2 del arreglo        
         region = temp[7];                                                       //Obtiene la región de la posición 7 del arreglo
         gerencia = temp[13];                                                    //Obtiene la gerencia de la posición 13 del arreglo
         departamento = temp[15];                                                //Obtiene el departamento de la posición 15 del arreglo
@@ -968,7 +968,7 @@ public class Archivos
         else
         {
 //            System.out.println("else");
-            Valido_de = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+            Valido_de = "NULL";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
         }
         
         if(!Validez_a.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
@@ -989,7 +989,7 @@ public class Archivos
         }
         else
         {
-            Validez_a = "''";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
+            Validez_a = "NULL";                                                       //Si el campo de fecha se encontraba vacío se establece el campo vacío para mysql
         }
         
             

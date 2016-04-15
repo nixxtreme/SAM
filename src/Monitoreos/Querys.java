@@ -99,6 +99,14 @@ public class Querys
         return consulta;
     }
     
+    public static String eliminaExcepcionesSAP(String cadenaBD)                      //ELIMINA LOS USUARIOS EXTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM cruceextSAP" + parametros[4] + " where Gerencia LIKE '%SAP%'";
+                
+        return consulta;
+    }
+    
                 //*******************************
     
     
@@ -381,6 +389,9 @@ public class Querys
         String statement = "select USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION from eliminados";
         return statement;
     }
+    
+    
+            
             
             //externos, genericos y transfer
     

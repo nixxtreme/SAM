@@ -254,7 +254,7 @@ public class Tablas
    public static String eliminaTablaUsrAdmin(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
-        String Statement = "DROP TABLE IF EXISTS UsrAdmin"+ parametros[4];
+        String Statement = "DROP TABLE IF EXISTS usrAdmin"+ parametros[4];
             
         return Statement;
     }
@@ -268,7 +268,7 @@ public class Tablas
 
     }
    
-   public static String idCreaUsrAdmin(String cadenaBD)                          //CREA LA TABLA DE NÓMINA EXTERNOS
+   public static String idCreaUsrAdmin(String cadenaBD)                          //CREA LA USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS usradmin"+ parametros[4] + " (USUARIO VARCHAR(25) NOT NULL, NOMBRE VARCHAR(45), APELLIDO VARCHAR(43), "
@@ -288,7 +288,7 @@ public class Tablas
         return tabla;
     }
     
-    public static String UsrAdminTabla(String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE NÓMINA INTERNOS
+    public static String UsrAdminTabla(String usuarios, String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE USUARIOS ADMINISTRADORES
     {
         String[] parametros = cadenaBD.split("\\|");
         String mes = parametros[3];
@@ -449,7 +449,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT Usuario, Nombre_Completo, Grupo, valido_de, validez_a FROM Usuarios2" + parametros[4]
-                     + " WHERE bloq LIKE '' ";
+                     + " WHERE bloq LIKE '' AND validez_a IS NOT NULL";
         return tabla; 
     }
    
@@ -664,6 +664,11 @@ public class Tablas
         return statement;
     }
     
+    public static String BorraExcepcionesSAP()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS ExcepcionesSAP";
+        return statement;
+    }
                         //********************
     
     
@@ -1339,6 +1344,15 @@ public class Tablas
                 
         return tabla; 
     }
+    
+    public static String ExcepcionesSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "create table if not exists ExcepcionesSAP select * "
+                + "FROM cruceextsap" + parametros[4] + " WHERE Gerencia LIKE '%SAP%' ";
+        return statement;
+    }
+    
     
                     //*******************************
     
