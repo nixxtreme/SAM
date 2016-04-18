@@ -1339,8 +1339,8 @@ public class Tablas
     public static String DMEXGen(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String tabla = "INSERT IGNORE INTO DemonsaIE SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM GenericosSAP"
-                + " WHERE usuario LIKE '% DMEX %'";
+        String tabla = "INSERT IGNORE INTO DemonsaIE (Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a) SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM GenericosSAP"
+                + " WHERE Usuario LIKE '%DMEX%'";
                 
         return tabla; 
     }
