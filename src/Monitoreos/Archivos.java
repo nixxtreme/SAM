@@ -916,7 +916,7 @@ public class Archivos
     
     private static String creaLineaUsrSAP(String linea)                          //CREA LA LÍNEA DE REGISTRO DE USUARIOS ADMINISTRADORES
     {
-        String Usuario, Nombre_Completo, Grupo, Bloq, Valido_de, Validez_a, retorno, fechadia, fechames, fechaano;                         //Variables para almacenar los datos de cada registro
+        String Usuario, Nombre_Completo, Grupo, Bloq, Motivo, Valido_de, Validez_a, retorno, fechadia, fechames, fechaano;                         //Variables para almacenar los datos de cada registro
 //        System.out.println("Linea " + linea);
         String[] temp = linea.split("\\|");                                      //Crea un arreglo con los datos del registro separados por el pipe
 //        for(int i=0; i<temp.length;i++)                                             
@@ -938,6 +938,7 @@ public class Archivos
 //            System.out.println("Gpo " + Grupo);
             Bloq = temp[5];                                                    //Obtiene bloq de la posición 5 del arreglo
 //            System.out.println("Bloq " + Bloq);
+            Motivo = temp[6];                           
             Valido_de = temp[7];                                                     //Obtiene valido la posición 7 del arreglo
 //            System.out.println("De " + Valido_de);
             Validez_a = temp[8];
