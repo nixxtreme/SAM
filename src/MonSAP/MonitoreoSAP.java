@@ -1086,8 +1086,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             
             
             
-//            PreparaTablas.add(Monitoreos.Querys.BorraBajasLInt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraBajasLExt(cadenaBD));
+
 //            PreparaTablas.add(Monitoreos.Querys.BorraDupXNombreInt(cadenaBD));
 //            PreparaTablas.add(Monitoreos.Querys.BorraDupXNombreExt(cadenaBD));
 //            PreparaTablas.add(Monitoreos.Querys.BorraInacInt(cadenaBD));
