@@ -262,16 +262,18 @@ public class Querys
     
     public static String ResultadosBajasIntSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS DADOS DE BAJA
     {
-        String statement = "SELECT Usuario, Nombre_Completo, Entrada_Sist, NUMEROEMPLEADO, IdUsuario,"
-                + " PUESTO, Gerencia, Nombrecompleto, ESTATUS, FECHA FROM bajasintSAP";
+        String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion, Valido_de, Validez_a,"
+                + " Entrada_Sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS, FECHA"
+                + " FROM bajasintSAP";
         
         return statement;
     }
     
     public static String ResultadosBajasExtSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS DADOS DE BAJA
     {
-        String statement = "SELECT Usuario, Nombre_Completo, Entrada_Sist, NUMEROEMPLEADO, IdUsuario,"
-                + " PUESTO, Gerencia, Nombrecompleto, ESTATUS, FECHA FROM bajasextSAP";
+        String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion, Valido_de, Validez_a,"
+                + " Entrada_Sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS, FECHA" 
+                +" FROM bajasextSAP";
         return statement;
     }
     

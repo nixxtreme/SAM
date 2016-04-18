@@ -160,7 +160,7 @@ public class Resultados extends javax.swing.JFrame {
     {
         DefaultTableModel modeloBajasExt = new DefaultTableModel();             //Define el objeto modelo de tabla
           
-        Object[] registro = new Object[13];                                     //Crea el arreglo para almacenar los datos de cada registro
+        Object[] registro = new Object[18];                                     //Crea el arreglo para almacenar los datos de cada registro
         int i = 0;
         try
         {
@@ -172,21 +172,27 @@ public class Resultados extends javax.swing.JFrame {
             if(bajasExtSAP.next())                                                 //Verifica que el resultado no esté vacío
             {
                 modeloBajasExt.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
-                modeloBajasExt.addColumn("Número de empleado");
-                modeloBajasExt.addColumn("Nombre completo");
-                modeloBajasExt.addColumn("Fecha ultimo acceso");
-                modeloBajasExt.addColumn("Número de empleado");
-                modeloBajasExt.addColumn("UserID");
-                modeloBajasExt.addColumn("Puesto");
-                modeloBajasExt.addColumn("Gerencia");
+                modeloBajasExt.addColumn("Num Emp");
                 modeloBajasExt.addColumn("Nombre");
-                modeloBajasExt.addColumn("Estatus");
-                modeloBajasExt.addColumn("Fecha de Baja");
+                modeloBajasExt.addColumn("Perfil");
+                modeloBajasExt.addColumn("Puesto");
+                modeloBajasExt.addColumn("Creado el");
+                modeloBajasExt.addColumn("Válido de");
+                modeloBajasExt.addColumn("Fin valid");
+                modeloBajasExt.addColumn("Último acceso");
+                
+                modeloBajasExt.addColumn("NUMEROEMPLEADO");
+                modeloBajasExt.addColumn("USERID");  
+                modeloBajasExt.addColumn("NOMBRE");
+                modeloBajasExt.addColumn("PUESTO");
+                modeloBajasExt.addColumn("GERENCIA");
+                modeloBajasExt.addColumn("ESTATUS");
+                modeloBajasExt.addColumn("FECHA BAJA NOMINA");
                 
                 bajasExtSAP.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 while(bajasExtSAP.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<12; k++)                                     
+                    for(int k=1; k<17; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -205,27 +211,38 @@ public class Resultados extends javax.swing.JFrame {
                 tablaBajasExt.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());  //Se hace uso de editor y renderizador de columnas
                 tablaBajasExt.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
 
-                TableColumn CAgregar = tablaBajasExt.getColumn("Agregar");      //Se llama a la columna
+               TableColumn CAgregar = tablaBajasExt.getColumn("Agregar");      //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CUsuario = tablaBajasExt.getColumn("Número de empleado");    //Se llama a la columna
+                TableColumn CUsuario = tablaBajasExt.getColumn("Num Emp");    //Se llama a la columna
                 CUsuario.setPreferredWidth(110);                                 //Se define su tamaño
-                TableColumn CNombre = tablaBajasExt.getColumn("Nombre completo");       //Se llama a la columna
+                TableColumn CNombre = tablaBajasExt.getColumn("Nombre");       //Se llama a la columna
                 CNombre.setPreferredWidth(330);                                  //Se define su tamaño
-                TableColumn CAcceso = tablaBajasExt.getColumn("Fecha ultimo acceso");        //Se llama a la columna
-                CAcceso.setPreferredWidth(150);                                 //Se define su tamaño            
-                TableColumn CNumemp = tablaBajasExt.getColumn("Número de empleado");        //Se llama a la columna
-                CNumemp.setPreferredWidth(150);                                 //Se define su tamaño
-                TableColumn CUserid = tablaBajasExt.getColumn("UserID");        //Se llama a la columna
-                CUserid.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CPuesto = tablaBajasExt.getColumn("Puesto"); //Se llama a la columna
-                CPuesto.setPreferredWidth(240);                                  //Se define su tamaño
-                TableColumn CGerencia = tablaBajasExt.getColumn("Gerencia");  //Se llama a la columna
-                CGerencia.setPreferredWidth(240);                              //Se define su tamaño
-                TableColumn CNombrec = tablaBajasExt.getColumn("Nombre");    //Se llama a la columna
-                CNombrec.setPreferredWidth(330);                              //Se define su tamaño                                                                         
-                TableColumn Estatus = tablaBajasExt.getColumn("Estatus");       //Se llama a la columna
-                Estatus.setPreferredWidth(115);                                 //Se define su tamaño
-                TableColumn CBBFFechaBaja = tablaBajasExt.getColumn("Fecha de Baja");   //Se llama a la columna
+                TableColumn CPerfil = tablaBajasExt.getColumn("Perfil");       //Se llama a la columna
+                CPerfil.setPreferredWidth(330);                                  //Se define su tamaño
+                TableColumn CPuesto = tablaBajasExt.getColumn("Puesto");        //Se llama a la columna
+                CPuesto.setPreferredWidth(150);                                 //Se define su tamaño            
+                TableColumn CCreado = tablaBajasExt.getColumn("Creado el");        //Se llama a la columna
+                CCreado.setPreferredWidth(90);                                 //Se define su tamaño
+                TableColumn CValido = tablaBajasExt.getColumn("Válido de");        //Se llama a la columna
+                CValido.setPreferredWidth(90);                                 //Se define su tamaño
+                TableColumn CFinV = tablaBajasExt.getColumn("Fin Valid"); //Se llama a la columna
+                CFinV.setPreferredWidth(90);                                  //Se define su tamaño
+                TableColumn CUltimoa = tablaBajasExt.getColumn("Último acceso");  //Se llama a la columna
+                CUltimoa.setPreferredWidth(300);                              //Se define su tamaño
+                
+                TableColumn CNumemp = tablaBajasExt.getColumn("NUMEROEMPLEADO");    //Se llama a la columna
+                CNumemp.setPreferredWidth(330);                              //Se define su tamaño                                                                         
+                TableColumn CUserid = tablaBajasExt.getColumn("USERID");       //Se llama a la columna
+                CUserid.setPreferredWidth(115);                                 //Se define su tamaño
+                TableColumn CNombren = tablaBajasExt.getColumn("NOMBRE");   //Se llama a la columna
+                CNombren.setPreferredWidth(250);                           //Se define su tamaño
+                TableColumn CPueston = tablaBajasExt.getColumn("PUESTO");   //Se llama a la columna
+                CPueston.setPreferredWidth(250);                           //Se define su tamaño
+                TableColumn CGerencia = tablaBajasExt.getColumn("GERENCIA");   //Se llama a la columna
+                CGerencia.setPreferredWidth(250);                           //Se define su tamaño
+                TableColumn CEstatus = tablaBajasExt.getColumn("ESTATUS");   //Se llama a la columna
+                CEstatus.setPreferredWidth(250);                           //Se define su tamaño
+                TableColumn CBBFFechaBaja = tablaBajasExt.getColumn("FECHA BAJA NOMINA");   //Se llama a la columna
                 CBBFFechaBaja.setPreferredWidth(250);                           //Se define su tamaño
             }
             else                                                                //Si el resultado se encontraba vacío

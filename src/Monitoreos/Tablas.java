@@ -904,8 +904,9 @@ public class Tablas
     public static String CreaBajasExtSAP(String cadenaBD)                          //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS QUE ESTÁN DADOS DE BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists bajasextSAP SELECT usuario, nombre_completo, Entrada_Sist, numeroempleado,"
-                + " idusuario, puesto, gerencia, nombrecompleto, estatus, fecha"
+        String consulta = "create table if not exists bajasextSAP SELECT usuario, nombre_completo, rol, Descripcion_Rol,"
+                + " fecha_creacion, Valido_de, Validez_a, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
+                + " ESTATUS, FECHA "
                 + " FROM cruceextSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
                 
         return consulta;
@@ -915,7 +916,8 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "create table if not exists bajasintSAP SELECT usuario, nombre_completo, rol, Descripcion_Rol,"
-                + " fecha_creacion, Valido_de, Validez_a, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA "
+                + " fecha_creacion, Valido_de, Validez_a, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
+                + " ESTATUS, FECHA "
                 + " FROM cruceintSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
                 
         return consulta;
@@ -1264,7 +1266,7 @@ public class Tablas
                 + " fechasa" + parametros[4] + ".fin_validez,"
                 + " fechasa" + parametros[4] + ".Entrada_sist,"
                 + " fechasa" + parametros[4] + ".Clave_acc,"
-                + " fechasa" + parametros[4] + ".Bloqueo" 
+                + " fechasa" + parametros[4] + ".Bloqueo," 
                 + " Uperfiles" + parametros[4] + ".Nombre AS Nombre_F," 
                 + " Uperfiles" + parametros[4] + ".Apellido AS Apellido_F," 
                 + " Uperfiles" + parametros[4] + ".Grupo AS Grupo_Pais," 
@@ -1311,7 +1313,7 @@ public class Tablas
                 + " fechasa" + parametros[4] + ".fin_validez,"
                 + " fechasa" + parametros[4] + ".Entrada_sist,"
                 + " fechasa" + parametros[4] + ".Clave_acc,"
-                + " fechasa" + parametros[4] + ".Bloqueo"
+                + " fechasa" + parametros[4] + ".Bloqueo,"
                 + " Uperfiles" + parametros[4] + ".Nombre AS Nombre_F," 
                 + " Uperfiles" + parametros[4] + ".Apellido AS Apellido_F," 
                 + " Uperfiles" + parametros[4] + ".Grupo AS Grupo_Pais," 
