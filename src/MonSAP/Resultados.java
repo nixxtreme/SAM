@@ -54,7 +54,7 @@ public class Resultados extends javax.swing.JFrame {
         
         
         
-        Object[] registro = new Object[17];                                     //Crea un arreglo para recibir los elementos de cada renglon
+        Object[] registro = new Object[18];                                     //Crea un arreglo para recibir los elementos de cada renglon
         int i = 0;                                                              //Inicializa la variable para el contador
         try
         {
@@ -68,10 +68,10 @@ public class Resultados extends javax.swing.JFrame {
                 modeloBajasInt.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
                 modeloBajasInt.addColumn("Num Emp");
                 modeloBajasInt.addColumn("Nombre");
-                  //modeloBajasInt.addColumn("Perfil");
+                modeloBajasInt.addColumn("Perfil");
                 modeloBajasInt.addColumn("Puesto");
                 modeloBajasInt.addColumn("Creado el");
-                modeloBajasInt.addColumn("Valido de");
+                modeloBajasInt.addColumn("Válido de");
                 modeloBajasInt.addColumn("Fin valid");
                 modeloBajasInt.addColumn("Último acceso");
                 
@@ -87,7 +87,7 @@ public class Resultados extends javax.swing.JFrame {
                 bajasIntSAP.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 while(bajasIntSAP.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<16; k++)                                     
+                    for(int k=1; k<17; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -113,24 +113,34 @@ public class Resultados extends javax.swing.JFrame {
                 CUsuario.setPreferredWidth(110);                                 //Se define su tamaño
                 TableColumn CNombre = tablaBajasInt.getColumn("Nombre");       //Se llama a la columna
                 CNombre.setPreferredWidth(330);                                  //Se define su tamaño
-//                TableColumn CPerfil = tablaBajasInt.getColumn("Perfil");       //Se llama a la columna
-//                CPerfil.setPreferredWidth(330);                                  //Se define su tamaño
-                TableColumn CAcceso = tablaBajasInt.getColumn("Puesto");        //Se llama a la columna
-                CAcceso.setPreferredWidth(150);                                 //Se define su tamaño            
-                TableColumn CNumemp = tablaBajasInt.getColumn("Creado el");        //Se llama a la columna
-                CNumemp.setPreferredWidth(150);                                 //Se define su tamaño
-                TableColumn CUserid = tablaBajasInt.getColumn("Valido de");        //Se llama a la columna
-                CUserid.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CPuesto = tablaBajasInt.getColumn("Fin "); //Se llama a la columna
-                CPuesto.setPreferredWidth(240);                                  //Se define su tamaño
-                TableColumn CGerencia = tablaBajasInt.getColumn("Gerencia");  //Se llama a la columna
-                CGerencia.setPreferredWidth(240);                              //Se define su tamaño
-                TableColumn CNombrec = tablaBajasInt.getColumn("Nombre");    //Se llama a la columna
-                CNombrec.setPreferredWidth(330);                              //Se define su tamaño                                                                         
-                TableColumn Estatus = tablaBajasInt.getColumn("Estatus");       //Se llama a la columna
-                Estatus.setPreferredWidth(115);                                 //Se define su tamaño
-                TableColumn CBBFFechaBaja = tablaBajasInt.getColumn("Fecha de Baja");   //Se llama a la columna
+                TableColumn CPerfil = tablaBajasInt.getColumn("Perfil");       //Se llama a la columna
+                CPerfil.setPreferredWidth(330);                                  //Se define su tamaño
+                TableColumn CPuesto = tablaBajasInt.getColumn("Puesto");        //Se llama a la columna
+                CPuesto.setPreferredWidth(150);                                 //Se define su tamaño            
+                TableColumn CCreado = tablaBajasInt.getColumn("Creado el");        //Se llama a la columna
+                CCreado.setPreferredWidth(90);                                 //Se define su tamaño
+                TableColumn CValido = tablaBajasInt.getColumn("Válido de");        //Se llama a la columna
+                CValido.setPreferredWidth(90);                                 //Se define su tamaño
+                TableColumn CFinV = tablaBajasInt.getColumn("Fin Valid"); //Se llama a la columna
+                CFinV.setPreferredWidth(90);                                  //Se define su tamaño
+                TableColumn CUltimoa = tablaBajasInt.getColumn("Último acceso");  //Se llama a la columna
+                CUltimoa.setPreferredWidth(300);                              //Se define su tamaño
+                
+                TableColumn CNumemp = tablaBajasInt.getColumn("NUMEROEMPLEADO");    //Se llama a la columna
+                CNumemp.setPreferredWidth(330);                              //Se define su tamaño                                                                         
+                TableColumn CUserid = tablaBajasInt.getColumn("USERID");       //Se llama a la columna
+                CUserid.setPreferredWidth(115);                                 //Se define su tamaño
+                TableColumn CNombren = tablaBajasInt.getColumn("NOMBRE");   //Se llama a la columna
+                CNombren.setPreferredWidth(250);                           //Se define su tamaño
+                TableColumn CPueston = tablaBajasInt.getColumn("PUESTO");   //Se llama a la columna
+                CPueston.setPreferredWidth(250);                           //Se define su tamaño
+                TableColumn CGerencia = tablaBajasInt.getColumn("GERENCIA");   //Se llama a la columna
+                CGerencia.setPreferredWidth(250);                           //Se define su tamaño
+                TableColumn CEstatus = tablaBajasInt.getColumn("ESTATUS");   //Se llama a la columna
+                CEstatus.setPreferredWidth(250);                           //Se define su tamaño
+                TableColumn CBBFFechaBaja = tablaBajasInt.getColumn("FECHA BAJA NOMINA");   //Se llama a la columna
                 CBBFFechaBaja.setPreferredWidth(250);                           //Se define su tamaño
+                
             }
             else                                                                //Si el resultado se encontraba vacío
             {
