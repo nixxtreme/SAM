@@ -905,7 +905,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "create table if not exists bajasextSAP SELECT usuario, nombre_completo, rol, Descripcion_Rol,"
-                + " fecha_creacion, Valido_de, Validez_a, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
+                + " fecha_creacion, Valido_de, Validez_a, Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
                 + " ESTATUS, FECHA "
                 + " FROM cruceextSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
                 
@@ -916,7 +916,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "create table if not exists bajasintSAP SELECT usuario, nombre_completo, rol, Descripcion_Rol,"
-                + " fecha_creacion, Valido_de, Validez_a, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
+                + " fecha_creacion, Valido_de, Validez_a, Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
                 + " ESTATUS, FECHA "
                 + " FROM cruceintSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
                 
@@ -927,10 +927,10 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "create table if not exists inactividadintSAP SELECT usuario, nombre_completo, rol, Descripcion_Rol,"
-                + " fecha_creacion, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
+                + " fecha_creacion, clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
                 + " ESTATUS"
                 + " FROM cruceintsap" + parametros[4]  
-                +" WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
+                +" WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 61 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
     }
     
@@ -938,10 +938,10 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "create table if not exists inactividadextSAP SELECT usuario, nombre_completo, rol, Descripcion_Rol,"
-                + " fecha_creacion, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
+                + " fecha_creacion, Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
                 + " ESTATUS"
                 + " FROM cruceextsap" + parametros[4]  
-                +" WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
+                +" WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 61 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
     }
     
