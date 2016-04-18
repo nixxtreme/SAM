@@ -449,7 +449,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT Usuario, Nombre_Completo, Grupo, valido_de, validez_a FROM Usuarios2" + parametros[4]
-                     + " WHERE bloq LIKE '' AND validez_a IS NOT NULL";
+                     + " WHERE bloq LIKE '' AND validez_a IS NOT NULL AND validez_a > '" + parametros[6] + "'";
         return tabla; 
     }
    
