@@ -1087,23 +1087,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             
             
 
-//            PreparaTablas.add(Monitoreos.Querys.BorraDupXNombreInt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraDupXNombreExt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraInacInt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraInacExt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraNoNominaInt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraNoNominaExt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraUsrIncInt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraUsrIncExt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesInt());
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesExt());
-//            PreparaTablas.add(Monitoreos.Querys.BorraCoincidenciasInt());
-//            PreparaTablas.add(Monitoreos.Querys.BorraCoincidenciasExt());
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesSinUsoInt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesSinUsoExt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesSinUso(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilNoAutorizadosInt());
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilNoAutorizadosExt());
+
               
               PreparaTablas.add(Monitoreos.Tablas.BorraExternosTrabajoSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraGenericosTrabajoSAP());
@@ -1122,36 +1106,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
               PreparaTablas.add(Monitoreos.Tablas.BorraInacIntSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraInacExtSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraExcepcionesSAP());
-              
-//            PreparaTablas.add(Monitoreos.Querys.UsrIDIncInt(cadenaBD));             //Crea una tabla con los usuarios internos que tienen un UserID incorrecto
-//            PreparaTablas.add(Monitoreos.Querys.BorraUsrIDIncInt(cadenaBD));        //Borra los usuaios internos con UserID incorrecto de la tabla de usuarios internos
-//            PreparaTablas.add(Monitoreos.Querys.UsrIDIncExt(cadenaBD));             //Crea una tabla con los usuarios externos que tienen un UserID incorrecto
-//            PreparaTablas.add(Monitoreos.Querys.BorraUsrIDIncExt(cadenaBD));        //Borra los usuaios externos con UserID incorrecto de la tabla de usuarios externos
-//            PreparaTablas.add(Monitoreos.Querys.CreaDuplicadosInt(cadenaBD));       //Crea una tabla con los usuarios internos que tienen duplicidad por nombre en el registro de usuarios del sistema
-//            PreparaTablas.add(Monitoreos.Querys.CreaDuplicadosExt(cadenaBD));       //Crea una tabla con los usuarios externos que tienen duplicidad por nombre en el registro de usuarios del sistema
-//            PreparaTablas.add(Monitoreos.Querys.BorraExcepDuplicadosInt(cadenaBD)); //Borra los usuarios internos registrados en las excepciones de la tabla de usuarios duplicados
-//            PreparaTablas.add(Monitoreos.Querys.BorraExcepDuplicadosExt(cadenaBD)); //Borra los usuarios internos registrados en las excepciones de la tabla de usuarios duplicados
-//            PreparaTablas.add(Monitoreos.Querys.BorraDuplicadosInt(cadenaBD));      //Borra los usuarios duplicados que no fueron excepciones de la tabla original de usuarios internos
-//            PreparaTablas.add(Monitoreos.Querys.BorraDuplicadosExt(cadenaBD));      //Borra los usuarios duplicados que no fueron excepciones de la tabla original de usuarios externos
-//            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesInt(cadenaBD));         //Crea una tabla que cruza los usuarios internos con los perfiles que deben tener según la matriz de perfiles
-//            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesExt(cadenaBD));         //Crea una tabla que cruza los usuarios externos con los perfiles que deben tener según la matriz de perfiles
-//            PreparaTablas.add(Monitoreos.Querys.CreaCoincidenciasInt());            //Obtiene los usuarios internos con coincidencias correctas en la matriz de perfiles
-//            PreparaTablas.add(Monitoreos.Querys.CreaCoincidenciasExt());            //Obtiene los usuarios externos con coincidencias correctas en la matriz de perfiles
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesCorrectoInt());        //Borra los usuarios internos con perfil correcto de las incidencias
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesCorrectoExt());        //Borra los usuarios externos con perfil correcto de las incidencias//
-//            PreparaTablas.add(MonPac.Querys.BorraPerfilesCorrectoInt());            //Borra los usuarios internos con perfil correcto de las incidencias
-//            PreparaTablas.add(MonPac.Querys.BorraPerfilesCorrectoExt());            //Borra los usuarios externos con perfil correcto de las incidencias
-//            PreparaTablas.add(MonPac.Querys.BorraPerfilesCorrectoInt());            //Borra los usuarios internos con perfil correcto de las incidencias
-//            PreparaTablas.add(MonPac.Querys.BorraPerfilesCorrectoExt());            //Borra los usuarios externos con perfil correcto de las incidencias
-//            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesSinUsoInt(cadenaBD));       //Crea una lista de perfiles no usados por los usuarios internos
-//            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesSinUsoExt(cadenaBD));       //Crea una lista de perfiles no usados por los usuarios externos
-//            PreparaTablas.add(Monitoreos.Querys.CreaPerfilesSinUso(cadenaBD));          //Crea una lista de la interseccion de perfiles no usados
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesSinUsoInt());          //
-//            PreparaTablas.add(Monitoreos.Querys.BorraPerfilesSinUsoExt());
-//            PreparaTablas.add(Monitoreos.Querys.CreaUsrNoAutorizadosInt());
-//            PreparaTablas.add(Monitoreos.Querys.CreaUsrNoAutorizadosExt());
-//            PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosInt());
-//            PreparaTablas.add(Monitoreos.Querys.BorraNoAutorizadosExt());  
+
             
             
             
