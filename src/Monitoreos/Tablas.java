@@ -914,8 +914,8 @@ public class Tablas
     public static String CreaBajasIntSAP(String cadenaBD)                          //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS QUE ESTÁN DADOS DE BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "create table if not exists bajasintSAP SELECT usuario, nombre_completo, Entrada_Sist, numeroempleado,"
-                + " idusuario, puesto, gerencia, nombrecompleto, estatus, fecha"
+        String consulta = "create table if not exists bajasintSAP SELECT usuario, nombre_completo, rol, Descripcion_Rol,"
+                + " fecha_creacion, Valido_de, Validez_a, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA "
                 + " FROM cruceintSAP" + parametros[4] + " WHERE ESTATUS = 'ELIMINADO'";
                 
         return consulta;
@@ -1265,16 +1265,17 @@ public class Tablas
                 + " fechasa" + parametros[4] + ".Entrada_sist,"
                 + " fechasa" + parametros[4] + ".Clave_acc,"
                 + " fechasa" + parametros[4] + ".Bloqueo" 
-//                + " Uperfiles" + parametros[4] + ".Nombre AS Nombre_F," 
-//                + " Uperfiles" + parametros[4] + ".Apellido AS Apellido_F," 
-//                + " Uperfiles" + parametros[4] + ".Grupo AS Grupo_Pais," 
-//                + " Uperfiles" + parametros[4] + ".Rol,"
-//                + " Uperfiles" + parametros[4] + ".Descripcion_Rol," 
-//                + " Uperfiles" + parametros[4] + ".Fecha_inicio,"
-//                + " Uperfiles" + parametros[4] + ".Fecha_fin" 
-                + " FROM ((internossap left join demonsa2" + parametros[4] + " on internossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
+                + " Uperfiles" + parametros[4] + ".Nombre AS Nombre_F," 
+                + " Uperfiles" + parametros[4] + ".Apellido AS Apellido_F," 
+                + " Uperfiles" + parametros[4] + ".Grupo AS Grupo_Pais," 
+                + " Uperfiles" + parametros[4] + ".Rol,"
+                + " Uperfiles" + parametros[4] + ".Descripcion_Rol," 
+                + " Uperfiles" + parametros[4] + ".Fecha_inicio,"
+                + " Uperfiles" + parametros[4] + ".Fecha_fin" 
+                + " FROM (((internossap left join demonsa2" + parametros[4] + " on internossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
                 + " left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
-                + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = internossap.usuario";
+                + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = internossap.usuario)"
+                + " left join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".userID = internossap.usuario";
         
                              
         
@@ -1311,16 +1312,17 @@ public class Tablas
                 + " fechasa" + parametros[4] + ".Entrada_sist,"
                 + " fechasa" + parametros[4] + ".Clave_acc,"
                 + " fechasa" + parametros[4] + ".Bloqueo"
-//                + " Uperfiles" + parametros[4] + ".Nombre AS Nombre_F," 
-//                + " Uperfiles" + parametros[4] + ".Apellido AS Apellido_F," 
-//                + " Uperfiles" + parametros[4] + ".Grupo AS Grupo_Pais," 
-//                + " Uperfiles" + parametros[4] + ".Rol,"
-//                + " Uperfiles" + parametros[4] + ".Descripcion_Rol," 
-//                + " Uperfiles" + parametros[4] + ".Fecha_inicio,"
-//                + " Uperfiles" + parametros[4] + ".Fecha_fin" 
-                + " FROM ((externossap left join demonsa2" + parametros[4] + " on externossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
+                + " Uperfiles" + parametros[4] + ".Nombre AS Nombre_F," 
+                + " Uperfiles" + parametros[4] + ".Apellido AS Apellido_F," 
+                + " Uperfiles" + parametros[4] + ".Grupo AS Grupo_Pais," 
+                + " Uperfiles" + parametros[4] + ".Rol,"
+                + " Uperfiles" + parametros[4] + ".Descripcion_Rol," 
+                + " Uperfiles" + parametros[4] + ".Fecha_inicio,"
+                + " Uperfiles" + parametros[4] + ".Fecha_fin" 
+                + " FROM (((externossap left join demonsa2" + parametros[4] + " on externossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
                 + " left join idext" + parametros[4] + " on externossap.usuario = idext" + parametros[4] + ".NUMEROEMPLEADO) left join"
-                + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = externossap.usuario";
+                + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = externossap.usuario)"
+                + " left join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".userID = externossap.usuario";
                 
             
         return statement;
