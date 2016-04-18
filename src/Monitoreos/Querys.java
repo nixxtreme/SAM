@@ -263,7 +263,7 @@ public class Querys
     public static String ResultadosBajasIntSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS DADOS DE BAJA
     {
         String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion, Valido_de, Validez_a,"
-                + " Entrada_Sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS, FECHA"
+                + " Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS, FECHA"
                 + " FROM bajasintSAP";
         
         return statement;
@@ -272,7 +272,7 @@ public class Querys
     public static String ResultadosBajasExtSAP()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS DADOS DE BAJA
     {
         String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion, Valido_de, Validez_a,"
-                + " Entrada_Sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS, FECHA" 
+                + " Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS, FECHA" 
                 +" FROM bajasextSAP";
         return statement;
     }
@@ -280,7 +280,7 @@ public class Querys
     public static String BorraInactividadIntSAP(String cadenaBD)                   //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceintsap" + parametros[4] + " WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 "
+        String consulta = "DELETE FROM cruceintsap" + parametros[4] + " WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 61 "
                 + "OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
     }
@@ -288,7 +288,7 @@ public class Querys
     public static String BorraInactividadExtSAP(String cadenaBD)                   //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceextsap" + parametros[4] +  " WHERE DATEDIFF('" + parametros[6] + "', Entrada_Sist) >= 61 "
+        String consulta = "DELETE FROM cruceextsap" + parametros[4] +  " WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 61 "
                 + "OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
         return consulta;
     }
@@ -296,7 +296,7 @@ public class Querys
     public static String ResultadosInactividadIntSAP()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS INACTIVOS
     {
         String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion,"
-                + " Entrada_Sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS" 
+                + " Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS" 
                 + " from inactividadintsap";
         return statement;
     }
@@ -304,7 +304,7 @@ public class Querys
     public static String ResultadosInactividadExtSAP()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS INACTIVOS
     {
         String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion,"
-                + " Entrada_Sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS" 
+                + " Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS" 
                 + " from inactividadextsap";
         return statement;
     } 
