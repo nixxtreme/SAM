@@ -994,7 +994,7 @@ public class Archivos
         }
         
             
-            retorno = "('" + Usuario + "', '" + Nombre_Completo + "', '" + Grupo + "', '" + Bloq + "', " + Valido_de + ", " + Validez_a + " )"; //Regresa la línea para ser insertada en la BD local
+            retorno = "('" + Usuario + "', '" + Nombre_Completo + "', '" + Grupo + "', '" + Bloq + "', '"+ Motivo + "', " + Valido_de + ", " + Validez_a + " )"; //Regresa la línea para ser insertada en la BD local
         }
 //        System.out.println("Retorno " + retorno);
         return retorno;

@@ -457,7 +457,7 @@ public class Tablas
     {
        String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Nombre_Completo VARCHAR(45), Grupo VARCHAR(20), "
-                + "Bloq varchar(45), motivo varchar(3), valido_de DATE, Validez_a DATE, PRIMARY KEY(usuario))";
+                + "Bloq varchar(45), motivo varchar(5), valido_de DATE, Validez_a DATE, PRIMARY KEY(usuario))";
         return tabla;
     }
     
