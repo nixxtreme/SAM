@@ -54,7 +54,7 @@ public class Resultados extends javax.swing.JFrame {
         
         
         
-        Object[] registro = new Object[13];                                     //Crea un arreglo para recibir los elementos de cada renglon
+        Object[] registro = new Object[17];                                     //Crea un arreglo para recibir los elementos de cada renglon
         int i = 0;                                                              //Inicializa la variable para el contador
         try
         {
@@ -66,22 +66,28 @@ public class Resultados extends javax.swing.JFrame {
             if(bajasIntSAP.next())                                                 //Verifica que el resultado no esté vacío
             {
                 modeloBajasInt.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
-                modeloBajasInt.addColumn("Número de empleado");
-                modeloBajasInt.addColumn("Nombre completo");
-                modeloBajasInt.addColumn("Fecha ultimo acceso");
-                modeloBajasInt.addColumn("Número de empleado");
-                modeloBajasInt.addColumn("UserID");
-                modeloBajasInt.addColumn("Puesto");
-                modeloBajasInt.addColumn("Gerencia");
+                modeloBajasInt.addColumn("Num Emp");
                 modeloBajasInt.addColumn("Nombre");
-                modeloBajasInt.addColumn("Estatus");        
-                modeloBajasInt.addColumn("Fecha de Baja");
+                  //modeloBajasInt.addColumn("Perfil");
+                modeloBajasInt.addColumn("Puesto");
+                modeloBajasInt.addColumn("Creado el");
+                modeloBajasInt.addColumn("Valido de");
+                modeloBajasInt.addColumn("Fin valid");
+                modeloBajasInt.addColumn("Último acceso");
+                
+                modeloBajasInt.addColumn("NUMEROEMPLEADO");
+                modeloBajasInt.addColumn("USERID");  
+                modeloBajasInt.addColumn("NOMBRE");
+                modeloBajasInt.addColumn("PUESTO");
+                modeloBajasInt.addColumn("GERENCIA");
+                modeloBajasInt.addColumn("ESTATUS");
+                modeloBajasInt.addColumn("FECHA BAJA NOMINA");
                
                
                 bajasIntSAP.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 while(bajasIntSAP.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<12; k++)                                     
+                    for(int k=1; k<16; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -103,17 +109,19 @@ public class Resultados extends javax.swing.JFrame {
 
                 TableColumn CAgregar = tablaBajasInt.getColumn("Agregar");      //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CUsuario = tablaBajasInt.getColumn("Número de empleado");    //Se llama a la columna
+                TableColumn CUsuario = tablaBajasInt.getColumn("Num Emp");    //Se llama a la columna
                 CUsuario.setPreferredWidth(110);                                 //Se define su tamaño
-                TableColumn CNombre = tablaBajasInt.getColumn("Nombre completo");       //Se llama a la columna
+                TableColumn CNombre = tablaBajasInt.getColumn("Nombre");       //Se llama a la columna
                 CNombre.setPreferredWidth(330);                                  //Se define su tamaño
-                TableColumn CAcceso = tablaBajasInt.getColumn("Fecha ultimo acceso");        //Se llama a la columna
+//                TableColumn CPerfil = tablaBajasInt.getColumn("Perfil");       //Se llama a la columna
+//                CPerfil.setPreferredWidth(330);                                  //Se define su tamaño
+                TableColumn CAcceso = tablaBajasInt.getColumn("Puesto");        //Se llama a la columna
                 CAcceso.setPreferredWidth(150);                                 //Se define su tamaño            
-                TableColumn CNumemp = tablaBajasInt.getColumn("Número de empleado");        //Se llama a la columna
+                TableColumn CNumemp = tablaBajasInt.getColumn("Creado el");        //Se llama a la columna
                 CNumemp.setPreferredWidth(150);                                 //Se define su tamaño
-                TableColumn CUserid = tablaBajasInt.getColumn("UserID");        //Se llama a la columna
+                TableColumn CUserid = tablaBajasInt.getColumn("Valido de");        //Se llama a la columna
                 CUserid.setPreferredWidth(85);                                 //Se define su tamaño
-                TableColumn CPuesto = tablaBajasInt.getColumn("Puesto"); //Se llama a la columna
+                TableColumn CPuesto = tablaBajasInt.getColumn("Fin "); //Se llama a la columna
                 CPuesto.setPreferredWidth(240);                                  //Se define su tamaño
                 TableColumn CGerencia = tablaBajasInt.getColumn("Gerencia");  //Se llama a la columna
                 CGerencia.setPreferredWidth(240);                              //Se define su tamaño
