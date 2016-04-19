@@ -1144,8 +1144,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.CreaDemIE(cadenaBD));
             PreparaTablas.add(Monitoreos.Tablas.DMEXGen(cadenaBD));                 //Se mueven registros con DMEX de la tabla de genericos a la tabla de demonsa
             PreparaTablas.add(Monitoreos.Querys.BorraDMEXGen(cadenaBD));            //elimina los registros con DMEX de la tabla de genericos
-            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceInt(cadenaBD));
-            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceExt(cadenaBD));
+//            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceInt(cadenaBD));
+//            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceExt(cadenaBD));
             
             
             
