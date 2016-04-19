@@ -1359,6 +1359,14 @@ public class Tablas
         return statement;
     }
     
+    public static String CreaPerfilesIntSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "create table if not exists PerfilesIntSAP select  "
+                + "FROM " + parametros[4] + " WHERE Gerencia LIKE '%SAP%' ";
+        return statement;
+    } 
+    
     
                     //*******************************
     
