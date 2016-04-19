@@ -1079,7 +1079,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "CREATE TABLE IF NOT EXISTS MATRIZPERFILES" + parametros[4] + " (ID INT NOT NULL AUTO_INCREMENT, GERENCIA VARCHAR(255), CLAVE_PUESTO VARCHAR(45), "
-                + "PUESTO VARCHAR(255), PERFIL VARCHAR(45), PUESTO_FUNCIONAL VARCHAR(45), "
+                + "PUESTO VARCHAR(255), PERFIL VARCHAR(45), PUESTO_FUNCIONAL VARCHAR(255), "
                 + "PRIMARY KEY(ID))";
         return statement;
     }
@@ -1105,7 +1105,7 @@ public class Tablas
         String[] parametros = cadenaBD.split("\\|");
         String retorno = "INSERT INTO MATRIZPERFILES" + parametros[4] + " (GERENCIA, CLAVE_PUESTO, PUESTO, PERFIL, PUESTO_FUNCIONAL) VALUES";        
         retorno = retorno + Archivos.lecturaMatrizPerfiles(ruta, cadenaBD);
-        
+        System.out.println(retorno);
         return retorno;
     }
     
