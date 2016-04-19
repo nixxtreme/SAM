@@ -1459,7 +1459,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
     private void jButtonUsrAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsrAdminActionPerformed
         String pruebas = "D:\\Yoshian Loyo 2016\\DESARROLLO\\MONITOREO SAP\\Atziry\\ARCHIVOS TXT\\Usuarios Administradores 090316.txt";
-        JFileChooser fileChooser = new JFileChooser(pruebas);               //Abre una ventana de exploración con la última ubicacion en que se seleccionó un archivo
+        JFileChooser fileChooser = new JFileChooser(lastArchivo);               //Abre una ventana de exploración con la última ubicacion en que se seleccionó un archivo
         fileChooser.setDialogTitle("Usuarios Administradores");                          //Establece el titulo de la ventana de exploración
         Dimension dim = new Dimension(800, 600);                                //Establece el tamaño de la ventana de exploración
         fileChooser.setPreferredSize(dim);                                      //Establece el tamaño de la ventana de exploración
