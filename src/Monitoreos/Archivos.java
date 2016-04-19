@@ -66,11 +66,24 @@ public class Archivos
         linea = escapaChar(linea, "'");                                         //Escapa el caracter '
 //        System.out.println("Linea " + linea);
         String[] temp = linea.split("\t");                                      //Separa los datos de la linea delimitados por tabulador y los almacena en un arreglo           
+//        System.out.println("tamaño: " + temp.length);
         gerencia = temp[0];                                                     //Obtiene la gerencia del elemento 0 del arreglo
         clave = temp[1];                                                        //Obtiene la clave de puesto del elemento 1 del arreglo
         puesto = temp[2];                                                       //Obtiene el puesto del elemento 2 del arreglo
         perfil = temp[3];                                                       //Obtiene el perfil del elemento 3 del arreglo
-        puestofuncional = temp[4];
+        if(temp.length>4)
+        {
+            puestofuncional = temp[4];
+        }
+        else
+        {
+            puestofuncional = "";
+        }
+//        System.out.println("Gerencia:" + gerencia);
+//        System.out.print("  Clave: " + clave);
+//        System.out.print("  Puesto: " + puesto);
+//        System.out.print("    Perfil: " + perfil);
+//        System.out.print("    Puestofuncional: " + puestofuncional);
         retorno = "('" + gerencia + "', '" + clave + "', '" + puesto + "', '" + perfil + "', '" + puestofuncional + "')";
         return retorno;                                                         //Devuelve la línea para ser concatenada con las anteriores
     }
@@ -263,6 +276,39 @@ public class Archivos
                     break;
                 case "11":                                                      //para caso especifico
                     fechames="11";
+                    break;
+                case "04":                                                      //para caso especifico
+                    fechames="04";
+                    break;
+                case "01":                                                      //para caso especifico
+                    fechames="01";
+                    break;
+                case "02":                                                      //para caso especifico
+                    fechames="02";
+                    break;
+                case "03":                                                      //para caso especifico
+                    fechames="03";
+                    break;
+                case "05":                                                      //para caso especifico
+                    fechames="05";
+                    break;
+                case "06":                                                      //para caso especifico
+                    fechames="06";
+                    break;
+                case "07":                                                      //para caso especifico
+                    fechames="07";
+                    break;
+                case "08":                                                      //para caso especifico
+                    fechames="08";
+                    break;
+                case "09":                                                      //para caso especifico
+                    fechames="09";
+                    break;
+                case "10":                                                      //para caso especifico
+                    fechames="10";
+                    break;
+                case "12":                                                      //para caso especifico
+                    fechames="12";
                     break;
                 default:                                                        //En caso de contener un mensaje diferente manda un mensaje de error
                     JOptionPane.showMessageDialog(null, "Se ha encontrado un error en la fecha del empleado " + numero + "   fecha: " + fecha + " dia " + fechadia + " mes " + fechames + " año " + fechaano + " en los archivos de nóminas de usuarios internos", "Error", JOptionPane.WARNING_MESSAGE);
