@@ -114,7 +114,7 @@ public class Resultados extends javax.swing.JFrame {
                 TableColumn CNombre = tablaBajasInt.getColumn("Nombre");       //Se llama a la columna
                 CNombre.setPreferredWidth(330);                                  //Se define su tamaño
                 TableColumn CPerfil = tablaBajasInt.getColumn("Perfil");       //Se llama a la columna
-                CPerfil.setPreferredWidth(330);                                  //Se define su tamaño
+                CPerfil.setPreferredWidth(150);                                  //Se define su tamaño
                 TableColumn CPuesto = tablaBajasInt.getColumn("Puesto");        //Se llama a la columna
                 CPuesto.setPreferredWidth(150);                                 //Se define su tamaño            
                 TableColumn CCreado = tablaBajasInt.getColumn("Creado el");        //Se llama a la columna
@@ -218,7 +218,7 @@ public class Resultados extends javax.swing.JFrame {
                 TableColumn CNombre = tablaBajasExt.getColumn("Nombre");       //Se llama a la columna
                 CNombre.setPreferredWidth(330);                                  //Se define su tamaño
                 TableColumn CPerfil = tablaBajasExt.getColumn("Perfil");       //Se llama a la columna
-                CPerfil.setPreferredWidth(330);                                  //Se define su tamaño
+                CPerfil.setPreferredWidth(150);                                  //Se define su tamaño
                 TableColumn CPuesto = tablaBajasExt.getColumn("Puesto");        //Se llama a la columna
                 CPuesto.setPreferredWidth(300);                                 //Se define su tamaño            
                 TableColumn CCreado = tablaBajasExt.getColumn("Creado el");        //Se llama a la columna
@@ -319,7 +319,7 @@ public class Resultados extends javax.swing.JFrame {
                 TableColumn CNombre = tablaInacInt.getColumn("Nombre");        //Se llama a la columna
                 CNombre.setPreferredWidth(310);                                  //Se define su tamaño
                 TableColumn CPerfil = tablaInacInt.getColumn("Perfil");       //Se llama a la columna
-                CPerfil.setPreferredWidth(330);                                  //Se define su tamaño
+                CPerfil.setPreferredWidth(150);                                  //Se define su tamaño
                 TableColumn CPuesto = tablaInacInt.getColumn("Puesto");        //Se llama a la columna
                 CPuesto.setPreferredWidth(300);                                 //Se define su tamaño            
                 TableColumn CCreado = tablaInacInt.getColumn("Creado el");        //Se llama a la columna
@@ -416,7 +416,7 @@ public class Resultados extends javax.swing.JFrame {
                 TableColumn CNombre = tablaInacExt.getColumn("Nombre");        //Se llama a la columna
                 CNombre.setPreferredWidth(310);                                  //Se define su tamaño
                 TableColumn CPerfil = tablaInacExt.getColumn("Perfil");       //Se llama a la columna
-                CPerfil.setPreferredWidth(330);                                  //Se define su tamaño
+                CPerfil.setPreferredWidth(150);                                  //Se define su tamaño
                 TableColumn CPuesto = tablaInacExt.getColumn("Puesto");        //Se llama a la columna
                 CPuesto.setPreferredWidth(300);                                 //Se define su tamaño            
                 TableColumn CCreado = tablaInacExt.getColumn("Creado el");        //Se llama a la columna

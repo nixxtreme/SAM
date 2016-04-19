@@ -380,7 +380,7 @@ public class Tablas
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
         statement = "CREATE TABLE IF NOT EXISTS ExternosSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4]
-                    + " WHERE usuario LIKE 'EX%' ";
+                    + " WHERE usuario LIKE 'EX%'";
         return statement;
     }
     
@@ -448,8 +448,9 @@ public class Tablas
     public static String CreaUsuariosSAP(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT Usuario, Nombre_Completo, Grupo, valido_de, validez_a FROM Usuarios2" + parametros[4]
-                     + " WHERE  motivo LIKE '%USR%' AND validez_a > '" + parametros[6] + "'";
+        String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT Usuario, Nombre_Completo, Grupo, valido_de, "
+                + "validez_a FROM Usuarios2" + parametros[4]
+                + " WHERE  motivo LIKE '%USR%' OR motivo IS NULL AND validez_a IS NULL OR validez_a > '" + parametros[6] + "'";
         return tabla; 
     }
    
@@ -563,7 +564,7 @@ public class Tablas
     public static String CreaPerfiles(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS Perfiles OBTENIDOS DE LA BASE DE DATOS DE SAP 
     {
        String[] parametros = cadenaBD.split("\\|");
-        String tabla = "CREATE TABLE IF NOT EXISTS UPerfiles" + parametros[4] + " (UserID VARCHAR(20) NOT NULL, Nombre VARCHAR(30), "
+        String tabla = "CREATE TABLE IF NOT EXISTS UPerfiles" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Nombre VARCHAR(30), "
                 + "Apellido varchar(30), Grupo VARCHAR(15), Rol VARCHAR(20), Descripcion_Rol VARCHAR(55), Fecha_inicio DATE DEFAULT NULL,"
                 + " Fecha_fin DATE DEFAULT NULL)";
         return tabla;
@@ -574,7 +575,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
        
-        String valores = "INSERT IGNORE INTO Uperfiles" + parametros[4] + " (UserID, Nombre, Apellido, Grupo,"
+        String valores = "INSERT IGNORE INTO Uperfiles" + parametros[4] + " (Usuario, Nombre, Apellido, Grupo,"
                 + " Rol, Descripcion_Rol, Fecha_inicio, Fecha_fin)"
                 + "values ";
         
@@ -1279,7 +1280,7 @@ public class Tablas
                 + " FROM (((internossap left join demonsa2" + parametros[4] + " on internossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
                 + " left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
                 + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = internossap.usuario)"
-                + " left join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".userID = internossap.usuario";
+                + " left join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".usuario = internossap.usuario";
         
                              
         
@@ -1326,7 +1327,7 @@ public class Tablas
                 + " FROM (((externossap left join demonsa2" + parametros[4] + " on externossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
                 + " left join idext" + parametros[4] + " on externossap.usuario = idext" + parametros[4] + ".NUMEROEMPLEADO) left join"
                 + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = externossap.usuario)"
-                + " left join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".userID = externossap.usuario";
+                + " left join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".usuario = externossap.usuario";
                 
             
         return statement;
@@ -1355,11 +1356,25 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "create table if not exists ExcepcionesSAP select * "
-                + "FROM cruceextsap" + parametros[4] + " WHERE Gerencia LIKE '%SAP%' ";
+                + "FROM cruceextsap" + parametros[4] + " WHERE Gerencia LIKE '%SAP%' AND ESTATUS = 'ACTIVO' ";
         return statement;
     }
     
+    public static String CreaPerfilesIntSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "create table if not exists PerfilesIntSAP select  "
+                + "FROM " + parametros[4] + " WHERE Gerencia LIKE '%SAP%' ";
+        return statement;
+    } 
     
+    public static String CreaPerfilesExtSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "create table if not exists PerfilesIntSAP select  "
+                + "FROM " + parametros[4] + " WHERE Gerencia LIKE '%SAP%' ";
+        return statement;
+    } 
                     //*******************************
     
     public static String BorraUsrAdminAgregados()                          //BORRA LA TABLA DE TRABAJO DE USUARIOS ADMINISTRADORES AGREGADOS
