@@ -1133,19 +1133,19 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             
 
             //Realizar cruce con archivo usuario perfiles.
-            PreparaTablas.add(Monitoreos.Tablas.CruceInternosSAP(cadenaBD)); 
-            PreparaTablas.add(Monitoreos.Tablas.CruceExternosSAP(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios internos//            PreparaTablas.add(Monitoreos.Querys.CruceExternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios externos
+            PreparaTablas.add(Monitoreos.Tablas.CruceInternosSAP(cadenaBD));    //Realiza el cruce de los archivos de nómina con los usuarios internos
+            PreparaTablas.add(Monitoreos.Tablas.CruceExternosSAP(cadenaBD));    //Realiza el cruce de los archivos de nómina con los usuarios externos
            
             //Excepciones SAP
             PreparaTablas.add(Monitoreos.Tablas.ExcepcionesSAP (cadenaBD));     //crea la tabla excepcionesSAP con  los registros con gerencia: SAP del cruce de exterons
-            PreparaTablas.add(Monitoreos.Querys.eliminaExcepcionesSAP(cadenaBD)); //elimina registros de gerencia=Sap de la tabla cruceext
+            PreparaTablas.add(Monitoreos.Querys.eliminaExcepcionesSAP(cadenaBD));//Elimina registros de gerencia=Sap de la tabla cruceext  
                     
             //elminacion demonsa en cruces
-            PreparaTablas.add(Monitoreos.Tablas.CreaDemIE(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.DMEXGen(cadenaBD));                 //Se mueven registros con DMEX de la tabla de genericos a la tabla de demonsa
-            PreparaTablas.add(Monitoreos.Querys.BorraDMEXGen(cadenaBD));            //elimina los registros con DMEX de la tabla de genericos
-//            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceInt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceExt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaDemIE(cadenaBD));           //AGREGA UNA TABLA CON LAS EXCEPCIONES DE USUARIOS DEMOSA INTERNOS Y EXTERNOS
+            PreparaTablas.add(Monitoreos.Tablas.DMEXGen(cadenaBD));             //AGREGA A LA TABLA DE EXCEPCIONES DE USUARIOS DEMOSA LOS QUE SE ENCUENTRAN COMO USUARIOS GENÉRICOS
+            PreparaTablas.add(Monitoreos.Querys.BorraDMEXGen(cadenaBD));        //Elimina los registros con DMEX de la tabla de genericos
+            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceInt(cadenaBD)); //Elimina los registros demonsa de la tabla de cruceint
+            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceExt(cadenaBD)); //Elimina los registros demonsa de la tabla cruceext
             
             
             
