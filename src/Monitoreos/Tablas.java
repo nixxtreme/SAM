@@ -380,7 +380,7 @@ public class Tablas
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
         statement = "CREATE TABLE IF NOT EXISTS ExternosSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4]
-                    + " WHERE usuario LIKE 'EX%'";
+                + " WHERE usuario LIKE 'EX%'";
         return statement;
     }
     
@@ -390,7 +390,8 @@ public class Tablas
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
         statement = "create table if not exists GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4] 
-                    + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%' "
+                + " WHERE usuario LIKE '%A%' "
+                + "OR usuario LIKE '%B%' "
                 + "OR usuario LIKE '%C%' "
                 + "OR usuario LIKE '%D%' "
                 + "OR usuario LIKE '%E%' "
@@ -865,7 +866,7 @@ public class Tablas
     
     
                             //***************SAP************
-    public static String NoNominaCreaIntSAP(String cadenaBD)                       //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
+    public static String NoNominaCreaIntSAP(String cadenaBD)                    //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "create table if not exists nonominaintSAP SELECT * FROM cruceintSAP" + parametros[4] + " where NUMEROEMPLEADO is null";
@@ -873,7 +874,7 @@ public class Tablas
         return consulta;
     }
     
-    public static String NoNominaCreaExtSAP(String cadenaBD)                       //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
+    public static String NoNominaCreaExtSAP(String cadenaBD)                    //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS EXTERNOS QUE NO SE ENCUENTRAN EN NÓMINA
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "create table if not exists nonominaextSAP SELECT * FROM cruceextSAP" + parametros[4] + " where NUMEROEMPLEADO is null";
@@ -1333,7 +1334,7 @@ public class Tablas
         return statement;
     }
     
-    public static String CreaDemIE(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    public static String CreaDemIE(String cadenaBD)                             //AGREGA UNA TABLA CON LAS EXCEPCIONES DE USUARIOS DEMOSA INTERNOS Y EXTERNOS
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "create table if not exists demonsaIE select * "
@@ -1343,16 +1344,17 @@ public class Tablas
         return statement;
     }
     
-    public static String DMEXGen(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
+    public static String DMEXGen(String cadenaBD)                               //AGREGA A LA TABLA DE EXCEPCIONES DE USUARIOS DEMOSA LOS QUE SE ENCUENTRAN COMO USUARIOS GENÉRICOS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String tabla = "INSERT IGNORE INTO DemonsaIE (Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a) SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM GenericosSAP"
+        String tabla = "INSERT IGNORE INTO DemonsaIE (Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a) SELECT Usuario, Nombre_Completo, Grupo, "
+                + "Valido_de, Validez_a FROM GenericosSAP"
                 + " WHERE Usuario LIKE '%DMEX%'";
                 
         return tabla; 
     }
     
-    public static String ExcepcionesSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    public static String ExcepcionesSAP(String cadenaBD)                        //CREA UNA TABLA CON LAS EXCEPCIONES DE USUARIOS ACTIVOS QUE PERTENENCEN A LA GERENCIA DE SAP
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "create table if not exists ExcepcionesSAP select * "

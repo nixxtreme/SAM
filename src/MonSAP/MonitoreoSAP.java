@@ -1124,28 +1124,28 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));//borra los registros de esternos de la tabla
             
             PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));           //crear tabla gen sap
+            PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));//borrar los registros genericos sap de la tabla
         
             PreparaTablas.add(Monitoreos.Tablas.GenExt(cadenaBD));              //insertar genericos de TablaEXT a TablaGen
             PreparaTablas.add(Monitoreos.Querys.BorrarGenExt(cadenaBD));        //eliminar genericos en tabla EXTERNOS
             
-            PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));//borrar los registros genericos sap de la tabla
             PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));          //Crea la tabla de usuarios internos
             
 
             //Realizar cruce con archivo usuario perfiles.
-            PreparaTablas.add(Monitoreos.Tablas.CruceInternosSAP(cadenaBD)); 
-            PreparaTablas.add(Monitoreos.Tablas.CruceExternosSAP(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios internos//            PreparaTablas.add(Monitoreos.Querys.CruceExternos(cadenaBD));           //Realiza el cruce de los archivos de nómina con los usuarios externos
+            PreparaTablas.add(Monitoreos.Tablas.CruceInternosSAP(cadenaBD));    //Realiza el cruce de los archivos de nómina con los usuarios internos
+            PreparaTablas.add(Monitoreos.Tablas.CruceExternosSAP(cadenaBD));    //Realiza el cruce de los archivos de nómina con los usuarios externos
            
             //Excepciones SAP
             PreparaTablas.add(Monitoreos.Tablas.ExcepcionesSAP (cadenaBD));     //crea la tabla excepcionesSAP con  los registros con gerencia: SAP del cruce de exterons
-            PreparaTablas.add(Monitoreos.Querys.eliminaExcepcionesSAP(cadenaBD)); //elimina registros de gerencia=Sap de la tabla cruceext
+            PreparaTablas.add(Monitoreos.Querys.eliminaExcepcionesSAP(cadenaBD));//Elimina registros de gerencia=Sap de la tabla cruceext  
                     
             //elminacion demonsa en cruces
-            PreparaTablas.add(Monitoreos.Tablas.CreaDemIE(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.DMEXGen(cadenaBD));                 //Se mueven registros con DMEX de la tabla de genericos a la tabla de demonsa
-            PreparaTablas.add(Monitoreos.Querys.BorraDMEXGen(cadenaBD));            //elimina los registros con DMEX de la tabla de genericos
-//            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceInt(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceExt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaDemIE(cadenaBD));           //AGREGA UNA TABLA CON LAS EXCEPCIONES DE USUARIOS DEMOSA INTERNOS Y EXTERNOS
+            PreparaTablas.add(Monitoreos.Tablas.DMEXGen(cadenaBD));             //AGREGA A LA TABLA DE EXCEPCIONES DE USUARIOS DEMOSA LOS QUE SE ENCUENTRAN COMO USUARIOS GENÉRICOS
+            PreparaTablas.add(Monitoreos.Querys.BorraDMEXGen(cadenaBD));        //Elimina los registros con DMEX de la tabla de genericos
+            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceInt(cadenaBD)); //Elimina los registros demonsa de la tabla de cruceint
+            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceExt(cadenaBD)); //Elimina los registros demonsa de la tabla cruceext
             
             
             
@@ -1458,7 +1458,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
     private void jButtonUsrAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsrAdminActionPerformed
         String pruebas = "D:\\Yoshian Loyo 2016\\DESARROLLO\\MONITOREO SAP\\Atziry\\ARCHIVOS TXT\\Usuarios Administradores 090316.txt";
-        JFileChooser fileChooser = new JFileChooser(pruebas);               //Abre una ventana de exploración con la última ubicacion en que se seleccionó un archivo
+        JFileChooser fileChooser = new JFileChooser(lastArchivo);               //Abre una ventana de exploración con la última ubicacion en que se seleccionó un archivo
         fileChooser.setDialogTitle("Usuarios Administradores");                          //Establece el titulo de la ventana de exploración
         Dimension dim = new Dimension(800, 600);                                //Establece el tamaño de la ventana de exploración
         fileChooser.setPreferredSize(dim);                                      //Establece el tamaño de la ventana de exploración
