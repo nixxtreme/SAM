@@ -943,7 +943,7 @@ public class Tablas
                 + " fecha_creacion, Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
                 + " ESTATUS"
                 + " FROM cruceextsap" + parametros[4]  
-                +" WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 61 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
+                +" WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 60 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 60 AND Entrada_Sist IS NULL)";
         return consulta;
     }
     
