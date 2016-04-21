@@ -1,0 +1,12 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `conteos`(IN tabla varchar(45))
+BEGIN
+		
+        
+set @atsql = concat("select count(*) from ",tabla);
+		
+PREPARE cuenta FROM @atsql;
+		
+EXECUTE cuenta;
+		
+
+END
