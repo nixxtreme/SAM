@@ -1346,9 +1346,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 PreparaTablas.add(Monitoreos.Tablas.idCreaDemonsa2(cadenaBD));
                 PreparaTablas.add(Monitoreos.Tablas.InsertarDemonsa(Demonsa2, cadenaBD));
                 
-                
-                
-//                Monitoreos.Archivos.lecturaUsuariosDemonsa2(UsrAdmin, cadenaBD);     //Lee el archivo de la nómina de internos e inserta los usuarios en la BD local
+               
             }
             
             if(jCheckUsrs.isSelected())                                       //Valida que este habilitada la casilla de Usuarios Administradores                                     
