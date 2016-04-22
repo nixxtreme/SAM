@@ -264,7 +264,11 @@ public class Querys
     {
         String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion, Valido_de, Validez_a,"
                 + " Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS, FECHA"
-                + " FROM bajasintSAP";
+                + " FROM bajasintSAP "
+                + " UNION"
+                + " SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion, Valido_de, Validez_a, "
+                + " Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS, FECHA"
+                + " FROM NONOMINAINTSAP ";
         
         return statement;
     }
@@ -273,7 +277,11 @@ public class Querys
     {
         String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion, Valido_de, Validez_a,"
                 + " Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS, FECHA" 
-                +" FROM bajasextSAP";
+                + " FROM bajasextSAP"
+                + " UNION "
+                + " SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion, Valido_de, Validez_a, "
+                + " Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS, FECHA"
+                + " FROM NONOMINAEXTSAP";
         return statement;
     }
     

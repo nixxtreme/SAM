@@ -451,7 +451,8 @@ public class Tablas
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT Usuario, Nombre_Completo, Grupo, valido_de, "
                 + "validez_a FROM Usuarios2" + parametros[4]
-                + " WHERE  motivo LIKE '%USR%' OR motivo IS NULL AND validez_a IS NULL OR validez_a > '" + parametros[6] + "'";
+                + " WHERE  motivo LIKE '%USR%' AND validez_a IS NULL OR validez_a > '" + parametros[6] + "' "
+                + "OR motivo IS NULL AND validez_a IS NULL OR validez_a > '" + parametros[6] + "'";
         return tabla; 
     }
    

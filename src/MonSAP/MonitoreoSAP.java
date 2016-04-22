@@ -1170,30 +1170,30 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             
             System.out.println("Creando nuevas tablas de trabajo");
             EjecutaSAP.Exect(ConLocal.conexion, PreparaTablas);                  //Ejecuta todas las instrucciones almacenadas en el arreglo
-//
-//            Conteos conteo = new Conteos();
-//
-//            String total = conteo.conteo(ConLocal.conexion, "USUARIOS" + parametros[4]);//Cuenta el total de usuarios
-//            jTextField1.setText(total);
-//            
-//            String internos = conteo.conteo(ConLocal.conexion, "INTERNOS");     //Cuenta el total de usuarios internos
-//            jTextField3.setText(internos);
-//            String externos = conteo.conteo(ConLocal.conexion, "EXTERNOS");     //Cuenta el total de usuarios externos
-//            jTextField4.setText(externos);
-//    
-//    //        
-//            String bint = conteo.conteo(ConLocal.conexion, "BAAJASINT", "NONOMINAINT");//Cuenta el total de usuarios internos dados de baja y que no están registrados en nómina
-//            jTextField5.setText(bint);
-//            String bext = conteo.conteo(ConLocal.conexion, "BAAJASEXT", "NONOMINAEXT");//Cuenta el total de usuarios externos dados de baja y que no están registrados en nómina
-//            jTextField6.setText(bext);
-//            
-//            
-//            String inint = conteo.conteo(ConLocal.conexion, "INACTIVIDADINT");  //Cuenta el total de usuaios internos reportados con intactividad
-//            jTextField7.setText(inint);
-//            String inext = conteo.conteo(ConLocal.conexion, "INACTIVIDADEXT");  //Cuenta el total de usuaios externos reportados con intactividad
-//            jTextField8.setText(inext);
-//            
-//         
+
+            Conteos conteo = new Conteos();
+
+            String total = conteo.conteo(ConLocal.conexion, "USUARIOS2" + parametros[4]);//Cuenta el total de usuarios
+            jTextField1.setText(total);
+            
+            String internos = conteo.conteo(ConLocal.conexion, "INTERNOSSAP");     //Cuenta el total de usuarios internos
+            jTextField3.setText(internos);
+            String externos = conteo.conteo(ConLocal.conexion, "EXTERNOSSAP");     //Cuenta el total de usuarios externos
+            jTextField4.setText(externos);
+    
+            
+            String bint = conteo.conteo(ConLocal.conexion, "BAJASINTSAP", "NONOMINAINTSAP");//Cuenta el total de usuarios internos dados de baja y que no están registrados en nómina
+            jTextField5.setText(bint);
+            String bext = conteo.conteo(ConLocal.conexion, "BAJASEXTSAP", "NONOMINAEXTSAP");//Cuenta el total de usuarios externos dados de baja y que no están registrados en nómina
+            jTextField6.setText(bext);
+            
+            
+            String inint = conteo.conteo(ConLocal.conexion, "INACTIVIDADINTSAP");  //Cuenta el total de usuaios internos reportados con intactividad
+            jTextField7.setText(inint);
+            String inext = conteo.conteo(ConLocal.conexion, "INACTIVIDADEXTSAP");  //Cuenta el total de usuaios externos reportados con intactividad
+            jTextField8.setText(inext);
+            
+         
 //            String usrincint = conteo.conteo(ConLocal.conexion, "USRINCINT" );  //Cuenta el total de usuarios internos reportados con UserID incorrecto
 //            jTextField11.setText(usrincint);
 //            String usrincext = conteo.conteo(ConLocal.conexion, "USRINCEXT");   //Cuenta el total de usuarios externos reportados con UserID incorrecto
