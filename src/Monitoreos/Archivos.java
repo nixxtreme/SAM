@@ -992,9 +992,18 @@ public class Archivos
             Usuario = Usuario.trim();                                 //ELIMINAR LOS ESPACIOS ENTRE CAMPOS
             Grupo = Grupo.trim();
             Bloq = Bloq.trim();
+            Motivo = Motivo.trim();
             Valido_de = Valido_de.trim();
             Validez_a = Validez_a.trim();
                 
+        if(Motivo.isEmpty())
+        {
+            Motivo = "NULL";
+        }
+        else
+        {
+            Motivo = "'" + Motivo + "'";
+        }
         if(!Valido_de.isEmpty())                                                    //Verifica si el campo de fecha se encuentra vacío
         {
 //            System.out.println("entré");
@@ -1040,7 +1049,7 @@ public class Archivos
         }
         
             
-            retorno = "('" + Usuario + "', '" + Nombre_Completo + "', '" + Grupo + "', '" + Bloq + "', '"+ Motivo + "', " + Valido_de + ", " + Validez_a + " )"; //Regresa la línea para ser insertada en la BD local
+            retorno = "('" + Usuario + "', '" + Nombre_Completo + "', '" + Grupo + "', '" + Bloq + "', "+ Motivo + ", " + Valido_de + ", " + Validez_a + " )"; //Regresa la línea para ser insertada en la BD local
         }
 //        System.out.println("Retorno " + retorno);
         return retorno;

@@ -451,11 +451,13 @@ public class Tablas
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT Usuario, Nombre_Completo, Grupo, valido_de, "
                 + "validez_a FROM Usuarios2" + parametros[4]
-                + " WHERE  motivo LIKE '%USR%' AND validez_a IS NULL "
+                + " WHERE  (motivo LIKE '%USR%' AND validez_a IS NULL)  "
                 + " OR "
-                + " validez_a > '" + parametros[6] + "' "
+                + " (motivo LIKE '%USR%' AND validez_a > '" + parametros[6] + "')"
                 + " OR "
-                + " motivo IS NULL AND validez_a IS NULL OR validez_a > '" + parametros[6] + "'";
+                + " (motivo IS NULL AND validez_a IS NULL) "
+                + " OR "
+                + " (motivo IS NULL AND validez_a > '" + parametros[6] + "')";
         return tabla; 
     }
    
@@ -463,7 +465,7 @@ public class Tablas
     {
        String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS Usuarios2" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Nombre_Completo VARCHAR(45), Grupo VARCHAR(20), "
-                + "Bloq varchar(45), motivo varchar(5), valido_de DATE, Validez_a DATE, PRIMARY KEY(usuario))";
+                + "Bloq varchar(45), motivo varchar(5) default null, valido_de DATE default null, Validez_a DATE default null, PRIMARY KEY(usuario))";
         return tabla;
     }
     
