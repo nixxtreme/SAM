@@ -549,14 +549,14 @@ public class ActiveDirectory extends javax.swing.JFrame {
 
         jPasswordField1.setText("almapodrida");
 
-        jTextField30.setText("adaplication");
+        jTextField30.setText("monitoreos");
         
 
         jLabel34.setText("Mes del monitoreo");
 
         jLabel35.setText("Archivos identidad");
 
-       
+        
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
