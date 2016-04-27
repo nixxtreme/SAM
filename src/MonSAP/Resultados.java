@@ -43,9 +43,7 @@ public class Resultados extends javax.swing.JFrame {
 //        definirModelosNoAutorizadoExt();                                        //Define el modelo de la tabla de inconsistencias de usuarios externos no autorizados
         definirModelosAgregados();                                              //Define el modelo de la tabla de usuarios agregados
         definirModelosEliminados();                                             //Define el modelo de la tabla de usuarios eliminados
-        definirModelosUsuariosInt();
-        definirModelosUsuariosExt();
-        definirModelosUsuariosGen();
+    
     }
     
     void definirModelosBajasIntSAP()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
@@ -1427,226 +1425,7 @@ public class Resultados extends javax.swing.JFrame {
     }
     
     
-    void definirModelosUsuariosInt()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
-    {
-        DefaultTableModel modeloInt = new DefaultTableModel();             //Crea el objeto modelo de tabla
-       
-        Object[] registro = new Object[8];                                     //Crea un arreglo para recibir los elementos de cada renglon
-        int i = 0;                                                              //Inicializa la variable para el contador
-        try
-        {
-            Conexion conLocal = new Conexion();                                 //Inicia la conexión local
-            conLocal.AbrirLocal(cadenaBD);
-            ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            Uint = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosUsrInt());   //Ejecuta la consulta y almacena el resultado en la variable
-            
-            if(Uint.next())                                                       //Verifica que el resultado no esté vacío
-            {
-                Uint.beforeFirst();                                            //Regresa a la posición inicial del resultado
-                modeloInt.addColumn("Agregar");
-                modeloInt.addColumn("Usuario");                                  //Crea las columnas necesarias para el reporte
-                modeloInt.addColumn("Nombre_Completo");
-                modeloInt.addColumn("Grupo");             
-                modeloInt.addColumn("Valido_de");
-                modeloInt.addColumn("Validez_a");
-                
-                
-                                               
-                while(Uint.next())                                          //Lee cada registro hasta que ya no haya más
-                {
-                    for(int k=1; k<7; k++)                                     
-                    {
-                        if(k==1)                                                
-                        {
-                            registro[k-1]=Boolean.TRUE;                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
-                        }
-                        else
-                        {
-                            registro[k-1]=Uint.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas
-                        }
-                    }
-                    modeloInt.addRow(registro);                            //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
-                }
-
-                tablaUserInt.setModel(modeloInt);                                //Una vez construida completamente la tabla se define el modelo a la tabla original
-                tablaUserInt.setAutoResizeMode(AUTO_RESIZE_OFF);                 //Se desabilita el ajuste automatico de ancho de columnas para establecerlo manualmente
-                tablaUserInt.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());  //Se hace uso de editor y renderizador de columnas
-                tablaUserInt.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
-
-                TableColumn CAgregar = tablaUserInt.getColumn("Agregar");     //Se llama a la columna
-                CAgregar.setPreferredWidth(80); 
-                TableColumn CUser = tablaUserInt.getColumn("Usuario");      //Se llama a la columna
-                CUser.setPreferredWidth(150);                                 //Se define su tamaño
-                TableColumn CNombre = tablaUserInt.getColumn("Nombre_Completo");    //Se llama a la columna
-                CNombre.setPreferredWidth(300);                                 //Se define su tamaño
-                TableColumn CGrupo = tablaUserInt.getColumn("Grupo");       //Se llama a la columna
-                CGrupo.setPreferredWidth(300);                                  //Se define su tamaño
-                TableColumn CValor = tablaUserInt.getColumn("Valido_de"); //Se llama a la columna
-                CValor.setPreferredWidth(160);                                  //Se define su tamaño
-                TableColumn CValidez = tablaUserInt.getColumn("Validez_a"); //Se llama a la columna
-                CValidez.setPreferredWidth(160);                                  //Se define su tamaño
-                                             
-            }
-            else                                                                //Si el resultado se encontraba vacío
-            {
-                modeloInt.addColumn("No se encontraron inconsistencias");  //Se crea una columna con la leyecnda
-                tablaUserInt.setModel(modeloInt);                         //Se define el modelo 
-            }
-            
-            conLocal.Cerrar();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }    
-    }
     
-    void definirModelosUsuariosExt()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
-    {
-        DefaultTableModel modeloExt = new DefaultTableModel();             //Crea el objeto modelo de tabla
-       
-        Object[] registro = new Object[8];                                     //Crea un arreglo para recibir los elementos de cada renglon
-        int i = 0;                                                              //Inicializa la variable para el contador
-        try
-        {
-            Conexion conLocal = new Conexion();                                 //Inicia la conexión local
-            conLocal.AbrirLocal(cadenaBD);
-            ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            Uext = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosUsrExt());   //Ejecuta la consulta y almacena el resultado en la variable
-            
-            if(Uext.next())                                                 //Verifica que el resultado no esté vacío
-            {
-                Uext.beforeFirst();                                            //Regresa a la posición inicial del resultado
-                modeloExt.addColumn("Agregar");
-                modeloExt.addColumn("Usuario");                                  //Crea las columnas necesarias para el reporte
-                modeloExt.addColumn("Nombre_Completo");
-                modeloExt.addColumn("Grupo");      
-                modeloExt.addColumn("Valido_de");
-                modeloExt.addColumn("Validez_a");
-                
-                                               
-                while(Uext.next())                                          //Lee cada registro hasta que ya no haya más
-                {
-                    for(int k=1; k<7; k++)                                     
-                    {
-                        if(k==1)                                                
-                        {
-                            registro[k-1]=Boolean.TRUE;                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
-                        }
-                        else
-                        {
-                            registro[k-1]=Uext.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas
-                        }
-                    }
-                    modeloExt.addRow(registro);                            //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
-                }
-
-                tablaUserExt.setModel(modeloExt);                         //Una vez construida completamente la tabla se define el modelo a la tabla original
-                tablaUserExt.setAutoResizeMode(AUTO_RESIZE_OFF);               //Se desabilita el ajuste automatico de ancho de columnas para establecerlo manualmente
-                tablaUserExt.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());  //Se hace uso de editor y renderizador de columnas
-                tablaUserExt.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
-
-                TableColumn CAgregar = tablaUserExt.getColumn("Agregar");     //Se llama a la columna
-                CAgregar.setPreferredWidth(80); 
-                TableColumn CUser = tablaUserExt.getColumn("Usuario");      //Se llama a la columna
-                CUser.setPreferredWidth(150);                                 //Se define su tamaño
-                TableColumn CNombre = tablaUserExt.getColumn("Nombre_Completo");    //Se llama a la columna
-                CNombre.setPreferredWidth(300);                                 //Se define su tamaño
-                TableColumn CGrupo = tablaUserExt.getColumn("Grupo");       //Se llama a la columna
-                CGrupo.setPreferredWidth(300);                                  //Se define su tamaño
-                TableColumn CValor = tablaUserExt.getColumn("Valido_de"); //Se llama a la columna
-                CValor.setPreferredWidth(160);                                  //Se define su tamaño
-                TableColumn CValidez = tablaUserExt.getColumn("Validez_a"); //Se llama a la columna
-                CValidez.setPreferredWidth(160);                                  //Se define su tamaño
-                                             
-            }
-            else                                                                //Si el resultado se encontraba vacío
-            {
-                modeloExt.addColumn("No se encontraron inconsistencias");  //Se crea una columna con la leyecnda
-                tablaUserExt.setModel(modeloExt);                         //Se define el modelo 
-            }
-            
-            conLocal.Cerrar();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }    
-    }
-    
-    
-    void definirModelosUsuariosGen()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
-    {
-        DefaultTableModel modeloGen = new DefaultTableModel();             //Crea el objeto modelo de tabla
-       
-        Object[] registro = new Object[8];                                     //Crea un arreglo para recibir los elementos de cada renglon
-        int i = 0;                                                              //Inicializa la variable para el contador
-        try
-        {
-            Conexion conLocal = new Conexion();                                 //Inicia la conexión local
-            conLocal.AbrirLocal(cadenaBD);
-            ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            Ugen = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosUsrGen());   //Ejecuta la consulta y almacena el resultado en la variable
-            
-            if(Ugen.next())                                                 //Verifica que el resultado no esté vacío
-            {
-                Ugen.beforeFirst();                                            //Regresa a la posición inicial del resultado
-                modeloGen.addColumn("Agregar");
-                modeloGen.addColumn("Usuario");                                  //Crea las columnas necesarias para el reporte
-                modeloGen.addColumn("Nombre_Completo");
-                modeloGen.addColumn("Grupo");
-                modeloGen.addColumn("Valido_de");
-                modeloGen.addColumn("Validez_a");
-                
-                                               
-                while(Ugen.next())                                          //Lee cada registro hasta que ya no haya más
-                {
-                    for(int k=1; k<7; k++)                                     
-                    {
-                        if(k==1)                                                
-                        {
-                            registro[k-1]=Boolean.TRUE;                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
-                        }
-                        else
-                        {
-                            registro[k-1]=Ugen.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas
-                        }
-                    }
-                    modeloGen.addRow(registro);                            //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
-                }
-
-                tablaUsrGen.setModel(modeloGen);                         //Una vez construida completamente la tabla se define el modelo a la tabla original
-                tablaUsrGen.setAutoResizeMode(AUTO_RESIZE_OFF);               //Se desabilita el ajuste automatico de ancho de columnas para establecerlo manualmente
-                tablaUsrGen.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());  //Se hace uso de editor y renderizador de columnas
-                tablaUsrGen.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
-
-                TableColumn CAgregar = tablaUsrGen.getColumn("Agregar");     //Se llama a la columna
-                CAgregar.setPreferredWidth(80); 
-                TableColumn CUser = tablaUsrGen.getColumn("Usuario");      //Se llama a la columna
-                CUser.setPreferredWidth(150);                                 //Se define su tamaño
-                TableColumn CNombre = tablaUsrGen.getColumn("Nombre_Completo");    //Se llama a la columna
-                CNombre.setPreferredWidth(300);                                 //Se define su tamaño
-                TableColumn CGrupo = tablaUsrGen.getColumn("Grupo");       //Se llama a la columna
-                CGrupo.setPreferredWidth(300);                                  //Se define su tamaño                           
-                TableColumn CValor = tablaUsrGen.getColumn("Valido_de"); //Se llama a la columna
-                CValor.setPreferredWidth(160);                                  //Se define su tamaño
-                TableColumn CValidez = tablaUsrGen.getColumn("Validez_a"); //Se llama a la columna
-                CValidez.setPreferredWidth(160);                                  //Se define su tamaño
-                                             
-            }
-            else                                                                //Si el resultado se encontraba vacío
-            {
-                modeloGen.addColumn("No se encontraron inconsistencias");  //Se crea una columna con la leyecnda
-                tablaUsrGen.setModel(modeloGen);                         //Se define el modelo 
-            }
-            
-            conLocal.Cerrar();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }     
-    }
     
   
     @SuppressWarnings("unchecked")
@@ -1737,26 +1516,6 @@ public class Resultados extends javax.swing.JFrame {
         tablaAgregado = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jPanel41 = new javax.swing.JPanel();
-        jPanel42 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jPanel43 = new javax.swing.JPanel();
-        jScrollPane15 = new javax.swing.JScrollPane();
-        tablaEliminado1 = new javax.swing.JTable();
-        jScrollPane16 = new javax.swing.JScrollPane();
-        tablaAgregado1 = new javax.swing.JTable();
-        jPanel44 = new javax.swing.JPanel();
-        jPanel45 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jPanel46 = new javax.swing.JPanel();
-        jScrollPane18 = new javax.swing.JScrollPane();
-        tablaUserInt = new javax.swing.JTable();
-        jPanel47 = new javax.swing.JPanel();
-        jPanel48 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jPanel49 = new javax.swing.JPanel();
-        jScrollPane20 = new javax.swing.JScrollPane();
-        tablaUserExt = new javax.swing.JTable();
         jPanel53 = new javax.swing.JPanel();
         jPanel54 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -2072,7 +1831,7 @@ public class Resultados extends javax.swing.JFrame {
                 .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("User ID incorrecto internos", jPanel13);
+        jTabbedPane3.addTab("Usuarios externos sin fin de validez", jPanel13);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/telcel.jpg"))); // NOI18N
 
@@ -2598,227 +2357,6 @@ public class Resultados extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Usuarios Administradores", jPanel38);
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/telcel.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel42Layout = new javax.swing.GroupLayout(jPanel42);
-        jPanel42.setLayout(jPanel42Layout);
-        jPanel42Layout.setHorizontalGroup(
-            jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel42Layout.createSequentialGroup()
-                .addContainerGap(1009, Short.MAX_VALUE)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel42Layout.setVerticalGroup(
-            jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel42Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-
-        tablaEliminado1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane15.setViewportView(tablaEliminado1);
-
-        tablaAgregado1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane16.setViewportView(tablaAgregado1);
-
-        javax.swing.GroupLayout jPanel43Layout = new javax.swing.GroupLayout(jPanel43);
-        jPanel43.setLayout(jPanel43Layout);
-        jPanel43Layout.setHorizontalGroup(
-            jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel43Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane15)
-                .addContainerGap())
-            .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel43Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane16)
-                    .addContainerGap()))
-        );
-        jPanel43Layout.setVerticalGroup(
-            jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel43Layout.createSequentialGroup()
-                .addContainerGap(247, Short.MAX_VALUE)
-                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69))
-            .addGroup(jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel43Layout.createSequentialGroup()
-                    .addGap(21, 21, 21)
-                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(295, Short.MAX_VALUE)))
-        );
-
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/telcel.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel45Layout = new javax.swing.GroupLayout(jPanel45);
-        jPanel45.setLayout(jPanel45Layout);
-        jPanel45Layout.setHorizontalGroup(
-            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel45Layout.createSequentialGroup()
-                .addContainerGap(1009, Short.MAX_VALUE)
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel45Layout.setVerticalGroup(
-            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel45Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-
-        tablaUserInt.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane18.setViewportView(tablaUserInt);
-
-        javax.swing.GroupLayout jPanel46Layout = new javax.swing.GroupLayout(jPanel46);
-        jPanel46.setLayout(jPanel46Layout);
-        jPanel46Layout.setHorizontalGroup(
-            jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane18)
-        );
-        jPanel46Layout.setVerticalGroup(
-            jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel46Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane18, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
-        jPanel44.setLayout(jPanel44Layout);
-        jPanel44Layout.setHorizontalGroup(
-            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel46, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel44Layout.setVerticalGroup(
-            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel44Layout.createSequentialGroup()
-                .addComponent(jPanel45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel41Layout = new javax.swing.GroupLayout(jPanel41);
-        jPanel41.setLayout(jPanel41Layout);
-        jPanel41Layout.setHorizontalGroup(
-            jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel43, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel41Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel41Layout.setVerticalGroup(
-            jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel41Layout.createSequentialGroup()
-                .addComponent(jPanel42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel41Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jTabbedPane3.addTab("Usuarios Internos", jPanel41);
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/telcel.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel48Layout = new javax.swing.GroupLayout(jPanel48);
-        jPanel48.setLayout(jPanel48Layout);
-        jPanel48Layout.setHorizontalGroup(
-            jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel48Layout.createSequentialGroup()
-                .addContainerGap(1009, Short.MAX_VALUE)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel48Layout.setVerticalGroup(
-            jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel48Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-
-        tablaUserExt.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane20.setViewportView(tablaUserExt);
-
-        javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
-        jPanel49.setLayout(jPanel49Layout);
-        jPanel49Layout.setHorizontalGroup(
-            jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane20)
-        );
-        jPanel49Layout.setVerticalGroup(
-            jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel49Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
-        jPanel47.setLayout(jPanel47Layout);
-        jPanel47Layout.setHorizontalGroup(
-            jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel49, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel47Layout.setVerticalGroup(
-            jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel47Layout.createSequentialGroup()
-                .addComponent(jPanel48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane3.addTab("Usuarios Externos", jPanel47);
-
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/telcel.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel54Layout = new javax.swing.GroupLayout(jPanel54);
@@ -2952,10 +2490,7 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -2999,15 +2534,6 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
-    private javax.swing.JPanel jPanel41;
-    private javax.swing.JPanel jPanel42;
-    private javax.swing.JPanel jPanel43;
-    private javax.swing.JPanel jPanel44;
-    private javax.swing.JPanel jPanel45;
-    private javax.swing.JPanel jPanel46;
-    private javax.swing.JPanel jPanel47;
-    private javax.swing.JPanel jPanel48;
-    private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
@@ -3022,11 +2548,7 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
-    private javax.swing.JScrollPane jScrollPane15;
-    private javax.swing.JScrollPane jScrollPane16;
-    private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane24;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -3037,21 +2559,17 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTable tablaAgregado;
-    private javax.swing.JTable tablaAgregado1;
     private javax.swing.JTable tablaBajasExt;
     private javax.swing.JTable tablaBajasInt;
     private javax.swing.JTable tablaDupExt;
     private javax.swing.JTable tablaDupInt;
     private javax.swing.JTable tablaEliminado;
-    private javax.swing.JTable tablaEliminado1;
     private javax.swing.JTable tablaInacExt;
     private javax.swing.JTable tablaInacInt;
     private javax.swing.JTable tablaNoAutoExt;
     private javax.swing.JTable tablaNoAutoInt;
     private javax.swing.JTable tablaPerfilExt;
     private javax.swing.JTable tablaPerfilInt;
-    private javax.swing.JTable tablaUserExt;
-    private javax.swing.JTable tablaUserInt;
     private javax.swing.JTable tablaUsrExt;
     private javax.swing.JTable tablaUsrGen;
     private javax.swing.JTable tablaUsrInt;
