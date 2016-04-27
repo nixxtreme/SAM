@@ -4,7 +4,7 @@ BEGIN
 		SELECT * FROM information_schema.COLUMNS
 		WHERE column_name='numemp'
 		and table_name=region
-		AND table_schema = 'adaplication'
+		AND table_schema = 'monitoreos'
 		)
 	THEN
 		set @atsql = concat("ALTER TABLE ",region, " ADD COLUMN numemp int" );

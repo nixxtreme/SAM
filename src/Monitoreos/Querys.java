@@ -304,7 +304,7 @@ public class Querys
     public static String ResultadosInactividadIntSAP()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS INACTIVOS
     {
         String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion,"
-                + " Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS" 
+                + " Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS" 
                 + " from inactividadintsap";
         return statement;
     }
@@ -312,7 +312,7 @@ public class Querys
     public static String ResultadosInactividadExtSAP()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS INACTIVOS
     {
         String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion,"
-                + " Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS" 
+                + " Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS" 
                 + " from inactividadextsap";
         return statement;
     } 

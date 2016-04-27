@@ -677,6 +677,12 @@ public class Tablas
         String statement = "DROP TABLE IF EXISTS ExcepcionesSAP";
         return statement;
     }
+    
+    public static String BorraSinExpiracionSAP()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS SinExpiracionSAP";
+        return statement;
+    }
                         //********************
     
     
@@ -935,10 +941,21 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "create table if not exists inactividadintSAP SELECT usuario, nombre_completo, rol, Descripcion_Rol,"
-                + " fecha_creacion, clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
+                + " fecha_creacion, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
                 + " ESTATUS"
                 + " FROM cruceintsap" + parametros[4]  
-                +" WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 60";
+                +" WHERE DATEDIFF('" + parametros[6] + "', Entrada_sist) >= 60 OR (DATEDIFF('" + parametros[6] + "', Fecha_Creacion) >= 60 AND Entrada_Sist IS NULL)";
+        return consulta;
+    }
+    
+    public static String CreaSinExpiracionSAP(String cadenaBD)                    //AGREGA UNA TABLA PARA LAS INCIDENCIAS DE USUARIOS INTERNOS CON INACTIVIDAD
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "create table if not exists SinExpiracionSAP SELECT usuario, nombre_completo, rol, Descripcion_Rol,"
+                + " fecha_creacion, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
+                + " ESTATUS"
+                + " FROM cruceextsap" + parametros[4]  
+                +" WHERE fin_validez IS NULL";
         return consulta;
     }
     
@@ -946,10 +963,10 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "create table if not exists inactividadextSAP SELECT usuario, nombre_completo, rol, Descripcion_Rol,"
-                + " fecha_creacion, Clave_acc, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
+                + " fecha_creacion, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
                 + " ESTATUS"
                 + " FROM cruceextsap" + parametros[4]  
-                +" WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 60 OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 60 AND Entrada_Sist IS NULL)";
+                +" WHERE DATEDIFF('" + parametros[6] + "', Entrada_sist) >= 60 OR (DATEDIFF('" + parametros[6] + "', Fecha_Creacion) >= 60 AND Entrada_Sist IS NULL)";
         return consulta;
     }
     

@@ -1115,6 +1115,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
               PreparaTablas.add(Monitoreos.Tablas.BorraInacIntSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraInacExtSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraExcepcionesSAP());
+              PreparaTablas.add(Monitoreos.Tablas.BorraSinExpiracionSAP());
 
             
             
@@ -1173,6 +1174,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Querys.BorraInactividadIntSAP(cadenaBD));     //Borra los usuarios internos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios internos
             PreparaTablas.add(Monitoreos.Tablas.CreaInactividadExtSAP(cadenaBD));      //Crea una tabla con los usuarios externos que no han ingresado a la aplicación en determinado tiempo
             PreparaTablas.add(Monitoreos.Querys.BorraInactividadExtSAP(cadenaBD));     //Borra los usuarios externos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios externos
+            
+            PreparaTablas.add(Monitoreos.Tablas.CreaSinExpiracionSAP(cadenaBD));
+            
+            
             
             //PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesIntSAP(cadenaBD));  //Crea la tabla de perfiles incorrrectos de Usuarios Internos
             //PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesExtSAP(cadenaBD));  //Crea la tabla de perfiles incorrectos de Usuarios Externos
