@@ -32,7 +32,7 @@ import javax.swing.table.TableColumn;
  */
 public class GenericosSAP extends javax.swing.JFrame {
     String cadenaBD;
-    ResultSet AdmUsrAdm;
+    ResultSet AdmUsrGen;
     JCheckBox component = new JCheckBox();
     Clase_CellEditor editor  = new Clase_CellEditor();
     /**
@@ -41,10 +41,10 @@ public class GenericosSAP extends javax.swing.JFrame {
     public GenericosSAP(String cadenaBD) {
         this.cadenaBD = cadenaBD;
         initComponents();
-        definirModelosAdminUsrAdmin();
+        definirModelosAdminUsrGen();
     }
     
-    void definirModelosAdminUsrAdmin()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
+    void definirModelosAdminUsrGen()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
     {
         DefaultTableModel modeloBajasInt = new DefaultTableModel();             //Crea el objeto modelo de tabla
                                                                  //Inicializa la variable para el contador
@@ -54,65 +54,65 @@ public class GenericosSAP extends javax.swing.JFrame {
             conLocal.AbrirLocal(cadenaBD);
             
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            AdmUsrAdm = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.AdministraUsuariosAdmin());   //Ejecuta la consulta y almacena el resultado en la variable
+            AdmUsrGen = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.AdministraUsuariosGen());   //Ejecuta la consulta y almacena el resultado en la variable
         
             // Inserta el encabezado
             modeloBajasInt.addColumn("Permitir");                            
             modeloBajasInt.addColumn("Usuario");
             modeloBajasInt.addColumn("Nombre");
-            modeloBajasInt.addColumn("Apellido");
-            modeloBajasInt.addColumn("Rol");
-            modeloBajasInt.addColumn("Valor de autorización");
+            modeloBajasInt.addColumn("Grupo");
+            modeloBajasInt.addColumn("Válido de");
+            modeloBajasInt.addColumn("Validez a");
 
-            java.sql.ResultSetMetaData rsmd = AdmUsrAdm.getMetaData();
+            java.sql.ResultSetMetaData rsmd = AdmUsrGen.getMetaData();
             int colNo = rsmd.getColumnCount();
             Object[] objects = new Object[colNo];
             
-            while (AdmUsrAdm.next()){
+            while (AdmUsrGen.next()){
                 for(int k=1; k < (colNo + 1); k++){
                     if (k == 1){
-                        objects[k-1]= new Boolean(false);
+                        objects[k-1]= new Boolean(AdmUsrGen.getObject(k).toString());
                     }else{
-                        objects[k-1]=AdmUsrAdm.getObject(k);
+                        objects[k-1]=AdmUsrGen.getObject(k);
                     }
                 }
                 modeloBajasInt.addRow(objects);
             }
             
-            TablaAdminUsrAdmin.setModel(modeloBajasInt);
-            TablaAdminUsrAdmin.setAutoResizeMode(AUTO_RESIZE_OFF);  
+            TablaAdminUsrGen.setModel(modeloBajasInt);
+            TablaAdminUsrGen.setAutoResizeMode(AUTO_RESIZE_OFF);  
             
-            TableColumn CAgregar = TablaAdminUsrAdmin.getColumn("Permitir"); //Se llama a la columna
+            TableColumn CAgregar = TablaAdminUsrGen.getColumn("Permitir"); //Se llama a la columna
             CAgregar.setPreferredWidth(60);                                 //Se define su tamaño
-            TableColumn Usuario = TablaAdminUsrAdmin.getColumn("Usuario");  //Se llama a la columna
+            TableColumn Usuario = TablaAdminUsrGen.getColumn("Usuario");  //Se llama a la columna
             Usuario.setPreferredWidth(120);                                 //Se define su tamaño
-            TableColumn Nombre = TablaAdminUsrAdmin.getColumn("Nombre");    //Se llama a la columna
+            TableColumn Nombre = TablaAdminUsrGen.getColumn("Nombre");    //Se llama a la columna
             Nombre.setPreferredWidth(250);                                   //Se define su tamaño
-            TableColumn Apellido = TablaAdminUsrAdmin.getColumn("Apellido");//Se llama a la columna
+            TableColumn Apellido = TablaAdminUsrGen.getColumn("Grupo");//Se llama a la columna
             Apellido.setPreferredWidth(250);                                 //Se define su tamaño
-            TableColumn Rol = TablaAdminUsrAdmin.getColumn("Rol");          //Se llama a la columna
+            TableColumn Rol = TablaAdminUsrGen.getColumn("Válido de");          //Se llama a la columna
             Rol.setPreferredWidth(160);                                     //Se define su tamaño
-            TableColumn Valorauto = TablaAdminUsrAdmin.getColumn("Valor de autorización");        //Se llama a la columna
+            TableColumn Valorauto = TablaAdminUsrGen.getColumn("Validez a");        //Se llama a la columna
             Valorauto.setPreferredWidth(110);                                  //Se define su tamaño
             
             CheckBoxRenderer checkBoxRenderer = new CheckBoxRenderer();
             EachRowRenderer rowRenderer = new EachRowRenderer();
 
-            for(int s=0; s<TablaAdminUsrAdmin.getRowCount(); s++){                    
+            for(int s=0; s<TablaAdminUsrGen.getRowCount(); s++){                    
                 rowRenderer.add(s, checkBoxRenderer);    
             }
                 
             JCheckBox checkBox = new JCheckBox();
             checkBox.setHorizontalAlignment(JLabel.CENTER);
             DefaultCellEditor checkBoxEditor = new DefaultCellEditor(checkBox);
-            EachRowEditor rowEditor = new EachRowEditor(TablaAdminUsrAdmin);
+            EachRowEditor rowEditor = new EachRowEditor(TablaAdminUsrGen);
             
-            for(int a=0; a<TablaAdminUsrAdmin.getRowCount();a++){
+            for(int a=0; a<TablaAdminUsrGen.getRowCount();a++){
                 rowEditor.setEditorAt(a, checkBoxEditor);
             }
             
-            TablaAdminUsrAdmin.getColumn("Permitir").setCellRenderer(rowRenderer);
-            TablaAdminUsrAdmin.getColumn("Permitir").setCellEditor(rowEditor);            
+            TablaAdminUsrGen.getColumn("Permitir").setCellRenderer(rowRenderer);
+            TablaAdminUsrGen.getColumn("Permitir").setCellEditor(rowEditor);            
             
             conLocal.Cerrar();
         }
@@ -135,7 +135,7 @@ public class GenericosSAP extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaAdminUsrAdmin = new javax.swing.JTable();
+        TablaAdminUsrGen = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
@@ -160,7 +160,7 @@ public class GenericosSAP extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        TablaAdminUsrAdmin.setModel(new javax.swing.table.DefaultTableModel(
+        TablaAdminUsrGen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -171,7 +171,7 @@ public class GenericosSAP extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(TablaAdminUsrAdmin);
+        jScrollPane1.setViewportView(TablaAdminUsrGen);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -186,7 +186,7 @@ public class GenericosSAP extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Reportar usuarios administradores");
+        jButton1.setText("Actualizar permisos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -236,15 +236,15 @@ public class GenericosSAP extends javax.swing.JFrame {
         Conexion conLocal = new Conexion();     
         conLocal.AbrirLocal(cadenaBD);
         MonAD.ExecQuery EjecutaSAP = new MonAD.ExecQuery();
-        for(int s=0; s<TablaAdminUsrAdmin.getRowCount();s++){
-            if(TablaAdminUsrAdmin.getModel().getValueAt(s, 0).equals(true))
+        for(int s=0; s<TablaAdminUsrGen.getRowCount();s++){
+            if(TablaAdminUsrGen.getModel().getValueAt(s, 0).equals(true))
             {
-                preparaInstruccion.add("UPDATE `adminusradminsap` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrAdmin.getModel().getValueAt(s, 1) + "'");
+                preparaInstruccion.add("UPDATE `GENERICOSSAP` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrGen.getModel().getValueAt(s, 1) + "'");
             }
-            System.out.print("  Nombre: " + TablaAdminUsrAdmin.getModel().getValueAt(s, 1));
+            System.out.print("  Nombre: " + TablaAdminUsrGen.getModel().getValueAt(s, 1));
         }
         EjecutaSAP.Exect(conLocal.conexion, preparaInstruccion);
-        
+        definirModelosAdminUsrGen();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -284,7 +284,7 @@ public class GenericosSAP extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TablaAdminUsrAdmin;
+    private javax.swing.JTable TablaAdminUsrGen;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

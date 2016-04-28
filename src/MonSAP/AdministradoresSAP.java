@@ -71,7 +71,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
             while (AdmUsrAdm.next()){
                 for(int k=1; k < (colNo + 1); k++){
                     if (k == 1){
-                        objects[k-1]= new Boolean(false);
+                        objects[k-1]= new Boolean(AdmUsrAdm.getObject(k).toString());
                     }else{
                         objects[k-1]=AdmUsrAdm.getObject(k);
                     }
@@ -186,7 +186,7 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Reportar usuarios administradores");
+        jButton1.setText("Actualizar permisos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -241,10 +241,10 @@ public class AdministradoresSAP extends javax.swing.JFrame {
             {
                 preparaInstruccion.add("UPDATE `adminusradminsap` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrAdmin.getModel().getValueAt(s, 1) + "'");
             }
-            System.out.print("  Nombre: " + TablaAdminUsrAdmin.getModel().getValueAt(s, 1));
+            
         }
         EjecutaSAP.Exect(conLocal.conexion, preparaInstruccion);
-        
+        definirModelosAdminUsrAdmin();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -252,7 +252,13 @@ public class Querys
     
     public static String AdministraUsuariosAdmin()               //OBTIENE EL RESULTADO DE LOS USUARIOS ADMINISTRADORES QUE FUERON PERMITIDOS A PESAR DE NO ESTAR PRESENTES EN NÓMINA DE USUARIOS INTERNOS O EXTERNOS
     {
-        String statement = "select PERMITIDO, USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION  from AdminUsrAdminSAP";
+        String statement = "select PERMITIDO, USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION  from ADMINUSRADMINSAP order by PERMITIDO DESC";
+        return statement;
+    }
+    
+    public static String AdministraUsuariosGen()               //OBTIENE EL RESULTADO DE LOS USUARIOS ADMINISTRADORES QUE FUERON PERMITIDOS A PESAR DE NO ESTAR PRESENTES EN NÓMINA DE USUARIOS INTERNOS O EXTERNOS
+    {
+        String statement = "select PERMITIDO, USUARIO, NOMBRE_COMPLETO, GRUPO, VALIDO_DE, VALIDEZ_A  from GENERICOSSAP order by PERMITIDO DESC";
         return statement;
     }
     
@@ -314,6 +320,14 @@ public class Querys
         String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion,"
                 + " Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS" 
                 + " from inactividadextsap";
+        return statement;
+    } 
+    
+    public static String ResultadosSinValidezSAP()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS INACTIVOS
+    {
+        String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion,"
+                + " Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS" 
+                + " from sinexpiracionsap";
         return statement;
     } 
     

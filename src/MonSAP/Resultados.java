@@ -23,7 +23,7 @@ import javax.swing.text.TableView.TableRow;
  */
 public class Resultados extends javax.swing.JFrame {
     String cadenaBD;
-    ResultSet bajasIntSAP, bajasExtSAP, usrInt, usrExt, inactInt, inactExt, dupInt, dupExt, perfilInt, perfilExt, noAutoInt, noAutoExt, agreg, elim, Uint, Uext, Ugen;       //Almacenan los resultados de cada consulta
+    ResultSet bajasIntSAP, bajasExtSAP, usrInt, usrExt, inactInt, inactExt, dupInt, dupExt, perfilInt, perfilExt, noAutoInt, noAutoExt, agreg, elim, Uint, Uext, Ugen, sinValidez;       //Almacenan los resultados de cada consulta
   
     
     public Resultados(String cadena) {                                          //Inicializa la ventana y ejecuta los métodos para que se visualicen las tablas de resultados
@@ -43,7 +43,7 @@ public class Resultados extends javax.swing.JFrame {
 //        definirModelosNoAutorizadoExt();                                        //Define el modelo de la tabla de inconsistencias de usuarios externos no autorizados
         definirModelosAgregados();                                              //Define el modelo de la tabla de usuarios agregados
         definirModelosEliminados();                                             //Define el modelo de la tabla de usuarios eliminados
-    
+        definirModelosSinValidez();
     }
     
     void definirModelosBajasIntSAP()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
@@ -498,38 +498,38 @@ public class Resultados extends javax.swing.JFrame {
                     }
                     modeloUsuarioIncInt.addRow(registro);                       //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
                 }
-                tablaUsrInt.setModel(modeloUsuarioIncInt);                      //Una vez construida completamente la tabla se define el modelo a la tabla original
-                tablaUsrInt.setAutoResizeMode(AUTO_RESIZE_OFF);                 //Se desabilita el ajuste automatico de ancho de columnas para establecerlo manualmente
-                tablaUsrInt.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());    //Se hace uso de editor y renderizador de columnas
-                tablaUsrInt.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
+                tablaUsrSinVal.setModel(modeloUsuarioIncInt);                      //Una vez construida completamente la tabla se define el modelo a la tabla original
+                tablaUsrSinVal.setAutoResizeMode(AUTO_RESIZE_OFF);                 //Se desabilita el ajuste automatico de ancho de columnas para establecerlo manualmente
+                tablaUsrSinVal.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());    //Se hace uso de editor y renderizador de columnas
+                tablaUsrSinVal.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
 
-                TableColumn CAgregar = tablaUsrInt.getColumn("Agregar");        //Se llama a la columna
+                TableColumn CAgregar = tablaUsrSinVal.getColumn("Agregar");        //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CNumEmp = tablaUsrInt.getColumn("Número de empleado");  //Se llama a la columna
+                TableColumn CNumEmp = tablaUsrSinVal.getColumn("Número de empleado");  //Se llama a la columna
                 CNumEmp.setPreferredWidth(140);                                 //Se define su tamaño
-                TableColumn CUserID = tablaUsrInt.getColumn("User ID");         //Se llama a la columna
+                TableColumn CUserID = tablaUsrSinVal.getColumn("User ID");         //Se llama a la columna
                 CUserID.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CNombre = tablaUsrInt.getColumn("Nombre");          //Se llama a la columna
+                TableColumn CNombre = tablaUsrSinVal.getColumn("Nombre");          //Se llama a la columna
                 CNombre.setPreferredWidth(360);                                 //Se define su tamaño
-                TableColumn CFecha = tablaUsrInt.getColumn("Fecha de último acceso");   //Se llama a la columna
+                TableColumn CFecha = tablaUsrSinVal.getColumn("Fecha de último acceso");   //Se llama a la columna
                 CFecha.setPreferredWidth(160);                                  //Se define su tamaño
-                TableColumn CRegion = tablaUsrInt.getColumn("Región");          //Se llama a la columna
+                TableColumn CRegion = tablaUsrSinVal.getColumn("Región");          //Se llama a la columna
                 CRegion.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CIP = tablaUsrInt.getColumn("IP");                  //Se llama a la columna
+                TableColumn CIP = tablaUsrSinVal.getColumn("IP");                  //Se llama a la columna
                 CIP.setPreferredWidth(120);                                     //Se define su tamaño
-                TableColumn CIDPerfil = tablaUsrInt.getColumn("ID perfil");     //Se llama a la columna
+                TableColumn CIDPerfil = tablaUsrSinVal.getColumn("ID perfil");     //Se llama a la columna
                 CIDPerfil.setPreferredWidth(85);                                //Se define su tamaño
-                TableColumn CPerfil = tablaUsrInt.getColumn("Perfil");          //Se llama a la columna
+                TableColumn CPerfil = tablaUsrSinVal.getColumn("Perfil");          //Se llama a la columna
                 CPerfil.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CIDNUM = tablaUsrInt.getColumn("ID Número de empleado");    //Se llama a la columna
+                TableColumn CIDNUM = tablaUsrSinVal.getColumn("ID Número de empleado");    //Se llama a la columna
                 CIDNUM.setPreferredWidth(140);                                  //Se define su tamaño
-                TableColumn CUSEROK = tablaUsrInt.getColumn("User ID correcto");    //Se llama a la columna
+                TableColumn CUSEROK = tablaUsrSinVal.getColumn("User ID correcto");    //Se llama a la columna
                 CUSEROK.setPreferredWidth(90);                                  //Se define su tamaño
-                TableColumn CPUESTO = tablaUsrInt.getColumn("Puesto");          //Se llama a la columna
+                TableColumn CPUESTO = tablaUsrSinVal.getColumn("Puesto");          //Se llama a la columna
                 CPUESTO.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CGERENCIA = tablaUsrInt.getColumn("Gerencia");      //Se llama a la columna
+                TableColumn CGERENCIA = tablaUsrSinVal.getColumn("Gerencia");      //Se llama a la columna
                 CGERENCIA.setPreferredWidth(400);                               //Se define su tamaño
-                TableColumn CIDNOMBRE = tablaUsrInt.getColumn("ID Nombre");     //Se llama a la columna
+                TableColumn CIDNOMBRE = tablaUsrSinVal.getColumn("ID Nombre");     //Se llama a la columna
                 CIDNOMBRE.setPreferredWidth(360);                               //Se define su tamaño
                 
                 
@@ -538,7 +538,7 @@ public class Resultados extends javax.swing.JFrame {
             else
             {
                 modeloUsuarioIncInt.addColumn("No se encontraron inconsistencias");
-                tablaUsrInt.setModel(modeloUsuarioIncInt);
+                tablaUsrSinVal.setModel(modeloUsuarioIncInt);
             }
             conLocal.Cerrar();
 
@@ -1426,6 +1426,103 @@ public class Resultados extends javax.swing.JFrame {
     
     
     
+    void definirModelosSinValidez()                                         //Crea el modelo para la tabla de inconsistencias para los usuarios externos inactivos
+    {
+        
+        DefaultTableModel modeloSinValidez = new DefaultTableModel();       //Define el objeto modelo de tabla
+        Object[] registro = new Object[15];                                     //Crea un arreglo para recibir los elementos de cada renglon
+        
+        
+        try
+        {
+            Conexion conLocal = new Conexion();                                 //Crea la conexión para la consulta
+            conLocal.AbrirLocal(cadenaBD);
+            ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
+            sinValidez = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosSinValidezSAP()); //Ejecuta la consulta y almacena el resultado en bajasExt
+            if(sinValidez.next())                                                 //Valida que no se encuentre vacío el resutado de la consulta
+            {
+               
+                sinValidez.beforeFirst();                                         //Regresa a la posición inicial del resultado
+                modeloSinValidez.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
+                modeloSinValidez.addColumn("Num Emp");
+                modeloSinValidez.addColumn("Nombre");
+                modeloSinValidez.addColumn("Perfil");
+                modeloSinValidez.addColumn("Puesto");
+                modeloSinValidez.addColumn("Creado el");
+                modeloSinValidez.addColumn("Último acceso");
+                
+                modeloSinValidez.addColumn("NUMEROEMPLEADO");
+                modeloSinValidez.addColumn("USERID");  
+                modeloSinValidez.addColumn("NOMBRE");
+                modeloSinValidez.addColumn("PUESTO");
+                modeloSinValidez.addColumn("GERENCIA");
+                modeloSinValidez.addColumn("ESTATUS");
+                
+                                                         
+                while(sinValidez.next())                                          //Lee cada registro hasta que ya no haya más
+                {
+                    for(int k=1; k<14; k++)                                     //Recorre los elementos del registro para obtener cada dato de las columnas
+                    {
+                        if(k==1)
+                        {
+                            registro[k-1]=Boolean.TRUE;                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
+                        }
+                        else
+                        {
+                            registro[k-1]=sinValidez.getString(k-1);
+                        }
+                    }
+                    modeloSinValidez.addRow(registro);                      //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
+                }
+                tablaUsrSinVal.setModel(modeloSinValidez);                    //Una vez construida completamente la tabla se define el modelo a la tabla original
+                tablaUsrSinVal.setAutoResizeMode(AUTO_RESIZE_OFF);                //Se desabilita el ajuste automatico de ancho de columnas para establecerlo manualmente
+                tablaUsrSinVal.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());   //Se hace uso de editor y renderizador de columnas
+                tablaUsrSinVal.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
+
+                 TableColumn CAgregar = tablaUsrSinVal.getColumn("Agregar");       //Se llama a la columna
+                CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
+                TableColumn CNumEmp = tablaUsrSinVal.getColumn("Num Emp"); //Se llama a la columna
+                CNumEmp.setPreferredWidth(140);                                 //Se define su tamaño
+                TableColumn CNombre = tablaUsrSinVal.getColumn("Nombre");        //Se llama a la columna
+                CNombre.setPreferredWidth(310);                                  //Se define su tamaño
+                TableColumn CPerfil = tablaUsrSinVal.getColumn("Perfil");       //Se llama a la columna
+                CPerfil.setPreferredWidth(150);                                  //Se define su tamaño
+                TableColumn CPuesto = tablaUsrSinVal.getColumn("Puesto");        //Se llama a la columna
+                CPuesto.setPreferredWidth(300);                                 //Se define su tamaño            
+                TableColumn CCreado = tablaUsrSinVal.getColumn("Creado el");        //Se llama a la columna
+                CCreado.setPreferredWidth(90);                                 //Se define su tamaño
+                TableColumn CUltimoa = tablaUsrSinVal.getColumn("Último acceso");  //Se llama a la columna
+                CUltimoa.setPreferredWidth(90);                              //Se define su tamaño
+                
+                TableColumn CNumemp = tablaUsrSinVal.getColumn("NUMEROEMPLEADO");    //Se llama a la columna
+                CNumemp.setPreferredWidth(110);                              //Se define su tamaño                                                                         
+                TableColumn CUserid = tablaUsrSinVal.getColumn("USERID");       //Se llama a la columna
+                CUserid.setPreferredWidth(110);                                 //Se define su tamaño
+                TableColumn CNombren = tablaUsrSinVal.getColumn("NOMBRE");   //Se llama a la columna
+                CNombren.setPreferredWidth(330);                           //Se define su tamaño
+                TableColumn CPueston = tablaUsrSinVal.getColumn("PUESTO");   //Se llama a la columna
+                CPueston.setPreferredWidth(300);                           //Se define su tamaño
+                TableColumn CGerencia = tablaUsrSinVal.getColumn("GERENCIA");   //Se llama a la columna
+                CGerencia.setPreferredWidth(250);                           //Se define su tamaño
+                TableColumn CEstatus = tablaUsrSinVal.getColumn("ESTATUS");   //Se llama a la columna
+                CEstatus.setPreferredWidth(150);                                //Se define su tamaño
+            }
+            else
+            {
+                modeloSinValidez.addColumn("No se encontraron inconsistencias");
+                tablaUsrSinVal.setModel(modeloSinValidez);
+            }
+            conLocal.Cerrar();
+
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }  
+        
+        
+    }
+    
     
   
     @SuppressWarnings("unchecked")
@@ -1463,7 +1560,7 @@ public class Resultados extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tablaUsrInt = new javax.swing.JTable();
+        tablaUsrSinVal = new javax.swing.JTable();
         jPanel15 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -1792,7 +1889,7 @@ public class Resultados extends javax.swing.JFrame {
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        tablaUsrInt.setModel(new javax.swing.table.DefaultTableModel(
+        tablaUsrSinVal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -1803,7 +1900,7 @@ public class Resultados extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane5.setViewportView(tablaUsrInt);
+        jScrollPane5.setViewportView(tablaUsrSinVal);
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -2572,6 +2669,6 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JTable tablaPerfilInt;
     private javax.swing.JTable tablaUsrExt;
     private javax.swing.JTable tablaUsrGen;
-    private javax.swing.JTable tablaUsrInt;
+    private javax.swing.JTable tablaUsrSinVal;
     // End of variables declaration//GEN-END:variables
 }

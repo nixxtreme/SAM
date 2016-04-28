@@ -525,6 +525,12 @@ public class Tablas
         return tabla; 
     }
     
+    public static String GenPermitido()
+    {
+        String tabla = "ALTER TABLE GENERICOSSAP ADD COLUMN PERMITIDO BOOLEAN NOT NULL DEFAULT FALSE";
+        return tabla;
+    }
+    
     
                 //**************Inactividad****************
    
