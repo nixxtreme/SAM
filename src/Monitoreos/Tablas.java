@@ -359,9 +359,9 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "INSERT IGNORE INTO AdminUsrAdminGenSAP Usuario, nombre, apellido, rol, valor_autorizacion values (SELECT * FROM usradmin" + parametros[4] + " where usuario not in "
+        statement = "INSERT IGNORE INTO AdminUsrAdminGenSAP (Usuario, nombre, apellido, rol, valor_autorizacion) SELECT * FROM usradmin" + parametros[4] +  " where usuario not in "
                 + "(select numeroempleado as usuario from idint" + parametros[4] + ") and usuario not in (select NUMEROEMPLEADO as usuario2 from "
-                + "idext" + parametros[4] + "))";
+                + "idext" + parametros[4] + ")";
         return statement;
     }
     
