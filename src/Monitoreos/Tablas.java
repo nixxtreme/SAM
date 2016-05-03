@@ -359,12 +359,20 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists AdminUsrAdminSAP SELECT * FROM usradmin" + parametros[4] + " where usuario not in "
+        statement = "INSERT IGNORE INTO AdminUsrAdminSAP SELECT * FROM usradmin" + parametros[4] + " where usuario not in "
                 + "(select numeroempleado as usuario from idint" + parametros[4] + ") and usuario not in (select NUMEROEMPLEADO as usuario2 from "
                 + "idext" + parametros[4] + ")";
         return statement;
-    }                                
-   
+    }                             
+    
+    public static String EliminaAdminUsrAdmin(String cadenaBD)
+    {
+        String statement = null;
+        statement = "DELETE FROM AdminUsrAdminSAP WHERE Usuario NOT IN (SELECT Usuario FROM GenericosSAP)";
+        return statement;
+    }
+    
+    
     
     public static String TablaTransfer(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
     {
@@ -385,11 +393,20 @@ public class Tablas
     }
     
     
-   public static String TablaGenSAP()                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    public static String TablaGenSAP()                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
     {
         String statement = null;
         statement = "CREATE TABLE IF NOT EXISTS GenericosSAP (Usuario VARCHAR(25) NOT NULL, Nombre_Completo VARCHAR(255), Grupo VARCHAR(45), Valido_de DATE , "
-                + "Validez_a DATE, PRIMARY KEY (USUARIO)";
+                + "Validez_a DATE, PRIMARY KEY (USUARIO))";
+        return statement;
+        
+    }
+    
+    public static String TablaAdmGenSAP()                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;
+        statement = "CREATE TABLE IF NOT EXISTS AdminGenericosSAP (Usuario VARCHAR(25) NOT NULL, Nombre_Completo VARCHAR(255), Grupo VARCHAR(45), Valido_de DATE , "
+                + "Validez_a DATE, PERMITIDO BOOLEAN default 0, PRIMARY KEY (USUARIO))";
         return statement;
         
     }
@@ -398,7 +415,8 @@ public class Tablas
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "create table if not exists GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4] 
+        statement = "INSERT IGNORE INTO GenericosSAP (Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a) "
+                + "SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4] 
                 + " WHERE usuario LIKE '%A%' "
                 + "OR usuario LIKE '%B%' "
                 + "OR usuario LIKE '%C%' "
@@ -428,6 +446,32 @@ public class Tablas
                 + "OR usuario LIKE '%Z%' ";
         return statement;
     }
+    
+    public static String InsertaAdmGenSAP()                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;        
+        statement = "INSERT IGNORE INTO AdminGenericosSAP (Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a) "
+                + "SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM GenericosSAP";
+        return statement;
+    }
+    
+    public static String EliminaAdmGenSAP()                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;
+        statement = "DELETE FROM AdminGenericosSAP WHERE Usuario NOT IN (SELECT Usuario FROM GenericosSAP)";
+        return statement;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public static String TablaIntSAP(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
     {
@@ -542,7 +586,8 @@ public class Tablas
     public static String GenExt(String cadenaBD)                          //AGREGA OTRA TABLA USUARIOS PARA LA MANIPULACION DE LOS REGISTROS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String tabla = "INSERT IGNORE INTO GenericosSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM ExternosSAP"
+        String tabla = "INSERT IGNORE INTO GenericosSAP (Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a) "
+                + "SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM ExternosSAP"
                 + " WHERE usuario LIKE '%A%' OR usuario LIKE '%B%' "
                 + "OR usuario LIKE '%C%' "
                 + "OR usuario LIKE '%D%' "
@@ -570,11 +615,7 @@ public class Tablas
         return tabla; 
     }
     
-    public static String GenPermitido()
-    {
-        String tabla = "ALTER TABLE GENERICOSSAP ADD COLUMN PERMITIDO BOOLEAN NOT NULL DEFAULT FALSE";
-        return tabla;
-    }
+    
     
     
                 //**************Inactividad****************

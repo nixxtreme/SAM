@@ -239,7 +239,7 @@ public class GenericosSAP extends javax.swing.JFrame {
         for(int s=0; s<TablaAdminUsrGen.getRowCount();s++){
             if(TablaAdminUsrGen.getModel().getValueAt(s, 0).equals(true))
             {
-                preparaInstruccion.add("UPDATE `GENERICOSSAP` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrGen.getModel().getValueAt(s, 1) + "'");
+                preparaInstruccion.add("UPDATE `ADMINGENERICOSSAP` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrGen.getModel().getValueAt(s, 1) + "'");
             }
             System.out.print("  Nombre: " + TablaAdminUsrGen.getModel().getValueAt(s, 1));
         }

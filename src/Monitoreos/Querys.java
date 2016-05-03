@@ -258,7 +258,7 @@ public class Querys
     
     public static String AdministraUsuariosGen()               //OBTIENE EL RESULTADO DE LOS USUARIOS ADMINISTRADORES QUE FUERON PERMITIDOS A PESAR DE NO ESTAR PRESENTES EN NÓMINA DE USUARIOS INTERNOS O EXTERNOS
     {
-        String statement = "select PERMITIDO, USUARIO, NOMBRE_COMPLETO, GRUPO, VALIDO_DE, VALIDEZ_A  from GENERICOSSAP order by PERMITIDO DESC";
+        String statement = "select PERMITIDO, USUARIO, NOMBRE_COMPLETO, GRUPO, VALIDO_DE, VALIDEZ_A  from ADMINGENERICOSSAP order by PERMITIDO DESC";
         return statement;
     }
     
@@ -410,6 +410,12 @@ public class Querys
         return statement;
     }
     
+    public static String ResultadosAdmin()                             //OBTIENE EL RESULTADO DE LOS USUARIOS AGREGADOS 
+    {
+        String statement = "select Usuario, Nombre, Apellido, Rol, Valor_autorizacion from adminusradminsap WHERE PERMITIDO = 0";
+        return statement;
+    }
+    
     public static String ResultadosElim()                             //OBTIENE EL RESULTADO DE LOS USUARIOS AGREGADOS 
     {
         String statement = "select USUARIO, NOMBRE, APELLIDO, ROL, VALOR_AUTORIZACION from eliminados";
@@ -512,7 +518,7 @@ public class Querys
     
     public static String ResultadosUsrGen()                             //OBTIENE EL RESULTADO DE LOS USUARIOS GENERICOS 
     {
-        String statement = "select Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM GenericosSAP";
+        String statement = "select Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM AdminGenericosSAP where PERMITIDO = 0";
         return statement;
     }
     

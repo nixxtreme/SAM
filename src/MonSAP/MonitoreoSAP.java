@@ -594,6 +594,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
         jLabel35.setText("Archivos identidad");
 
+        jTextField31.setText("05042016");
         jTextField31.setToolTipText("Ingrese aquí la fecha del monitoreo con formato ddmmaaaa. Una vez cargados los archivos con la fecha quedarán almacenados de manera definitiva en el sistema.");
         jTextField31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -603,6 +604,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
         jLabel36.setText("Archivos identidad anterior");
 
+        jTextField32.setText("05042016");
         jTextField32.setToolTipText("Ingrese aquí la fecha del monitoreo con formato ddmmaaaa. Una vez cargados los archivos con la fecha quedarán almacenados de manera definitiva en el sistema.");
         jTextField32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1109,7 +1111,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
               
               PreparaTablas.add(Monitoreos.Tablas.BorraExternosTrabajoSAP());
-//              PreparaTablas.add(Monitoreos.Tablas.BorraGenericosTrabajoSAP());
+              PreparaTablas.add(Monitoreos.Tablas.BorraGenericosTrabajoSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraInternosTrabajoSAP());            //Esta sección borra todas las tablas temporales que se crearon durante la ejecución anterior del programa
               PreparaTablas.add(Monitoreos.Tablas.BorraUsrAdminAgregados());
               PreparaTablas.add(Monitoreos.Tablas.BorraUsrAdminEliminados());
@@ -1136,19 +1138,22 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             
             PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));  //crea la tabla de usuariosSAP de la tabla Usuarios2 para su manipulacion
            
-            //Identificacion de transfer en genericos
             PreparaTablas.add(Monitoreos.Tablas.TablaTransfer(cadenaBD)); 
             PreparaTablas.add(Monitoreos.Querys.BorrarTransferTablaSAP(cadenaBD));
             
             PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));         //Crea la tabla de usuarios externos                         
             PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));//borra los registros de esternos de la tabla
             
-            PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));           //crear tabla gen sap
+            PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP());           //crear tabla gen sap
+            PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));
             PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));//borrar los registros genericos sap de la tabla
         
             PreparaTablas.add(Monitoreos.Tablas.GenExt(cadenaBD));              //insertar genericos de TablaEXT a TablaGen
-            PreparaTablas.add(Monitoreos.Querys.BorrarGenExt(cadenaBD));        //eliminar genericos en tabla EXTERNOS
-            PreparaTablas.add(Monitoreos.Tablas.GenPermitido());
+            PreparaTablas.add(Monitoreos.Querys.BorrarGenExt(cadenaBD));        //eliminar genericos en tabla EXTERNOS            
+            PreparaTablas.add(Monitoreos.Tablas.TablaAdmGenSAP());
+            PreparaTablas.add(Monitoreos.Tablas.InsertaAdmGenSAP());
+            PreparaTablas.add(Monitoreos.Tablas.EliminaAdmGenSAP());
+            
             PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));          //Crea la tabla de usuarios internos
             
 
