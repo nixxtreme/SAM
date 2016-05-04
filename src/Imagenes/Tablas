@@ -1,0 +1,7 @@
+create table AdminUsrAdminGenSAP (Usuario varchar(45), nombre varchar(255), apellido varchar(255),
+rol varchar(45), valor_autorizacion varchar(45), permitido boolean default 0, ennomina boolean, fueranomina boolean,
+primary key(Usuario));
+
+create table AdminUsrAdminSAP (Usuario varchar(45), nombre varchar(255), apellido varchar(255),
+rol varchar(45), valor_autorizacion varchar(45), permitido boolean default 0, 
+primary key(Usuario));
