@@ -355,13 +355,25 @@ public class Tablas
         return statement;
     }
     
+    public static String TablaAdminUsrAdminGen(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;
+        String[] parametros = cadenaBD.split("\\|");
+        statement = "INSERT IGNORE INTO AdminUsrAdminGenSAP Usuario, nombre, apellido, rol, valor_autorizacion values (SELECT * FROM usradmin" + parametros[4] + " where usuario not in "
+                + "(select numeroempleado as usuario from idint" + parametros[4] + ") and usuario not in (select NUMEROEMPLEADO as usuario2 from "
+                + "idext" + parametros[4] + "))";
+        return statement;
+    }
+    
     public static String TablaAdminUsrAdmin(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
     {
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
-        statement = "INSERT IGNORE INTO AdminUsrAdminSAP SELECT * FROM usradmin" + parametros[4];
+        statement = "INSERT IGNORE INTO AdminUsrAdminSAP SELECT * FROM usradmin" + parametros[4] + " where usuario in "
+                + "(select numeroempleado as usuario from idint" + parametros[4] + ") or usuario in (select NUMEROEMPLEADO as usuario2 from "
+                + "idext" + parametros[4] + ")";
         return statement;
-    }                             
+    }
     
     public static String EliminaAdminUsrAdmin(String cadenaBD)
     {
