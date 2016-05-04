@@ -1217,6 +1217,15 @@ public class Archivos
             Apellido = Apellido.trim();
             Grupo = Grupo.trim();
             Rol = Rol.trim();
+            if(Rol.contains("MX_TRX_"))
+            {
+                Rol = Rol.substring(7);
+            }
+            if(Rol.length()>6)
+            {
+                Rol = Rol.substring(0, 6);
+            }
+            System.out.println(Rol);
             Descripcion_Rol = Descripcion_Rol.trim();
             Fecha_inicio = Fecha_inicio.trim();
             Fecha_fin = Fecha_fin.trim();
