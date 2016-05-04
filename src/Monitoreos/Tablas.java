@@ -1492,7 +1492,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "create table if not exists PerfilesIntSAP select  "
-                + "FROM " + parametros[4] + " WHERE Gerencia LIKE '%SAP%' ";
+                + "FROM cruceintsap" + parametros[4] + " WHERE idpuesto != rol ";
         return statement;
     } 
     
