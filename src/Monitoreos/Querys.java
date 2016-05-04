@@ -412,7 +412,9 @@ public class Querys
     
     public static String ResultadosAdmin()                             //OBTIENE EL RESULTADO DE LOS USUARIOS AGREGADOS 
     {
-        String statement = "select Usuario, Nombre, Apellido, Rol, Valor_autorizacion from adminusradminsap WHERE PERMITIDO = 0";
+        String statement = "select Usuario, Nombre, Apellido, Rol, Valor_autorizacion from adminusradminsap WHERE PERMITIDO = 0 "
+                + "union "
+                + "select Usuario, Nombre, Apellido, Rol, Valor_autorizacion from adminusradmingensap WHERE PERMITIDO = 0 ";
         return statement;
     }
     

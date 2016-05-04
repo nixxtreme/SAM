@@ -594,7 +594,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
         jLabel35.setText("Archivos identidad");
 
-        jTextField31.setText("05042016");
+        jTextField31.setText("05052016");
         jTextField31.setToolTipText("Ingrese aquí la fecha del monitoreo con formato ddmmaaaa. Una vez cargados los archivos con la fecha quedarán almacenados de manera definitiva en el sistema.");
         jTextField31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1135,6 +1135,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          //crea la tabla de usuarios administradores agregados
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));              //crea la tabla de usuarios administradores eliminados           
             PreparaTablas.add(Monitoreos.Tablas.TablaAdminUsrAdmin(cadenaBD));              
+            PreparaTablas.add(Monitoreos.Tablas.TablaAdminUsrAdminGen(cadenaBD));              
             
             PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));  //crea la tabla de usuariosSAP de la tabla Usuarios2 para su manipulacion
            
