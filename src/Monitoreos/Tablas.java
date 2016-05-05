@@ -1491,7 +1491,7 @@ public class Tablas
     public static String CreaPerfilesIntSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statement = "create table if not exists PerfilesIntSAP select  "
+        String statement = "create table if not exists PerfilesIntSAP select * "
                 + "FROM cruceintsap" + parametros[4] + " WHERE idpuesto != rol ";
         return statement;
     } 

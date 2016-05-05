@@ -23,7 +23,7 @@ import javax.swing.text.TableView.TableRow;
  */
 public class Resultados extends javax.swing.JFrame {
     String cadenaBD;
-    ResultSet bajasIntSAP, bajasExtSAP, usrInt, usrExt, inactInt, inactExt, dupInt, dupExt, perfilInt, perfilExt, noAutoInt, noAutoExt, agreg, elim, Uint, Uext, Ugen, usrgen, sinValidez, usradm;       //Almacenan los resultados de cada consulta
+    ResultSet bajasIntSAP, bajasExtSAP, usrInt, usrExt, inactInt, inactExt, dupInt, dupExt, perfilInt, perfilInc, perfilExt, noAutoInt, noAutoExt, agreg, elim, Uint, Uext, Ugen, usrgen, sinValidez, usradm;       //Almacenan los resultados de cada consulta
   
     
     public Resultados(String cadena) {                                          //Inicializa la ventana y ejecuta los métodos para que se visualicen las tablas de resultados
@@ -46,6 +46,7 @@ public class Resultados extends javax.swing.JFrame {
         definirModelosSinValidez();
         definirModelosAdministradores();
         definirModelosGenericos();
+        definirModelosPerfilIncorrectoSAP();  
     }
     
     void definirModelosBajasIntSAP()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
@@ -1672,6 +1673,107 @@ public class Resultados extends javax.swing.JFrame {
     }
     
     
+    void definirModelosPerfilIncorrectoSAP()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
+    {
+        DefaultTableModel modeloPerfilIncorrecto = new DefaultTableModel();             //Crea el objeto modelo de tabla
+        
+        
+        
+        Object[] registro = new Object[18];                                     //Crea un arreglo para recibir los elementos de cada renglon
+        int i = 0;                                                              //Inicializa la variable para el contador
+        try
+        {
+            Conexion conLocal = new Conexion();                                 //Inicia la conexión local
+            conLocal.AbrirLocal(cadenaBD);
+            ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
+            perfilInc = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosPerfilIncorrectoInt());   //Ejecuta la consulta y almacena el resultado en la variable
+            
+            if(perfilInc.next())                                                 //Verifica que el resultado no esté vacío
+            {
+                modeloPerfilIncorrecto.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
+                modeloPerfilIncorrecto.addColumn("NUM EMP");
+                modeloPerfilIncorrecto.addColumn("NOMBRE");                
+                modeloPerfilIncorrecto.addColumn("VÁLIDO DE");
+                modeloPerfilIncorrecto.addColumn("FIN VALIDEZ");
+                modeloPerfilIncorrecto.addColumn("PUESTO");
+                modeloPerfilIncorrecto.addColumn("CLAVE DE PUESTO");
+                modeloPerfilIncorrecto.addColumn("ID CLAVE DE PUESTO");
+                modeloPerfilIncorrecto.addColumn("ID PUESTO");                
+                modeloPerfilIncorrecto.addColumn("NUMEROEMPLEADO");
+                modeloPerfilIncorrecto.addColumn("USERID");  
+                modeloPerfilIncorrecto.addColumn("ID NOMBRE");
+                modeloPerfilIncorrecto.addColumn("GERENCIA");
+                modeloPerfilIncorrecto.addColumn("ESTATUS");
+               
+                perfilInc.beforeFirst();                                         //Regresa a la posición inicial del resultado
+                while(perfilInc.next())                                          //Lee cada registro hasta que ya no haya más
+                {
+                    for(int k=1; k<14; k++)                                     
+                    {
+                        if(k==1)                                                
+                        {
+                            registro[k-1]=Boolean.TRUE;                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
+                        }
+                        else
+                        {
+                            registro[k-1]=perfilInc.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas                         
+                        }
+                    }
+                    
+                    modeloPerfilIncorrecto.addRow(registro);                            //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
+                }
+
+                tablaPerfilInt.setModel(modeloPerfilIncorrecto);                         //Una vez construida completamente la tabla se define el modelo a la tabla original
+                tablaPerfilInt.setAutoResizeMode(AUTO_RESIZE_OFF);               //Se desabilita el ajuste automatico de ancho de columnas para establecerlo manualmente
+                tablaPerfilInt.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());  //Se hace uso de editor y renderizador de columnas
+                tablaPerfilInt.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
+
+                TableColumn CAgregar = tablaPerfilInt.getColumn("Agregar");      //Se llama a la columna
+                CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
+                TableColumn CUsuario = tablaPerfilInt.getColumn("NUM EMP");    //Se llama a la columna
+                CUsuario.setPreferredWidth(110);                                 //Se define su tamaño
+                TableColumn CNombre = tablaPerfilInt.getColumn("NOMBRE");       //Se llama a la columna
+                CNombre.setPreferredWidth(320);                                  //Se define su tamaño
+                TableColumn CPerfil = tablaPerfilInt.getColumn("VÁLIDO DE");       //Se llama a la columna
+                CPerfil.setPreferredWidth(150);                                  //Se define su tamaño
+                TableColumn CPuesto = tablaPerfilInt.getColumn("FIN VALIDEZ");        //Se llama a la columna
+                CPuesto.setPreferredWidth(150);                                 //Se define su tamaño            
+                TableColumn CCreado = tablaPerfilInt.getColumn("PUESTO");        //Se llama a la columna
+                CCreado.setPreferredWidth(440);                                 //Se define su tamaño
+                TableColumn CValido = tablaPerfilInt.getColumn("CLAVE DE PUESTO");        //Se llama a la columna
+                CValido.setPreferredWidth(110);                                 //Se define su tamaño
+                TableColumn CFinV = tablaPerfilInt.getColumn("ID CLAVE DE PUESTO"); //Se llama a la columna
+                CFinV.setPreferredWidth(150);                                  //Se define su tamaño
+                TableColumn CUltimoa = tablaPerfilInt.getColumn("ID PUESTO");  //Se llama a la columna
+                CUltimoa.setPreferredWidth(440);                              //Se define su tamaño                
+                TableColumn CNumemp = tablaPerfilInt.getColumn("NUMEROEMPLEADO");    //Se llama a la columna
+                CNumemp.setPreferredWidth(150);                              //Se define su tamaño                                                                         
+                TableColumn CUserid = tablaPerfilInt.getColumn("USERID");       //Se llama a la columna
+                CUserid.setPreferredWidth(100);                                 //Se define su tamaño
+                TableColumn CNombren = tablaPerfilInt.getColumn("ID NOMBRE");   //Se llama a la columna
+                CNombren.setPreferredWidth(300);                           //Se define su tamaño
+                TableColumn CGerencia = tablaPerfilInt.getColumn("GERENCIA");   //Se llama a la columna
+                CGerencia.setPreferredWidth(350);                           //Se define su tamaño
+                TableColumn CEstatus = tablaPerfilInt.getColumn("ESTATUS");   //Se llama a la columna
+                CEstatus.setPreferredWidth(150);                           //Se define su tamaño
+                
+                
+            }
+            else                                                                //Si el resultado se encontraba vacío
+            {
+                modeloPerfilIncorrecto.addColumn("No se encontraron inconsistencias");  //Se crea una columna con la leyecnda
+                tablaPerfilInt.setModel(modeloPerfilIncorrecto);                         //Se define el modelo 
+            }
+            
+            conLocal.Cerrar();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }        
+    }
+    
+    
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -2309,7 +2411,9 @@ public class Resultados extends javax.swing.JFrame {
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+            .addGroup(jPanel30Layout.createSequentialGroup()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 65, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);

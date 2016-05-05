@@ -242,13 +242,6 @@ public class Querys
         return consulta;
     }
     
-    public static String ResultadosBajasInt()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS DADOS DE BAJA
-    {
-        String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, IDNOMBRE, IDFECHA, "
-                + "IDESTATUS  from baajasint union select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
-                + "IDNOMBRE, IDFECHA, IDESTATUS  from nonominaint";
-        return statement;
-    }
     
     public static String AdministraUsuariosAdmin()               //OBTIENE EL RESULTADO DE LOS USUARIOS ADMINISTRADORES QUE FUERON PERMITIDOS A PESAR DE NO ESTAR PRESENTES EN NÓMINA DE USUARIOS INTERNOS O EXTERNOS
     {
@@ -332,18 +325,6 @@ public class Querys
     } 
     
     
-                            //*******************
-    
-    
-    
-    public static String ResultadosBajasExt()                                   //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS DADOS DE BAJA
-    {
-        String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, "
-                + "IDNOMBRE, IDFECHA, IDESTATUS  from baajasext union select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, "
-                + "NOMBRE_PERFIL, IDNUMEMP, IDPUESTO, IDGERENCIA, IDNOMBRE, IDFECHA, IDESTATUS  from nonominaext";
-        return statement;
-    }
-    
     public static String ResultadosInactividadInt()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS INACTIVOS
     {
         String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL from inactividadint";
@@ -370,19 +351,20 @@ public class Querys
     
     public static String ResultadosDuplicadosXNomInt()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS DUPLICADOS POR NOMBRE
     {
-        String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDUSUARIO, IDPUESTO, IDGERENCIA, IDNOMBRE from dupxnombreint";
+        String statement = "";
         return statement;
     }
     
     public static String ResultadosDuplicadosXNomExt()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS POR NOMBRE
     {
-        String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDUSUARIO, IDPUESTO, IDGERENCIA, IDNOMBRE from dupxnombreext";
+        String statement = "";
         return statement;
     }
     
     public static String ResultadosPerfilIncorrectoInt()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS CON PERFIL INCORRECTO
     {
-        String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, IDIDPUESTO, PERFIL, NOMBRE_PERFIL, CLAVE_PUESTO, PERFIL_MATRIZ, PUESTO_FUNCIONAL, PUESTO, IDNUMEMP, IDPUESTO, IDDEPARTAMENTO, IDGERENCIA, IDNOMBRE from perfilesint";
+        String statement = "select Usuario, Nombre_Completo, Valido_de, Validez_a, "
+                + " Descripcion_rol, Rol, Idpuesto, Puesto,  Numeroempleado, Idusuario, nombrecompleto, gerencia, estatus from perfilesintsap";        
         return statement;
     }
     

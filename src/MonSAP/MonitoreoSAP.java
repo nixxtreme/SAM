@@ -1196,6 +1196,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             
             
             PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesIntSAP(cadenaBD));  //Crea la tabla de perfiles incorrrectos de Usuarios Internos
+            
             //PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesExtSAP(cadenaBD));  //Crea la tabla de perfiles incorrectos de Usuarios Externos
             
             System.out.println("Creando nuevas tablas de trabajo");
