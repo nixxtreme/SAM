@@ -1407,7 +1407,7 @@ public class Tablas
                 + " FROM (((internossap left join demonsa2" + parametros[4] + " on internossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
                 + " left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
                 + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = internossap.usuario)"
-                + " left join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".usuario = internossap.usuario";
+                + " right join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".usuario = internossap.usuario";
         
                              
         
