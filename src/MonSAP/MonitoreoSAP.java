@@ -1192,6 +1192,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Querys.BorraInactividadExtSAP(cadenaBD));     //Borra los usuarios externos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios externos
             
             PreparaTablas.add(Monitoreos.Tablas.CreaSinExpiracionSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaExpiracion180SAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosInt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosExt(cadenaBD));
+            
             
             
             
