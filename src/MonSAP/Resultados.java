@@ -23,7 +23,7 @@ import javax.swing.text.TableView.TableRow;
  */
 public class Resultados extends javax.swing.JFrame {
     String cadenaBD;
-    ResultSet bajasIntSAP, bajasExtSAP, usrInt, usrExt, inactInt, inactExt, dupInt, duplicadosNombreInt, dupExt, perfilInt, perfilInc, perfilExt, noAutoInt, noAutoExt, agreg, elim, Uint, Uext, Ugen, usrgen, sinValidez, usradm, validez180;       //Almacenan los resultados de cada consulta
+    ResultSet bajasIntSAP, bajasExtSAP, usrInt, usrExt, inactInt, inactExt, dupInt, duplicadosNombreInt, duplicadosNombreExt, dupExt, perfilInt, perfilInc, perfilExt, noAutoInt, noAutoExt, agreg, elim, Uint, Uext, Ugen, usrgen, sinValidez, usradm, validez180;       //Almacenan los resultados de cada consulta
   
     
     public Resultados(String cadena) {                                          //Inicializa la ventana y ejecuta los métodos para que se visualicen las tablas de resultados
@@ -700,8 +700,8 @@ public class Resultados extends javax.swing.JFrame {
                         }
                         else
                         {
-                            registro[k-1]=duplicadosNombreInt.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas                         
-                        }
+                            registro[k-1]=duplicadosNombreInt.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas                                                         
+                        }                        
                     }
                     
                     modeloDuplicadosNombre.addRow(registro);                            //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
@@ -741,10 +741,7 @@ public class Resultados extends javax.swing.JFrame {
                 CPueston.setPreferredWidth(300);                           //Se define su tamaño
                 TableColumn CGerencia = tablaDupInt.getColumn("GERENCIA");   //Se llama a la columna
                 CGerencia.setPreferredWidth(250);                           //Se define su tamaño
-                TableColumn CEstatus = tablaDupInt.getColumn("ESTATUS");   //Se llama a la columna
-                CEstatus.setPreferredWidth(150);                           //Se define su tamaño
-                TableColumn CBBFFechaBaja = tablaDupInt.getColumn("FECHA BAJA NOMINA");   //Se llama a la columna
-                CBBFFechaBaja.setPreferredWidth(115);                           //Se define su tamaño
+               
                 
             }
             else                                                                //Si el resultado se encontraba vacío
@@ -765,8 +762,7 @@ public class Resultados extends javax.swing.JFrame {
     void definirModelosDupXNomExt()                                             //Crea el modelo para la tabla de inconsistencias de usuarios externos duplicados por nombre
     {
         DefaultTableModel modeloDuplicadosNombreExt = new DefaultTableModel();             //Crea el objeto modelo de tabla
-        
-        
+          
         
         Object[] registro = new Object[18];                                     //Crea un arreglo para recibir los elementos de cada renglon
         int i = 0;                                                              //Inicializa la variable para el contador
@@ -775,9 +771,9 @@ public class Resultados extends javax.swing.JFrame {
             Conexion conLocal = new Conexion();                                 //Inicia la conexión local
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            duplicadosNombreInt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosDuplicadosXNomExt());   //Ejecuta la consulta y almacena el resultado en la variable
+            duplicadosNombreExt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosDuplicadosXNomExt());   //Ejecuta la consulta y almacena el resultado en la variable
             
-            if(duplicadosNombreInt.next())                                                 //Verifica que el resultado no esté vacío
+            if(duplicadosNombreExt.next())                                                 //Verifica que el resultado no esté vacío
             {
                 modeloDuplicadosNombreExt.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
                 modeloDuplicadosNombreExt.addColumn("Num Emp");
@@ -796,8 +792,8 @@ public class Resultados extends javax.swing.JFrame {
                 
                
                
-                duplicadosNombreInt.beforeFirst();                                         //Regresa a la posición inicial del resultado
-                while(duplicadosNombreInt.next())                                          //Lee cada registro hasta que ya no haya más
+                duplicadosNombreExt.beforeFirst();                                         //Regresa a la posición inicial del resultado
+                while(duplicadosNombreExt.next())                                          //Lee cada registro hasta que ya no haya más
                 {
                     for(int k=1; k<17; k++)                                     
                     {
@@ -807,7 +803,7 @@ public class Resultados extends javax.swing.JFrame {
                         }
                         else
                         {
-                            registro[k-1]=duplicadosNombreInt.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas                         
+                            registro[k-1]=duplicadosNombreExt.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas                         
                         }
                     }
                     
@@ -848,10 +844,7 @@ public class Resultados extends javax.swing.JFrame {
                 CPueston.setPreferredWidth(300);                           //Se define su tamaño
                 TableColumn CGerencia = tablaDupExt.getColumn("GERENCIA");   //Se llama a la columna
                 CGerencia.setPreferredWidth(250);                           //Se define su tamaño
-                TableColumn CEstatus = tablaDupExt.getColumn("ESTATUS");   //Se llama a la columna
-                CEstatus.setPreferredWidth(150);                           //Se define su tamaño
-                TableColumn CBBFFechaBaja = tablaDupExt.getColumn("FECHA BAJA NOMINA");   //Se llama a la columna
-                CBBFFechaBaja.setPreferredWidth(115);                           //Se define su tamaño
+                
                 
             }
             else                                                                //Si el resultado se encontraba vacío
