@@ -691,9 +691,8 @@ public class Tablas
     public static String CreaCodigosLibera(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS Perfiles OBTENIDOS DE LA BASE DE DATOS DE SAP 
     {
        String[] parametros = cadenaBD.split("\\|");
-        String tabla = "CREATE TABLE IF NOT EXISTS UPerfiles" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Nombre VARCHAR(30), "
-                + "Apellido varchar(30), Grupo VARCHAR(15), Rol VARCHAR(20), Descripcion_Rol VARCHAR(55), Fecha_inicio DATE DEFAULT NULL,"
-                + " Fecha_fin DATE DEFAULT NULL)";
+        String tabla = "CREATE TABLE IF NOT EXISTS CodLibera" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Rol VARCHAR(30), "
+                + "Dominacion varchar(255), Valor VARCHAR(15))";
         return tabla;
         
     }
