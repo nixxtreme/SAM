@@ -692,7 +692,7 @@ public class Resultados extends javax.swing.JFrame {
                 duplicadosNombreInt.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 while(duplicadosNombreInt.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<17; k++)                                     
+                    for(int k=1; k<15; k++)                                     
                     {
                         if(k==1)                                                
                         {
@@ -795,7 +795,7 @@ public class Resultados extends javax.swing.JFrame {
                 duplicadosNombreExt.beforeFirst();                                         //Regresa a la posición inicial del resultado
                 while(duplicadosNombreExt.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<17; k++)                                     
+                    for(int k=1; k<15; k++)                                     
                     {
                         if(k==1)                                                
                         {
