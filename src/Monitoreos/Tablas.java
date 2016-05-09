@@ -1523,7 +1523,7 @@ public class Tablas
     public static String CreaAdminUsrAdminGenSAP(String cadenaBD)                     //AGREGA UNA TABLA CON USUARIOS ADMINISTRADORES GENERICOS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statement = "create table AdminUsrAdminGenSAP (Usuario varchar(45), nombre varchar(255), apellido varchar(255),\n" +
+        String statement = "create table if not exists AdminUsrAdminGenSAP (Usuario varchar(45), nombre varchar(255), apellido varchar(255),\n" +
         "rol varchar(45), valor_autorizacion varchar(45), permitido boolean default 0, ennomina boolean, fueranomina boolean,\n" +
         "primary key(Usuario))";
         return statement;
@@ -1532,7 +1532,7 @@ public class Tablas
     public static String CreaAdminUsrAdminSAP(String cadenaBD)                     //AGREGA UNA TABLA CON USUARIOS ADMINISTRADORES GENERICOS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statement = "create table AdminUsrAdminSAP (Usuario varchar(45), nombre varchar(255), apellido varchar(255),\n" +
+        String statement = "create table if not exists AdminUsrAdminSAP (Usuario varchar(45), nombre varchar(255), apellido varchar(255),\n" +
         "rol varchar(45), valor_autorizacion varchar(45), permitido boolean default 0, \n" +
         "primary key(Usuario));";
         return statement;
