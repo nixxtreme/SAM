@@ -826,16 +826,19 @@
                                           <Component id="jPanelInternos" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace pref="44" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jButton12" min="-2" pref="147" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jPanelInternos8" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jPanelUsuarios" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jPanelAdminUsr" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jPanelDemonsa1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jPanelDemonsa2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                                  <Component id="jButton12" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jPanelInternos8" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jPanelUsuarios" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jPanelAdminUsr" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jPanelDemonsa1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jPanelDemonsa2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
+                                              <Component id="jPanelDemonsa3" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
@@ -858,7 +861,9 @@
                                   <Component id="jPanelDemonsa1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanelDemonsa2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanelDemonsa3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="24" max="32767" attributes="0"/>
                                   <Component id="jButton12" min="-2" pref="44" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
@@ -1157,7 +1162,7 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Tahoma" size="12" style="0"/>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="N&#xf3;mina Demonsa 2"/>
+                                <Property name="text" type="java.lang.String" value="N&#xf3;mina Demonsa"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="jTextFieldDemonsa2">
@@ -1278,6 +1283,66 @@
                               </Properties>
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUsrPerfilActionPerformed"/>
+                              </Events>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanelDemonsa3">
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jCheckCodigos" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelDemonsa3" pref="151" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldCodigos" min="-2" pref="354" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jButtonCodigos" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                              <Component id="jLabelDemonsa3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldCodigos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButtonCodigos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jCheckCodigos" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="jLabelDemonsa3">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Tahoma" size="12" style="0"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="C&#xf3;digos de liberaci&#xf3;n"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="jTextFieldCodigos">
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="jCheckCodigos">
+                              <Properties>
+                                <Property name="enabled" type="boolean" value="false"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="jButtonCodigos">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Examinar"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCodigosActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
