@@ -1178,7 +1178,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
               PreparaTablas.add(Monitoreos.Tablas.BorraSinExpiracionSAP());
 
             
-            
+              PreparaTablas.add(Monitoreos.Tablas.CreaAdminUsrAdminGenSAP(cadenaBD));
+              PreparaTablas.add(Monitoreos.Tablas.CreaAdminUsrAdminSAP(cadenaBD));
             
             PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          //crea la tabla de usuarios administradores agregados
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));              //crea la tabla de usuarios administradores eliminados           
