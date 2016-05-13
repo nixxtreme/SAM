@@ -1279,7 +1279,7 @@ public class Tablas
         return statement;
     }
     
-    public static String CreaDuplicadosInt(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS INTERNOS DUPLICADOS
+    public static String CreaDuplicadosIntSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS INTERNOS DUPLICADOS
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "CREATE TABLE IF NOT EXISTS DUPXNOMBREINTSAP SELECT DISTINCT * FROM CRUCEINTSAP" + parametros[4] + " WHERE (NOMBRE_COMPLETO IN "
@@ -1288,12 +1288,28 @@ public class Tablas
         return statement;
     }
     
-    public static String CreaDuplicadosExt(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    public static String CreaDuplicadosInt(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS INTERNOS DUPLICADOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "CREATE TABLE IF NOT EXISTS DUPXNOMBREINT SELECT DISTINCT * FROM CRUCEINT" + parametros[4] + " WHERE NOMBRE IN "
+                + "(SELECT NOMBRE FROM CRUCEINT" + parametros[4] + " AS TMP GROUP BY NOMBRE HAVING COUNT(*) > 1) ORDER BY NOMBRE";
+        return statement;
+    }
+    
+    public static String CreaDuplicadosExtSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "CREATE TABLE IF NOT EXISTS DUPXNOMBREEXTSAP SELECT DISTINCT * FROM CRUCEEXTSAP" + parametros[4] + " WHERE (NOMBRE_COMPLETO IN "
                 + "(SELECT NOMBRE_COMPLETO FROM CRUCEEXTSAP" + parametros[4] + " AS TMP GROUP BY NOMBRE_COMPLETO HAVING COUNT(*) > 1)) "
                 + "AND (USUARIO IN (SELECT Usuario FROM cruceextsap" + parametros[4] + " AS TMP2 GROUP BY Usuario HAVING COUNT(*) < 2))  ORDER BY Nombre_Completo";
+        return statement;
+    }
+    
+    public static String CreaDuplicadosExt(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "CREATE TABLE IF NOT EXISTS DUPXNOMBREEXT SELECT DISTINCT * FROM CRUCEEXT" + parametros[4] + " WHERE NOMBRE IN "
+                + "(SELECT NOMBRE FROM CRUCEEXT" + parametros[4] + " AS TMP GROUP BY NOMBRE HAVING COUNT(*) > 1) ORDER BY NOMBRE";
         return statement;
     }
     

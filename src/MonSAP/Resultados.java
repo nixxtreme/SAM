@@ -668,7 +668,7 @@ public class Resultados extends javax.swing.JFrame {
             Conexion conLocal = new Conexion();                                 //Inicia la conexión local
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            duplicadosNombreInt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosDuplicadosXNomInt());   //Ejecuta la consulta y almacena el resultado en la variable
+            duplicadosNombreInt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosDuplicadosXNomIntSAP());   //Ejecuta la consulta y almacena el resultado en la variable
             
             if(duplicadosNombreInt.next())                                                 //Verifica que el resultado no esté vacío
             {
@@ -771,7 +771,7 @@ public class Resultados extends javax.swing.JFrame {
             Conexion conLocal = new Conexion();                                 //Inicia la conexión local
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            duplicadosNombreExt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosDuplicadosXNomExt());   //Ejecuta la consulta y almacena el resultado en la variable
+            duplicadosNombreExt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosDuplicadosXNomExtSAP());   //Ejecuta la consulta y almacena el resultado en la variable
             
             if(duplicadosNombreExt.next())                                                 //Verifica que el resultado no esté vacío
             {
@@ -1792,7 +1792,7 @@ public class Resultados extends javax.swing.JFrame {
             Conexion conLocal = new Conexion();                                 //Inicia la conexión local
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            perfilInc = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosPerfilIncorrectoInt());   //Ejecuta la consulta y almacena el resultado en la variable
+            perfilInc = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosPerfilIncorrectoIntSAP());   //Ejecuta la consulta y almacena el resultado en la variable
             
             if(perfilInc.next())                                                 //Verifica que el resultado no esté vacío
             {
