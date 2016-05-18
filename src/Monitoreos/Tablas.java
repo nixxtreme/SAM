@@ -355,6 +355,15 @@ public class Tablas
         return statement;
     }
     
+    public static String TablaCodLiberaAgreg(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;
+        String[] parametros = cadenaBD.split("\\|");
+        statement = "create table if not exists CodLiberaagregados SELECT Usuario, Rol, Denominacion, Valor FROM codlibera" + parametros[4]
+                    + " WHERE usuario NOT IN (SELECT usuario FROM codlibera" + parametros[5] + ")";
+        return statement;
+    }
+    
     public static String TablaAdminUsrAdminGen(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
     {
         String statement = null;
@@ -516,9 +525,9 @@ public class Tablas
         String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS UsuariosSAP" + parametros[4] + " SELECT Usuario, Nombre_Completo, Grupo, valido_de, "
                 + "validez_a FROM Usuarios2" + parametros[4]
-                + " WHERE  (motivo IS NULL AND validez_a IS NULL) "
+                + " WHERE  (validez_a IS NULL) "
                 + " OR "
-                + " (motivo IS NULL AND validez_a > '" + parametros[6] + "')";
+                + " (validez_a > '" + parametros[6] + "')";
         return tabla; 
     }
    
@@ -684,12 +693,33 @@ public class Tablas
         
     }
     
+    public static String CreaCodLibera(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS Perfiles OBTENIDOS DE LA BASE DE DATOS DE SAP 
+    {
+       String[] parametros = cadenaBD.split("\\|");
+        String tabla = "CREATE TABLE IF NOT EXISTS CodLibera" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Rol VARCHAR(30), "
+                + "Denominacion varchar(100), Valor VARCHAR(4), PRIMARY KEY(Usuario))";
+        return tabla;
+        
+    }
+    
     public static String CreaCodigosLibera(String cadenaBD)                          //AGREGA TABLA PARA LOS USUARIOS Perfiles OBTENIDOS DE LA BASE DE DATOS DE SAP 
     {
        String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS CodLibera" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Rol VARCHAR(30), "
-                + "Dominacion varchar(255), Valor VARCHAR(15))";
+                + "Denominacion varchar(255), Valor VARCHAR(15))";
         return tabla;
+        
+    }
+    
+    public static String InsertarCodLibera (String fechas , String cadenaBD)             //INSERTA LOS REGISTROS A LA TABLA DE Usuarios Perfiles
+    {
+        String[] parametros = cadenaBD.split("\\|");
+       
+        String valores = "INSERT IGNORE INTO CodLibera" + parametros[4] + " (Usuario, Rol, Denominacion, Valor)"
+                + "values ";
+        
+        valores = valores + Archivos.lecturaCodLibera(fechas, cadenaBD);
+        return valores;
         
     }
     
@@ -796,6 +826,30 @@ public class Tablas
     public static String BorraSinExpiracionSAP()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
     {
         String statement = "DROP TABLE IF EXISTS SinExpiracionSAP";
+        return statement;
+    }
+    
+    public static String BorraExpiracion180SAP()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS Expiracion180SAP";
+        return statement;
+    }
+    
+    public static String BorraDupXNombreIntSAP()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS dupxnombreintsap";
+        return statement;
+    }
+    
+    public static String BorraDupXNombreExtSAP()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS dupxnombreextsap";
+        return statement;
+    }
+    
+    public static String BorraPerfilesIntSAP()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS PerfilesIntSAP";
         return statement;
     }
                         //********************
@@ -1081,7 +1135,7 @@ public class Tablas
                 + " fecha_creacion, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
                 + " ESTATUS"
                 + " FROM cruceextsap" + parametros[4]  
-                + " WHERE datediff(valido_de, validez_a) > 180";
+                + " WHERE datediff(valido_de, validez_a) > 180 OR datediff(valido_de, validez_a) < 180";
         return consulta;
         
     }

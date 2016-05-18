@@ -791,7 +791,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField31">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="05052016"/>
+                            <Property name="text" type="java.lang.String" value="10052016"/>
                             <Property name="toolTipText" type="java.lang.String" value="Ingrese aqu&#xed; la fecha del monitoreo con formato ddmmaaaa. Una vez cargados los archivos con la fecha quedar&#xe1;n almacenados de manera definitiva en el sistema."/>
                           </Properties>
                           <Events>
@@ -805,7 +805,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField32">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="05042016"/>
+                            <Property name="text" type="java.lang.String" value="14032016"/>
                             <Property name="toolTipText" type="java.lang.String" value="Ingrese aqu&#xed; la fecha del monitoreo con formato ddmmaaaa. Una vez cargados los archivos con la fecha quedar&#xe1;n almacenados de manera definitiva en el sistema."/>
                           </Properties>
                           <Events>

@@ -367,6 +367,12 @@ public class Querys
         return statement;
     }
     
+    public static String ResultadosCodLibera()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS CON USER ID INCORRECTO
+    {
+        String statement = "select Usuario, Rol, Denominacion, Valor from codliberaagregados";
+        return statement;
+    }
+    
     public static String ResultadosUserIncExt()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS CON USER ID INCORRECTO
     {
         String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, PERFIL, NOMBRE_PERFIL, IDNUMEMP, IDUSUARIO, IDPUESTO, IDGERENCIA, IDNOMBRE from usrincext";

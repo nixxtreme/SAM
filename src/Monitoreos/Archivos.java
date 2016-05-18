@@ -1269,6 +1269,41 @@ public class Archivos
         return retorno;
     }
     
+    private static String creaLineaCodLibera(String linea)                          //CREA LA LÍNEA DE REGISTRO DE USUARIO PERFIL
+    {
+        String Usuario, Rol, Denominacion, Valor, retorno;                         //Variables para almacenar los datos de cada registro
+//        System.out.println("Linea " + linea);
+        String[] temp = linea.split("\\|");                                      //Crea un arreglo con los datos del registro separados por el pipe
+//        for(int i=0; i<temp.length;i++)                                             
+//        {
+//            System.out.println(i + " " + temp[i]);
+//        }
+//        System.out.println("\n\n\n");
+       
+        
+        if(temp[1].contains("*"))
+        {
+            retorno = "";
+        }
+        else
+        {
+            Usuario = temp[1];                                                      //Obtiene el Usuario de la posición 1 del arreglo
+            Rol = temp[2];                                                        //Obtiene el nombre de la posición 2 del arreglo
+            Denominacion = temp[3];  
+            Valor = temp[7];
+            
+            Usuario = Usuario.trim();                                           //ELIMINAR LOS ESPACIOS ENTRE CAMPOS
+            Rol = Rol.trim();
+            Denominacion = Denominacion.trim();
+            Valor = Valor.trim();
+            
+            
+                   
+            retorno = "('" + Usuario + "', '" + Rol + "', '" + Denominacion + "', '" + Valor + "')"; //Regresa la línea para ser insertada en la BD local
+        }
+        return retorno;
+    }
+    
     
     public static String lecturaUsuariosSAP (String ruta, String bd )
     {
@@ -1446,6 +1481,76 @@ public class Archivos
 //                    System.out.println("temp = " + temp);
                     //System.out.println("Linea antes " + linea);
                     linea = linea + "\n " + creaLineaUsrPerfil(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
+                   // System.out.println("Linea  " + creaLineaFechasAcceso(temp));
+                }            
+                
+            }
+//            System.out.println("length " + linea.length());
+            linea = linea.substring(0, linea.length()-1);                         //Elimina la última coma de la cadena
+//            System.out.println("Salida = " + linea);                                     
+        }
+//        catch(SQLException sqle)
+//        {
+//            sqle.printStackTrace();
+//        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally                                                                 //Finaliza la lectura del archivo
+        {
+            try
+            {
+                if(fr != null)
+                {
+                    fr.close();
+                }
+            }
+            catch(Exception e2)
+            {
+                e2.printStackTrace();
+            }
+         return linea;
+        }       
+        
+    }
+    
+    public static String lecturaCodLibera (String ruta, String bd )
+    {
+        String[] parametros = bd.split("\\|");                                  //SEPARA LOS ELEMENTOS DE LA CADENA HASTA SU REFERENCIA DE CORTE
+        File archivo = null;                                                    //Crea el objeto del archivo vacío
+        FileReader fr = null;                                                   //Crea el objeto del lector de archivos vacío
+        BufferedReader br = null;                                               //Crea el bufer de lectura vacío
+        String codigos, linea, temp, primera;                                  
+        
+        codigos="";
+        linea = "";
+        //System.out.println("linea " + linea);        
+       
+        try
+        {
+            archivo = new File(ruta);                                           //Se establecen los parámetros para la lectura del archivo
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+              
+            for (int i=0;i<8;i++)                                               //Retira el encabezado del archivo 8 lineas
+            {
+                primera = br.readLine();                
+            }                                           
+
+            while((temp=br.readLine()) != null)                                 //Valida que la siguiente línea del archivo no esté vacía
+            {
+                
+                if(temp.contains("----") || temp.charAt(1)=='*')                                       //Valida si contiene guiones en la línea para descartarla
+                {
+
+                }
+                else
+                {
+                    
+//                    System.out.println("temp = " + temp);
+                    //System.out.println("Linea antes " + linea);
+                    linea = linea + "\n " + creaLineaCodLibera(temp) + ",";     //Almacena la concatenación de la cadena con la siguiente linea que se elabora en el método creaLineaIdInt()
                    // System.out.println("Linea  " + creaLineaFechasAcceso(temp));
                 }            
                 

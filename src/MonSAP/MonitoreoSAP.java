@@ -599,7 +599,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
         jLabel35.setText("Archivos identidad");
 
-        jTextField31.setText("05052016");
+        jTextField31.setText("10052016");
         jTextField31.setToolTipText("Ingrese aquí la fecha del monitoreo con formato ddmmaaaa. Una vez cargados los archivos con la fecha quedarán almacenados de manera definitiva en el sistema.");
         jTextField31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -609,7 +609,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
         jLabel36.setText("Archivos identidad anterior");
 
-        jTextField32.setText("05042016");
+        jTextField32.setText("14032016");
         jTextField32.setToolTipText("Ingrese aquí la fecha del monitoreo con formato ddmmaaaa. Una vez cargados los archivos con la fecha quedarán almacenados de manera definitiva en el sistema.");
         jTextField32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1175,7 +1175,13 @@ public class MonitoreoSAP extends javax.swing.JFrame {
               PreparaTablas.add(Monitoreos.Tablas.BorraInacIntSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraInacExtSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraExcepcionesSAP());
+              PreparaTablas.add(Monitoreos.Tablas.BorraExpiracion180SAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraSinExpiracionSAP());
+              PreparaTablas.add(Monitoreos.Tablas.BorraDupXNombreIntSAP());
+              PreparaTablas.add(Monitoreos.Tablas.BorraDupXNombreExtSAP());
+              PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesIntSAP());
+              
+              
 
             
               PreparaTablas.add(Monitoreos.Tablas.CreaAdminUsrAdminGenSAP(cadenaBD));
@@ -1245,12 +1251,9 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosIntSAP(cadenaBD));
             PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosExtSAP(cadenaBD));
             
+            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesIntSAP(cadenaBD));              //Crea la tabla de perfiles incorrrectos de Usuarios Internos
+            PreparaTablas.add(Monitoreos.Tablas.TablaCodLiberaAgreg(cadenaBD));
             
-            
-            
-            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesIntSAP(cadenaBD));  //Crea la tabla de perfiles incorrrectos de Usuarios Internos
-            
-            //PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesExtSAP(cadenaBD));  //Crea la tabla de perfiles incorrectos de Usuarios Externos
             
             System.out.println("Creando nuevas tablas de trabajo");
             EjecutaSAP.Exect(ConLocal.conexion, PreparaTablas);                  //Ejecuta todas las instrucciones almacenadas en el arreglo
@@ -1469,8 +1472,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
                 System.out.println("Registrando archivo Códigos de liberación");
                 
                PreparaTablas.add(Monitoreos.Tablas.eliminaCodLibera(cadenaBD)); //elimina la tabla de perfiles en caso de existir
-               PreparaTablas.add(Monitoreos.Tablas.CreaPerfiles(cadenaBD));    //crea la tabla de perfiles
-               PreparaTablas.add(Monitoreos.Tablas.InsertarPerfiles(UsrPerfil, cadenaBD));     //Lee el archivo de  perfiles e inserta usuarios en la BD local              
+               PreparaTablas.add(Monitoreos.Tablas.CreaCodLibera(cadenaBD));    //crea la tabla de perfiles
+               PreparaTablas.add(Monitoreos.Tablas.InsertarCodLibera(CodLibera, cadenaBD));     //Lee el archivo de  perfiles e inserta usuarios en la BD local              
             }
 
 //            if(Matriz.isSelected())                                             //Valida que esté habilitada la casilla de matriz de perfiles de perfiles
