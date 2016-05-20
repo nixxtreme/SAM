@@ -458,7 +458,7 @@ public class Resultados extends javax.swing.JFrame {
     {
         
         DefaultTableModel modeloCodLibera = new DefaultTableModel();        //Define el objeto modelo de tabla
-        Object[] registro = new Object[5];                                     //Crea un arreglo para recibir los elementos de cada renglon
+        Object[] registro = new Object[6];                                     //Crea un arreglo para recibir los elementos de cada renglon
         
         
         try
@@ -466,10 +466,11 @@ public class Resultados extends javax.swing.JFrame {
             Conexion conLocal = new Conexion();                                 //Crea la conexión para la consulta
             conLocal.AbrirLocal(cadenaBD);
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            usrInt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosUserIncInt());   //Ejecuta la consulta y almacena el resultado en bajasExt
+            usrInt = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosCodLibera());   //Ejecuta la consulta y almacena el resultado en bajasExt
             if(usrInt.next())                                                   //Valida que no se encuentre vacío el resutado de la consulta
             {
                 usrInt.beforeFirst();                                           //Regresa a la posición inicial del resultado
+                modeloCodLibera.addColumn("Agregar");
                 modeloCodLibera.addColumn("Usuario");
                 modeloCodLibera.addColumn("Rol");
                 modeloCodLibera.addColumn("Denominacion");
@@ -477,7 +478,7 @@ public class Resultados extends javax.swing.JFrame {
                 
                 while(usrInt.next())                                            //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<5; k++)                                     //Recorre los elementos del registro para obtener cada dato de las columnas
+                    for(int k=1; k<6; k++)                                     //Recorre los elementos del registro para obtener cada dato de las columnas
                     {
                         if(k==1)
                         {
@@ -497,32 +498,15 @@ public class Resultados extends javax.swing.JFrame {
 
                 TableColumn CAgregar = tablaCodLibera.getColumn("Agregar");        //Se llama a la columna
                 CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
-                TableColumn CNumEmp = tablaCodLibera.getColumn("Número de empleado");  //Se llama a la columna
-                CNumEmp.setPreferredWidth(140);                                 //Se define su tamaño
-                TableColumn CUserID = tablaCodLibera.getColumn("User ID");         //Se llama a la columna
-                CUserID.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CNombre = tablaCodLibera.getColumn("Nombre");          //Se llama a la columna
-                CNombre.setPreferredWidth(360);                                 //Se define su tamaño
-                TableColumn CFecha = tablaCodLibera.getColumn("Fecha de último acceso");   //Se llama a la columna
+                TableColumn CNumEmp = tablaCodLibera.getColumn("Usuario");  //Se llama a la columna
+                CNumEmp.setPreferredWidth(110);                                 //Se define su tamaño
+                TableColumn CUserID = tablaCodLibera.getColumn("Rol");         //Se llama a la columna
+                CUserID.setPreferredWidth(120);                                  //Se define su tamaño
+                TableColumn CNombre = tablaCodLibera.getColumn("Denominacion");          //Se llama a la columna
+                CNombre.setPreferredWidth(400);                                 //Se define su tamaño
+                TableColumn CFecha = tablaCodLibera.getColumn("Valor");   //Se llama a la columna
                 CFecha.setPreferredWidth(160);                                  //Se define su tamaño
-                TableColumn CRegion = tablaCodLibera.getColumn("Región");          //Se llama a la columna
-                CRegion.setPreferredWidth(70);                                  //Se define su tamaño
-                TableColumn CIP = tablaCodLibera.getColumn("IP");                  //Se llama a la columna
-                CIP.setPreferredWidth(120);                                     //Se define su tamaño
-                TableColumn CIDPerfil = tablaCodLibera.getColumn("ID perfil");     //Se llama a la columna
-                CIDPerfil.setPreferredWidth(85);                                //Se define su tamaño
-                TableColumn CPerfil = tablaCodLibera.getColumn("Perfil");          //Se llama a la columna
-                CPerfil.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CIDNUM = tablaCodLibera.getColumn("ID Número de empleado");    //Se llama a la columna
-                CIDNUM.setPreferredWidth(140);                                  //Se define su tamaño
-                TableColumn CUSEROK = tablaCodLibera.getColumn("User ID correcto");    //Se llama a la columna
-                CUSEROK.setPreferredWidth(90);                                  //Se define su tamaño
-                TableColumn CPUESTO = tablaCodLibera.getColumn("Puesto");          //Se llama a la columna
-                CPUESTO.setPreferredWidth(400);                                 //Se define su tamaño
-                TableColumn CGERENCIA = tablaCodLibera.getColumn("Gerencia");      //Se llama a la columna
-                CGERENCIA.setPreferredWidth(400);                               //Se define su tamaño
-                TableColumn CIDNOMBRE = tablaCodLibera.getColumn("ID Nombre");     //Se llama a la columna
-                CIDNOMBRE.setPreferredWidth(360);                               //Se define su tamaño
+               
                 
                 
               
@@ -1818,7 +1802,7 @@ public class Resultados extends javax.swing.JFrame {
                 .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Usuarios externos con validez > a 180 días", null, jPanel15, "Indica los usuarios externos que  tienen definido un periodo de validez mayor a 180 días.");
+        jTabbedPane3.addTab("Usuarios externos con validez diferente de 180 días", null, jPanel15, "Indica los usuarios externos que  tienen definido un periodo de validez mayor a 180 días.");
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/telcel.jpg"))); // NOI18N
 

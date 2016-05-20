@@ -1299,7 +1299,7 @@ public class Archivos
             
             
                    
-            retorno = "('" + Usuario + "', '" + Rol + "', '" + Denominacion + "', '" + Valor + "')"; //Regresa la línea para ser insertada en la BD local
+            retorno = "('" + Usuario + "', '" + Rol + "', '" + Denominacion + "', '" + Valor + "', '" + Usuario + Valor + "')"; //Regresa la línea para ser insertada en la BD local
         }
         return retorno;
     }
