@@ -360,7 +360,7 @@ public class Tablas
         String statement = null;
         String[] parametros = cadenaBD.split("\\|");
         statement = "create table if not exists CodLiberaagregados SELECT Usuario, Rol, Denominacion, Valor FROM codlibera" + parametros[4]
-                    + " WHERE usuario NOT IN (SELECT usuario FROM codlibera" + parametros[5] + ")";
+                    + " WHERE Concatenado NOT IN (SELECT Concatenado FROM codlibera" + parametros[5] + ")";
         return statement;
     }
     
@@ -697,7 +697,7 @@ public class Tablas
     {
        String[] parametros = cadenaBD.split("\\|");
         String tabla = "CREATE TABLE IF NOT EXISTS CodLibera" + parametros[4] + " (Usuario VARCHAR(20) NOT NULL, Rol VARCHAR(30), "
-                + "Denominacion varchar(100), Valor VARCHAR(4), PRIMARY KEY(Usuario))";
+                + "Denominacion varchar(100), Valor VARCHAR(4), Concatenado VARCHAR(20), PRIMARY KEY(Usuario))";
         return tabla;
         
     }
@@ -715,7 +715,7 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
        
-        String valores = "INSERT IGNORE INTO CodLibera" + parametros[4] + " (Usuario, Rol, Denominacion, Valor)"
+        String valores = "INSERT IGNORE INTO CodLibera" + parametros[4] + " (Usuario, Rol, Denominacion, Valor, Concatenado)"
                 + "values ";
         
         valores = valores + Archivos.lecturaCodLibera(fechas, cadenaBD);
@@ -850,6 +850,12 @@ public class Tablas
     public static String BorraPerfilesIntSAP()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
     {
         String statement = "DROP TABLE IF EXISTS PerfilesIntSAP";
+        return statement;
+    }
+    
+    public static String BorraCodLiberaAgregados()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS CodLiberaAgregados";
         return statement;
     }
                         //********************
