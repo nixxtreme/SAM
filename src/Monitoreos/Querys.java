@@ -415,6 +415,13 @@ public class Querys
         return statement;
     }
     
+    public static String ResultadosPerfilNoAutorizadoIntSAP()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS CON PERFIL INCORRECTO
+    {
+        String statement = "select Usuario, Nombre_Completo, Valido_de, Validez_a, "
+                + " Descripcion_rol, Rol, Idpuesto, Puesto,  Numeroempleado, Idusuario, nombrecompleto, gerencia, estatus from PerfilesNoAutorizadosIntSAP";        
+        return statement;
+    }
+    
     public static String ResultadosPerfilIncorrectoInt()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS INTERNOS CON PERFIL INCORRECTO
     {
         String statement = "select NUM_EMP, USER_NAME, NOMBRE, FECHA_ACCESO, REGION, IP, IDIDPUESTO, PERFIL, NOMBRE_PERFIL, CLAVE_PUESTO, PERFIL_MATRIZ, PUESTO_FUNCIONAL, PUESTO, IDNUMEMP, IDPUESTO, IDDEPARTAMENTO, IDGERENCIA, IDNOMBRE from perfilesint";

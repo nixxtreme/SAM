@@ -44,7 +44,8 @@ public class Resultados extends javax.swing.JFrame {
         definirModelosValidez180();
         definirModelosAdministradores();
         definirModelosGenericos();
-        definirModelosPerfilIncorrectoSAP();  
+        definirModelosPerfilIncorrectoSAP(); 
+        definirModelosPerfilNoAutorizadoSAP();
     }
     
     void definirModelosBajasIntSAP()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
@@ -1329,6 +1330,107 @@ public class Resultados extends javax.swing.JFrame {
     }
     
     
+    void definirModelosPerfilNoAutorizadoSAP()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
+    {
+        DefaultTableModel modeloPerfilNoAutorizado = new DefaultTableModel();             //Crea el objeto modelo de tabla
+        
+        
+        
+        Object[] registro = new Object[18];                                     //Crea un arreglo para recibir los elementos de cada renglon
+        int i = 0;                                                              //Inicializa la variable para el contador
+        try
+        {
+            Conexion conLocal = new Conexion();                                 //Inicia la conexión local
+            conLocal.AbrirLocal(cadenaBD);
+            ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
+            perfilInc = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.ResultadosPerfilNoAutorizadoIntSAP());   //Ejecuta la consulta y almacena el resultado en la variable
+            
+            if(perfilInc.next())                                                 //Verifica que el resultado no esté vacío
+            {
+                modeloPerfilNoAutorizado.addColumn("Agregar");                            //Crea las columnas necesarias para el reporte
+                modeloPerfilNoAutorizado.addColumn("NUM EMP");
+                modeloPerfilNoAutorizado.addColumn("NOMBRE");                
+                modeloPerfilNoAutorizado.addColumn("VÁLIDO DE");
+                modeloPerfilNoAutorizado.addColumn("FIN VALIDEZ");
+                modeloPerfilNoAutorizado.addColumn("PUESTO");
+                modeloPerfilNoAutorizado.addColumn("CLAVE DE PUESTO");
+                modeloPerfilNoAutorizado.addColumn("ID CLAVE DE PUESTO");
+                modeloPerfilNoAutorizado.addColumn("ID PUESTO");                
+                modeloPerfilNoAutorizado.addColumn("NUMEROEMPLEADO");
+                modeloPerfilNoAutorizado.addColumn("USERID");  
+                modeloPerfilNoAutorizado.addColumn("ID NOMBRE");
+                modeloPerfilNoAutorizado.addColumn("GERENCIA");
+                modeloPerfilNoAutorizado.addColumn("ESTATUS");
+               
+                perfilInc.beforeFirst();                                         //Regresa a la posición inicial del resultado
+                while(perfilInc.next())                                          //Lee cada registro hasta que ya no haya más
+                {
+                    for(int k=1; k<14; k++)                                     
+                    {
+                        if(k==1)                                                
+                        {
+                            registro[k-1]=Boolean.TRUE;                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado
+                        }
+                        else
+                        {
+                            registro[k-1]=perfilInc.getString(k-1);              //Recorre los elementos del registro para obtener cada dato de las columnas                         
+                        }
+                    }
+                    
+                    modeloPerfilNoAutorizado.addRow(registro);                            //Ya que todos los elementos del registro están en el arreglo se agrega el arreglo como un nuevo renglón de la tabla
+                }
+
+                tablaNoAutoInt.setModel(modeloPerfilNoAutorizado);                         //Una vez construida completamente la tabla se define el modelo a la tabla original
+                tablaNoAutoInt.setAutoResizeMode(AUTO_RESIZE_OFF);               //Se desabilita el ajuste automatico de ancho de columnas para establecerlo manualmente
+                tablaNoAutoInt.getColumnModel().getColumn(0).setCellEditor(new Clase_CellEditor());  //Se hace uso de editor y renderizador de columnas
+                tablaNoAutoInt.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender());
+
+                TableColumn CAgregar = tablaNoAutoInt.getColumn("Agregar");      //Se llama a la columna
+                CAgregar.setPreferredWidth(55);                                 //Se define su tamaño
+                TableColumn CUsuario = tablaNoAutoInt.getColumn("NUM EMP");    //Se llama a la columna
+                CUsuario.setPreferredWidth(110);                                 //Se define su tamaño
+                TableColumn CNombre = tablaNoAutoInt.getColumn("NOMBRE");       //Se llama a la columna
+                CNombre.setPreferredWidth(320);                                  //Se define su tamaño
+                TableColumn CPerfil = tablaNoAutoInt.getColumn("VÁLIDO DE");       //Se llama a la columna
+                CPerfil.setPreferredWidth(150);                                  //Se define su tamaño
+                TableColumn CPuesto = tablaNoAutoInt.getColumn("FIN VALIDEZ");        //Se llama a la columna
+                CPuesto.setPreferredWidth(150);                                 //Se define su tamaño            
+                TableColumn CCreado = tablaNoAutoInt.getColumn("PUESTO");        //Se llama a la columna
+                CCreado.setPreferredWidth(440);                                 //Se define su tamaño
+                TableColumn CValido = tablaNoAutoInt.getColumn("CLAVE DE PUESTO");        //Se llama a la columna
+                CValido.setPreferredWidth(110);                                 //Se define su tamaño
+                TableColumn CFinV = tablaNoAutoInt.getColumn("ID CLAVE DE PUESTO"); //Se llama a la columna
+                CFinV.setPreferredWidth(150);                                  //Se define su tamaño
+                TableColumn CUltimoa = tablaNoAutoInt.getColumn("ID PUESTO");  //Se llama a la columna
+                CUltimoa.setPreferredWidth(440);                              //Se define su tamaño                
+                TableColumn CNumemp = tablaNoAutoInt.getColumn("NUMEROEMPLEADO");    //Se llama a la columna
+                CNumemp.setPreferredWidth(150);                              //Se define su tamaño                                                                         
+                TableColumn CUserid = tablaNoAutoInt.getColumn("USERID");       //Se llama a la columna
+                CUserid.setPreferredWidth(100);                                 //Se define su tamaño
+                TableColumn CNombren = tablaNoAutoInt.getColumn("ID NOMBRE");   //Se llama a la columna
+                CNombren.setPreferredWidth(300);                           //Se define su tamaño
+                TableColumn CGerencia = tablaNoAutoInt.getColumn("GERENCIA");   //Se llama a la columna
+                CGerencia.setPreferredWidth(350);                           //Se define su tamaño
+                TableColumn CEstatus = tablaNoAutoInt.getColumn("ESTATUS");   //Se llama a la columna
+                CEstatus.setPreferredWidth(150);                           //Se define su tamaño
+                
+                
+            }
+            else                                                                //Si el resultado se encontraba vacío
+            {
+                modeloPerfilNoAutorizado.addColumn("No se encontraron inconsistencias");  //Se crea una columna con la leyecnda
+                tablaNoAutoInt.setModel(modeloPerfilNoAutorizado);                         //Se define el modelo 
+            }
+            
+            conLocal.Cerrar();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }        
+    }
+    
+    
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -1402,12 +1504,6 @@ public class Resultados extends javax.swing.JFrame {
         jPanel36 = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
         tablaNoAutoInt = new javax.swing.JTable();
-        jPanel33 = new javax.swing.JPanel();
-        jPanel35 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel37 = new javax.swing.JPanel();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        tablaNoAutoExt = new javax.swing.JTable();
         jPanel38 = new javax.swing.JPanel();
         jPanel39 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -2106,68 +2202,6 @@ public class Resultados extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Usuarios internos con perfil no autorizado", null, jPanel32, "Usuarios internos que tienen registrados dos o más perfiles");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/telcel.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
-        jPanel35.setLayout(jPanel35Layout);
-        jPanel35Layout.setHorizontalGroup(
-            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel35Layout.createSequentialGroup()
-                .addContainerGap(1009, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel35Layout.setVerticalGroup(
-            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel35Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-
-        tablaNoAutoExt.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane12.setViewportView(tablaNoAutoExt);
-
-        javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
-        jPanel37.setLayout(jPanel37Layout);
-        jPanel37Layout.setHorizontalGroup(
-            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane12)
-        );
-        jPanel37Layout.setVerticalGroup(
-            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel37Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
-        jPanel33.setLayout(jPanel33Layout);
-        jPanel33Layout.setHorizontalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel37, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel33Layout.setVerticalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel33Layout.createSequentialGroup()
-                .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane3.addTab("Usuarios externos con perfil no autorizado", jPanel33);
-
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/telcel.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
@@ -2450,7 +2484,6 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -2490,11 +2523,8 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
-    private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
-    private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
-    private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
@@ -2512,7 +2542,6 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2535,7 +2564,6 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JTable tablaEliminado;
     private javax.swing.JTable tablaInacExt;
     private javax.swing.JTable tablaInacInt;
-    private javax.swing.JTable tablaNoAutoExt;
     private javax.swing.JTable tablaNoAutoInt;
     private javax.swing.JTable tablaPerfilInt;
     private javax.swing.JTable tablaUsrAdm;

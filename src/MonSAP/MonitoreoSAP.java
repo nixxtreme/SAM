@@ -1268,7 +1268,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosIntSAP(cadenaBD));
             PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosExtSAP(cadenaBD));
             
+            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesNoAutorizadosIntSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesNoAutorizadosIntSAP(cadenaBD));
             PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesIntSAP(cadenaBD));              //Crea la tabla de perfiles incorrrectos de Usuarios Internos
+            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesIntSAP(cadenaBD));
             PreparaTablas.add(Monitoreos.Tablas.TablaCodLiberaAgreg(cadenaBD));
             
             

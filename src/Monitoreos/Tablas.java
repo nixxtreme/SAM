@@ -1598,6 +1598,33 @@ public class Tablas
         return statement;
     } 
     
+    public static String BorraPerfilesIntSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "DELETE FROM cruceintsap" + parametros[4] + " WHERE idpuesto != rol ";
+        return statement;
+    }
+    
+    public static String CreaPerfilesNoAutorizadosIntSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "create table if not exists PerfilesNoAutorizadosIntSAP select * "
+                + "FROM cruceintsap" + parametros[4] + " WHERE idpuesto != Rol and Usuario in (select usuario from cruceintsap" + parametros[4] + " where idpuesto = Rol) "
+                + "union "
+                + "select * FROM cruceintsap" + parametros[4] + " WHERE idpuesto = Rol and Usuario in (select usuario from cruceintsap" + parametros[4] + " where idpuesto != Rol) order by usuario";
+        return statement;
+        
+    } 
+    
+    
+    public static String BorraPerfilesNoAutorizadosIntSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "DELETE FROM cruceintsap" + parametros[4] + " WHERE USUARIO IN (SELECT USUARIO FROM PerfilesNoAutorizadosIntSAP)";                
+        return statement;
+        
+    } 
+    
     public static String CreaPerfilesExtSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
     {
         String[] parametros = cadenaBD.split("\\|");
@@ -1605,9 +1632,7 @@ public class Tablas
                 + "FROM " + parametros[4] + " WHERE Gerencia LIKE '%SAP%' ";
         return statement;
     } 
-    
-    
-    
+       
     public static String CreaAdminUsrAdminGenSAP(String cadenaBD)                     //AGREGA UNA TABLA CON USUARIOS ADMINISTRADORES GENERICOS
     {
         String[] parametros = cadenaBD.split("\\|");
