@@ -1235,7 +1235,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.CruceExternosSAP(cadenaBD));    //Realiza el cruce de los archivos de nómina con los usuarios externos
            
             //Excepciones SAP
-            PreparaTablas.add(Monitoreos.Tablas.ExcepcionesSAP (cadenaBD));     //crea la tabla excepcionesSAP con  los registros con gerencia: SAP del cruce de exterons
+            PreparaTablas.add(Monitoreos.Tablas.ExcepcionesExtSAP (cadenaBD));     //crea la tabla excepcionesSAP con  los registros con gerencia: SAP del cruce de exterons
+            PreparaTablas.add(Monitoreos.Tablas.ExcepcionesIntSAP (cadenaBD));
             PreparaTablas.add(Monitoreos.Querys.eliminaExcepcionesSAP(cadenaBD));//Elimina registros de gerencia=Sap de la tabla cruceext  
                     
             //elminacion demonsa en cruces

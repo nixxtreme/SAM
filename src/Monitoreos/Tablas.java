@@ -1509,7 +1509,44 @@ public class Tablas
                 + " FROM (((internossap left join demonsa2" + parametros[4] + " on internossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
                 + " left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
                 + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = internossap.usuario)"
-                + " right join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".usuario = internossap.usuario";
+                + " right join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".usuario = internossap.usuario "
+                + " union "
+                + " SELECT internossap.Usuario, internossap.Nombre_completo, "
+                + "internossap.Grupo, internossap.Valido_De, internossap.Validez_a,"
+                + " idint" + parametros[4] + ".NUMEROEMPLEADO,"
+                + " idint" + parametros[4] + ".USUARIO AS IDUSUARIO,"
+                + " idint" + parametros[4] + ".NOMBRECOMPLETO,"
+                + " idint" + parametros[4] + ".REGION," 
+                + " idint" + parametros[4] + ".GERENCIA,"
+                + " idint" + parametros[4] + ".DEPARTAMENTO,"
+                + " idint" + parametros[4] + ".PUESTO,"
+                + " idint" + parametros[4] + ".IDPUESTO," 
+                + " idint" + parametros[4] + ".ESTATUS," 
+                + " idint" + parametros[4] + ".FECHA,"
+                + " demonsa2" + parametros[4] + ".NUMEMP," 
+                + " demonsa2" + parametros[4] + ".NOMBRE," 
+                + " demonsa2" + parametros[4] + ".IDPUESTO AS IDPUESTO_DEM,"
+                + " demonsa2" + parametros[4] + ".GERENCIA AS GERENCIA_DEM,"
+                + " demonsa2" + parametros[4] + ".REGION AS REGIO_DEM,"
+                + " fechasa" + parametros[4] + ".Usuario AS usuario_fecha,"
+                + " fechasa" + parametros[4] + ".Creado_por,"
+                + " fechasa" + parametros[4] + ".Fecha_creacion,"
+                + " fechasa" + parametros[4] + ".valido_de AS Inicio_validez,"
+                + " fechasa" + parametros[4] + ".fin_validez,"
+                + " fechasa" + parametros[4] + ".Entrada_sist,"
+                + " fechasa" + parametros[4] + ".Clave_acc,"
+                + " fechasa" + parametros[4] + ".Bloqueo," 
+                + " Uperfiles" + parametros[4] + ".Nombre AS Nombre_F," 
+                + " Uperfiles" + parametros[4] + ".Apellido AS Apellido_F," 
+                + " Uperfiles" + parametros[4] + ".Grupo AS Grupo_Pais," 
+                + " Uperfiles" + parametros[4] + ".Rol,"
+                + " Uperfiles" + parametros[4] + ".Descripcion_Rol," 
+                + " Uperfiles" + parametros[4] + ".Fecha_inicio,"
+                + " Uperfiles" + parametros[4] + ".Fecha_fin" 
+                + " FROM (((internossap left join demonsa2" + parametros[4] + " on internossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
+                + " left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
+                + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = internossap.usuario)"
+                + " left join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".usuario = internossap.usuario ";
         
                              
         
@@ -1582,11 +1619,19 @@ public class Tablas
         return tabla; 
     }
     
-    public static String ExcepcionesSAP(String cadenaBD)                        //CREA UNA TABLA CON LAS EXCEPCIONES DE USUARIOS ACTIVOS QUE PERTENENCEN A LA GERENCIA DE SAP
+    public static String ExcepcionesExtSAP(String cadenaBD)                        //CREA UNA TABLA CON LAS EXCEPCIONES DE USUARIOS ACTIVOS QUE PERTENENCEN A LA GERENCIA DE SAP
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "create table if not exists ExcepcionesSAP select * "
                 + "FROM cruceextsap" + parametros[4] + " WHERE Gerencia LIKE '%SAP%' AND ESTATUS = 'ACTIVO' ";
+        return statement;
+    }
+    
+    public static String ExcepcionesIntSAP(String cadenaBD)                        //CREA UNA TABLA CON LAS EXCEPCIONES DE USUARIOS ACTIVOS QUE PERTENENCEN A LA GERENCIA DE SAP
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "INSERT INTO ExcepcionesSAP select * "
+                + "FROM cruceintsap" + parametros[4] + " WHERE Gerencia LIKE '%SAP%' AND ESTATUS = 'ACTIVO' ";
         return statement;
     }
     
