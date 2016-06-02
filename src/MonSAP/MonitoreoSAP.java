@@ -1211,6 +1211,9 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             
             PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));  //crea la tabla de usuariosSAP de la tabla Usuarios2 para su manipulacion
            
+            
+            
+            
             PreparaTablas.add(Monitoreos.Tablas.TablaTransfer(cadenaBD)); 
             PreparaTablas.add(Monitoreos.Querys.BorrarTransferTablaSAP(cadenaBD));
             
@@ -1228,6 +1231,15 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.EliminaAdmGenSAP());
             
             PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));          //Crea la tabla de usuarios internos
+            PreparaTablas.add(Monitoreos.Querys.BorrarInternosTablaSAP(cadenaBD));
+            
+//            PreparaTablas.add(Monitoreos.Tablas.CreaDemIE(cadenaBD));           //AGREGA UNA TABLA CON LAS EXCEPCIONES DE USUARIOS DEMOSA INTERNOS Y EXTERNOS
+            PreparaTablas.add(Monitoreos.Tablas.DMEXGen(cadenaBD));             //AGREGA A LA TABLA DE EXCEPCIONES DE USUARIOS DEMOSA LOS QUE SE ENCUENTRAN COMO USUARIOS GENÉRICOS
+            PreparaTablas.add(Monitoreos.Tablas.DMEXInt(cadenaBD));
+            PreparaTablas.add(Monitoreos.Querys.BorraDMEXGen(cadenaBD));        //Elimina los registros con DMEX de la tabla de genericos
+            
+            
+            
             
 
             //Realizar cruce con archivo usuario perfiles.
@@ -1239,12 +1251,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.ExcepcionesIntSAP (cadenaBD));
             PreparaTablas.add(Monitoreos.Querys.eliminaExcepcionesSAP(cadenaBD));//Elimina registros de gerencia=Sap de la tabla cruceext  
                     
-            //elminacion demonsa en cruces
-            PreparaTablas.add(Monitoreos.Tablas.CreaDemIE(cadenaBD));           //AGREGA UNA TABLA CON LAS EXCEPCIONES DE USUARIOS DEMOSA INTERNOS Y EXTERNOS
-            PreparaTablas.add(Monitoreos.Tablas.DMEXGen(cadenaBD));             //AGREGA A LA TABLA DE EXCEPCIONES DE USUARIOS DEMOSA LOS QUE SE ENCUENTRAN COMO USUARIOS GENÉRICOS
-            PreparaTablas.add(Monitoreos.Querys.BorraDMEXGen(cadenaBD));        //Elimina los registros con DMEX de la tabla de genericos
-            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceInt(cadenaBD)); //Elimina los registros demonsa de la tabla de cruceint
-            PreparaTablas.add(Monitoreos.Querys.eliminarDemCruceExt(cadenaBD)); //Elimina los registros demonsa de la tabla cruceext
+            
+            
             
             
             
@@ -1264,16 +1272,16 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.CreaInactividadExtSAP(cadenaBD));      //Crea una tabla con los usuarios externos que no han ingresado a la aplicación en determinado tiempo
             PreparaTablas.add(Monitoreos.Querys.BorraInactividadExtSAP(cadenaBD));     //Borra los usuarios externos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios externos
             
-            PreparaTablas.add(Monitoreos.Tablas.CreaSinExpiracionSAP(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.CreaExpiracion180SAP(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosIntSAP(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosExtSAP(cadenaBD));
-            
-            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesNoAutorizadosIntSAP(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesNoAutorizadosIntSAP(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesIntSAP(cadenaBD));              //Crea la tabla de perfiles incorrrectos de Usuarios Internos
-            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesIntSAP(cadenaBD));
-            PreparaTablas.add(Monitoreos.Tablas.TablaCodLiberaAgreg(cadenaBD));
+//            PreparaTablas.add(Monitoreos.Tablas.CreaSinExpiracionSAP(cadenaBD));
+//            PreparaTablas.add(Monitoreos.Tablas.CreaExpiracion180SAP(cadenaBD));
+//            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosIntSAP(cadenaBD));
+//            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosExtSAP(cadenaBD));
+//            
+//            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesNoAutorizadosIntSAP(cadenaBD));
+//            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesNoAutorizadosIntSAP(cadenaBD));
+//            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesIntSAP(cadenaBD));              //Crea la tabla de perfiles incorrrectos de Usuarios Internos
+//            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesIntSAP(cadenaBD));
+//            PreparaTablas.add(Monitoreos.Tablas.TablaCodLiberaAgreg(cadenaBD));
             
             
             System.out.println("Creando nuevas tablas de trabajo");

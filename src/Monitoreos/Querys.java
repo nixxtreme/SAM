@@ -74,21 +74,7 @@ public class Querys
         return consulta;
     }
     
-    public static String eliminarDemCruceInt(String cadenaBD)                      //ELIMINA LOS USUARIOS EXTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
-    {
-        String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceintSAP" + parametros[4] + " where numemp IS NOT null";
-                
-        return consulta;
-    }
-    
-    public static String eliminarDemCruceExt(String cadenaBD)                      //ELIMINA LOS USUARIOS EXTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
-    {
-        String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceextSAP" + parametros[4] + " where numemp IS NOT null";
-                
-        return consulta;
-    }
+   
     
     public static String BorraBajasExtSAP(String cadenaBD)                         //ELIMINA LOS USUARIOS EXTERNOS QUE ESTÁN REGSTRADOS COMO BAJA
     {
@@ -110,8 +96,8 @@ public class Querys
     public static String BorraDMEXGen(String cadenaBD)                         //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO BAJA
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM genericosSAP WHERE usuario LIKE '%DMEX%'";
-                
+        String consulta = "DELETE FROM genericosSAP WHERE usuario LIKE '%DMEX%' or Usuario LIKE 'DM%' or Usuario in (select numemp from demonsa2" + parametros[4] + ")";
+        
         return consulta;
     }
     
@@ -303,16 +289,16 @@ public class Querys
     public static String BorraInactividadIntSAP(String cadenaBD)                   //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceintsap" + parametros[4] + " WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 61 "
-                + "OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
+        String consulta = "DELETE FROM cruceintsap" + parametros[4] + " WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 60 "
+                + "OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 60 AND Entrada_Sist IS NULL)";
         return consulta;
     }
     
     public static String BorraInactividadExtSAP(String cadenaBD)                   //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceextsap" + parametros[4] +  " WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 61 "
-                + "OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 61 AND Entrada_Sist IS NULL)";
+        String consulta = "DELETE FROM cruceextsap" + parametros[4] +  " WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 60 "
+                + "OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 60 AND Entrada_Sist IS NULL)";
         return consulta;
     }
     
@@ -484,6 +470,39 @@ public class Querys
     {
         String[] parametros = cadenaBD.split("\\|");
         String statement = "DELETE FROM USUARIOSSAP" + parametros[4] + " WHERE Usuario LIKE 'EX%'";
+        return statement;
+    }
+    
+    public static String BorrarInternosTablaSAP(String cadenaBD)                                 //BORRA LA TABLA DE TRABAJO EXTERNOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "DELETE FROM USUARIOSSAP" + parametros[4] + " WHERE usuario NOT LIKE '%A%' "
+                + "OR usuario LIKE '%B%' "
+                + "OR usuario LIKE '%C%' "
+                + "OR usuario LIKE '%D%' "
+                + "OR usuario LIKE '%E%' "
+                + "OR usuario LIKE '%F%' "
+                + "OR usuario LIKE '%G%' "
+                + "OR usuario LIKE '%H%' "  
+                + "OR usuario LIKE '%I%' "
+                + "OR usuario LIKE '%J%' "
+                + "OR usuario LIKE '%K%' "
+                + "OR usuario LIKE '%L%' " 
+                + "OR usuario LIKE '%M%' "  
+                + "OR usuario LIKE '%N%' "
+                + "OR usuario LIKE '%Ñ%' "
+                + "OR usuario LIKE '%O%' "
+                + "OR usuario LIKE '%P%' "
+                + "OR usuario LIKE '%Q%' "
+                + "OR usuario LIKE '%R%' "
+                + "OR usuario LIKE '%S%' "
+                + "OR usuario LIKE '%T%' "
+                + "OR usuario LIKE '%U%' "
+                + "OR usuario LIKE '%V%' "
+                + "OR usuario LIKE '%W%' " 
+                + "OR usuario LIKE '%X%' "
+                + "OR usuario LIKE '%Y%' "
+                + "OR usuario LIKE '%Z%' ";
         return statement;
     }
     

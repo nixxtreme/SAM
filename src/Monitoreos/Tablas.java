@@ -483,16 +483,6 @@ public class Tablas
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     public static String TablaIntSAP(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
     {
         String statement = null;
@@ -500,6 +490,8 @@ public class Tablas
         statement = "create table if not exists InternosSAP SELECT Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a FROM UsuariosSAP" + parametros[4];
         return statement;
     }
+    
+    
     
         //eliminacion tablas
      public static String eliminaTablaUsrsSAP(String cadenaBD)                         //ELIMINA LA TABLA DE USUARIOS ADMINISTRADORES
@@ -1485,12 +1477,7 @@ public class Tablas
                 + " idint" + parametros[4] + ".PUESTO,"
                 + " idint" + parametros[4] + ".IDPUESTO," 
                 + " idint" + parametros[4] + ".ESTATUS," 
-                + " idint" + parametros[4] + ".FECHA,"
-                + " demonsa2" + parametros[4] + ".NUMEMP," 
-                + " demonsa2" + parametros[4] + ".NOMBRE," 
-                + " demonsa2" + parametros[4] + ".IDPUESTO AS IDPUESTO_DEM,"
-                + " demonsa2" + parametros[4] + ".GERENCIA AS GERENCIA_DEM,"
-                + " demonsa2" + parametros[4] + ".REGION AS REGIO_DEM,"
+                + " idint" + parametros[4] + ".FECHA,"                
                 + " fechasa" + parametros[4] + ".Usuario AS usuario_fecha,"
                 + " fechasa" + parametros[4] + ".Creado_por,"
                 + " fechasa" + parametros[4] + ".Fecha_creacion,"
@@ -1506,8 +1493,7 @@ public class Tablas
                 + " Uperfiles" + parametros[4] + ".Descripcion_Rol," 
                 + " Uperfiles" + parametros[4] + ".Fecha_inicio,"
                 + " Uperfiles" + parametros[4] + ".Fecha_fin" 
-                + " FROM (((internossap left join demonsa2" + parametros[4] + " on internossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
-                + " left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
+                + " FROM ((internossap left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
                 + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = internossap.usuario)"
                 + " right join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".usuario = internossap.usuario "
                 + " union "
@@ -1523,11 +1509,6 @@ public class Tablas
                 + " idint" + parametros[4] + ".IDPUESTO," 
                 + " idint" + parametros[4] + ".ESTATUS," 
                 + " idint" + parametros[4] + ".FECHA,"
-                + " demonsa2" + parametros[4] + ".NUMEMP," 
-                + " demonsa2" + parametros[4] + ".NOMBRE," 
-                + " demonsa2" + parametros[4] + ".IDPUESTO AS IDPUESTO_DEM,"
-                + " demonsa2" + parametros[4] + ".GERENCIA AS GERENCIA_DEM,"
-                + " demonsa2" + parametros[4] + ".REGION AS REGIO_DEM,"
                 + " fechasa" + parametros[4] + ".Usuario AS usuario_fecha,"
                 + " fechasa" + parametros[4] + ".Creado_por,"
                 + " fechasa" + parametros[4] + ".Fecha_creacion,"
@@ -1543,8 +1524,7 @@ public class Tablas
                 + " Uperfiles" + parametros[4] + ".Descripcion_Rol," 
                 + " Uperfiles" + parametros[4] + ".Fecha_inicio,"
                 + " Uperfiles" + parametros[4] + ".Fecha_fin" 
-                + " FROM (((internossap left join demonsa2" + parametros[4] + " on internossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
-                + " left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
+                + " FROM ((internossap left join idint" + parametros[4] + " on internossap.usuario = idint" + parametros[4] + ".NUMEROEMPLEADO) left join"
                 + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = internossap.usuario)"
                 + " left join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".usuario = internossap.usuario ";
         
@@ -1569,12 +1549,7 @@ public class Tablas
                 + " idext" + parametros[4] + ".PUESTO,"
                 + " idext" + parametros[4] + ".IDPUESTO," 
                 + " idext" + parametros[4] + ".ESTATUS," 
-                + " idext" + parametros[4] + ".FECHA,"
-                + " demonsa2" + parametros[4] + ".NUMEMP," 
-                + " demonsa2" + parametros[4] + ".NOMBRE," 
-                + " demonsa2" + parametros[4] + ".IDPUESTO AS IDPUESTO_DEM,"
-                + " demonsa2" + parametros[4] + ".GERENCIA AS GERENCIA_DEM,"
-                + " demonsa2" + parametros[4] + ".REGION AS REGIO_DEM,"
+                + " idext" + parametros[4] + ".FECHA,"              
                 + " fechasa" + parametros[4] + ".Usuario AS usuario_fecha,"
                 + " fechasa" + parametros[4] + ".Creado_por,"
                 + " fechasa" + parametros[4] + ".Fecha_creacion,"
@@ -1590,8 +1565,7 @@ public class Tablas
                 + " Uperfiles" + parametros[4] + ".Descripcion_Rol," 
                 + " Uperfiles" + parametros[4] + ".Fecha_inicio,"
                 + " Uperfiles" + parametros[4] + ".Fecha_fin" 
-                + " FROM (((externossap left join demonsa2" + parametros[4] + " on externossap.usuario = demonsa2" + parametros[4] + ".NUMEMP) "
-                + " left join idext" + parametros[4] + " on externossap.usuario = idext" + parametros[4] + ".NUMEROEMPLEADO) left join"
+                + " FROM ((externossap left join idext" + parametros[4] + " on externossap.usuario = idext" + parametros[4] + ".NUMEROEMPLEADO) left join"
                 + " fechasa" + parametros[4]+ " on fechasa" + parametros[4] +".usuario = externossap.usuario)"
                 + " left join Uperfiles" + parametros[4] + " on Uperfiles" + parametros[4] + ".usuario = externossap.usuario";
                 
@@ -1612,9 +1586,29 @@ public class Tablas
     public static String DMEXGen(String cadenaBD)                               //AGREGA A LA TABLA DE EXCEPCIONES DE USUARIOS DEMOSA LOS QUE SE ENCUENTRAN COMO USUARIOS GENÉRICOS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String tabla = "INSERT IGNORE INTO DemonsaIE (Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a) SELECT Usuario, Nombre_Completo, Grupo, "
+        String tabla = "create table if not exists DemonsaIE  SELECT Usuario, Nombre_Completo, Grupo, "
                 + "Valido_de, Validez_a FROM GenericosSAP"
-                + " WHERE Usuario LIKE '%DMEX%'";
+                + " WHERE Usuario LIKE '%DMEX%' or Usuario LIKE 'DM%' or Usuario in (select numemp from demonsa2" + parametros[4] + ")";
+                
+        return tabla; 
+    }
+    
+    public static String DMEXInt(String cadenaBD)                               //AGREGA A LA TABLA DE EXCEPCIONES DE USUARIOS DEMOSA LOS QUE SE ENCUENTRAN COMO USUARIOS GENÉRICOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String tabla = "insert into DemonsaIE (Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a) SELECT Usuario, Nombre_Completo, Grupo, "
+                + "Valido_de, Validez_a FROM internosSAP"
+                + " WHERE  Usuario in (select numemp from demonsa2" + parametros[4] + ")";
+                
+        return tabla; 
+    }
+    
+    public static String DMEXExt(String cadenaBD)                               //AGREGA A LA TABLA DE EXCEPCIONES DE USUARIOS DEMOSA LOS QUE SE ENCUENTRAN COMO USUARIOS GENÉRICOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String tabla = "insert into DemonsaIE (Usuario, Nombre_Completo, Grupo, Valido_de, Validez_a) SELECT Usuario, Nombre_Completo, Grupo, "
+                + "Valido_de, Validez_a FROM externosSAP"
+                + " WHERE  Usuario in (select numemp from demonsa2" + parametros[4] + ")";
                 
         return tabla; 
     }
