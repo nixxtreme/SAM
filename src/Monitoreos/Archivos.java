@@ -274,6 +274,42 @@ public class Archivos
                 case "dic":
                     fechames="12";
                     break;
+                case "Jan":
+                    fechames="01";
+                    break;
+                case "Feb":
+                    fechames="02";
+                    break;
+                case "Mar":
+                    fechames="03";
+                    break;
+                case "Apr":
+                    fechames="04";
+                    break;
+                case "May":
+                    fechames="05";
+                    break;
+                case "Jun":
+                    fechames="06";
+                    break;
+                case "Jul":
+                    fechames="07";
+                    break;
+                case "Aug":
+                    fechames="08";
+                    break;
+                case "Sep":
+                    fechames="09";
+                    break;
+                case "Oct":
+                    fechames="10";
+                    break;
+                case "Nov":
+                    fechames="11";
+                    break;
+                case "Dec":
+                    fechames="12";
+                    break;
                 case "11":                                                      //para caso especifico
                     fechames="11";
                     break;

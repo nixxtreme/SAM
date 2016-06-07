@@ -101,6 +101,14 @@ public class Querys
         return consulta;
     }
     
+    public static String BorraDMEXInt(String cadenaBD)                         //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO BAJA
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String consulta = "DELETE FROM internosSAP WHERE usuario LIKE '%DMEX%' or Usuario LIKE 'DM%' or Usuario in (select numemp from demonsa2" + parametros[4] + ")";
+        
+        return consulta;
+    }
+    
     public static String eliminaExcepcionesSAP(String cadenaBD)                      //ELIMINA LOS USUARIOS EXTERNOS QUE NO SE ENCUENTRAN REGISTRADOS EN NÓMINA
     {
         String[] parametros = cadenaBD.split("\\|");
@@ -289,7 +297,7 @@ public class Querys
     public static String BorraInactividadIntSAP(String cadenaBD)                   //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceintsap" + parametros[4] + " WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 60 "
+        String consulta = "DELETE FROM cruceintsap" + parametros[4] + " WHERE DATEDIFF('" + parametros[6] + "', Entrada_sist) >= 60 "
                 + "OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 60 AND Entrada_Sist IS NULL)";
         return consulta;
     }
@@ -297,7 +305,7 @@ public class Querys
     public static String BorraInactividadExtSAP(String cadenaBD)                   //ELIMINA LOS USUARIOS INTERNOS QUE ESTÁN REGISTRADOS COMO INACTIVIDAD
     {
         String[] parametros = cadenaBD.split("\\|");
-        String consulta = "DELETE FROM cruceextsap" + parametros[4] +  " WHERE DATEDIFF('" + parametros[6] + "', Clave_acc) >= 60 "
+        String consulta = "DELETE FROM cruceextsap" + parametros[4] +  " WHERE DATEDIFF('" + parametros[6] + "', Entrada_sist) >= 60 "
                 + "OR (DATEDIFF('" + parametros[6] +"', Fecha_Creacion) >= 60 AND Entrada_Sist IS NULL)";
         return consulta;
     }

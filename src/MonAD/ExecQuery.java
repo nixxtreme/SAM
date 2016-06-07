@@ -29,21 +29,78 @@ public class ExecQuery
         rs = null;
     }
     
-    public void Exect(Connection con, ArrayList<String> querys)                 //Recibe una conexión y un arreglo con instrucciones y ejecuta cada una de ellas   
+    public ArrayList<String> Exect(Connection con, ArrayList<String> querys)                 //Recibe una conexión y un arreglo con instrucciones y ejecuta cada una de ellas   
     {
+        ArrayList<String> Conteos = new ArrayList(); 
         try
         {
             Stm = con.createStatement();                                        //Crea la sentencia
             int Rs2;
+            String fecha;
+            String total, internos, externos, genericos, transfer;
+            
+            
+            Monitoreos.Conteos conteo = new Monitoreos.Conteos();
             for(int i = 0; i<querys.size(); i++)                                //Recorre los elementos del arreglo
             {
                 System.out.println(querys.get(i));                              //Imprime en consola cada sentencia
-                Rs2 = Stm.executeUpdate(querys.get(i));                         //Ejecuta la sentencia
+                if(querys.get(i).contains("Total"))
+                {
+                    String[] parametros = querys.get(i).split("\\|");
+                    fecha = parametros[1];
+                    total = conteo.conteo(con, "USUARIOSSAP" + fecha);//Cuenta el total de usuarios
+                    System.out.println("                TOTAL: " + total);
+                    Conteos.add(total);
+                }
+                else
+                {
+                    if(querys.get(i).equals("Internos"))
+                    {
+                        internos = conteo.conteo(con, "INTERNOSSAP");     //Cuenta el total de usuarios internos
+                        Conteos.add(internos);
+                    }
+                    else
+                    {
+                        if(querys.get(i).equals("Externos"))
+                        {
+                            externos = conteo.conteo(con, "EXTERNOSSAP");     //Cuenta el total de usuarios externos
+                            transfer = conteo.conteo(con, "TRANSFERSAP");     //Cuenta el total de usuarios 
+                            int tra, ext;
+                            tra = Integer.parseInt(transfer);
+                            ext = Integer.parseInt(externos);
+                            ext = tra + ext;
+                            externos = "" + ext + "";
+                            Conteos.add(externos);
+                        }
+                        else
+                        {
+                            if(querys.get(i).equals("Genericos"))
+                            {
+                                genericos = conteo.conteo(con, "GENERICOSSAP");//Cuenta el total de usuarios
+                                Conteos.add(genericos);
+                            }
+                            else
+                            {
+                                Rs2 = Stm.executeUpdate(querys.get(i));                         //Ejecuta la sentencia
+                            }
+
+                        }
+
+
+                    }
+                }
+                
+                
             }
+            
         }
         catch(Exception e)
         {
             e.printStackTrace();
+        }
+        finally
+        {
+            return Conteos;
         }
         
         

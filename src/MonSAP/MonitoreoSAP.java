@@ -301,6 +301,11 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
         jTextField18.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField18.setText("0");
+        jTextField18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField18ActionPerformed(evt);
+            }
+        });
 
         jLabel20.setText("Usuarios internos con perfil no autorizado.");
 
@@ -615,7 +620,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
         jLabel35.setText("Archivos identidad");
 
-        jTextField31.setText("10052016");
+        jTextField31.setText("07062016");
         jTextField31.setToolTipText("Ingrese aquí la fecha del monitoreo con formato ddmmaaaa. Una vez cargados los archivos con la fecha quedarán almacenados de manera definitiva en el sistema.");
         jTextField31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -625,7 +630,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
         jLabel36.setText("Archivos identidad anterior");
 
-        jTextField32.setText("14032016");
+        jTextField32.setText("10052016");
         jTextField32.setToolTipText("Ingrese aquí la fecha del monitoreo con formato ddmmaaaa. Una vez cargados los archivos con la fecha quedarán almacenados de manera definitiva en el sistema.");
         jTextField32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1154,6 +1159,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
         else
         {
             ArrayList<String> PreparaTablas = new ArrayList();                  //ARRAY LIST PARA ALMACENAR LAS OPERACIONES A BASE DE DATOS Y HACER TODO MEDIANTE UNA SOLA CONEXIÓN
+            ArrayList<String> Conteos = new ArrayList(); 
             DateFormat formatofecha = new SimpleDateFormat("yyyy-MM-dd");       //SE OBTIENE LA FECHA EN EL FORMATO ESTABLECIDO
             String fechareporte = formatofecha.format(jCalendar1.getDate());
             System.out.println("Ejecutando monitoreo");
@@ -1196,13 +1202,14 @@ public class MonitoreoSAP extends javax.swing.JFrame {
               PreparaTablas.add(Monitoreos.Tablas.BorraDupXNombreIntSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraDupXNombreExtSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesIntSAP());
+              PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesNoAutorizadosIntSAP());
               PreparaTablas.add(Monitoreos.Tablas.BorraCodLiberaAgregados());
               
               
 
             
-              PreparaTablas.add(Monitoreos.Tablas.CreaAdminUsrAdminGenSAP(cadenaBD));
-              PreparaTablas.add(Monitoreos.Tablas.CreaAdminUsrAdminSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaAdminUsrAdminGenSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaAdminUsrAdminSAP(cadenaBD));
             
             PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          //crea la tabla de usuarios administradores agregados
             PreparaTablas.add(Monitoreos.Tablas.TablaElim(cadenaBD));              //crea la tabla de usuarios administradores eliminados           
@@ -1210,34 +1217,40 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.TablaAdminUsrAdminGen(cadenaBD));              
             
             PreparaTablas.add(Monitoreos.Tablas.CreaUsuariosSAP(cadenaBD));  //crea la tabla de usuariosSAP de la tabla Usuarios2 para su manipulacion
-           
+            PreparaTablas.add("Total|" + parametros[4]);  //Solicita el conteo de total de usuarios
             
             
-            
+
             PreparaTablas.add(Monitoreos.Tablas.TablaTransfer(cadenaBD)); 
             PreparaTablas.add(Monitoreos.Querys.BorrarTransferTablaSAP(cadenaBD));
-            
+
             PreparaTablas.add(Monitoreos.Tablas.TablaExtSAP(cadenaBD));         //Crea la tabla de usuarios externos                         
             PreparaTablas.add(Monitoreos.Querys.BorrarExternosTablaSAP(cadenaBD));//borra los registros de esternos de la tabla
-            
+
             PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP());           //crear tabla gen sap
             PreparaTablas.add(Monitoreos.Tablas.TablaGenSAP(cadenaBD));
             PreparaTablas.add(Monitoreos.Querys.BorrarGenericosTablaSAP(cadenaBD));//borrar los registros genericos sap de la tabla
-        
+
             PreparaTablas.add(Monitoreos.Tablas.GenExt(cadenaBD));              //insertar genericos de TablaEXT a TablaGen
             PreparaTablas.add(Monitoreos.Querys.BorrarGenExt(cadenaBD));        //eliminar genericos en tabla EXTERNOS            
             PreparaTablas.add(Monitoreos.Tablas.TablaAdmGenSAP());
             PreparaTablas.add(Monitoreos.Tablas.InsertaAdmGenSAP());
             PreparaTablas.add(Monitoreos.Tablas.EliminaAdmGenSAP());
-            
+
             PreparaTablas.add(Monitoreos.Tablas.TablaIntSAP(cadenaBD));          //Crea la tabla de usuarios internos
             PreparaTablas.add(Monitoreos.Querys.BorrarInternosTablaSAP(cadenaBD));
+            PreparaTablas.add("Internos");                                      //Solicita conteo de internos
+            PreparaTablas.add("Externos");                                      //Solicita conteo de externos
+            PreparaTablas.add("Genericos");                                      //Solicita conteo de genericos
+            
             
 //            PreparaTablas.add(Monitoreos.Tablas.CreaDemIE(cadenaBD));           //AGREGA UNA TABLA CON LAS EXCEPCIONES DE USUARIOS DEMOSA INTERNOS Y EXTERNOS
+            
+//            
             PreparaTablas.add(Monitoreos.Tablas.DMEXGen(cadenaBD));             //AGREGA A LA TABLA DE EXCEPCIONES DE USUARIOS DEMOSA LOS QUE SE ENCUENTRAN COMO USUARIOS GENÉRICOS
             PreparaTablas.add(Monitoreos.Tablas.DMEXInt(cadenaBD));
             PreparaTablas.add(Monitoreos.Querys.BorraDMEXGen(cadenaBD));        //Elimina los registros con DMEX de la tabla de genericos
-            
+            PreparaTablas.add(Monitoreos.Querys.BorraDMEXInt(cadenaBD));
             
             
             
@@ -1272,33 +1285,28 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.CreaInactividadExtSAP(cadenaBD));      //Crea una tabla con los usuarios externos que no han ingresado a la aplicación en determinado tiempo
             PreparaTablas.add(Monitoreos.Querys.BorraInactividadExtSAP(cadenaBD));     //Borra los usuarios externos que no han ingresado a la aplicación en determinado tiempo de la lista de usuarios externos
             
-//            PreparaTablas.add(Monitoreos.Tablas.CreaSinExpiracionSAP(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Tablas.CreaExpiracion180SAP(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosIntSAP(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosExtSAP(cadenaBD));
-//            
-//            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesNoAutorizadosIntSAP(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesNoAutorizadosIntSAP(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesIntSAP(cadenaBD));              //Crea la tabla de perfiles incorrrectos de Usuarios Internos
-//            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesIntSAP(cadenaBD));
-//            PreparaTablas.add(Monitoreos.Tablas.TablaCodLiberaAgreg(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaSinExpiracionSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaExpiracion180SAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosIntSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaDuplicadosExtSAP(cadenaBD));
+            
+            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesNoAutorizadosIntSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesNoAutorizadosIntSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesIntSAP(cadenaBD));              //Crea la tabla de perfiles incorrrectos de Usuarios Internos
+            PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesIntSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.TablaCodLiberaAgreg(cadenaBD));
             
             
             System.out.println("Creando nuevas tablas de trabajo");
-            EjecutaSAP.Exect(ConLocal.conexion, PreparaTablas);                  //Ejecuta todas las instrucciones almacenadas en el arreglo
+            Conteos = EjecutaSAP.Exect(ConLocal.conexion, PreparaTablas);                  //Ejecuta todas las instrucciones almacenadas en el arreglo
 
             Conteos conteo = new Conteos();
 
-            String total = conteo.conteo(ConLocal.conexion, "USUARIOS2" + parametros[4]);//Cuenta el total de usuarios
-            jTextField1.setText(total);
-            String  genericos = conteo.conteo(ConLocal.conexion, "GENERICOSSAP");//Cuenta el total de usuarios
-            jTextField2.setText(genericos);
-            
-            
-            String internos = conteo.conteo(ConLocal.conexion, "INTERNOSSAP");     //Cuenta el total de usuarios internos
-            jTextField3.setText(internos);
-            String externos = conteo.conteo(ConLocal.conexion, "EXTERNOSSAP");     //Cuenta el total de usuarios externos
-            jTextField4.setText(externos);
+
+            jTextField1.setText(Conteos.get(0));
+            jTextField2.setText(Conteos.get(3));
+            jTextField3.setText(Conteos.get(1));
+            jTextField4.setText(Conteos.get(2));
     
             
             String bint = conteo.conteo(ConLocal.conexion, "BAJASINTSAP", "NONOMINAINTSAP");//Cuenta el total de usuarios internos dados de baja y que no están registrados en nómina
@@ -1328,12 +1336,12 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             String perfilint = conteo.conteo(ConLocal.conexion, "PERFILESINTSAP"); //Cuenta el total de usuarios internos con perfil incorrecto
             jTextField15.setText(perfilint);
             
-//            String perfilext = conteo.conteo(ConLocal.conexion, "PERFILESEXT"); //Cuenta el total de usuarios externos con perfil incorrecto
-//            jTextField16.setText(perfilext);
-//            
-//            String noAutoint = conteo.conteo(ConLocal.conexion, "USUARIOSNOAUTORIZADOSINT");//Cuenta el total de usuarios internos con perfil no autorizado
-//            jTextField17.setText(noAutoint);
-//            
+            String perfilext = conteo.conteo(ConLocal.conexion, "perfilesnoautorizadosintsap"); //Cuenta el total de usuarios externos con perfil incorrecto
+            jTextField16.setText(perfilext);
+            
+            String noAutoint = conteo.conteo(ConLocal.conexion, "CODLIBERA" + parametros[4]);//Cuenta el total de usuarios internos con perfil no autorizado
+            jTextField17.setText(noAutoint);
+            
 //            String noAutoext = conteo.conteo(ConLocal.conexion, "USUARIOSNOAUTORIZADOSEXT");//Cuenta el total de usuarios externos con perfil no autorizado
 //            jTextField18.setText(noAutoext);
 //            
@@ -1343,7 +1351,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 //            String bajaUsrAdmin = conteo.conteo(ConLocal.conexion, "ELIMINADOS");//Cuenta el total de usuarios administradores dados de baja
 //            jTextField20.setText(bajaUsrAdmin);
 //
-//            System.out.println(cadenaBD);
+//            System.out.println(cadenaBD); 
 //    
             ConLocal.Cerrar();                                                  //Cierra a conexión de MySQL
 
@@ -1731,6 +1739,10 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             jCheckCodigos.setEnabled(true);                                      //Permite al usuario deshabilitarla posteriormente
         }       
     }//GEN-LAST:event_jButtonCodigosActionPerformed
+
+    private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField18ActionPerformed
 
     /**
      * @param args the command line arguments

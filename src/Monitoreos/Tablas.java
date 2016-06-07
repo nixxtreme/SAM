@@ -845,6 +845,12 @@ public class Tablas
         return statement;
     }
     
+    public static String BorraPerfilesNoAutorizadosIntSAP()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
+    {
+        String statement = "DROP TABLE IF EXISTS PerfilesNoAutorizadosIntSAP";
+        return statement;
+    }
+    
     public static String BorraCodLiberaAgregados()             //BORRA TABLA DE TRABAJO DE CRUCES DE USUARIOS EXTERNOS
     {
         String statement = "DROP TABLE IF EXISTS CodLiberaAgregados";
