@@ -1,0 +1,12 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `conteoperfil`(IN tabla varchar(45))
+BEGIN
+		
+        
+set @atsql = concat("select count(*) from ", tabla, " group by nombre_completo");
+		
+PREPARE cuenta FROM @atsql;
+		
+EXECUTE cuenta;
+		
+
+END

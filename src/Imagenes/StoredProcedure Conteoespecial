@@ -1,0 +1,12 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `conteoespecial`(IN tabla varchar(45), IN columna varchar(45))
+BEGIN
+		
+        
+set @atsql = concat("select count(*) from ", tabla, " where ", columna, " = 0 ");
+		
+PREPARE cuenta FROM @atsql;
+		
+EXECUTE cuenta;
+		
+
+END

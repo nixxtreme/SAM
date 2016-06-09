@@ -46,6 +46,54 @@ public class Conteos
         
     }
     
+    public String conteoperfiles(Connection con, String tabla)                          //Realiza el conteo de los registros de una tabla
+    {
+        String conteo = "0";                                                    //Establece la variable en cero
+        try
+        {
+            CStm = con.prepareCall("CALL conteoperfil('" + tabla + "')");            //Define la sentencia de llamada al stored procedure
+            Rs = CStm.executeQuery();                                           //Ejecuta la sentencia
+            while(Rs.next())                                                    //Valida se haya obtenido un resultado
+            {
+                conteo = Rs.getString(1);                                       //Obtiene el dato del resultado
+            }
+            
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            return conteo;                                                      //Devuelve el resultado
+        }
+        
+    }
+    
+    public String conteoespecial(Connection con, String tabla, String columna)                          //Realiza el conteo de los registros de una tabla
+    {
+        String conteo = "0";                                                    //Establece la variable en cero
+        try
+        {
+            CStm = con.prepareCall("CALL conteoespecial('" + tabla + "', '" + columna + "')");            //Define la sentencia de llamada al stored procedure
+            Rs = CStm.executeQuery();                                           //Ejecuta la sentencia
+            while(Rs.next())                                                    //Valida se haya obtenido un resultado
+            {
+                conteo = Rs.getString(1);                                       //Obtiene el dato del resultado
+            }
+            
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            return conteo;                                                      //Devuelve el resultado
+        }
+        
+    }
+    
     public String conteo(Connection con, String tabla1, String tabla2)          //Realiza el conteo de los registros de dos tablas
     {
         String conteo = "";
