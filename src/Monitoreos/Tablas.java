@@ -482,6 +482,23 @@ public class Tablas
         return statement;
     }
     
+    public static String InsertaAdmCodigosSAP(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;        
+        String[] parametros = cadenaBD.split("\\|");
+        statement = "INSERT IGNORE INTO AdminCodigosSAP (Usuario, Rol, Denominacion, Valor) "
+                + "SELECT Usuario, Rol, Denominacion, Valor FROM Codlibera" + parametros[4];
+        return statement;
+    }
+    
+    public static String EliminaAdmCodigosSAP(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
+    {
+        String statement = null;
+        String[] parametros = cadenaBD.split("\\|");
+        statement = "DELETE FROM AdminCodigosSAP WHERE Usuario NOT IN (SELECT Usuario FROM codlibera" + parametros[4] + ")";
+        return statement;
+    }
+    
     
     public static String TablaIntSAP(String cadenaBD)                             //Crea la tabla con las insidencias de usuarios administradores agregados en el mes actual
     {
@@ -1684,6 +1701,14 @@ public class Tablas
         String statement = "create table if not exists AdminUsrAdminGenSAP (Usuario varchar(45), nombre varchar(255), apellido varchar(255),\n" +
         "rol varchar(45), valor_autorizacion varchar(45), permitido boolean default 0, ennomina boolean, fueranomina boolean,\n" +
         "primary key(Usuario))";
+        return statement;
+    } 
+    
+    public static String CreaAdminCodigosSAP(String cadenaBD)                     //AGREGA UNA TABLA CON USUARIOS ADMINISTRADORES GENERICOS
+    {
+        String[] parametros = cadenaBD.split("\\|");
+        String statement = "create table if not exists AdminCodigosSAP (Usuario varchar(45), Rol varchar(255), Denominacion varchar(255), Valor varchar(45), "
+                + "permitido boolean default 0, primary key(Usuario))";
         return statement;
     } 
     

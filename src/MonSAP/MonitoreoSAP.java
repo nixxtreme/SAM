@@ -1215,6 +1215,7 @@ public class MonitoreoSAP extends javax.swing.JFrame {
 
             
             PreparaTablas.add(Monitoreos.Tablas.CreaAdminUsrAdminGenSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.CreaAdminCodigosSAP(cadenaBD));
             PreparaTablas.add(Monitoreos.Tablas.CreaAdminUsrAdminSAP(cadenaBD));
             
             PreparaTablas.add(Monitoreos.Tablas.TablaAgreg(cadenaBD));          //crea la tabla de usuarios administradores agregados
@@ -1301,6 +1302,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             PreparaTablas.add(Monitoreos.Tablas.CreaPerfilesIntSAP(cadenaBD));              //Crea la tabla de perfiles incorrrectos de Usuarios Internos
             PreparaTablas.add(Monitoreos.Tablas.BorraPerfilesIntSAP(cadenaBD));
             PreparaTablas.add(Monitoreos.Tablas.TablaCodLiberaAgreg(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.InsertaAdmCodigosSAP(cadenaBD));
+            PreparaTablas.add(Monitoreos.Tablas.EliminaAdmCodigosSAP(cadenaBD));
             
             
             System.out.println("Creando nuevas tablas de trabajo");
@@ -1350,12 +1353,12 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             
             String noAutoGen = conteo.conteoespecial(ConLocal.conexion, "admingenericossap", "Permitido");//Cuenta el total de usuarios externos con perfil no autorizado
             jTextField18.setText(noAutoGen);
-//            
-//            String altaUsrAdmin = conteo.conteo(ConLocal.conexion, "AGREGADOS");//Cuenta el total de usuarios administradores dados de alta
-//            jTextField19.setText(altaUsrAdmin);
-//            
-//            String bajaUsrAdmin = conteo.conteo(ConLocal.conexion, "ELIMINADOS");//Cuenta el total de usuarios administradores dados de baja
-//            jTextField20.setText(bajaUsrAdmin);
+            
+            String altaUsrAdmin = conteo.conteo(ConLocal.conexion, "AGREGADOS");//Cuenta el total de usuarios administradores dados de alta
+            jTextField19.setText(altaUsrAdmin);
+            
+            String bajaUsrAdmin = conteo.conteo(ConLocal.conexion, "ELIMINADOS");//Cuenta el total de usuarios administradores dados de baja
+            jTextField20.setText(bajaUsrAdmin);
 
             String noAutoAdmin = conteo.conteoespecial(ConLocal.conexion, "adminusradmingensap", "Permitido");//Cuenta el total de usuarios administradores dados de baja
             jTextField21.setText(noAutoAdmin);
