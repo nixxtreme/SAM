@@ -1153,10 +1153,10 @@ public class Tablas
     {
         String[] parametros = cadenaBD.split("\\|");
         String consulta = "create table if not exists Expiracion180SAP SELECT usuario, nombre_completo, rol, Descripcion_Rol,"
-                + " fecha_creacion, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA,"
+                + " fecha_creacion, Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, VALIDO_DE, VALIDEZ_A, DATEDIFF(VALIDEZ_A, VALIDO_DE) AS PERIODO, "
                 + " ESTATUS"
                 + " FROM cruceextsap" + parametros[4]  
-                + " WHERE datediff(valido_de, validez_a) > 180 OR datediff(valido_de, validez_a) < 180";
+                + " WHERE datediff(validez_a, valido_de) > 180 OR datediff(validez_a, valido_de) < 180";
         return consulta;
         
     }

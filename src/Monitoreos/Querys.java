@@ -265,6 +265,12 @@ public class Querys
         return statement;
     }
     
+    public static String AdministraCodigos()               //OBTIENE EL RESULTADO DE LOS USUARIOS ADMINISTRADORES QUE FUERON PERMITIDOS A PESAR DE NO ESTAR PRESENTES EN NÓMINA DE USUARIOS INTERNOS O EXTERNOS
+    {
+        String statement = "select PERMITIDO, USUARIO, Rol, Denominacion, Valor from ADMINCODIGOSSAP order by PERMITIDO DESC";
+        return statement;
+    }
+    
    
                      //****************SAP****************
     
@@ -337,7 +343,7 @@ public class Querys
     public static String ResultadosValidez180SAP()                             //OBTIENE EL RESULTADO DE LAS INCIDENCIAS DE USUARIOS EXTERNOS INACTIVOS
     {
         String statement = "SELECT Usuario, Nombre_Completo, Rol, Descripcion_Rol, Fecha_creacion,"
-                + " Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS" 
+                + " Entrada_sist, NUMEROEMPLEADO, IDUSUARIO, NOMBRECOMPLETO, PUESTO, GERENCIA, ESTATUS, VALIDO_DE, VALIDEZ_A, PERIODO" 
                 + " from Expiracion180SAP";
         return statement;
     } 

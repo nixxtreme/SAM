@@ -211,6 +211,7 @@ public class Archivos
         departamento = temp[15];                                                //Obtiene el departamento de la posición 15 del arreglo
         puesto = temp[17];                                                      //Obtiene el puesto de la posición 17 del arreglo
         idpuesto = temp[18];                                                    //Obtiene el id del puesto de la posición 18 del arreglo
+        idpuesto = idpuesto.replace("TI", "");
         jefe = temp[21];                                                        //Obtiene el jefe inmediato de la posición 21 del arreglo
         estatus = temp[29];                                                     //Obtiene el estatus de la posición 29 del arreglo
         fecha = temp[28];                                                       //Obtiene el fecha de la posición 28 del arreglo

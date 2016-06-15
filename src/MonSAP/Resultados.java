@@ -1135,7 +1135,7 @@ public class Resultados extends javax.swing.JFrame {
     {
         
         DefaultTableModel modeloValidez180 = new DefaultTableModel();       //Define el objeto modelo de tabla
-        Object[] registro = new Object[15];                                     //Crea un arreglo para recibir los elementos de cada renglon
+        Object[] registro = new Object[16];                                     //Crea un arreglo para recibir los elementos de cada renglon
         
         
         try
@@ -1162,12 +1162,20 @@ public class Resultados extends javax.swing.JFrame {
                 modeloValidez180.addColumn("PUESTO");
                 modeloValidez180.addColumn("GERENCIA");
                 modeloValidez180.addColumn("ESTATUS");
+                modeloValidez180.addColumn("VALIDO DE");
+                modeloValidez180.addColumn("VALIDEZ A");
+                modeloValidez180.addColumn("PERIODO");
                 
+                
+                java.sql.ResultSetMetaData rsmd = validez180.getMetaData();
+                int colNo = rsmd.getColumnCount();
+
                                                          
                 while(validez180.next())                                          //Lee cada registro hasta que ya no haya más
                 {
-                    for(int k=1; k<14; k++)                                     //Recorre los elementos del registro para obtener cada dato de las columnas
+                    for(int k=1; k<=(colNo+1); k++)                                     //Recorre los elementos del registro para obtener cada dato de las columnas
                     {
+                        
                         if(k==1)
                         {
                             registro[k-1]=Boolean.TRUE;                         //Si está en la primer columna establece un valor TRUE para que el checkbox esté seleccionado

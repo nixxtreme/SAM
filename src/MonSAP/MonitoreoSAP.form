@@ -566,10 +566,8 @@
                                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jButton5" pref="220" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jButton3" max="32767" attributes="0"/>
-                                          <Component id="jButton1" pref="220" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="jButton3" max="32767" attributes="0"/>
+                                      <Component id="jButton1" pref="220" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>

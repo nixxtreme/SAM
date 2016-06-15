@@ -54,7 +54,7 @@ public class Codigos extends javax.swing.JFrame {
             conLocal.AbrirLocal(cadenaBD);
             
             ExecQuery EjecutaLo = new ExecQuery();                              //Crea el objeto para ejecutar la consulta
-            AdmUsrGen = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.AdministraUsuariosGen());   //Ejecuta la consulta y almacena el resultado en la variable
+            AdmUsrGen = EjecutaLo.Cons(conLocal.conexion, Monitoreos.Querys.AdministraCodigos());   //Ejecuta la consulta y almacena el resultado en la variable
         
             // Inserta el encabezado
             modeloCodigos.addColumn("Permitir");                            
@@ -237,7 +237,7 @@ public class Codigos extends javax.swing.JFrame {
         for(int s=0; s<TablaAdminUsrGen.getRowCount();s++){
             if(TablaAdminUsrGen.getModel().getValueAt(s, 0).equals(true))
             {
-                preparaInstruccion.add("UPDATE `ADMINGENERICOSSAP` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrGen.getModel().getValueAt(s, 1) + "'");
+                preparaInstruccion.add("UPDATE `ADMINCODIGOSSAP` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrGen.getModel().getValueAt(s, 1) + "'");
             }
             System.out.print("  Nombre: " + TablaAdminUsrGen.getModel().getValueAt(s, 1));
         }
