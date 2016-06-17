@@ -1360,8 +1360,8 @@ public class MonitoreoSAP extends javax.swing.JFrame {
             String perfilext = conteo.conteoperfiles(ConLocal.conexion, "perfilesnoautorizadosintsap"); //Cuenta el total de usuarios externos con perfil incorrecto
             jTextField16.setText(perfilext);
             
-//            String noAutoint = conteo.conteo(ConLocal.conexion, "CODLIBERA" + parametros[4]);//Cuenta el total de usuarios internos con perfil no autorizado
-//            jTextField17.setText(noAutoint);
+            String noAutoint = conteo.conteoespecial(ConLocal.conexion, "ADMINCODIGOSSAP", "PERMITIDO");//Cuenta el total de usuarios internos con perfil no autorizado
+            jTextField17.setText(noAutoint);
             
             String noAutoGen = conteo.conteoespecial(ConLocal.conexion, "admingenericossap", "Permitido");//Cuenta el total de usuarios externos con perfil no autorizado
             jTextField18.setText(noAutoGen);

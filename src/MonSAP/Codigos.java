@@ -239,6 +239,11 @@ public class Codigos extends javax.swing.JFrame {
             {
                 preparaInstruccion.add("UPDATE `ADMINCODIGOSSAP` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrGen.getModel().getValueAt(s, 1) + "'");
             }
+            
+            if(TablaAdminUsrGen.getModel().getValueAt(s, 0).equals(false))
+            {
+                preparaInstruccion.add("UPDATE `ADMINCODIGOSSAP` SET `PERMITIDO` = 0 WHERE `USUARIO` = '" + TablaAdminUsrGen.getModel().getValueAt(s, 1) + "'");
+            }
             System.out.print("  Nombre: " + TablaAdminUsrGen.getModel().getValueAt(s, 1));
         }
         EjecutaSAP.Exect(conLocal.conexion, preparaInstruccion);

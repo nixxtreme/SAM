@@ -242,6 +242,11 @@ public class AdministradoresSAP extends javax.swing.JFrame {
                 preparaInstruccion.add("UPDATE `adminusradminsap` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrAdmin.getModel().getValueAt(s, 1) + "'");
             }
             
+            if(TablaAdminUsrAdmin.getModel().getValueAt(s, 0).equals(false))
+            {
+                preparaInstruccion.add("UPDATE `adminusradminsap` SET `PERMITIDO` = 0 WHERE `USUARIO` = '" + TablaAdminUsrAdmin.getModel().getValueAt(s, 1) + "'");
+            }
+            
         }
         EjecutaSAP.Exect(conLocal.conexion, preparaInstruccion);
         definirModelosAdminUsrAdmin();

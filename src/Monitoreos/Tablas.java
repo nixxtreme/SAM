@@ -487,7 +487,7 @@ public class Tablas
         String statement = null;        
         String[] parametros = cadenaBD.split("\\|");
         statement = "INSERT IGNORE INTO AdminCodigosSAP (Usuario, Rol, Denominacion, Valor) "
-                + "SELECT Usuario, Rol, Denominacion, Valor FROM Codlibera" + parametros[4];
+                + "SELECT Usuario, Rol, Denominacion, Valor FROM codliberaagregados";
         return statement;
     }
     

@@ -34,6 +34,8 @@ public class GenericosSAP extends javax.swing.JFrame {
     String cadenaBD;
     ResultSet AdmUsrGen;
     JCheckBox component = new JCheckBox();
+    ArrayList antes = new ArrayList();
+    ArrayList despues = new ArrayList();
     Clase_CellEditor editor  = new Clase_CellEditor();
     /**
      * Creates new form AdministradoresSAP
@@ -42,6 +44,11 @@ public class GenericosSAP extends javax.swing.JFrame {
         this.cadenaBD = cadenaBD;
         initComponents();
         definirModelosAdminUsrGen();
+    }
+    
+    void llenarArray()
+    {
+        
     }
     
     void definirModelosAdminUsrGen()                                               //Define el modelo de la tabla de inconsistencias de usuarios internos reportados como baja
@@ -239,8 +246,14 @@ public class GenericosSAP extends javax.swing.JFrame {
         for(int s=0; s<TablaAdminUsrGen.getRowCount();s++){
             if(TablaAdminUsrGen.getModel().getValueAt(s, 0).equals(true))
             {
-                preparaInstruccion.add("UPDATE `ADMINGENERICOSSAP` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrGen.getModel().getValueAt(s, 1) + "'");
+                preparaInstruccion.add("UPDATE `ADMINGENERICOSSAP` SET `PERMITIDO` = 1 WHERE `USUARIO` = '" + TablaAdminUsrGen.getModel().getValueAt(s, 1) + "'");                
             }
+            
+            if(TablaAdminUsrGen.getModel().getValueAt(s, 0).equals(false))
+            {
+                preparaInstruccion.add("UPDATE `ADMINGENERICOSSAP` SET `PERMITIDO` = 0 WHERE `USUARIO` = '" + TablaAdminUsrGen.getModel().getValueAt(s, 1) + "'");
+            }
+            
             System.out.print("  Nombre: " + TablaAdminUsrGen.getModel().getValueAt(s, 1));
         }
         EjecutaSAP.Exect(conLocal.conexion, preparaInstruccion);
