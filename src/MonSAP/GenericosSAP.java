@@ -34,9 +34,10 @@ public class GenericosSAP extends javax.swing.JFrame {
     String cadenaBD;
     ResultSet AdmUsrGen;
     JCheckBox component = new JCheckBox();
-    ArrayList antes = new ArrayList();
-    ArrayList despues = new ArrayList();
+    String[] despues;
+    String[] antes;
     Clase_CellEditor editor  = new Clase_CellEditor();
+    int colNo;
     /**
      * Creates new form AdministradoresSAP
      */
@@ -72,7 +73,7 @@ public class GenericosSAP extends javax.swing.JFrame {
             modeloBajasInt.addColumn("Validez a");
 
             java.sql.ResultSetMetaData rsmd = AdmUsrGen.getMetaData();
-            int colNo = rsmd.getColumnCount();
+            colNo = rsmd.getColumnCount();
             Object[] objects = new Object[colNo];
             
             while (AdmUsrGen.next()){
@@ -83,6 +84,7 @@ public class GenericosSAP extends javax.swing.JFrame {
                         objects[k-1]=AdmUsrGen.getObject(k);
                     }
                 }
+                
                 modeloBajasInt.addRow(objects);
             }
             
@@ -145,6 +147,7 @@ public class GenericosSAP extends javax.swing.JFrame {
         TablaAdminUsrGen = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -200,12 +203,21 @@ public class GenericosSAP extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -213,7 +225,9 @@ public class GenericosSAP extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -260,6 +274,27 @@ public class GenericosSAP extends javax.swing.JFrame {
         definirModelosAdminUsrGen();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ArrayList<String> preparaInstruccion = new ArrayList();
+        Conexion conLocal = new Conexion();     
+        conLocal.AbrirLocal(cadenaBD);
+        MonAD.ExecQuery EjecutaSAP = new MonAD.ExecQuery();
+        antes = despues;
+        String[] despues = new String[2];
+        for(int k=0; k<colNo; k++)
+        {
+            
+            
+        }
+        for(int s=0; s<TablaAdminUsrGen.getRowCount();s++)
+        {
+            
+            System.out.print("  Nombre: " + TablaAdminUsrGen.getModel().getValueAt(s, 1));
+        }
+        EjecutaSAP.Exect(conLocal.conexion, preparaInstruccion);
+        definirModelosAdminUsrGen();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -299,6 +334,7 @@ public class GenericosSAP extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaAdminUsrGen;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
