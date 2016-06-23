@@ -1666,18 +1666,37 @@ public class Tablas
         String statement = "DELETE FROM cruceintsap" + parametros[4] + " WHERE idpuesto != rol ";
         return statement;
     }
+//    MÉTODO ORIGINAL
+//    public static String CreaPerfilesNoAutorizadosIntSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+//    {
+//        String[] parametros = cadenaBD.split("\\|");
+//        String statement = "create table if not exists PerfilesNoAutorizadosIntSAP select * "
+//                + "FROM cruceintsap" + parametros[4] + " WHERE idpuesto != Rol and Usuario in (select usuario from cruceintsap" + parametros[4] + " where idpuesto = Rol) "
+//                + "union "
+//                + "select * FROM cruceintsap" + parametros[4] + " WHERE idpuesto = Rol and Usuario in (select usuario from cruceintsap" + parametros[4] + " where idpuesto != Rol) order by usuario";
+//        return statement;
+//        
+//    }
     
     public static String CreaPerfilesNoAutorizadosIntSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
     {
         String[] parametros = cadenaBD.split("\\|");
-        String statement = "create table if not exists PerfilesNoAutorizadosIntSAP select * "
-                + "FROM cruceintsap" + parametros[4] + " WHERE idpuesto != Rol and Usuario in (select usuario from cruceintsap" + parametros[4] + " where idpuesto = Rol) "
-                + "union "
-                + "select * FROM cruceintsap" + parametros[4] + " WHERE idpuesto = Rol and Usuario in (select usuario from cruceintsap" + parametros[4] + " where idpuesto != Rol) order by usuario";
-        return statement;
+        String statement = "create table if not exists PerfilesNoAutorizadosIntSAP select * FROM cruceintsap" + parametros[4] + " WHERE USUARIO IN "
+                + " (SELECT USUARIO FROM CRUCEINTSAP" + parametros[4] + " GROUP BY usuario HAVING COUNT(*) > 1) order by Nombre_completo ";
+                
+        return statement;    
         
-    } 
+        
+    }
     
+    
+//    public static String BorraPerfilesNoAutorizadosIntSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
+//    {
+//        String[] parametros = cadenaBD.split("\\|");
+//        String statement = "DELETE FROM cruceintsap" + parametros[4] + " WHERE USUARIO IN (SELECT USUARIO FROM PerfilesNoAutorizadosIntSAP)";                
+//        return statement;
+//        
+//    } 
     
     public static String BorraPerfilesNoAutorizadosIntSAP(String cadenaBD)                     //AGREGA UNA TABLA CON LAS INCIDENCIAS DE USUARIOS EXTERNOS DUPLICADOS
     {
